@@ -1,0 +1,33 @@
+一、
+我们这一次做的是通过ARP欺骗的方式进行MITM的实验。此次使用的是sslsplit工具。
+（注：我们小组三个人每次做实验都是在一起做的，
+所以只使用这一个账号提交任务进度）
+基本步骤如下：
+1.在git上下载源码：
+git clone https://github.com/droe/sslsplit.git /opt/sslsplit
+apt-get install libssl-dev libevent-dev
+安装成功：
+(https://github.com/vsmile0601/Pictures/blob/master/10.jpg)
+2.利用小学期所讲授的知识，使用openssl生成一份数字证书：
+openssl genrsa -out ca.key 2048
+openssl req -new -x509 -days 1096 -key ca.key -out ca.crt
+(https://github.com/vsmile0601/Pictures/blob/master/5.jpg)
+(https://github.com/vsmile0601/Pictures/blob/master/7.jpg)
+3.在进行端口转发之前，打开ip_forward功能：
+首先输入：iptables -F 清除原有设置
+echo 1 > /proc/sys/net/ipv4/ip_forward
+使用iptables进行流量转发：
+(https://github.com/vsmile0601/Pictures/blob/master/8.jpg)
+查看当前设置：
+(https://github.com/vsmile0601/Pictures/blob/master/9.jpg)
+4.ARP欺骗：
+(https://github.com/vsmile0601/Pictures/blob/master/3.jpg)
+其中192.168.1.103为物理机IP，192.168.1.1为物理机和虚拟机的网关。本实验的目的是攻击物理机。
+(PS:其中，为了让物理主机与虚拟机的IP在同一网段，我们进行了如下修改：
+(https://github.com/vsmile0601/Pictures/blob/master/2.jpg)
+(https://github.com/vsmile0601/Pictures/blob/master/12.jpg)
+)
+5.启动SSLSplit：
+(https://github.com/vsmile0601/Pictures/blob/master/4.jpg)
+
+遗憾的是，我们并没有达到预期的理想效果，To be continued...
