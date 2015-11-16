@@ -1,0 +1,138 @@
+网络安全大作业·第一次作业提交
+
+一、作业题目：
+开放网络服务信息收集实验 
+alexa全球排名top 10000的站点选择其一
+禁止使用任何方式直接扫描目标站点
+禁止对目标站点进行任何形式的渗透测试或攻击行为
+信息收集手段包括但不限于：搜索引擎搜索、whois查询、域名枚举、使用合法客户端连接目标端口等
+信息收集内容包括但不限于：子域名及其对应服务说明、IP地址段、电子邮件、组织结构信息、联系方式信息、公开的漏洞信息等
+二、小组成员：* * *
+三、选择站点：新浪微博 www.weibo.com
+四、调查过程：
+1.通过whois得到www.weibo.com的域名信息:
+图1
+英文信息：
+详细英文注册信息如下
+Domain Name: weibo.com                                                                                          Registry Domain ID:Registrar WHOIS Server: whois.35.comRegistrar URL: http://www.35.comUpdated Date: 2015-03-20T14:56:13.0ZCreation Date: 1999-03-20T05:00:00.0ZRegistrar Registration Expiration Date: 03/20/2111T04:00:00.0ZRegistrar: 35 Technology Co., Ltd.Registrar IANA ID: 1316Registrar Abuse Contact Email: abuse@35.cnRegistrar Abuse Contact Phone: +86.5925391800Domain Status: clientTransferProhibitedRegistry Registrant ID:Registrant Name: Beijing Weibo Internet Technology Co.,LtdRegistrant Organization: Beijing Weibo Internet Technology Co., Ltd.Registrant Street: Ideal Int'l Plaza, No. 58, West Of North Forth Ring RdRegistrant City: Bei jingRegistrant State/Province: Bei jingRegistrant Postal Code: 100080Registrant Country: CNRegistrant Phone: +86.1058983038Registrant Phone Ext:Registrant Fax: +86.1082607527Registrant Fax Ext:Registrant Email: domainname@staff.sina.com.cnRegistry Admin ID:Admin Name: Beijing Weibo Internet Technology Co.,LtdAdmin Organization: Beijing Weibo Internet Technology Co., Ltd.Admin Street: Ideal Int'l Plaza, No. 58, West Of North Forth Ring RdAdmin City: Bei jingAdmin State/Province: Bei jingAdmin Postal Code: 100080Admin Country: CNAdmin Phone: +86.1058983038Admin Phone Ext:Admin Fax: +86.1082607527Admin Fax Ext:Admin Email: domainname@staff.sina.com.cnRegistry Tech ID:Tech Name: Beijing Weibo Internet Technology Co.,LtdTech Organization: Beijing Weibo Internet Technology Co., Ltd.Tech Street: Ideal Int'l Plaza, No. 58, West Of North Forth Ring RdTech City: Bei jingTech State/Province: Bei jingTech Postal Code: 100080Tech Country: CNTech Phone: +86.1058983038Tech Phone Ext:Tech Fax: +86.1082607527Tech Fax Ext:Tech Email: domainname@staff.sina.com.cnName Server: ns1.sina.com.cnName Server: ns2.sina.com.cnName Server: ns3.sina.com.cnName Server: ns4.sina.com.cnName Server: ns3.sina.comName Server: ns4.sina.comDNSSEC: unsignedURL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/>>> Last update of WHOIS database: 2015-09-03T15:06:07.0Z <<<This data is provided by 35 Technology Co., Ltd.for information purposes, and to assist persons obtaining informationabout or related to domain name registration records.35 Technology Co., Ltd. does not guarantee its accuracy.By submitting a WHOIS query, you agree that you will use this dataonly for lawful purposes and that, under no circumstances, you willuse this data to1) allow, enable, or otherwise support the transmission of massunsolicited, commercial advertising or solicitations via E-mail (spam); or2) enable high volume, automated, electronic processes that applyto this WHOIS server.These terms may be changed without prior notice.By submitting this query, you agree to abide by this policy.
+得到的信息：
+www.weibo.com
+注册人：Beijing Weibo Internet Technology Co.,Ltd   北京微博网络技术有限公司
+注册人地址： Ideal Int'l Plaza, No. 58, West Of North Forth Ring Rd
+               理想国际广场、58号、西北环Rd	
+管理人电话： +86.1058983038
+管理人传真：+86.1082607527
+注册人邮箱： domainname@staff.sina.com.cn
+DNS服务器：Name Server: ns1.sina.com.cn		   Name Server: ns2.sina.com.cn		   Name Server: ns3.sina.com.cn		   Name Server: ns4.sina.com.cn		   Name Server: ns3.sina.com		   Name Server: ns4.sina.com
+ICANN名目项数据的URL问题报告系统：http://wdprs.internic.net/
+注册日期：1999-03-20T05:00:00.0Z
+到期日期： 2015-03-20T14:56:13.0Z
+注册商： 35 Technology Co., Ltd  35技术有限公司
+
+2.使用搜索引擎对域名信息进一步分析
+1.注册人（公司）：
+经搜索引擎查询，并不能找到北京微博网络技术有限公司，而新浪微博的注册公司为北京微梦创科网络技术有限公司，新浪公司旗下的子公司。注册于2010年10月11日，其负责人为彭少彬，现为新浪公司副总裁，新浪微博事业部总经理。
+2.公司地址：理想国际广场、58号、西北环，即北京市海淀区北四环西路58号，经查询为1916室。
+3.管理人电话：+86.1058983038 待查。
+4.注册人邮箱：domainname@staff.sina.com.cn
+3.关于域名和子域名
+1.在linux虚拟机中：通过域名寻找服务器IP:(a记录查询)
+  host -t a www.weibo.com 得到该服务器的两个IP：
+www.weibo.com has address 180.149.134.142
+www.weibo.com has address 180.149.134.141
+图2
+使用百度搜索两个IP地址所在地等信息：
+图3
+
+1.通过host -t mx www.weibo.com 没有发现邮件服务信息
+2.查询子域名：（子域名枚举）
+使用子域名枚举软件layer，找到一万多个子域名，每次列举得到的子域名数不同。
+图4
+以下是部分子域名及其对应服务（有对应服务的）：（所有子域名在附件中给出）
+2cf8vdisk.weibo.com   202.106.199.38   nginx
+2d00e.weibo.com   202.106.199.37   nginx
+2d00vdisk.weibo.com   202.106.199.37   nginx
+2758q.weibo.com   202.106.199.38   nginx
+1c20e.weibo.com   202.106.199.38   nginx
+2757www.weibo.com   202.106.199.38   nginx
+10e0q.weibo.com   202.106.199.37   nginx
+5a0vdisk.weibo.com   202.106.199.37   nginx
+app.weibo.com   123.125.105.215   Apache          应用广场
+badge.weibo.com   123.125.106.177   Apache			微博勋章馆
+book.weibo.com   123.125.22.249   Tengine			微博读书
+c.weibo.com   123.126.42.214   nginx				微博雷达探优惠
+card.weibo.com   123.125.106.249   nginx
+a.weibo.com   123.125.104.197   WeiBo            我的主页
+data.weibo.com   123.125.106.177   Apache			微报告
+dianping.weibo.com   123.125.104.218   WeiBo		微博点评团
+dtszj.game.weibo.com   123.126.42.251   Apache		微游戏大天使之剑
+e2d00.weibo.com   202.106.199.36   nginx
+e.weibo.com   123.126.42.238   nginx				新浪微博企业版
+hd.e.weibo.com   127.0.0.1   Apache/2.4.4 (Win32) OpenSSL/1.0.1e PHP/5.5.1		XAMPP
+apps.weibo.com   123.125.105.215   Apache			应用广场
+au.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+event.weibo.com   123.126.42.214   WeiBo			微博活动
+account.weibo.com   123.125.106.177   nginx			微博（跳转到weibbo.com）
+d.weibo.com   123.125.104.197   nginx
+game.manhua.weibo.com   123.125.106.102   nginx/1.4.4	微漫画
+api.hk.weibo.com   218.213.85.49   Apache				微博香港
+game.weibo.com   123.125.29.243   nginx				微博游戏
+help.weibo.com   123.125.105.215   Apache				微博帮助
+
+4.公司组织结构及重要人物信息
+新浪微博所属公司为新浪旗下一子公司：北京微梦创科网络技术有限公司，注册时法人为彭少彬，主管新浪微博，但在2012年年底，新浪微博发生了巨大的人事变动，具体内容摘自总裁曹国伟给员工的公开信：
+　1）原无线事业部移动微博产品和技术团队，原微博商业化产品和技术团队并入微博事业部，由公司副总裁王高飞担任总经理。王高飞将负责微博用户产品和相应的技术和运营，同时也会负责微博的商业化产品和技术。王高飞向我汇报。
+　　2）原公司音乐事业部，原公司产品事业部与微博相关的项目组一并归入微博事业部。
+　　3）成立独立的微博开放平台部，由原微博开放平台和微博商业拓展团队组成。由公司战略规划部副总裁褚达晨兼任总经理。微博开放平台部将负责微博开放平台的策略和规则，建立垂直领域的合作，搭建微博生态体系。褚达晨向我汇报。
+因此，目前新浪公司的架构如下：
+图5
+其中微博板块如下：
+图6
+微博主要分为两大板块：微博事业部和微博开放平台，我们主要对以上三人进行信息搜集。
+
+1.曹国伟：
+出生日期：1965年7月
+出生于：上海
+毕业于 复旦大学，德州大学奥斯丁分校
+英文名：Charles Chao
+
+2.王高飞 
+1978 5 12 出生
+1996年入学 北京大学 计算机科学技术系
+1993年入学 漯河实验中学
+1990年入学 漯河三中     （以上信息通过人人网获得）
+2000年08月—2004年 新浪网
+2004年—2006年 新浪无线
+2006年11月—2012年11月 新浪无线 总经理
+2013年5月—2014年2月 新浪高级 副总裁
+2014年2月—至今 微博 CEO[1]
+可能的邮箱：gaofei@staff.sina.com.cn（来源于网络真假未知）
+小号：来去之间 （确定）（知乎 微博）
+兴趣爱好：特别爱图钉，且一直在更新。（下载了照片，但通过各种方法始终无法查看出地点）喜欢各种美食。
+已婚，有孩子。
+通过reg007查到该邮箱注册过：
+图7
+3.褚达晨 
+70后 生日：11月17号
+1993年入学 中科大 少年班（通过人人网获得）
+新浪 (2012 - 至今) 
+地区：北京
+百度 (2009 - 2012) 
+地区：北京
+麦肯锡 (2004 - 2009)
+5.公开漏洞信息
+1）2014年11月3日漏洞
+图8
+
+其实在2011年，就有人发现类似该漏洞，通过邮件将微博分享给好友，利用以上原理，冒充登陆他人微博。
+另：乌云网最近无法打开，很多信息查询不到。
+
+6.其他查询收集
+1.通过Google hacking 进行查询，站点：weibo.com、三个主要领导人的信息以及网站其他信息如个人简历等，并没有收获什么有用信息。
+2.用filezila连接FTP服务，无法连接成功。
+4.用telnet连接目标端口：除80端口外都无法成功。
+得到：
+图9
+
+关于负责人电话和邮箱,有待进一步的搜集。
+作业还将进行进一步补充和完善，这是目前进度。
