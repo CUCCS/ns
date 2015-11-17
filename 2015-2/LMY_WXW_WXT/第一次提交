@@ -14,8 +14,67 @@
 https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC1.png
 
 英文信息：
-详细英文注册信息如下
-Domain Name: weibo.com                                                                                          Registry Domain ID:Registrar WHOIS Server: whois.35.comRegistrar URL: http://www.35.comUpdated Date: 2015-03-20T14:56:13.0ZCreation Date: 1999-03-20T05:00:00.0ZRegistrar Registration Expiration Date: 03/20/2111T04:00:00.0ZRegistrar: 35 Technology Co., Ltd.Registrar IANA ID: 1316Registrar Abuse Contact Email: abuse@35.cnRegistrar Abuse Contact Phone: +86.5925391800Domain Status: clientTransferProhibitedRegistry Registrant ID:Registrant Name: Beijing Weibo Internet Technology Co.,LtdRegistrant Organization: Beijing Weibo Internet Technology Co., Ltd.Registrant Street: Ideal Int'l Plaza, No. 58, West Of North Forth Ring RdRegistrant City: Bei jingRegistrant State/Province: Bei jingRegistrant Postal Code: 100080Registrant Country: CNRegistrant Phone: +86.1058983038Registrant Phone Ext:Registrant Fax: +86.1082607527Registrant Fax Ext:Registrant Email: domainname@staff.sina.com.cnRegistry Admin ID:Admin Name: Beijing Weibo Internet Technology Co.,LtdAdmin Organization: Beijing Weibo Internet Technology Co., Ltd.Admin Street: Ideal Int'l Plaza, No. 58, West Of North Forth Ring RdAdmin City: Bei jingAdmin State/Province: Bei jingAdmin Postal Code: 100080Admin Country: CNAdmin Phone: +86.1058983038Admin Phone Ext:Admin Fax: +86.1082607527Admin Fax Ext:Admin Email: domainname@staff.sina.com.cnRegistry Tech ID:Tech Name: Beijing Weibo Internet Technology Co.,LtdTech Organization: Beijing Weibo Internet Technology Co., Ltd.Tech Street: Ideal Int'l Plaza, No. 58, West Of North Forth Ring RdTech City: Bei jingTech State/Province: Bei jingTech Postal Code: 100080Tech Country: CNTech Phone: +86.1058983038Tech Phone Ext:Tech Fax: +86.1082607527Tech Fax Ext:Tech Email: domainname@staff.sina.com.cnName Server: ns1.sina.com.cnName Server: ns2.sina.com.cnName Server: ns3.sina.com.cnName Server: ns4.sina.com.cnName Server: ns3.sina.comName Server: ns4.sina.comDNSSEC: unsignedURL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/>>> Last update of WHOIS database: 2015-09-03T15:06:07.0Z <<<This data is provided by 35 Technology Co., Ltd.for information purposes, and to assist persons obtaining informationabout or related to domain name registration records.35 Technology Co., Ltd. does not guarantee its accuracy.By submitting a WHOIS query, you agree that you will use this dataonly for lawful purposes and that, under no circumstances, you willuse this data to1) allow, enable, or otherwise support the transmission of massunsolicited, commercial advertising or solicitations via E-mail (spam); or2) enable high volume, automated, electronic processes that applyto this WHOIS server.These terms may be changed without prior notice.By submitting this query, you agree to abide by this policy.
+Domain Name: weibo.com                                                                                          
+Registry Domain ID:
+Registrar WHOIS Server: whois.35.com
+Registrar URL: http://www.35.com
+Updated Date: 2015-03-20T14:56:13.0Z
+Creation Date: 1999-03-20T05:00:00.0Z
+Registrar Registration Expiration Date: 03/20/2111T04:00:00.0Z
+Registrar: 35 Technology Co., Ltd.Registrar IANA ID: 1316
+Registrar Abuse Contact Email: abuse@35.cn
+Registrar Abuse Contact Phone: +86.5925391800
+Domain Status: clientTransferProhibited
+Registry Registrant ID:
+Registrant Name: Beijing Weibo Internet Technology Co.,Ltd
+Registrant Organization: Beijing Weibo Internet Technology Co., Ltd.
+Registrant Street: Ideal Int'l Plaza, No. 58, West Of North Forth Ring Rd
+Registrant City: Bei jing
+Registrant State/Province: Bei jing
+Registrant Postal Code: 100080
+Registrant Country: CN
+Registrant Phone: +86.1058983038
+Registrant Phone Ext:
+Registrant Fax: +86.1082607527
+Registrant Fax Ext:
+Registrant Email: domainname@staff.sina.com.cn
+Registry Admin ID:
+Admin Name: Beijing Weibo Internet Technology Co.,Ltd
+Admin Organization: Beijing Weibo Internet Technology Co., Ltd.
+Admin Street: Ideal Int'l Plaza, No. 58, West Of North Forth Ring Rd
+Admin City: Bei jingAdmin State/Province: Bei jing
+Admin Postal Code: 100080
+Admin Country: CNAdmin Phone: +86.1058983038
+Admin Phone Ext:
+Admin Fax: +86.1082607527
+Admin Fax Ext:
+Admin Email: domainname@staff.sina.com.cn
+Registry Tech ID:
+Tech Name: Beijing Weibo Internet Technology Co.,Ltd
+Tech Organization: Beijing Weibo Internet Technology Co., Ltd.
+Tech Street: Ideal Int'l Plaza, No. 58, West Of North Forth Ring Rd
+Tech City: Bei jing
+Tech State/Province: Bei jing
+Tech Postal Code: 100080
+Tech Country: CN
+Tech Phone: +86.1058983038
+Tech Phone Ext:
+ech Fax: +86.1082607527
+Tech Fax Ext:
+Tech Email: domainname@staff.sina.com.cn
+Name Server: ns1.sina.com.cn
+Name Server: ns2.sina.com.cn
+Name Server: ns3.sina.com.cn
+Name Server: ns4.sina.com.cn
+Name Server: ns3.sina.com
+Name Server: ns4.sina.com
+DNSSEC: unsigned
+URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
+>>> Last update of WHOIS database: 2015-09-03T15:06:07.0Z <<<
+This data is provided by 35 Technology Co., Ltd.for information purposes, and to assist persons obtaining informationabout or related to domain name registration records.35 Technology Co., Ltd. does not guarantee its accuracy.
+By submitting a WHOIS query, you agree that you will use this dataonly for lawful purposes and that, under no circumstances, you willuse this data to1) allow, enable, or otherwise support the transmission of massunsolicited, commercial advertising or solicitations via E-mail (spam); or2) enable high volume, automated, electronic processes that applyto this WHOIS server.
+These terms may be changed without prior notice.By submitting this query, you agree to abide by this policy.
+
 得到的信息：
 www.weibo.com
 注册人：Beijing Weibo Internet Technology Co.,Ltd   北京微博网络技术有限公司
@@ -41,10 +100,10 @@ ICANN名目项数据的URL问题报告系统：http://wdprs.internic.net/
   host -t a www.weibo.com 得到该服务器的两个IP：
 www.weibo.com has address 180.149.134.142
 www.weibo.com has address 180.149.134.141
-
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC2.png
 使用百度搜索两个IP地址所在地等信息：
-
-
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC3.png
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC4.png
 1.通过host -t mx www.weibo.com 没有发现邮件服务信息
 2.查询子域名：（子域名枚举）
 使用子域名枚举软件layer，找到一万多个子域名，每次列举得到的子域名数不同。
@@ -86,9 +145,9 @@ help.weibo.com   123.125.105.215   Apache				微博帮助
 　　2）原公司音乐事业部，原公司产品事业部与微博相关的项目组一并归入微博事业部。
 　　3）成立独立的微博开放平台部，由原微博开放平台和微博商业拓展团队组成。由公司战略规划部副总裁褚达晨兼任总经理。微博开放平台部将负责微博开放平台的策略和规则，建立垂直领域的合作，搭建微博生态体系。褚达晨向我汇报。
 因此，目前新浪公司的架构如下：
-
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC5.png
 其中微博板块如下：
-
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC6.png
 微博主要分为两大板块：微博事业部和微博开放平台，我们主要对以上三人进行信息搜集。
 
 1.曹国伟：
@@ -112,7 +171,7 @@ help.weibo.com   123.125.105.215   Apache				微博帮助
 兴趣爱好：特别爱图钉，且一直在更新。（下载了照片，但通过各种方法始终无法查看出地点）喜欢各种美食。
 已婚，有孩子。
 通过reg007查到该邮箱注册过：
-
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC7.png
 3.褚达晨 
 70后 生日：11月17号
 1993年入学 中科大 少年班（通过人人网获得）
@@ -123,17 +182,16 @@ help.weibo.com   123.125.105.215   Apache				微博帮助
 麦肯锡 (2004 - 2009)
 5.公开漏洞信息
 1）2014年11月3日漏洞
-
-
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC8.png
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC9.png
 其实在2011年，就有人发现类似该漏洞，通过邮件将微博分享给好友，利用以上原理，冒充登陆他人微博。
-另：乌云网最近无法打开，很多信息查询不到。
-
+另：乌云网最近无法打开，很多信息查询不到。。有待进一步查询。
 6.其他查询收集
 1.通过Google hacking 进行查询，站点：weibo.com、三个主要领导人的信息以及网站其他信息如个人简历等，并没有收获什么有用信息。
 2.用filezila连接FTP服务，无法连接成功。
 4.用telnet连接目标端口：除80端口外都无法成功。
 得到：
-
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC10.png
 关于负责人电话和邮箱,有待进一步的搜集。
 作业还将进行进一步补充和完善，这是目前进度。
-其实本来想做完再交，然后卡住了。。。- -先提交一下进度TAT，to be continue...
+本来准备全部做完再交，然后就卡住了。。。- -先提交一下目前进度吧TAT，希望老师给出意见！！
