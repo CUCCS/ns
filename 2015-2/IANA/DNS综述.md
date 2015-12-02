@@ -91,9 +91,10 @@
 
 - **顶级域名TLDs(top-level domainnames)**
    - 国家和地区顶级域名（country code top-level domains，简称ccTLDs），按照ISO3166国家代码给200多个国家都分配了两字符长度的顶级域名
-   - 国际顶级域名（generic top-level domains，简称gTLDs），一般为组织、机构、群体等设立，如.biz, .com, .info, .name, .net, .org, and .pro等
+   - 通用顶级域名（generic top-level domains，简称gTLDs），一般为组织、机构、群体等设立，如.biz, .com, .info, .name, .net, .org, and .pro等
 
-![](http://i.imgur.com/Q5gz2xZ.png)
+![](http://i.imgur.com/iWV86GJ.png)
+
 
 
 [国际顶级域名统计](https://newgtlds.icann.org/en/program-status/statistics )
