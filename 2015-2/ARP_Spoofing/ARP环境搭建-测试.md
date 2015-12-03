@@ -3,24 +3,24 @@
 
 XP ping Linux_attacker:
 
-![](E:\学习\大三\网络安全\大作业\实验截图\连通性\xp_attacker.PNG)
+![](http://i.imgur.com/vw1sTCM.png)
  
 XP ping Linux_gateway:
  
-![](E:\学习\大三\网络安全\大作业\实验截图\连通性\xp_gateway.PNG)
+![](http://i.imgur.com/JDdseNw.png)
 
 Linux_attacker ping XP:
 
-![](E:\学习\大三\网络安全\大作业\实验截图\连通性\attacker_xp.PNG) 
+![](http://i.imgur.com/wBkDVCo.png)
 
 Linux_attacker ping Linux_gateway:
 
-![](E:\学习\大三\网络安全\大作业\实验截图\连通性\attacker_gateway.PNG)  
+![](http://i.imgur.com/GvY64iH.png)
 
 Linux_gateway ping XP: 
 
-![](E:\学习\大三\网络安全\大作业\实验截图\连通性\gateway_xp.PNG) 
- 
+![](http://i.imgur.com/QpUK67c.png)
+
 Linux_gateway ping Linux_attacker:
 
-![](E:\学习\大三\网络安全\大作业\实验截图\连通性\attacker_gateway.PNG)  
+![](http://i.imgur.com/xFWVFcf.png)
