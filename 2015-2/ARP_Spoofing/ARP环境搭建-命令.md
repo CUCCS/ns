@@ -14,7 +14,7 @@
 2.设置intnet的相关参数：
 
     VBoxManage dhcpserver modify --netname intnet --ip 192.168.64.9 --netmask 255.255.255.0 --lowerip 192.168.64.1 --upperip 192.168.64.10 –enable 
-3.修改Linux_gateway的IP地址、子网掩码、网关
+3.修改windows XP的IP地址、子网掩码、网关
    
     netsh interface ip set address name="本地连接" source=static addr=192.168.64.1 mask=255.255.255.0 gateway=192.168.64.10 1
 
@@ -34,7 +34,7 @@
   重启网卡或者重启计算机
   
     /etc/init.d/networking restart
-5.修改windows XP的IP地址、子网掩码、网关
+5.修改Linux_gateway的IP地址、子网掩码、网关
   
     vi /etc/network/interfaces
   将其中的eth0网卡设置为static模式
