@@ -30,6 +30,7 @@ xp_ sp3_host2(被攻击主机):设置一张网卡，连接方式为NAT网络模�
 
 实验拓扑图如下： 
 ![](http://i.imgur.com/7ZR2CzP.png) 
+
 局域网系统中，主机以及网关的网络参数如下：
 ![](http://i.imgur.com/8iyJA3J.png)
  
