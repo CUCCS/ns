@@ -1,26 +1,35 @@
-一、测试连通性
+一、测试连通性以及虚拟机能否与互联网中的其他主机通信
+   
 需修改XP系统的主机中防火墙的设置
 
-XP ping Linux_attacker:
+虚拟机之间的连通性：
 
-![](http://i.imgur.com/vw1sTCM.png)
- 
-XP ping Linux_gateway:
- 
-![](http://i.imgur.com/JDdseNw.png)
+- host1 ping host2
 
-Linux_attacker ping XP:
+![](http://i.imgur.com/gNl1QWi.png)
 
-![](http://i.imgur.com/wBkDVCo.png)
 
-Linux_attacker ping Linux_gateway:
+- host1 ping attacker
 
-![](http://i.imgur.com/GvY64iH.png)
+![](http://i.imgur.com/vPAoR9c.png)
 
-Linux_gateway ping XP: 
 
-![](http://i.imgur.com/QpUK67c.png)
+- host2 ping attacker
 
-Linux_gateway ping Linux_attacker:
+![](http://i.imgur.com/GdjHIOS.png)
 
-![](http://i.imgur.com/xFWVFcf.png)
+虚拟机和互联网中的其他主机通信：
+
+- host1 ping www.baidu.com
+
+![](http://i.imgur.com/YtUaynl.png)
+
+
+-  host2 ping www.baidu.com
+
+![](http://i.imgur.com/yPIpbyh.png)
+
+
+-  attacker ping www.baidu.com
+
+![](http://i.imgur.com/EFG10qe.png)
