@@ -2,11 +2,12 @@
 
 ## 测试实验背景：
 * 测试环境：  
-   Windows下运行软件Cisco Packet Tracer进行模拟实验环境：    
+   Windows 7下运行软件Cisco Packet Tracer进行模拟实验环境：    
    由于实验条件有限（>_<|||），利用软件Cisco Packet Tracer进行模拟实验：
    * 交换机型号：2950-24    
    * 主机：普通PC-PT  
 ![image](https://github.com/weiyi1024/github-tutorial/raw/master/PACKET tracer.JPG)
+![image](https://github.com/weiyi1024/github-tutorial/raw/master/网络拓扑图.JPG)
 
 ## 测试概要：
    * 测试一：1个交换机，1台PC机  
@@ -15,7 +16,7 @@
       
    * 测试二：2台交换机，2台PC机（四种情况）
      * 情况一：  
-       测试条件说明：交换机A的端口9余交换机B的端口23连接，交换机A的端口10与PC机A连接，交换机B 的端口10与PC机B相连接。PC机A为攻击源。连接情况如图所示：  
+       测试条件说明：交换机A的端口9与交换机B的端口23连接，交换机A的端口10与PC机A连接，交换机B 的端口10与PC机B相连接。PC机A为攻击源。连接情况如图所示：  
        ![image](https://github.com/weiyi1024/github-tutorial/raw/master/测试二A.JPG)
      * 情况二： 
        测试条件说明：交换机A的端口9与交换机B的端口23相连接，交换机A的端口10与PC机A相连接，交换机B的端口10与PC机B相连接。PC机B为攻击源。连接情况如图所示：
@@ -50,11 +51,7 @@
     在这一部分中，目的就是要获取全部正确的指令集，从而正确配置交换机。
         
 ## 实验概述：
-* 对于ARP洪泛攻击，攻击源定位算法主要查找的是交换机发出的Trap包。由于交换机的MAC地址表是层层映射的，所以，如果网络中有一台主机发起ARP洪泛攻击，原则上网络中所有的交换机都将会发出Trap包。攻击源定位算法从中找到攻击源的方法，就是在交换机中找到这样一种Trap包:该包中记录的交换机的端口连接的是一台主机。那么该主机就是一个ARP攻击源。
-
-  ![image](https://github.com/weiyi1024/github-tutorial/raw/master/网络拓扑图.JPG)
-
-  网络拓扑图如下：
+* 对于ARP洪泛攻击，攻击源定位算法主要查找的是交换机发出的Trap包。由于交换机的MAC地址表是层层映射的，所以，如果网络中有一台主机发起ARP洪泛攻击，原则上网络中所有的交换机都将会发出Trap包。攻击源定位算法从中找到攻击源的方法，就是在交换机中找到这样一种Trap包:该包中记录的交换机的端口连接的是一台主机。那么该主机就是一个ARP攻击源。网络拓扑图如下：
 
   ![image](https://github.com/weiyi1024/github-tutorial/raw/master/网络拓扑图示.JPG)
 
@@ -72,5 +69,6 @@
        * Switch(config-if)# shutdown
        * Switch(config-if)# end
        * Switch# exit
-* 系统尝试关闭Terminal5所连接的交换机端口，然后用Terminal1-Terminal4同时Ping Terminal_5，发现无法Ping通。当再次开启Terminal-5所连接的交换机端口，用Terminal1-Terminal4同时Ping Terminal5，这时就能Ping通了。
+
+* 系统尝试关闭Terminal5所连接的交换机端口，然后用Terminal1-Terminal4同时Ping Terminal5，发现无法Ping通。当再次开启Terminal5所连接的交换机端口，用Terminal1-Terminal4同时Ping Terminal5，这时就能Ping通了。
 
