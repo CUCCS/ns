@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*"
+        "laravel/framework": "5.1.*",
+        "pragmarx/google2fa": "^0.7.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
