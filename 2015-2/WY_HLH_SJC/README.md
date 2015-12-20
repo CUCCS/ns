@@ -1,13 +1,13 @@
-# Team member
+# Team Member
 * weiyi1024,bolerolily and 2015youki
 
-# Selected topic
+# Selected Topic
 * 设计并验证内网检测与防御ARP攻击系统
 
-# Topic description
+# Topic Description
 * 基于交换机的局域网ARP攻击防御方法的研究及实现
 
-# Reference material
+# Reference Material
 * 以下论文均来自中国知网，对本次大作业有一定的帮助：  
   * 《ARP防御系统的设计和实现》
   * 《基于ARP欺骗攻击的防御策略研究》
