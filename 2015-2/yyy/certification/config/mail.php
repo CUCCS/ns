@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'xwy.1234@163.com', 'name' => 'ヽ(゜Q。)ノ2fa验证码'],
 
     /*
     |--------------------------------------------------------------------------
@@ -119,6 +119,7 @@ return [
     |
     */
 
-    'pretend' => env('MAIL_PRETEND', false),
+    'pretend' =>false,
 
 ];
+

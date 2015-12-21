@@ -23,6 +23,8 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // 注册路由...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+// 发送邮件
+Route::get('mail/send','MailController@send');
 
 
 
