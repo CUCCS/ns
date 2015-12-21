@@ -9,7 +9,9 @@
         "laravel/framework": "5.1.*",
         "pragmarx/google2fa": "^0.7.1",
         "gregwar/captcha": "1.*",
-        "endroid/qrcode": "1.*@dev"
+        "endroid/qrcode": "1.*@dev",
+        "simplesoftwareio/simple-qrcode": "1.3.*"
+
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

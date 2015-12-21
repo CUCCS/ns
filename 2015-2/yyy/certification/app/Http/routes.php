@@ -28,7 +28,18 @@ Route::get('mail/send','MailController@send');
 
 
 
-
+Route::get('qrcode', function(){
+    $size = 200;
+    $text = 'ʅ（‾◡◝）ʃ';
+    if(!$size || !$text) return '';
+    $qrCode = new QrCode();
+    $qrCode->setText($text);
+    $qrCode->setSize($size);
+    $qrCode->setPadding(10);
+    $response = Response::make($qrCode->get(), 200);
+    $response->header('content-type', 'image/png');
+    return $response;
+});
 
 
 

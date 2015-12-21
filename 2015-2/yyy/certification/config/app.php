@@ -144,8 +144,11 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //SimpleQrcode
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
         'PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider',
+
 
 
 
@@ -199,6 +202,8 @@ return [
         'Google2FA' => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
         //二维码
         'QrCode'            => 'Endroid\QrCode\QrCode',
+        //SimpleQrCode
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
     ],
 

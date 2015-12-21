@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <body>
-<a href="{{ URL('active?uid='.$uid.'&activationcode='.$activationcode) }}" target="_blank">点击激活你的账号</a>
+{{$name}},请扫码确认登录2fa
+<br>
+<img src="{!!$message->embedData(QrCode::format('png')->size(399)->generate($token), 'QrCode.png', 'image/png')!!}">
 </body>
 </html>
