@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -197,6 +197,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Google2FA' => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
+        //二维码
+        'QrCode'            => 'Endroid\QrCode\QrCode',
 
     ],
 
