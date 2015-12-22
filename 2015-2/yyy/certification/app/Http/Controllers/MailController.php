@@ -12,16 +12,14 @@ class MailController extends Controller
 {
     public function send( )
     {
-        $rand = uniqid(rand());
-        $token = Crypt::encrypt($rand);
-        QrCode::size(100);
+        $token = uniqid(rand());
+       /* $token = Crypt::encrypt($rand);
         try {
             $decrypted = Crypt::decrypt($token);
         } catch (DecryptException $e) {
             //
-        }
-        $name = '嘤嘤嘤';
-        $flag = Mail::send('email',['name'=>$name,'token'=>$token],function($message){
+        }*/
+        $flag = Mail::send('email',['token'=>$token],function($message){
             $to = '545374042@qq.com';
             $message->to($to)->subject('ʅ（‾◡◝）ʃ哒铛～');
         });

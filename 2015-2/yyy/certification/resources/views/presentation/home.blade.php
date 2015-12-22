@@ -1,6 +1,8 @@
 @extends('app')
 
 @section('main-content')
-   嘤嘤嘤
+   <div class="content">
+      <div class="title">ʅ（‾◡◝）ʃ</div>
+   </div>
 
 @endsection

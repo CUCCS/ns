@@ -11,6 +11,9 @@
     <link href="{{ asset('/css/simple-line-icons.css') }}"  rel="stylesheet" type="text/css" />
     <link href="{{ asset('/css/font.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/css/mine.css') }}" rel="stylesheet" type="text/css" />
+
+
 
     <!--[if lt IE 9]>
     <script src="{{ asset('/js/ie/html5shiv.js') }}"></script>

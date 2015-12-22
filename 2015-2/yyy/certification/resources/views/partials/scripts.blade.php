@@ -9,4 +9,5 @@
 <script src="{{ asset('/js/jPlayer/jquery.jplayer.min.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/jPlayer/add-on/jplayer.playlist.min.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/js/jPlayer/demo.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/mine.js')}}" type="text/javascript"></script>
 
