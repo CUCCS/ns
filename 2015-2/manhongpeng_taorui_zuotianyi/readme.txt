@@ -1,1 +1,1 @@
-老师可以通过访问www.13xinan.com/nstest/register.php进行注册测试，访问www.13xinan.com/nstest/otpverify.php进行登录测试
+锘胯�佸笀鍙互閫氳繃璁块棶www.13xinan.com/nstest/register.php杩涜娉ㄥ唽娴嬭瘯锛岃闂畐ww.13xinan.com/nstest/otpverify.php杩涜鐧诲綍娴嬭瘯
