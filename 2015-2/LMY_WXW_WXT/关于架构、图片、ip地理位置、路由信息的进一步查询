@@ -1,4 +1,4 @@
-第二次提交:内容补充
+
 1.微博的IDC架构：
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%871.png
 可以看出服务提供商有移动、联通、电信，电信也负责海外
@@ -6,19 +6,19 @@ https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%871.png
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%872.png
 架构细节：
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%873.png
-1.继续使用google hacking
+2.继续使用google hacking
 搜索负责人姓名+xls文件
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%874.png
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%875.png
 然后在纳税人的表格中找到了总裁曹国伟的纳税人编号：440100781205366，注册地址：广州市天河区体育西路123号10楼E，以及注册时间：2007-01-29
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%876.png
 搜了好多...各种文件类型和关键词组合，但是有效的信息很少。
-2.图片exif信息查询
+3.图片exif信息查询
 由于图钉网是手机app，没有pc客户端或网站，所以先由手机客户端下载图片（来去之间），再直接导出到电脑，然后查看其exif信息。但用了多个软件都没有查到较有效信息，如地理位置等。只有一些分辨率之类的信息。
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%877.png
 
 由于照片只能用手机应用打开，所以没有保存到图片的URL，不知道还有没有其他办法。
-3.对IP进行定位：
+4.对IP进行定位：
 如www.weibo.com的180.149.134.142
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%878.png
 用谷歌地图可以显示在北海附近
@@ -30,7 +30,7 @@ https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%8711.png
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%8712.png
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%8713.png
 等等。
-4.用visualroute进行追踪
+5.用visualroute进行追踪
 得到的信息：
 https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%8714.png
 也可以看到网络服务商为中国电信
