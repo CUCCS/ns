@@ -19,7 +19,7 @@
                     <strong>注册</strong>
                 </header>
                 <form action="{{ url('auth/register') }}" method="post">
-                    {!! csrf_field() !!}
+                    <input required type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="form-group">
                         <input name="name" type="text" value="{{ old('name') }}" placeholder="用户名" class="form-control rounded input-lg text-center no-border">
                     </div>

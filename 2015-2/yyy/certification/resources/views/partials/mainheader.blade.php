@@ -7,7 +7,7 @@
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                <img src="images/m21.jpg" class="img-circle">
               </span>
-                        嘤嘤嘤<b class="caret"></b>
+                        <b class="caret"></b>
                     </a>
                     <ul class="bg-black dropdown-menu animated fadeInRight">
 

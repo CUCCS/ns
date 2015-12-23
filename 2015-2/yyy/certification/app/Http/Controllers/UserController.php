@@ -13,7 +13,6 @@ use App\User;
 class UserController extends Controller
 {
 
-    protected $redirectTo = '/admin';
 
 
 
@@ -49,7 +48,7 @@ class UserController extends Controller
         }
 
         Auth::logout();
-        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/admin');
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/auth/login');
 
     }
 
@@ -115,7 +114,6 @@ class UserController extends Controller
 
             // Authentication passed...
            return Redirect::to('/home');
-            // return redirect()->intended('admin');
         } else {
             Log::debug("login failed");
 
@@ -125,20 +123,6 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-        if(!empty(Auth::user()) && !empty(Auth::user()->nick_name)) {
-            return view("home");
-        } else {
-            return Redirect::to("/auth/login");
-        }
-    }
 
     public function getLogin( )
     {
@@ -153,12 +137,6 @@ class UserController extends Controller
     }
 
 
-    /* $token = Crypt::encrypt($rand);
- try {
-     $decrypted = Crypt::decrypt($token);
- } catch (DecryptException $e) {
-     //
- }*/
 
     public function send(Request $request)
     {
