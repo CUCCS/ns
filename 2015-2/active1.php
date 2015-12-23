@@ -1,12 +1,12 @@
 <?php
 session_start();
 $dbhost = 'localhost:3306';
-$dbuser = 'cucyueco';
-$dbpass = 'CUCyue2015';
+$dbuser = 'root';
+$dbpass = 'root';
 $conn = @mysql_connect($dbhost, $dbuser, $dbpass);
   $verify = stripslashes(trim($_GET['verify']));
   $nowtime = time(); 
-  mysql_select_db("cucyueco_cucyue", $conn);
+  mysql_select_db("nstest", $conn);
   $query = mysql_query("select id,token_exptime from user_infor where status='0' and  token='$verify'");
   $row = mysql_fetch_array($query); 
   if($row){  
