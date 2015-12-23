@@ -35,8 +35,8 @@ if(isset($_POST['add']))
 {
 	@session_start();
 $dbhost = 'localhost:3306';
-$dbuser = 'cucyueco';
-$dbpass = 'CUCyue2015';
+$dbuser = 'root';
+$dbpass = 'root';
 $conn = mysql_connect($dbhost, $dbuser, $dbpass);
 $flag = 0;
 if(! $conn )
@@ -82,9 +82,9 @@ mysql_query($sql);
 if(mysql_insert_id()){   
   $smtpserver = "smtp.163.com";   
   $smtpserverport = 25; 
-  $smtpusermail = "manhongpeng2711@163.com";  
-  $smtpuser = "manhongpeng2711";   
-  $smtppass = "27372208"; 
+  $smtpusermail = "nstest@163.com";  
+  $smtpuser = "123456";   
+  $smtppass = "123456"; 
   $smtp = new Smtp($smtpserver, $smtpserverport, true, $smtpuser, $smtppass); 
   $emailtype = "HTML"; 
   $smtpemailto = $email;   
