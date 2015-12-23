@@ -1,6 +1,6 @@
 
 测试用图片  
-![image](https://github.com/henopu89iu/henopu89iu/raw/master/1407286718012.jpeg )
+![image](https://github.com/henopu89iu/henopu89iu/raw/master/1407286718012.jpeg )  
 这周用burpsuite测试了截取邮件内容，尝试对方发送邮件的时候拦截，同时也能截取到对方邮件中的附加的图片内容，具体怎么从截获的内容中查看图片还不清楚，暂时就看到图片本身的长宽大小等。
 用burpsuite截取的信息，如果要翻译出来还需要加载字典，而操作时虚拟机内并没有，暂时又没有查到可以加载的字典，所以就用人眼找了一下邮件内容。
 实验的具体步骤：
