@@ -52,17 +52,17 @@ IANA可以查询全球各类顶级域名的具体信息，包括详细信息以�
 
 - 2015年6月，在第53届ICANN会议上，IANA职能管理权移交工作已在多个关键层面取得突破；同年10月第54届ICANN会议结束后，IANA 管理权移交现已更近一步；12月16日至18日结束的第二届世界互联网大会乌镇峰会，以“互联互通、共享共治——构建网络空间命运共同体”为主题，也热切讨论了这一话题。
 
-相关文章&报道：
+- 相关文章&报道：
 
-[20151218-美国有意移交IANA管理权 专家呼吁“互联互通·共享共治”](http://zjnews.zjol.com.cn/system/2015/12/18/020959043.shtml)
+  [20151218-美国有意移交IANA管理权 专家呼吁“互联互通·共享共治”](http://zjnews.zjol.com.cn/system/2015/12/18/020959043.shtml)
 
-[20151223-IANA Stewardship Transition Implementation Planning: Taking Stock of the Last Two Months and Looking Forward to 2016](https://www.icann.org/news/blog/iana-stewardship-transition-implementation-planning-taking-stock-of-the-last-two-months-and-looking-forward-to-2016)
+  [20151223-IANA Stewardship Transition Implementation Planning: Taking Stock of the Last Two Months and Looking Forward to 2016](https://www.icann.org/news/blog/iana-stewardship-transition-implementation-planning-taking-stock-of-the-last-two-months-and-looking-forward-to-2016)
 
-[20151228-IANA Stewardship Transition & Year End](https://www.icann.org/news/blog/iana-stewardship-transition-year-end)
+  [20151228-IANA Stewardship Transition & Year End](https://www.icann.org/news/blog/iana-stewardship-transition-year-end)
 
-[20151130-IANA Stewardship Transition: Another Step Closer](https://www.icann.org/news/blog/iana-stewardship-transition-another-step-closer)
+  [20151130-IANA Stewardship Transition: Another Step Closer](https://www.icann.org/news/blog/iana-stewardship-transition-another-step-closer)
 
-[20151102-Volume 11: An Update on IANA Stewardship Discussions](https://www.icann.org/news/blog/volume-11-an-update-on-iana-stewardship-discussions)
+  [20151102-Volume 11: An Update on IANA Stewardship Discussions](https://www.icann.org/news/blog/volume-11-an-update-on-iana-stewardship-discussions)
 
 
 ----------
