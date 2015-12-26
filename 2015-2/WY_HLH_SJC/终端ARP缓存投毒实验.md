@@ -42,12 +42,15 @@ attacker的地址为：IP：10.0.3.5 MAC:  08-00-27-ED-A1-81
      
          arp -s 10.0.3.4 08-00-27-F1-19-04
    将IP地址为10.0.3.4的主机host2和相应的MAC地址进行绑定后，可通过查看arp高速缓存，观察到主机host2的映射表项为类型static
+  
   ![](http://i.imgur.com/reAfOby.png)
 
   2. 再一次在attacker上运行ARP欺骗程序，来发送ARP欺骗包。
    
         arpspoof -i eth0 -t 10.0.3.3 10.0.3.4
+  
   ![](http://i.imgur.com/XvtgXLF.png)
   3. 我们在host1上运行ARP -A来查询ARP缓存信息。ARP缓存表中关于主机host 2的表项并没有发生改变
+  
   ![](http://i.imgur.com/n0rrBLG.png)
 　　
