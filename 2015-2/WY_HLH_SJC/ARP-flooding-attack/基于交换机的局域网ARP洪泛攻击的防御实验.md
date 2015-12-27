@@ -65,10 +65,29 @@
 * 当攻击源不断的发出攻击的时候，我们可以对其做出处理使其立即停止攻击。处理的方式就是关闭其相应的交换机的端口，在攻击源停止攻击之后，可以再开启相应的设备端口。当然这个功能是可选的，不必一定要关闭交换机的端口。这个模块同样功能单一，方法确定。对于不同的交换机，其配置过程是完全相同的，不同的是交换机的指令集。
      * [ ]  一种关闭交换机的配置命令集如下:
        * Switch# configure terminal
-       * Switch(config)# interface FastEthernet0/10
+       * Switch(config)# interface FastEthernet0/2
        * Switch(config-if)# shutdown
        * Switch(config-if)# end
        * Switch# exit
 
 * 系统尝试关闭Terminal5所连接的交换机端口，然后用Terminal1-Terminal4同时Ping Terminal5，发现无法Ping通。当再次开启Terminal5所连接的交换机端口，用Terminal1-Terminal4同时Ping Terminal5，这时就能Ping通了。
+    * 利用Cisco Packet Tracer,创建网络拓扑图如下：
+      ![image](https://github.com/weiyi1024/github-tutorial/raw/master/交换机开关实验一.JPG)
+    * 配置Terminal1-Terminal5的IP、掩码和网关
+      ![image](https://github.com/weiyi1024/github-tutorial/raw/master/terminal1介绍.JPG)
+      ![image](https://github.com/weiyi1024/github-tutorial/raw/master/1-4介绍.JPG)
+      ![image](https://github.com/weiyi1024/github-tutorial/raw/master/5介绍.JPG)
+    * 配置完成后，关闭Terminal5所连接的交换机端口
+      ![image](https://github.com/weiyi1024/github-tutorial/raw/master/关闭交换机端口.JPG)
+    * 然后用Terminal1-Terminal4同时Ping Terminal5，发现无法Ping通
+      ![image](https://github.com/weiyi1024/github-tutorial/raw/master/1-4ping5不通.JPG)
+    * 再次开启Terminal5所连接的交换机端口
+      ![image](https://github.com/weiyi1024/github-tutorial/raw/master/打开交换机端口.JPG)
+    * Terminal1-Terminal4同时Ping Terminal5
+      ![image](https://github.com/weiyi1024/github-tutorial/raw/master/1-4再次ping5.JPG)
+
+* 实验成功，根据[实验原理](https://github.com/weiyi1024/ns/blob/master/2015-2/WY_HLH_SJC/ARP-flooding-attack/%E5%9F%BA%E4%BA%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E5%B1%80%E5%9F%9F%E7%BD%91ARP%E6%B4%AA%E6%B3%9B%E6%94%BB%E5%87%BB%E7%9A%84%E9%98%B2%E5%BE%A1%E5%8E%9F%E7%90%86.md)，通过初始化交换机配置，正确运行攻击源定位算法，如果网络中有一台主机发起ARP洪泛攻击，网络中所有的交换机都将会发出Trap包。攻击源定位算法从中找到攻击源的方法，就是在交换机中找到这样一种Trap包:该包中记录的交换机的端口连接的是一台主机。那么该主机就是一个ARP攻击源。然后通过关闭和开启交换机端口来实现防御攻击的目的，同时也向管理主机报告了攻击源主机。
+
+
+
 
