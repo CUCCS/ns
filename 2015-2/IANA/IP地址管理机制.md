@@ -137,7 +137,6 @@ ___
  * 各国或各地区自己的域名系统管理机构从RIRs获取IP地址资源后，负责在本国或本地区的分配与管理事务。
  * 这些国家和地区的域名系统管理机构大多属于半官方或准官方机构。但在实际运作过程中，相关国家或地区的政府至少在业务上对其不加干预，使其成为RIRs在各该国家或地区的附属机构，如日本的JPNIC和中国的CNNIC均属此类机构。
 
-		[中国互联网络信息中心CNNIC](http://www.cnnic.cn/)
 
 
 ### [IANA-Number Resources](https://www.iana.org/numbers)
@@ -286,3 +285,4 @@ __保留地址__是IANA在IP地址范围内，保留了一部分地址专门用�
 
 	![](http://i.imgur.com/pMk3kX8.jpg)
 
+	[中国互联网络信息中心CNNIC](http://www.cnnic.cn/)
