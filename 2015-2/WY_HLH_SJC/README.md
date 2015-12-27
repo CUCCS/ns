@@ -5,8 +5,13 @@
 * 设计并验证内网检测与防御ARP攻击系统
 
 # Topic Description
-* 基于交换机的局域网ARP攻击防御方法的研究及实现
+* 从对交换机配置安全策略的角度对局域网ARP洪泛攻击进行研究和防御，同时主要选取了终端ARP缓存投毒实验进行了对ARP欺骗攻击的研究，并对ARP欺骗攻击的不同形式提出了检测和防御手段，也做了针对内网检测与防御ARP攻击系统的相关安全审计工作。
 
+# Division of Work
+* 基于交换机的局域网ARP洪泛攻击的防御方法的研究及实现（[Done by weiyi1024](https://github.com/weiyi1024/ns/tree/master/2015-2/WY_HLH_SJC/ARP-flooding-attack)）
+* ARP欺骗攻击的分类，检测ARP欺骗攻击的方法和防御ARP欺骗攻击的手段（[Done by bolerolily](https://github.com/weiyi1024/ns/tree/master/2015-2/WY_HLH_SJC/ARP_Poisoning_Attacks)）
+* 对内网检测与防御ARP攻击方法的安全审计（[Done by 2015youki]()）
+ 
 # Reference Material
 * 以下论文均来自中国知网，对本次大作业有一定的帮助：  
   * 《ARP防御系统的设计和实现》
@@ -16,5 +21,6 @@
   * 《针对ARP攻击的主动防范策略研究与实现》
   * 《公众网络环境中的ARP欺骗攻击与防范方法》
   * 《一种基于交换机的局域网ARP攻击防御方法的研究及系统实现》
+* 文档内概念资源部分摘自SCHOLAR - CNKI等学术网站
 
 
