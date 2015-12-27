@@ -1,10 +1,10 @@
-分析路由器日志以实现ARP攻击的防御检测的具体实现
+# 分析路由器日志以实现ARP攻击的防御检测的具体实现
 
-(1)配置路由器，将 日志输出到syslogd接收软件，然后分析路由器
+* 配置路由器，将 日志输出到syslogd接收软件，然后分析路由器
 日志信息 ，通常在接收13志信息中会看到类似 “Duplicateaddress 
 172．20．187．60nVlan10，sourcedbyOOeO．4c439．2eaa”，这个MAC地址就
 是我们要找的攻击源的MAC地址。
-(2)编制几个Shell脚本，从上述信息中提取出这个MAC地址。
+* 编制几个Shell脚本，从上述信息中提取出这个MAC地址。
  利用linux操作系统中的net—snmp开源软件中的snmpwalk命令提
  取路由器ARP缓存表，如 “snmpwalk—vl—Cc—Cpublic192．168．10．1 
   1．3．6．1．2．1．3．1．1．2>／etc／ARP／arptable” 
@@ -18,13 +18,13 @@ RFC1213-MIB：：atPhysAddress．1．1．2．6．2．16=Hex-STRING：005056
   CO0O01 
    RFCl213一MIB：：atPhvsAddress．1．1．2．6．2．18：Hex—STRING：OH05056 
     C00o01 
-  (3)定位和关闭ARP欺骗源MAC地址所在交换机端口 
+* 定位和关闭ARP欺骗源MAC地址所在交换机端口 
   使用snmpwalk命令得到接人交换机的MAC—PORT对应表，如 
   “snmpwalk—vl—Cc一 publicSip 1．3．6．1．2．1．17．4．3．1．2>／etc／MAC／mac— port“
   然后提取相应的MAC地址与上述第二步确定的ARP攻击源 
    MAC地址相比较，如相同则抽取相应设备 IP地址和对应的端口，则可 
   以使用 “snmpset—vl—CpublicSipifAdminStatus．Sport”命令关闭交换机 
-  (4)被关闭端口信息以网页公告形式通知用户 
+* 被关闭端口信息以网页公告形式通知用户 
   从第三步得知了ARP欺骗攻击源所在交换机IP和端口后，根据已 
   有的交换机端口和房间关系对应表，即可发布相关信息通知用户及时
   处理自己的机器，在用户处理完毕后，自动使用同样的snmpset命令开 
