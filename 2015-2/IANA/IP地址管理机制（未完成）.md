@@ -4,7 +4,7 @@
 # IP地址简介
 ____
 ### IP地址
-* __IP地址__即互联网协议地址（Internet Protocol Address，IP协议地址），或者网际协议地址。
+* IP地址即__互联网协议地址（Internet Protocol Address）__，或者网际协议地址。
  * IP协议是TCP/IP协议族中网络层的协议，目前大多数地区采用的是第4个版本，简称IPv4，其地址长度为32位。（[RFC791](http://datatracker.ietf.org/doc/rfc791/)）
 * 随着互联网的迅速发展，IPv4定义的有限地址空间必将不足（2011年已耗尽），由此提出了IPv4的下一个版本IPv6，其地址长度为128位，几乎可以不受限制地为全球提供IP地址。
 
@@ -41,7 +41,7 @@ ___
  - 这是一个分层的结构，Internet地址资源首先由IANA分配到RIRs，再由RIRs提供给各个国家的域名系统管理机构或者地区性组织、或者Internet服务提供商（ISP）、或者直接提供给用户；而ISP或者管理机构、地区性组织又将其所获得的IP地址提供给用户，或者再提供给下一层的ISP。
  - 一般来说，用户只能从一个机构得到IP地址、AS号等互联网资源。
  - 分配机构在分配地址的同时也进行空闲地址的回收，以达到地址使用效率最大化。
-* 最初，IANA将地址交由NIC（Network Information Center）统一负责全球地址的规划、管理，同时由Inter NIC、APNIC、RIPE等网络信息中心具体负责美国及全球其它地区的IP地址分配。
+* **最初**，IANA将地址交由NIC（Network Information Center）统一负责全球地址的规划、管理，同时由Inter NIC、APNIC、RIPE等网络信息中心具体负责美国及全球其它地区的IP地址分配。
 
 	![](http://i.imgur.com/9lpjRar.gif)
 
@@ -58,11 +58,11 @@ ___
 * 而后，随着互联网在全球的飞速发展，IANA被负责协调IANA责任范围的非营利机构ICANN(Internet Corporation for Assigned Names and Numbers，互联网名称与数字地址分配机构)掌管。
 	>The Internet Assigned Numbers Authority (IANA) is the entity that oversees global IP address allocation, DNSroot zone management, and other Internet protocol assignments. It is operated by ICANN. 
 
-* 目前，在ICANN下的IANA，将IPv4/IPv6地址以及AS号码分配给五大地区性互联网注册管理机构(RIRs)，	而分配互联网号码资源(IPv4、IPv6以及AS号码资源)，注册数据的存储和维护，提供一个开放的、公开的、可访问的数据库是RIRs所共同的责任。
+* **目前**，在ICANN下的IANA，将IPv4/IPv6地址以及AS号码分配给__五大地区性互联网注册管理机构(RIRs)__，而分配互联网号码资源(IPv4、IPv6以及AS号码资源)，注册数据的存储和维护，提供一个开放的、公开的、可访问的数据库是RIRs所共同的责任。
 
 	![](http://i.imgur.com/IMoAMw6.jpg)
 
- * AFRINIC（The African Network Information Center）
+ * **AFRINIC（The African Network Information Center）**
 
 		![](http://i.imgur.com/8mJPq3u.png)
 
@@ -74,7 +74,7 @@ ___
 
 		[AFRINIC官方网站](http://afrinic.net/)
 
- * APNIC（Asia Pacific Network Information Centre)）
+ * **APNIC（Asia Pacific Network Information Centre)）**
 
 		![](http://i.imgur.com/PTzJm5z.jpg)
 
@@ -88,7 +88,7 @@ ___
 
 		[APNIC官方网站](https://www.apnic.net/)
 
- * ARIN（American Registry for Internet Numbers）
+ * **ARIN（American Registry for Internet Numbers）**
  
 		![](http://i.imgur.com/xT8hCCZ.jpg)
 
@@ -100,7 +100,7 @@ ___
 
 		[ARIN官方网站](https://www.arin.net/)
 
- * LACNIC（the Latin American and Caribbean Internet Addresses Registry） 
+ * **LACNIC（the Latin American and Caribbean Internet Addresses Registry）** 
 
 		![](http://i.imgur.com/U28Y5L0.jpg)
 
@@ -112,7 +112,7 @@ ___
 
 		[LACNIC官方网站](http://www.lacnic.net/web/lacnic/ipv6)
 
- * RIPE NCC(Reseaux IP Europeens Network Coordination Center)
+ * **RIPE NCC(Reseaux IP Europeens Network Coordination Center)**
  
 		![](http://i.imgur.com/gIIpExJ.jpg)
 
@@ -122,7 +122,7 @@ ___
 
 		[RIPE官方网站](https://www.ripe.net/)
 
- * NRO（The Nnmber Resource Oganization）
+ * **NRO（The Nnmber Resource Oganization）**
 
 		![](http://i.imgur.com/k8oyHKz.jpg)
 
@@ -134,7 +134,7 @@ ___
 
 		[NRO官方网站](https://www.nro.net/)
 
-* 除此之外，许多国家和地区都成立了自己的域名系统管理机构。
+* 除此之外，许多国家和地区都成立了**自己的域名系统管理机构**。
  * 各国或各地区自己的域名系统管理机构从RIRs获取IP地址资源后，负责在本国或本地区的分配与管理事务。
  * 这些国家和地区的域名系统管理机构大多属于半官方或准官方机构。但在实际运作过程中，相关国家或地区的政府至少在业务上对其不加干预，使其成为RIRs在各该国家或地区的附属机构，如日本的JPNIC和中国的CNNIC均属此类机构。
 
@@ -233,7 +233,7 @@ __保留地址__是IANA在IP地址范围内，保留了一部分地址专门用�
 ####（1）编址
 * IPv6的地址类型分单播、多播、任播；
 
-* 单播
+* __单播__
  * 传统的点对点通信，单一接口的地址，发送到单播地址的数据包被送到由该地址标识的接口，总地址空间占所有IPv6地址的1/8（头三位固定为001）；
  * IPv6单播地址的划分方式和CIDR相似，通常，一个128位的IPv6地址可以分为一个64位的网络前缀和一个64位的主机地址，主机地址通常根据物理地址自动生成；
  * IP地址::={<网络前缀>，<主机号>}，也使用斜线记法，表示为：地址/前缀长度；
@@ -244,12 +244,12 @@ __保留地址__是IANA在IP地址范围内，保留了一部分地址专门用�
  * 全球路由选择前缀前3位固定为001，后45位可进行分配，而子网标识符则用于各公司和机构创建自己的子网，接口标识符即主机号；
 
 
-* 多播（组播）
+* __多播（组播）__
  * 一点对多点的通信，一组接口的地址（通常分属不同节点），发送到多播地址的数据报被送到由该地址表示的每个接口；
  * 广播是多播的特例。
 
 
-* 任播（任意播送）
+* **任播（任意播送）**
  * IPv6增加的类型，一组接口的地址（通常分属不同节点），发送到任意播送地址的数据报被送到由该地址标识的其中一个接口（通常为距离最近的一个）。
 
 
