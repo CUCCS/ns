@@ -17,6 +17,8 @@ arp病毒是通过非法占用他人IP地址段的方式进行欺骗的，这会
 从这些信息中可判断同一个MAC地址与多人冲突，此MAC为ARP病毒源，通过已知拓扑图可查到此MAC对应的端口，
 然后采取相应的措施。
 建立MAC与IP地址的对应关系，如发现同一MAC对应多个IP，则此MAC视为攻击源MAC地址。
+eg：IP address 172.20.144.249 collision detected,sourced by 0013-d438-a6b6itEthernet1/0/19 on GigableEthernet1/0/19 of VLAN739 
+and  00ab-cdef-1234 on  GigableEthernet1/0/19 of VLAN739 
 3.交换机日志功能配置
 SYSLOG配置的配置任务如下：
 开启或关闭日志功能
