@@ -45,6 +45,25 @@ IANA可以查询全球各类顶级域名的具体信息，包括详细信息以�
 
 
 
+##IANA近况：IANA管理权移交
+
+- 2014年3月，美国商务部宣布其有意将IANA的管理权移交给全球利益相关方社群，即为放开对IANA的管控机制。
+- 如此一来，美国长期掌控互联网关键资源管理权的格局将在一定程度上发生改变，更多国家与地区的互联网社群将能够参与到全球互联网的管理当中，更有利于形成多边、民主、透明和各利益相关方充分参与的国际互联网治理体系。
+
+- 2015年6月，在第53届ICANN会议上，IANA职能管理权移交工作已在多个关键层面取得突破；同年10月第54届ICANN会议结束后，IANA 管理权移交现已更近一步；12月16日至18日结束的第二届世界互联网大会乌镇峰会，以“互联互通、共享共治——构建网络空间命运共同体”为主题，也热切讨论了这一话题。
+
+- 相关文章&报道：
+
+  [20151218-美国有意移交IANA管理权 专家呼吁“互联互通·共享共治”](http://zjnews.zjol.com.cn/system/2015/12/18/020959043.shtml)
+
+  [20151223-IANA Stewardship Transition Implementation Planning: Taking Stock of the Last Two Months and Looking Forward to 2016](https://www.icann.org/news/blog/iana-stewardship-transition-implementation-planning-taking-stock-of-the-last-two-months-and-looking-forward-to-2016)
+
+  [20151228-IANA Stewardship Transition & Year End](https://www.icann.org/news/blog/iana-stewardship-transition-year-end)
+
+  [20151130-IANA Stewardship Transition: Another Step Closer](https://www.icann.org/news/blog/iana-stewardship-transition-another-step-closer)
+
+  [20151102-Volume 11: An Update on IANA Stewardship Discussions](https://www.icann.org/news/blog/volume-11-an-update-on-iana-stewardship-discussions)
+
 
 ----------
 
@@ -204,5 +223,7 @@ ICANN负责将IPv4与IPv6地址以及自制系统号码（autonomous system，�
 #####III. 通讯协议
 
 ICANN建立、维护并散布着超过120个通讯协议连接端口、参数号码以及其它通讯协议识别码器。通过签署理解备忘录，ICANN经IETF指定，负责执行这一整套的IANA职能。ICANN工作人员在IETF引导下开展工作，将过程记录在REC文件当中，并接受来自“互联网工程指导小组 ”（Internet Engineering Steering Group，以下简称IESG）的指导。ICANN也负责对某些相关于互联网基础设施的注册管理机构的DNS执行维护，如.arpa和.int域名。
+
+
 
 
