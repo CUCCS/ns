@@ -30,7 +30,7 @@ wqs.jd.com       京东商场，但功能不如主站点
 ![](http://i.imgur.com/RAlrA9c.png)  
 2.2015年漏洞类型统计：  
 ![](http://i.imgur.com/V7tY2I9.png)  
-# IP地址段    
+# IP地址段  
 **收集手段：**threatcrowd，ping，猜和尝试   
 **收集内容：**  
 111.206.227.118-236     
@@ -41,4 +41,23 @@ wqs.jd.com       京东商场，但功能不如主站点
 211.152.122.84  
 211.152.122.102  
 211.152.123.224  
-
+# DNS服务器 #
+**收集手段：**whois  
+**收集内容：**   
+ns1.jdcache.com  
+ns2.jdcache.com  
+ns3.jdcache.com  
+ns4.jdcache.com  
+# 电子邮件，联系方式 #
+**收集手段：**whois  
+**收集内容：**  
+Registrant Phone/Admin Phone/Tech Phone: +86.01050958005  
+Registrant Fax/Admin Fax/Tech Fax:+86.01050957958  
+Registrant Email:jdym@jd.com  
+# 组织结构信息 #
+**收集手段：**搜索引擎  
+**收集内容：**  
+![](http://i.imgur.com/mLgynPY.jpg)  
+![](http://i.imgur.com/3d6YBp1.jpg)  
+公司组成：  
+![](http://i.imgur.com/wKV5tZN.jpg)
