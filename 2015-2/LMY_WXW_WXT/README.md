@@ -25,3 +25,7 @@
 ![image](https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%8714.png)
 ![image](https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%8715.png)
 ![image](https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%8716.png)
+![image](https://github.com/mysomeonelikeyou/2Picture/blob/master/1.png)
+![image](https://github.com/mysomeonelikeyou/2Picture/blob/master/2.png)
+![image](https://github.com/mysomeonelikeyou/2Picture/blob/master/3.png)
+![image](https://github.com/mysomeonelikeyou/2Picture/blob/master/4.png)
