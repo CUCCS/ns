@@ -25,11 +25,15 @@ wqs.jd.com       京东商场，但功能不如主站点
 **收集手段：**搜索引擎  
 **网站地址：**  
 [http://www.wooyun.org/corps/%E4%BA%AC%E4%B8%9C%E5%95%86%E5%9F%8E](http://www.wooyun.org/corps/%E4%BA%AC%E4%B8%9C%E5%95%86%E5%9F%8E)  
+  
 **收集内容：**  
 1.2015年漏洞数量统计：    
 ![](http://i.imgur.com/RAlrA9c.png)  
 2.2015年漏洞类型统计：  
 ![](http://i.imgur.com/V7tY2I9.png)  
+3.2015年具体漏洞：  
+![](http://i.imgur.com/lLaa3Zj.png)  
+![](http://i.imgur.com/VQpjQfw.png)  
 # IP地址段  
 **收集手段：**threatcrowd，ping，猜和尝试   
 **收集内容：**  
