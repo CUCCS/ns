@@ -3,16 +3,21 @@
 ***
 * IANA的三大职能之一，是协调全球IP和AS（自治系统）号并将它们提供给各区域Internet注册机构。
 
-	![](http://i.imgur.com/BUHoDPg.jpg)
+	![](http://i.imgur.com/BUHoDPg.jpg)[1]
 
 # IP地址简介
 ____
 ### IP地址
-* IP地址即__互联网协议地址（Internet Protocol Address）__，或者网际协议地址。
- * IP协议是TCP/IP协议族中网络层的协议，目前大多数地区采用的是第4个版本，简称IPv4，其地址长度为32位。（[RFC791](http://datatracker.ietf.org/doc/rfc791/)）
-* 随着互联网的迅速发展，IPv4定义的有限地址空间必将不足（2011年已耗尽），由此提出了IPv4的下一个版本IPv6，其地址长度为128位，几乎可以不受限制地为全球提供IP地址。
+* IP地址即__互联网协议地址（Internet Protocol Address）__[2]，或者网际协议地址。
+ * IP协议是TCP/IP协议族中网络层的协议，目前大多数地区采用的是第4个版本，简称IPv4，其地址长度为32位。
+* IP地址具有IP协议提供的一种统一的地址格式， 它为因特网上的每一台主机（或者路由器，或者网络）的每一个接口，都分配一个在全世界范围内唯一的标识符UI（Unique Identifiers），也就是逻辑地址，以此屏蔽下层的物理地址。
+* 随着互联网的迅速发展，IPv4定义的有限地址空间必将不足。
+	>2011年ICANN宣布可用的IPv4地址已耗尽，而IPv4地址空间最为富足的ARIN也于2015年宣布北美的IPv4地址耗尽）。
 
-* IP地址有IP协议提供的一种统一的地址格式， 它为因特网上的每一台主机（或者路由器，或者网络）的每一个接口，都分配一个在全世界范围内唯一的标识符UI（Unique Identifiers），也就是逻辑地址，以此屏蔽下层的物理地址。
+* 由此，人们提出了IPv4的下一个版本IPv6，其地址长度为128位，几乎可以不受限制地为全球提供IP地址。
+[3][4][5][6]
+
+
 
 ### IPv4地址
 * __IPv4地址__由长32bit的二进制数组成，通常以点分十进制法表示为十进制数，总共有2^32-1个地址。如：
@@ -32,8 +37,7 @@ ____
 * IPv6使用冒号十六进制记法，将每个16位的值用十六进制表示，其间以冒号分隔。
  * 零压缩：将一串连续的零用一对冒号取代，一个地址中只可用一次；
  * 如：FF05:0:0:8C64:0:0:0:B3，缩写为：FF05::8C64:0:0:0:B3或FF05:0:0:8C64::B3；
-
-
+[4][7]
 
 # IP地址分配管理
 ---
@@ -44,9 +48,12 @@ ___
  - 这是一个分层的结构，Internet地址资源首先由IANA分配到RIRs，再由RIRs提供给各个国家的域名系统管理机构或者地区性组织、或者Internet服务提供商（ISP）、或者直接提供给用户；而ISP或者管理机构、地区性组织又将其所获得的IP地址提供给用户，或者再提供给下一层的ISP。
  - 一般来说，用户只能从一个机构得到IP地址、AS号等互联网资源。
  - 分配机构在分配地址的同时也进行空闲地址的回收，以达到地址使用效率最大化。
+
+[1][8][9][10]
+
 * **最初**，IANA将地址交由NIC（Network Information Center）统一负责全球地址的规划、管理，同时由Inter NIC、APNIC、RIPE等网络信息中心具体负责美国及全球其它地区的IP地址分配。
 
-	![](http://i.imgur.com/9lpjRar.gif)
+	![](http://i.imgur.com/9lpjRar.gif)[11]
 
  * 此时在IANA下，有3个分支机构分别负责欧洲、亚太地区、美国与其他地区的IP地址资源分配与管理：
 
@@ -57,17 +64,16 @@ ___
 		③ARIN（设在美国的American Registry for Internet Numbers) ，负责美国与其他地区的IP地址资源分配与管理。
 
 
-
 * 而后，随着互联网在全球的飞速发展，IANA被负责协调IANA责任范围的非营利机构ICANN(Internet Corporation for Assigned Names and Numbers，互联网名称与数字地址分配机构)掌管。
-	>The Internet Assigned Numbers Authority (IANA) is the entity that oversees global IP address allocation, DNSroot zone management, and other Internet protocol assignments. It is operated by ICANN. 
+	>The Internet Assigned Numbers Authority (IANA) is the entity that oversees global IP address allocation, DNSroot zone management, and other Internet protocol assignments. It is operated by ICANN. [12]
 
 * **目前**，在ICANN下的IANA，将IPv4/IPv6地址以及AS号码分配给__五大地区性互联网注册管理机构(RIRs)__，而分配互联网号码资源(IPv4、IPv6以及AS号码资源)，注册数据的存储和维护，提供一个开放的、公开的、可访问的数据库是RIRs所共同的责任。
 
-	![](http://i.imgur.com/IMoAMw6.jpg)
+	![](http://i.imgur.com/IMoAMw6.jpg)[10]
 
  * **AFRINIC（The African Network Information Center）**
 
-		![](http://i.imgur.com/8mJPq3u.png)
+		![](http://i.imgur.com/8mJPq3u.png)[13]
 
 		AFRINIC（非洲网络信息中心）是非洲的区域互联网注册机构（RIR），负责非洲地区的互联网号码资源如IP地址、ASN（自治系统号）的分配和管理。
 
@@ -79,7 +85,7 @@ ___
 
  * **APNIC（Asia Pacific Network Information Centre)）**
 
-		![](http://i.imgur.com/PTzJm5z.jpg)
+		![](http://i.imgur.com/PTzJm5z.jpg)[14]
 
 		APNIC（亚太网络信息中心）是一个开放的、会员制的、不以营利为目的的组织，是五个区域互联网注册管理机构（RIR）之一，负责亚洲/太平洋地区IP地址的分配公平和负责任的管理相关资源。
 
@@ -93,7 +99,7 @@ ___
 
  * **ARIN（American Registry for Internet Numbers）**
  
-		![](http://i.imgur.com/xT8hCCZ.jpg)
+		![](http://i.imgur.com/xT8hCCZ.jpg)[15]
 
 		ARIN（美国互联网号注册机构）提供加拿大，美国、北大西洋群岛和一些加勒比岛屿地区的互联网号码资源的技术协调和管理相关的服务，是一个非营利组织成员为基础的组织。
 
@@ -105,7 +111,7 @@ ___
 
  * **LACNIC（the Latin American and Caribbean Internet Addresses Registry）** 
 
-		![](http://i.imgur.com/U28Y5L0.jpg)
+		![](http://i.imgur.com/U28Y5L0.jpg)[16]
 
 		LACNIC（拉丁美洲和加勒比互联网地址注册机构）是一个国际非政府组织，负责分配和管理拉丁美洲和一些加勒比群岛的互联网号码资源（IPv4，IPv6）、自治系统号码，同时为其反向解析和其他资源。
 
@@ -117,7 +123,7 @@ ___
 
  * **RIPE NCC(Reseaux IP Europeens Network Coordination Center)**
  
-		![](http://i.imgur.com/gIIpExJ.jpg)
+		![](http://i.imgur.com/gIIpExJ.jpg)[17]
 
 		RIPE NCC（RIPE网络协调中心）是欧洲、中东和中亚地区的区域互联网注册管理机构，分配和注册互联网号码资源块的互联网服务提供商（ISP）和其他组织。
 
@@ -127,7 +133,7 @@ ___
 
  * **NRO（The Nnmber Resource Oganization）**
 
-		![](http://i.imgur.com/k8oyHKz.jpg)
+		![](http://i.imgur.com/k8oyHKz.jpg)[18]
 
 		NRO（号码资源组织）是一个协调机构，五个区域互联网注册管理机构（RIR）管理互联网号码资源包括IP地址和自治系统号码的分布。每个项目由其所在区域的网络社区。
 
@@ -139,26 +145,23 @@ ___
 
 * 除此之外，许多国家和地区都成立了**自己的域名系统管理机构**。
  * 各国或各地区自己的域名系统管理机构从RIRs获取IP地址资源后，负责在本国或本地区的分配与管理事务。
- * 这些国家和地区的域名系统管理机构大多属于半官方或准官方机构。但在实际运作过程中，相关国家或地区的政府至少在业务上对其不加干预，使其成为RIRs在各该国家或地区的附属机构，如日本的JPNIC和中国的CNNIC均属此类机构。
+ * 这些国家和地区的域名系统管理机构大多属于半官方或准官方机构。但在实际运作过程中，相关国家或地区的政府至少在业务上对其不加干预，使其成为RIRs在各该国家或地区的附属机构，如日本的JPNIC和中国的CNNIC均属此类机构。[12]
 * IANA用一定的方式来对分配给RIRs的数字资源进行控制，同时由工作人员通过日常统计报告来确认RIRs是否有违反已公布规则的内容，即自相矛盾的行为。
  * IPv4地址的分配按照规定的计划执行，不能通过申请获取。IANA每年进行两次分配（3月&9月），检查，再分配给RIRs和运营社区，IANA同时更新分配情况；
  * IPv6地址和AS号，RIRs和运营社区可以通过向IANA提出申请来获得，申请需要合理以及满足一定的要求；
- * 此外IANA还会将非单播地址分配到IETF。
+ * 此外IANA还会将非单播地址分配到IETF。[1]
 
 example-IPv6：
 
-![](http://i.imgur.com/Zfz0tAV.jpg)
+![](http://i.imgur.com/Zfz0tAV.jpg)[1]
 
-**[IANA-Number Resources](https://www.iana.org/numbers)**
-
-**[introduce Number Resources](https://icann.adobeconnect.com/p7d74qdis3o/?launcher=false&fcsContent=true&pbMode=normal)**
 
 
 ## 2、具体地址分配
 ***
 ### 1、IPv4地址
 * IANA中IPv4地址分配内容，包括IPv4地址空间分配、IPv4组播地址分配、IPv4专用地址注册、IPv4地址空间的注册表恢复，具体可在[IANA-Number Resources](https://www.iana.org/numbers)中查询，如[IPv4地址空间](http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xhtml)。
-
+[19]
 #### （1）编址
 * __最基本的编址方法——分类IP__
  * IP地址::={<网络号>，<主机号>}
@@ -167,7 +170,7 @@ example-IPv6：
  * 寻址时，先寻网络号，再寻主机；
  * 分类的IP地址：
 
-	![](http://i.imgur.com/nz51R6r.jpg)
+	![](http://i.imgur.com/nz51R6r.jpg)[20]
 
  * 各类地址的地址范围、指派范围和最大主机数：
 
@@ -184,11 +187,11 @@ example-IPv6：
 	 * 格式：32bit二进制数，与IP地址对应，网络号与子网号全为1，主机号全为0，如255.255.255.0；
  * IP地址的网络地址 = 子网掩码“与”IP地址（逐位相与） = {<网络号>，<子网号>，0}
 
-		![](http://i.imgur.com/QHo2BUq.jpg)
+		![](http://i.imgur.com/QHo2BUq.jpg)[21]
 
  * 未划分子网的网络将使用默认子网掩码。
 
-		![](http://i.imgur.com/NHHz4Oz.jpg) 
+		![](http://i.imgur.com/NHHz4Oz.jpg)[22]
 
 
 * __目前使用的编址方法——构成超网__
@@ -196,9 +199,10 @@ example-IPv6：
  * 消除ABC类地址，不再划分子网，而是自由划分网络前缀（即网络号）和主机号；
  * IP地址的网络地址 = 子网掩码“与”IP地址
 	 * 斜线记法："IP地址/前缀所占位数"，如128.14.35.7/20，表示此IP地址的前20位为网络前缀，后12位为主机号；
- * 无分类编址CIDR（Classless Inter-Domain Routing）：即无类别域间路由选择，构成超网。将网络前缀相同的、连续的IP地址组成一个“CIDR”地址块，即将一组较小的网络地址聚合，使其成为一个较大的单一路由表项，从而减少网络中路由表项的数量。（[RFC4632](http://datatracker.ietf.org/doc/rfc4632/)）
+ * 无分类编址CIDR（Classless Inter-Domain Routing）：即无类别域间路由选择，构成超网。将网络前缀相同的、连续的IP地址组成一个“CIDR”地址块，即将一组较小的网络地址聚合，使其成为一个较大的单一路由表项，从而减少网络中路由表项的数量。
 
-		![](http://i.imgur.com/T5iyBOs.gif)
+		![](http://i.imgur.com/T5iyBOs.gif)[23]
+[4][24]
 
 ***
 
@@ -231,14 +235,14 @@ __保留地址__是IANA在IP地址范围内，保留了一部分地址专门用�
 
  * 目前IPv4私有地址为以下四段：
 		* A类：10.0.0.0－10.255.255.255
-		* A类：100.64.0.0－100.127.255.255（2012年加入，[RFC6598](http://datatracker.ietf.org/doc/rfc6598/)）
+		* A类：100.64.0.0－100.127.255.255（2012年加入）
 		* B类：172.16.0.0－172.31.255.255
 		* C类：192.168.0.0－192.168.255.255
 
-
+[4][19][25]
 
 ### 2、IPv6地址
-* IANA中IPv6地址分配内容，包括IPv6的地址空间、IPv6全球单播配置、IPv6参数（参数描述了IPv6，包括头类型，操作码，等）、IPv6任播地址分配、IPv6组播地址分配、IPv6子TLA作业（不推荐使用）、IANA IPv6特殊注册表、IPv6的全球部署的公告（七月1999 14）、RIR比较政策概述，具体可在[IANA-Number Resources](https://www.iana.org/numbers)中查询，如[IPv6地址空间](http://www.iana.org/assignments/ipv6-address-space/ipv6-address-space.xhtml)。
+* IANA中IPv6地址分配内容，包括IPv6的地址空间、IPv6全球单播配置、IPv6参数（参数描述了IPv6，包括头类型，操作码，等）、IPv6任播地址分配、IPv6组播地址分配、IPv6子TLA作业（不推荐使用）、IANA IPv6特殊注册表、IPv6的全球部署的公告（七月1999 14）、RIR比较政策概述，具体可在[IANA-Number Resources](https://www.iana.org/numbers)中查询，如[IPv6地址空间](http://www.iana.org/assignments/ipv6-address-space/ipv6-address-space.xhtml)。[26]
 
 ####（1）编址
 * IPv6的地址类型分单播、多播、任播；
@@ -270,10 +274,10 @@ __保留地址__是IANA在IP地址范围内，保留了一部分地址专门用�
 	![](http://i.imgur.com/eEXM4Jp.png)
 
  * 泛播地址不能作为源地址，不可非陪给IPv6主机，只可分配给IPv6路由器。
+[4][7]
 
 
-
-#### （2）特殊地址（[RFC5156](https://datatracker.ietf.org/doc/rfc5156/)）
+#### （2）特殊地址
 * 未指明地址
  * 全0地址0:0:0:0:0:0:0:0，缩写为"::"或"::/128"，只可由主机当作源地址使用，不可作为目的地址；
 * 环回地址
@@ -283,18 +287,80 @@ __保留地址__是IANA在IP地址范围内，保留了一部分地址专门用�
 * 本地链路单播地址
  * 地址FE80::/10，用于使用TCP/IP协议却没有连接到互联网上的主机之间的互相通信。
 
+[26]
 
 [全球IP分配表](http://www.iana.org/assignments/as-numbers/as-numbers.xml)
 
 
 ## 3、国内申请IP地址流程
 ---
-- APNIC负责亚太地区，我国申请IP地址要通过APNIC，申请时要考虑申请哪一类的IP地址，然后向国内的代理机构提出。
+- APNIC负责亚太地区，我国申请IP地址要通过APNIC，申请时要考虑申请哪一类的IP地址，然后向国内的代理机构提出。[29]
 
-	![](http://i.imgur.com/PfdlVJW.jpg)
+	![](http://i.imgur.com/PfdlVJW.jpg)[27]
 
 - 国内IP地址申请步骤：
 
-	![](http://i.imgur.com/pMk3kX8.jpg)
+	![](http://i.imgur.com/pMk3kX8.jpg)[28]
 
-	[中国互联网络信息中心CNNIC](http://www.cnnic.cn/)
+
+##参考文献和资料
+
+[1] [icann - Number Resources - 《iana101-numbers》](https://icann.adobeconnect.com/p7d74qdis3o/?launcher=false&fcsContent=true&pbMode=normal)
+
+[2] [iana - 《Glossary of terms》（术语汇编）](http://www.iana.org/glossary)
+
+[3] [RFC791 - 《INTERNET PROTOCOL&DARPA INTERNET PROGRAM&PROTOCOL SPECIFICATION》](http://datatracker.ietf.org/doc/rfc791/)
+
+[4] 谢希仁，《计算机网络》（第六版），电子工业出版社，2013年6月
+
+[5] [《ICANN将宣布IPv4地址耗尽 全球进入IPv6时代》 来源：搜狐IT 2011年02月02日](http://it.sohu.com/20110202/n279200756.shtml)
+
+[6] [《IPv4地址耗尽对我们意味着什么》 来源：网界网 2015年12月24日](http://news.cnw.com.cn/news-international/htm2015/20151224_323905_2.shtml)
+
+[7] [《第5章：IPv6报文结构》，百度文库](http://wenku.baidu.com/link?url=aGJ4FMsnbMeS2cgXkeZ9p3_xwO0uqDQWQbJmrJrW6Y3_wVuUIoFje-x5wQaeOaMNR0z5nPlAtrW2brgzLE5d4UOVaFBwYrhsYriRt3XaTwS)
+
+[8] [wikipedia - 《Autonomous system (Internet)》](https://en.wikipedia.org/wiki/Autonomous_system_(Internet))
+
+[9] [iana - 《Introducing IANA》](http://www.iana.org/about)
+
+[10] [iana - 《Number Resources》](http://www.iana.org/numbers)
+
+[11] [《IP地址及其管理》教学设计](http://courses.teacher.com.cn/DisplayInfo.aspx?ID=60484&subject=43&item=7)
+
+[12] [《互联网数字分配机构IANA介绍》](http://www.dnshow.cn/help/zhuanjia/1330311151179.html)
+
+[13] [AFRINIC官方网站](http://afrinic.net/)
+
+[14] [APNIC官方网站](https://www.apnic.net/)
+
+[15] [ARIN官方网站](https://www.arin.net/)
+
+[16] [LACNIC官方网站](http://www.lacnic.net/web/lacnic/ipv6)
+
+[17] [RIPE官方网站](https://www.ripe.net/)
+
+[18] [NRO官方网站](https://www.nro.net/)
+
+[19] [IPv4地址空间](http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xhtml)
+
+[20] [《IP地址和子网掩码》](http://imoocmooc.dlut.edu.cn/nodedetailcontroller/visitnodedetail?knowledgeId=2909652)
+
+[21] [《IP协议详解之子网寻址、子网掩码、构造超网》](http://www.cnblogs.com/way_testlife/archive/2010/10/05/1844399.html)
+
+[22] [《【CCNA教材】2.4.4 IP地址与默认子网掩码》](http://ccna.edufly.cn/CCNAziliao/5862.html)
+
+[23] [RFC4632 - 《Classless Inter-domain Routing (CIDR):The Internet Address Assignment and Aggregation Plan》](http://tools.ietf.org/html/rfc4632)
+
+[24] [《路由汇聚、路由协议》](http://lyj.fj61.net/show.aspx?id=536&cid=87)
+
+[25] [RFC6598 - 《IANA-Reserved IPv4 Prefix for Shared Address Space》](http://tools.ietf.org/html/rfc6598)
+
+[26] [IPv6地址空间](http://www.iana.org/assignments/ipv6-address-space/ipv6-address-space.xhtml)
+
+[26] [RFC5156 - 《 Special-Use IPv6 Addresses》](https://datatracker.ietf.org/doc/rfc5156/)
+
+[27] [《CNNIC全程助力中国向下一代互联网过渡》](http://www.cnnic.cn/cnnicztxl/IPV6zt/)
+
+[28] [《IP/AS申请步骤》](http://www.cnnic.cn/jczyfw/ipas/IPv4dzsq/201406/t20140630_47343.htm)
+
+[29] [中国互联网络信息中心CNNIC](http://www.cnnic.cn/)
