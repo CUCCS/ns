@@ -1,12 +1,14 @@
-﻿DNSSec协议详解：
+﻿#DNSSec协议详解#
 
-DNSSec定义：
-    域名系统安全扩展（Domain Name System Security Extensions），是为域名系统（Domain Name S
+##DNSSec定义##
+
+域名系统安全扩展（Domain Name System Security Extensions），是为域名系统（Domain Name S
 ystem）鉴定数据来源和数据完整性、有效性的一种安全机制。主要解决了DNS欺骗和缓存污染问题。
 
 
-DNS欺骗：
-    用户在用域名访问一个网站是，用户的计算机一般会通过域名解析服务器（Resolver Sever）把域名
+##DNS欺骗##
+
+用户在用域名访问一个网站是，用户的计算机一般会通过域名解析服务器（Resolver Sever）把域名
 转换成IP地址。解析服务器一般用过查询根域名服务器（root）、顶级域名服务器（TLD）、权威域名服务
 器（Authoritative Name Server）,通过递归查询的方式最终获得目标服务器的IP地址，然后交给用户的
 计算机。在此过程中，攻击者可以假冒应答方（根、顶级域、权威域、或解析服务器中任意一个）给请求
@@ -15,21 +17,20 @@ DNS欺骗：
 UDP协议而不是TCP协议，伪造DNS的响应报文比较容易；如果攻击者可以监听上述过程中的任何一个通信
 链路，这种攻击就易如反掌。
 
-缓存污染：
-    由于DNS缓存（Cache）的作用，这种错误的记录可以存在相当一段时间（比如几个小时甚至几天），
+##缓存污染##
+    
+由于DNS缓存（Cache）的作用，这种错误的记录可以存在相当一段时间（比如几个小时甚至几天），
 所有使用该域名解析服务器的用户都无法访问真正的服务器。
 
-DNSSec原理：
-    依靠数字签名保证DNS应答报文的真实性和完整性。
-    权威域名服务器用自己的私有密钥对资源记录（Resource Record, RR）进行签名，解析服务器用权威
+##DNSSec原理##
+   
+依靠数字签名保证DNS应答报文的真实性和完整性。
+权威域名服务器用自己的私有密钥对资源记录（Resource Record, RR）进行签名，解析服务器用权威
 服务器的公开密钥对收到的应答信息进行验证。如果验证失败，表明这一报文可能是假冒的，或者在传输过
 程、缓存过程中被篡改了。  
-    一个支持DNSSEC的解析服务器（RFC4033中Security-Aware Resolver）向支持DNSSEC的权威域名服务器
+一个支持DNSSEC的解析服务器（RFC4033中Security-Aware Resolver）向支持DNSSEC的权威域名服务器
 （Security-Aware Name Server）请求域名www.test.net.时，它除了得到一个标准的A记录（包含IPv4地址）
 以外，还收到一个同名的RRSIG记录，其中包含test.net这个权威域的数字签名，它是用test.net.的私有密
 钥来签名的。为了验证这一签名的正确性，解析服务器可以再次向test.net的域名服务器查询响应的公开密
 钥，即名为test.net的DNSKEY类型的资源记录。然后解析服务器就可以用其中的公钥验证上述www.test.net.
 记录的真实性与完整性。
-
-    
-
