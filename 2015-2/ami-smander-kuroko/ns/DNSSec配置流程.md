@@ -1,5 +1,9 @@
-﻿一、配置安全解析服务器
-1.激活DNSSEC
+﻿#DNSSec配置流程#
+
+
+##配置安全解析服务器##
+
+###激活DNSSEC###
 
 在BIND的配置文件中打开DNSSEC选项
 
@@ -15,7 +19,9 @@
 这个位置一般为/etc/named.conf
 
 
-2.配置Trust anchor
+###配置Trust anchor###
+
+
 要给解析服务器配置可信锚（Trust Anchors）
 也就是你所信任的权威域的DNSKEY。
 
@@ -43,7 +49,7 @@
     include “/var/named/sec-trust-anchors.conf”;
 
 
-3.测试
+###测试###
 
 完成上述修改后重启named进程，到可信锚文件中包含的区或者他的下级域名
 
@@ -85,12 +91,12 @@
     };
 
     };
-category dnssec { dnssec_log; };
+    category dnssec { dnssec_log; };
 
 
-二、配置权威服务器
+##配置权威服务器##
 
-1 生成签名密钥对
+###生成签名密钥对###
 
 首先为你的区（zone）文件生成密钥签名密钥KSK：
 
@@ -110,7 +116,7 @@ category dnssec { dnssec_log; };
 两对DNSKEY密钥（共四个文件），分别以.key和.private结尾，
 表明这个文件存储的是公开密钥或私有密钥。
 
-2 签名
+###签名###
 
 签名之前，你需要把上面的两个DNSKEY写入到区文件中
 
@@ -154,7 +160,7 @@ category dnssec { dnssec_log; };
 
     # rndc reload test.net
 
-3 发布公钥
+###发布公钥###
 
 要让其他人验证我的数字签名，其他人必须有一个可靠的途径获得我
 的公开密钥。DNSSEC通过上一级域名服务器数字签名的方式签发我的
