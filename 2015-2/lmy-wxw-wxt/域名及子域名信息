@@ -3,10 +3,10 @@
   host -t a www.weibo.com 得到该服务器的两个IP：
 www.weibo.com has address 180.149.134.142
 www.weibo.com has address 180.149.134.141
-![](https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC2.png)
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC2.png
 使用百度搜索两个IP地址所在地等信息：
-![](https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC3.png)
-![](https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC4.png)
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC3.png
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC4.png
 1.通过host -t mx www.weibo.com 没有发现邮件服务信息
 2.查询子域名：（子域名枚举）
 使用子域名枚举软件layer，找到一万多个子域名，每次列举得到的子域名数不同。
