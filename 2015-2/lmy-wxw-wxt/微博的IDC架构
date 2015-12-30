@@ -1,0 +1,7 @@
+</br>微博的IDC架构：
+</br>![](https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%871.png)
+</br>可以看出服务提供商有移动、联通、电信，电信也负责海外
+</br>内部架构：
+</br>![](https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%872.png)
+</br>架构细节：
+</br>![](https://github.com/mysomeonelikeyou/picture/blob/master/%E5%9B%BE%E7%89%873.png)
