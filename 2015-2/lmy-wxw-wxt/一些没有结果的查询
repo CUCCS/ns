@@ -1,0 +1,5 @@
+1.通过Google hacking 进行查询，站点：weibo.com、三个主要领导人的信息以及网站其他信息如个人简历等，并没有收获什么有用信息。
+2.用filezila连接FTP服务，无法连接成功。
+4.用telnet连接目标端口：除80端口外都无法成功。
+得到：
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC10.png
