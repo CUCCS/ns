@@ -1,1 +1,6 @@
-
+我们从dnsdumpster上查询到了weibo.com的dns服务器ip地址。
+ns/2015-2/lmy-wxw-wxt/DNS server.PNG
+我们就可以对dns服务器进行攻击，如拒绝服务攻击，dns劫持。
+我们还查询到了weibo.com的邮件交换记录。
+ns/2015-2/lmy-wxw-wxt/mx.PNG
+通过欺骗邮件交换记录的方法攻击者就可实现邮件盗窃。
