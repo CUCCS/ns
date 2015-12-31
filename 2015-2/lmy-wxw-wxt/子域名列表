@@ -1,4 +1,134 @@
 附件一 子域名列表
+2013.weibo.com   180.149.134.249   Apache
+2014.weibo.com   180.149.138.236   Apache
+2014.sc.weibo.com   180.149.138.238   Apache
+8.weibo.com   180.149.134.249   nginx
+9158.7.weibo.com   180.149.134.110   nginx
+a.dpool.weibo.com   180.149.134.249   Apache
+a.weibo.com   180.149.134.141   WeiBo
+account.weibo.com   180.149.138.236   nginx
+agent.a.weibo.com   180.149.134.142   WeiBo
+alitui.weibo.com   180.149.134.142   nginx
+api.weibo.com   180.149.135.230   nginx
+app.weibo.com   180.149.134.249   Apache
+apps.e.weibo.com   180.149.138.238   nginx
+apps.weibo.com   180.149.134.249   Apache
+api.hk.weibo.com   218.213.85.49   Apache
+ask.weibo.com   202.108.43.253   Apache
+badge.weibo.com   180.149.138.236   Apache
+bang.weibo.com   180.149.134.216   WeiBo
+ba.weibo.com   180.149.134.249   nginx
+au.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+boke.weibo.com   123.125.29.250   Apache
+book.weibo.com   221.179.190.249   Tengine
+c.weibo.com   180.149.134.195   nginx
+cai.weibo.com   218.30.115.176   Apache
+card.weibo.com   180.149.138.224   nginx
+chang.weibo.com   180.149.134.249   nginx
+bleachorl.game.weibo.com   58.63.236.252   nginx
+club.weibo.com   180.149.138.235   Apache
+caipiao.weibo.com   180.149.134.249   WeiBo
+company.verified.weibo.com   180.149.138.207   nginx
+credits.weibo.com   180.149.136.244   WeiBo
+darentong.weibo.com   180.149.153.253   nginx
+daren.sc.weibo.com   180.149.153.253   nginx
+data.weibo.com   180.149.138.236   Apache
+desktop.weibo.com   180.149.134.249   Apache
+dasai.manhua.weibo.com   221.179.190.239   Tengine
+dwxwy.game.weibo.com   180.149.134.154   nginx/1.4.4
+e.weibo.com   180.149.138.207   nginx
+dtszj.game.weibo.com   180.149.136.54   Apache
+dianping.weibo.com   180.149.134.216   WeiBo
+event.game.weibo.com   58.63.236.252   nginx
+eq.weibo.com   180.149.134.249   Apache
+focus.weibo.com   123.125.29.250   nginx
+gongyi.weibo.com   180.149.153.226   Apache
+gouwu.weibo.com   180.149.153.253   nginx
+game.weibo.com   58.63.236.252   nginx
+gouwu.sc.weibo.com   180.149.153.253   nginx
+game.manhua.weibo.com   180.149.134.101   nginx/1.4.4
+help.weibo.com   180.149.134.249   Apache
+hk.weibo.com   218.213.85.72   Apache
+hr.weibo.com   61.172.201.176   Apache/2.2.9 (Unix) DAV/2 PHP/5.2.6
+hy.game.weibo.com   58.63.236.252   nginx
+index.weibo.com   180.149.138.236   Apache
+jp.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+kpop.weibo.com   180.149.134.251   Apache/2.2.15 (CentOS)
+ka.weibo.com   180.149.136.54   Apache
+lady.weibo.com   180.149.136.252   Apache
+kr.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+ketang.weibo.com   114.80.223.59   Apache-Coyote/1.1
+m.pop.tw.weibo.com   210.17.38.55   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+m.my.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+m.overseas.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+m.weibo.com   180.149.139.248   Apache
+m.sg.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+m.travel.weibo.com   58.63.236.252   nginx
+me.weibo.com   180.149.134.216   WeiBo
+m.tw.weibo.com   210.17.38.56   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+manhua.weibo.com   180.149.136.195   Tengine
+meyou.weibo.com   180.149.134.249   Apache
+nas.im.api.weibo.com   180.149.134.229   weibo
+my.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+music.weibo.com   123.125.29.250   Apache
+new.club.weibo.com   180.149.138.236   Apache
+new.q.weibo.com   180.149.134.249   Apache
+netchina2013.weibo.com   180.149.134.249   Apache
+open.weibo.com   180.149.134.249   Apache
+overseas.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+nz.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+nba.weibo.com   180.149.136.252   Apache
+op.game.weibo.com   58.63.236.252   nginx
+pay.game.weibo.com   180.149.136.54   nginx
+pay.vip.weibo.com   180.149.134.110   nginx/1.2.0
+place.weibo.com   180.149.134.249   Apache
+q.weibo.com   180.149.134.249   Apache
+pop.tw.weibo.com   210.17.38.55   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+p.weibo.com   180.149.134.249   Apache
+qijilanqiu.game.weibo.com   58.63.236.252   nginx
+radio.weibo.com   180.149.134.249   Apache
+s.weibo.com   180.149.135.239   Apache
+sg.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+shenyuan.game.weibo.com   180.149.136.54   Apache
+sg2.game.weibo.com   180.149.136.54   Apache
+screen.weibo.com   180.149.134.249   Apache
+security.weibo.com   180.149.136.233   nginx
+talk.weibo.com   180.149.134.249   Apache
+show.weibo.com   42.81.5.76   nginx/0.8.34
+tech.weibo.com   123.125.23.171   nginx
+tan.weibo.com   180.149.136.54   Apache
+qlz.game.weibo.com   180.149.134.156   nginx/1.4.4
+static.tw.weibo.com   106.187.40.190   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+ting.weibo.com   180.149.134.216   WeiBo
+th.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+renmai.weibo.com   59.151.119.142   nginx/1.4.7
+service.weibo.com   180.149.138.236   Apache
+travel2013.weibo.com   180.149.138.236   Apache
+tui.weibo.com   180.149.136.246   ngx_openresty/1.2.4.14
+tv.weibo.com   180.149.134.217   WeiBo
+udc.weibo.com   220.181.136.55   nginx
+tw.weibo.com   210.17.38.56   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+top.weibo.com   180.149.138.236   WeiBo
+travel.weibo.com   58.63.236.252   nginx
+tuan.weibo.com   220.181.136.43   nginx
+vdisk.weibo.com   123.125.106.101   nginx/1.4.4
+ttmx.game.weibo.com   180.149.134.154   nginx/1.4.4
+tong.c.weibo.com   180.149.135.68   nginx
+vdun.weibo.com   123.125.106.102   nginx/1.4.4
+verified.e.weibo.com   180.149.138.238   Apache
+verified.weibo.com   180.149.134.216   WeiBo
+vgirl.weibo.com   180.149.134.249   Apache
+wan.weibo.com   180.149.134.249   Apache
+weirenwu.weibo.com   180.149.134.249   Apache
+worldcup.weibo.com   180.149.134.110   nginx
+www.zhaopin.weibo.com   59.151.119.135   nginx
+x.weibo.com   180.149.134.110   nginx
+xmxx.game.weibo.com   123.125.106.101   nginx/1.4.4
+yahoo.tw.weibo.com   124.108.92.89   Apache/2.4.9 (Unix) OpenSSL/1.0.1e-fips PHP/5.4.28 mod_fastcgi/2.4.6
+zhaopin.weibo.com   59.151.119.135   nginx
+zhibo.weibo.com   180.149.134.249   Apache
+zuiwuji.game.weibo.com   58.63.236.252   nginx
+
 a2.www.weibo.com   202.106.199.37   nginx
 a5.www.weibo.com   202.106.199.37   nginx
 aa.www.weibo.com   202.106.199.37   nginx
