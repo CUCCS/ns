@@ -4,3 +4,6 @@
 #no tempfile
 *.swp
 *~
+
+#no markdonw preview file
+*.md.html
