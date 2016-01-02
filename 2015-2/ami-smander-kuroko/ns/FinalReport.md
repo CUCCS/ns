@@ -25,7 +25,7 @@
 
 结果如下：
 
-![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%871.png)
+![image](images/pic01.png?raw=true)
 
 在文件位置cd /etc/bind在里面创建文件db.example.com，文件内容：
 
@@ -96,37 +96,37 @@
 
 情况如下：
 
-![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%872.png)
+![image](images/pic02.png?raw=true)
 
 修改主机的dns服务器地址为自己的dns服务器地址：
 
     gedit  /etc/resolv.conf
 
-![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%873.png)
+![image](images/pic03.png?raw=true)
 
 打开服务器：
 
     /etc/init.d/bind9 start
 
-![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%874.png)
+![image](images/pic04.png?raw=true)
 
 执行指令：
 
     dig localhost
 
-![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%875.png)
+![image](images/pic05.png?raw=true)
 
 执行指令：
 
     dig ns.example.com
 
-![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%876.png)
+![image](images/pic06.png?raw=true)
 
 再执行指令，查找一个本地不存在的网址记录（可能需要等待一段时间）：
 
     dig baidu.com
 
-![image](https://github.com/kulina/images/blob/master/%E5%9B%BE%E7%89%877.png?raw=true)
+![image](images/pic07.png?raw=true)
 
 服务器成功地找到了baidu.com的ip地址，至此可说明一个可用的dns服务器已搭建完毕。
 
@@ -164,20 +164,20 @@
     /etc/init.d/bind9 start
     nslookup www.google.com
 
-![image](https://github.com/kulina/images/blob/master/%E5%9B%BE%E7%89%8710.png?raw=true)
+![image](images/pic10.png?raw=true)
 
 确认www.google.com已被劫持。
 
 打开wireshark，同时ping目标网址，进行抓包验证：
 
-![image](https://github.com/kulina/images/blob/master/%E5%9B%BE%E7%89%8711.png?raw=true)
-![image](https://github.com/kulina/images/blob/master/%E5%9B%BE%E7%89%8712.png?raw=true)
+![image](images/pic11.png?raw=true)
+![image](images/pic12.png?raw=true)
 
 
 结果成功将本应发送给www.google.com的包发给了baidu.com，dns劫持成功。
 此时访问www.google.com,则会提示连接已被重置。
 
-![image](https://github.com/kulina/images/blob/master/%E5%9B%BE%E7%89%8713.png?raw=true)
+![image](images/pic13.png?raw=true)
 
 ###三、DNS投毒实验
 
@@ -267,11 +267,11 @@
     dnssec-keygen -a RSASHA1 -b 512 -n ZONE test.net
     dnssec-keygen -f KSK -a RSASHA1 -b 512 -n ZONE test.net
 
-![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%8715.png)
+![image](images/pic15.png?raw=true)
 
 然后生成了几个文件：
 
- ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%8716.png)
+ ![image](images/pic16.png?raw=true)
 然后把db.test.net改为：
 
     $TTL    604800
@@ -289,7 +289,7 @@
 
     dnssec-signzone  -g -o test.net. db.test.net
 
-![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%8717.png)
+![image](images/pic17.png?raw=true)
 
 最后向/etc/bind/named.conf.local加入
 
@@ -299,7 +299,7 @@
     };
 检验，可见dns资源记录中DNSSEC的RRSIG字段已生成，公私钥匹配完成：
 
-![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%8718.png)
+![image](images/pic18.png?raw=true)
 
 ####发布公钥####
 要让其他人验证我的数字签名，其他人必须有一个可靠的途径获得我
@@ -330,4 +330,4 @@
 
 图例解释可以过程
 
-![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%878.jpg)
+![image](images/pic08.jpg?raw=true)
