@@ -1,0 +1,6 @@
+#no doc.
+*.doc
+
+#no tempfile
+*.swp
+*~
