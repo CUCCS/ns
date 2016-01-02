@@ -18,17 +18,17 @@
 ###一、搭建DNS服务器
 
   首先安装dns服务器软件：BIND
-  
+
   执行安装指令：
-    
+
     apt-get install bind9 dnsutils
 
 结果如下：
 
 ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%871.png)
- 
+
 在文件位置cd /etc/bind在里面创建文件db.example.com，文件内容：
- 
+
     ;
     ; BIND data file for local loopback interface
     ;
@@ -70,7 +70,7 @@
              file "/etc/bind/db.example.com";
         };
 替换为：
-    
+
     zone "1.168.192.in-addr.arpa" {
              type master;
              notify no;
@@ -83,7 +83,7 @@
     //       0.0.0.0;
     //    };
 替换为：
-     
+
      forwarders {
              1.2.3.4;
              5.6.7.8;
@@ -93,39 +93,39 @@
     named-checkconf
     named-checkzone example.com /etc/bind/db.example.com
     named-checkzone 1.168.192.in-addr.arpa. /etc/bind/db.192
-    
+
 情况如下：
 
 ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%872.png)
- 
+
 修改主机的dns服务器地址为自己的dns服务器地址：
 
-    gedit  /etc/resolv.conf 
-    
+    gedit  /etc/resolv.conf
+
 ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%873.png)
- 
+
 打开服务器：
- 
+
     /etc/init.d/bind9 start
 
 ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%874.png)
- 
+
 执行指令：
-    
-    dig localhost 
+
+    dig localhost
 
 ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%875.png)
 
 执行指令：
-    
+
     dig ns.example.com
-    
+
 ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%876.png)
- 
+
 再执行指令，查找一个本地不存在的网址记录（可能需要等待一段时间）：
 
     dig baidu.com
-    
+
 ![image](https://github.com/kulina/images/blob/master/%E5%9B%BE%E7%89%877.png?raw=true)
 
 服务器成功地找到了baidu.com的ip地址，至此可说明一个可用的dns服务器已搭建完毕。
@@ -138,7 +138,7 @@
 ####实验流程
 
 首先伪造一份用于dns劫持的dns资源记录。
-    
+
     gedit  /etc/bind/db.google.com
 
 将www.google.com劫持到baidu.com的ip地址(220.181.57.217)
@@ -157,13 +157,13 @@
     ns1    IN  A      220.181.57.217    ;web server definition
     ns2    IN  A      123.1.151.4       ;web server definition
     www    IN  CNAME  ns1.google.com.  ;web server definition
-    ftp    IN  CNAME  ns2.google.com.  ;ftp server definitionbox  
+    ftp    IN  CNAME  ns2.google.com.  ;ftp server definitionbox
 
 之后，打开dns服务器，进行验证：
 
     /etc/init.d/bind9 start
     nslookup www.google.com
-    
+
 ![image](https://github.com/kulina/images/blob/master/%E5%9B%BE%E7%89%8710.png?raw=true)
 
 确认www.google.com已被劫持。
@@ -172,8 +172,8 @@
 
 ![image](https://github.com/kulina/images/blob/master/%E5%9B%BE%E7%89%8711.png?raw=true)
 ![image](https://github.com/kulina/images/blob/master/%E5%9B%BE%E7%89%8712.png?raw=true)
- 
- 
+
+
 结果成功将本应发送给www.google.com的包发给了baidu.com，dns劫持成功。
 此时访问www.google.com,则会提示连接已被重置。
 
@@ -231,7 +231,7 @@
         directory "/var/cache/bind";
 	    dnssec-enable yes;
 	    dnssec-validation yes;
-	    dnssec-lookaside auto; 
+	    dnssec-lookaside auto;
     }
 
 ####配置Trust anchor####
@@ -247,7 +247,7 @@
 
     cd /var/cache/bind
 在里面创建文件db.test.net：
-  
+
     $TTL    604800
     @       IN      SOA     ns.test.net. root.test. net. (
                                   1         ; Serial
@@ -263,14 +263,14 @@
 
     apt-get install haveged
 然后为区（zone）文件生成区签名密钥ZSK和密钥签名密钥KSK：
-    
+
     dnssec-keygen -a RSASHA1 -b 512 -n ZONE test.net
     dnssec-keygen -f KSK -a RSASHA1 -b 512 -n ZONE test.net
- 
+
 ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%8715.png)
 
 然后生成了几个文件：
- 
+
  ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%8716.png)
 然后把db.test.net改为：
 
@@ -288,19 +288,19 @@
 执行签名操作，生成db.test.net.signed：
 
     dnssec-signzone  -g -o test.net. db.test.net
-    
+
 ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%8717.png)
- 
+
 最后向/etc/bind/named.conf.local加入
-    
+
     zone "test.net" {
     type master;
     file "db.test.net.signed";
-    }; 
+    };
 检验，可见dns资源记录中DNSSEC的RRSIG字段已生成，公私钥匹配完成：
 
 ![image](https://raw.githubusercontent.com/kulina/images/master/%E5%9B%BE%E7%89%8718.png)
- 
+
 ####发布公钥####
 要让其他人验证我的数字签名，其他人必须有一个可靠的途径获得我
 的公开密钥。DNSSEC通过上一级域名服务器数字签名的方式签发我的
