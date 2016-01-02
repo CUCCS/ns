@@ -30,39 +30,42 @@
 在文件位置cd /etc/bind在里面创建文件db.example.com，文件内容：
 
     ;
-    ; BIND data file for local loopback interface
+    ; BIND data file for example.com
     ;
     $TTL    604800
     @       IN      SOA     ns.example.com. root.example.com. (
-                                1         ; Serial
-                                604800         ; Refresh
-                                86400         ; Retry
+                                1               ; Serial
+                                604800          ; Refresh
+                                86400           ; Retry
                                 2419200         ; Expire
-                                604800 )       ; Negative Cache TTL
+                                604800 )        ; Negative Cache TTL
     ;
     @       IN      NS      ns.example.com.
-    ns      IN      A       192.168.1.10
+    ns      IN      A       10.0.2.15
 
     ;also list other computers
-    box     IN      A       192.168.1.21
-以及db.192文件，文件内容：
+    box     IN      A       10.0.2.15
+
+以及db.10文件，文件内容：
 
     ;
-    ; BIND reverse data file for local loopback interface
+    ; BIND reverse data file for a test domain (in local)
     ;
     $TTL    604800
     @       IN      SOA     ns.example.com. root.example.com. (
-                                2         ; Serial
-                                604800         ; Refresh
-                                86400         ; Retry
+                                2               ; Serial
+                                604800          ; Refresh
+                                86400           ; Retry
                                 2419200         ; Expire
-                                604800 )       ; Negative Cache TTL
+                                604800 )        ; Negative Cache TTL
     ;
     @       IN      NS      ns.
     10      IN      PTR     ns.example.com.
 
     ; also list other computers
     21      IN      PTR     box.example.com.
+
+
 修改named.conf.local文件内容，将：
 
     zone "example.com" {
@@ -71,28 +74,17 @@
         };
 替换为：
 
-    zone "1.168.192.in-addr.arpa" {
+    zone "2.0.10.in-addr.arpa" {
              type master;
              notify no;
-             file "/etc/bind/db.192";
+             file "/etc/bind/db.10";
         };
 
-修改named.conf.options文件内容，将：
-
-    //forwarders {
-    //       0.0.0.0;
-    //    };
-替换为：
-
-     forwarders {
-             1.2.3.4;
-             5.6.7.8;
-          };
 检验配置情况，命令：
 
     named-checkconf
     named-checkzone example.com /etc/bind/db.example.com
-    named-checkzone 1.168.192.in-addr.arpa. /etc/bind/db.192
+    named-checkzone 2.0.10.in-addr.arpa. /etc/bind/db.10
 
 情况如下：
 
@@ -130,7 +122,103 @@
 
 服务器成功地找到了baidu.com的ip地址，至此可说明一个可用的dns服务器已搭建完毕。
 
-###二、 DNS劫持实验
+
+
+###二、在 DNS服务器上部署DNSSEC
+
+####激活DNSSEC####
+
+在BIND的配置文件中打开DNSSEC选项在/etc/bind/named.conf.options中加入以下部分
+
+    options {
+        directory "/var/cache/bind";
+        dnssec-enable yes;
+        dnssec-validation yes;
+        dnssec-lookaside auto;
+    }
+
+####配置Trust anchor####
+
+在配置文件中加入：
+
+    trusted-keys {
+        “test.net.”  256 3 5  “XJYm3DXd0wnBaq+vYaOsqKh17zrJx4p5HSkcaPqxAmeNQToJQfe8yZ9L 2iR/dhgU8LUi4bs6ICfbdG/eAxa+9g==”;
+    };
+
+####配置权威服务器####
+先找到以下目录：
+
+    cd /var/cache/bind
+在里面创建文件db.test.net：
+
+    $TTL    604800
+    @       IN      SOA     ns.test.net. root.test. net. (
+                                  1         ; Serial
+                             604800         ; Refresh
+                              86400         ; Retry
+                            2419200         ; Expire
+                             604800 )       ; Negative Cache TTL
+    @      IN      NS      ns.test.net.
+    ns     IN      A       125.125.125.125
+
+####生成签名密钥对####
+首先安装haveged，来加快秘钥生成速度：
+
+    apt-get install haveged
+然后为区（zone）文件生成区签名密钥ZSK和密钥签名密钥KSK：
+
+    dnssec-keygen -a RSASHA1 -b 512 -n ZONE test.net
+    dnssec-keygen -f KSK -a RSASHA1 -b 512 -n ZONE test.net
+
+![image](images/pic15.png?raw=true)
+
+然后生成了几个文件：
+
+ ![image](images/pic16.png?raw=true)
+然后把db.test.net改为：
+
+    $TTL    604800
+    $INCLUDE Ktest.net.+005+02373.key
+    $INCLUDE Ktest.net.+005+17296.key
+    @       IN      SOA     ns.test.net. root.test.net. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800  ）     ; Negative Cache TTL
+    @       IN      NS      ns.test.net.
+    ns      IN      A       125.125.125.125
+执行签名操作，生成db.test.net.signed：
+
+    dnssec-signzone  -g -o test.net. db.test.net
+
+![image](images/pic17.png?raw=true)
+
+最后向/etc/bind/named.conf.local加入
+
+    zone "test.net" {
+    type master;
+    file "db.test.net.signed";
+    };
+检验，可见dns资源记录中DNSSEC的RRSIG字段已生成，公私钥匹配完成：
+
+![image](images/pic18.png?raw=true)
+
+####发布公钥####
+要让其他人验证我的数字签名，其他人必须有一个可靠的途径获得我
+的公开密钥。DNSSEC通过上一级域名服务器数字签名的方式签发我的
+公钥。
+如果上一级域名服务器还没有配置DNSSEC，则不得不另找其他方式了
+，比如，把上述两个文件提交到一些公开的trust anchor数据库中发布
+，或者直接交给愿意相信我的解析服务器的
+管理员，配置到trust anchor文件中。
+
+
+
+
+
+
+###三、 DNS劫持实验
 
 **重要说明：DNSSEC的保障同时需要客户端的支持。如果客户端没有强制要求DNSSEC的话，那么对于即使部署了DNSSEC的域名，也不会强制请求DNSSEC有关的记录，导致DNSSEC的起不到保护客户端的作用。详见实验对比。**
 
@@ -503,6 +591,7 @@ $dig dnssectest.sidnlabs.nl +dnssec +multiline
 ![image](images/pic21.png?raw=true)
 
 
+<a name='exp_extra'></a>
 #####附加实验：202.205.16.4是什么样的呢？
 我们关闭DNS劫持。
 
@@ -582,9 +671,9 @@ ns-nl.nic.fr.       93844 IN A 192.93.0.4
 [DNSSEC_unbound]:https://unbound.net/documentation/howto_anchor.html "Unbound: Howto enable DNSSEC"
 
 
-###三、DNS投毒实验
+###四、DNS投毒实验
 
-缺少第三方服务器，并没用完成这个实验。这里只写出了实验原理和流程。
+缺少第三方服务器，并没有完成这个实验。这里只写出了实验原理和流程。
 
 
 ####原理：
@@ -596,8 +685,7 @@ ns-nl.nic.fr.       93844 IN A 192.93.0.4
 ####服务器对不存在网址的正常解析过程:
 
 1. 客户端向DNS缓存服务器发送对www.xoxox.org（某不存在的网址）的DNS查询请求。
-2. 当DNS缓存服务器上没有www.xoxox.org对应的IP地址，则DNS缓存服务器就会通过迭
-   代的方法最后询问DNS主服务器上保存的www.xoxox.org对应的IP地址。
+2. 当DNS缓存服务器上没有www.xoxox.org对应的IP地址，则DNS缓存服务器就会通过迭代的方法最后询问DNS主服务器上保存的www.xoxox.org对应的IP地址。
 3. DNS主服务器响DNS缓存服务器的请求，返回www.xoxox.org对应的IP地址。
 4.  DNS缓存服务器收到DNS主服务器的应答后，把应答消息转发给客户端。
 5. 客户端通过该ip地址访问www.xoxox.org。
@@ -617,105 +705,14 @@ ns-nl.nic.fr.       93844 IN A 192.93.0.4
 ####防护:
 
 1.  部署多台dns权威服务器，降低攻击效率。
-2.    使用DNS ”源端口随机性”较好的软件或者版本，降低投毒命中率。
+2.  使用DNS ”源端口随机性”较好的软件或者版本，降低投毒命中率。
 3.  使用dnssec协议，使攻击者无法伪造响应报文，而且杜绝了dns缓存投毒攻击。
 
 ####参考文献：
 1. 《DNS安全（一）DNS缓存投毒与防护》http://zdzhu.blog.51cto.com/6180070/1575498
 2. 《DNS缓存服务器投毒》网络安全攻防研究室(www.91ri.org) 信息安全小组https://www.91ri.org/2964.html
 
-###四、在 DNS服务器上完成 DNSSec
-
-####激活DNSSEC####
-
-在BIND的配置文件中打开DNSSEC选项在/etc/bind/named.conf.options中加入以下部分
-
-    options {
-        directory "/var/cache/bind";
-        dnssec-enable yes;
-        dnssec-validation yes;
-        dnssec-lookaside auto;
-    }
-
-####配置Trust anchor####
-
-在文件中加入：
-
-    trusted-keys {
-        “test.net.”  256 3 5  “XJYm3DXd0wnBaq+vYaOsqKh17zrJx4p5HSkcaPqxAmeNQToJQfe8yZ9L 2iR/dhgU8LUi4bs6ICfbdG/eAxa+9g==”;
-    };
-
-####配置权威服务器####
-先找到以下目录：
-
-    cd /var/cache/bind
-在里面创建文件db.test.net：
-
-    $TTL    604800
-    @       IN      SOA     ns.test.net. root.test. net. (
-                                  1         ; Serial
-                             604800         ; Refresh
-                              86400         ; Retry
-                            2419200         ; Expire
-                             604800 )       ; Negative Cache TTL
-    @      IN      NS      ns.test.net.
-    ns      IN      A       125.125.125.125
-
-####生成签名密钥对####
-首先安装haveged，来加快秘钥生成速度：
-
-    apt-get install haveged
-然后为区（zone）文件生成区签名密钥ZSK和密钥签名密钥KSK：
-
-    dnssec-keygen -a RSASHA1 -b 512 -n ZONE test.net
-    dnssec-keygen -f KSK -a RSASHA1 -b 512 -n ZONE test.net
-
-![image](images/pic15.png?raw=true)
-
-然后生成了几个文件：
-
- ![image](images/pic16.png?raw=true)
-然后把db.test.net改为：
-
-    $TTL    604800
-    $INCLUDE Ktest.net.+005+02373.key
-    $INCLUDE Ktest.net.+005+17296.key
-    @       IN      SOA     ns.test.net. root.test.net. (
-                              1         ; Serial
-                         604800         ; Refresh
-                          86400         ; Retry
-                        2419200         ; Expire
-                         604800  ）     ; Negative Cache TTL
-    @       IN      NS      ns.test.net.
-    ns      IN      A       125.125.125.125
-执行签名操作，生成db.test.net.signed：
-
-    dnssec-signzone  -g -o test.net. db.test.net
-
-![image](images/pic17.png?raw=true)
-
-最后向/etc/bind/named.conf.local加入
-
-    zone "test.net" {
-    type master;
-    file "db.test.net.signed";
-    };
-检验，可见dns资源记录中DNSSEC的RRSIG字段已生成，公私钥匹配完成：
-
-![image](images/pic18.png?raw=true)
-
-####发布公钥####
-要让其他人验证我的数字签名，其他人必须有一个可靠的途径获得我
-的公开密钥。DNSSEC通过上一级域名服务器数字签名的方式签发我的
-公钥。
-如果上一级域名服务器还没有配置DNSSEC，则不得不另找其他方式了
-，比如，把上述两个文件提交到一些公开的trust anchor数据库中发布
-，或者直接交给愿意相信我的解析服务器的
-管理员，配置到trust anchor文件中。
-
-
-
-##安全分析##
+##名词解释##
 
 ###DNSSec###
 域名系统安全扩展（Domain Name System Security Extensions），是为域名系统
