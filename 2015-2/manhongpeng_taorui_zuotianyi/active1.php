@@ -1,29 +1,48 @@
 <?php
 session_start();
-$dbhost = 'localhost:3306';
-$dbuser = 'root';
-$dbpass = 'root';
-$conn = @mysql_connect($dbhost, $dbuser, $dbpass);
-  $verify = stripslashes(trim($_GET['verify']));
-  $nowtime = time(); 
-  mysql_select_db("cucyueco_cucyue", $conn);
-  $query = mysql_query("select id,token_exptime from user_infor where status='0' and  token='$verify'");
-  $row = mysql_fetch_array($query); 
-  if($row){  
-  if($nowtime>$row['token_exptime'])
+$tag = 0;
+$dbhost = 'localhost';
+$dbuser = 'cucyueco';
+$dbpass = 'CUCyue2015';
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass,"cucyueco_cucyue");
+$verify = stripslashes(trim($_GET['verify']));
+$nowtime = time(); 
+$query = "select id,token_exptime from user_infor where status='0' and  token= ? ";
+		if ($stmt = mysqli_prepare($conn, $query)) {
+    mysqli_stmt_bind_param($stmt, 's', $verify);
+    /* execute statement */
+    mysqli_stmt_execute($stmt);
+
+    /* bind result variables */
+    mysqli_stmt_bind_result($stmt, $id3,$time3);
+    $result=mysqli_query($conn,$query);
+
+    /* fetch values */
+    while (mysqli_stmt_fetch($stmt)) {
+    	//echo $id3;
+    	$tag = 1;
+        $id=$id3;
+        $time = $time3;
+        break;
+    }
+    
+    /* close statement */
+    mysqli_stmt_close($stmt);
+}
+if($tag){
+	if($nowtime>$time)
   { //24hour     
-    $msg = '您的激活有效期已过，请登录您的帐号重新发送激活邮件.';   
-	}
-	else{   
-	mysql_query("update user_infor set status=1 where id=".$row['id']);  
-	   
-    $msg = 'verify success!';   
-	}
-	}
-	else{  
+  	$msg = '您的激活有效期已过，请登录您的帐号重新发送激活邮件.';   
+  }
+  else{   
+  	mysqli_query($conn,"update user_infor set status=1 where id=".$id);  
+  	$msg = 'verify success!';   
+  }
+}
+else{  
 	$msg = 'error.';  
-	} 
-	echo $msg; 
+} 
+echo $msg; 
 ?>
 
 
