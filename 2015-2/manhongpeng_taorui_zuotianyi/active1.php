@@ -2,8 +2,8 @@
 session_start();
 $tag = 0;
 $dbhost = 'localhost';
-$dbuser = 'cucyueco';
-$dbpass = 'CUCyue2015';
+$dbuser = 'root';
+$dbpass = 'root';
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass,"cucyueco_cucyue");
 $verify = stripslashes(trim($_GET['verify']));
 $nowtime = time(); 
