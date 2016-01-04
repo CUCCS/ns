@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #no doc.
 *.doc
 
@@ -8,11 +7,9 @@
 
 #no markdonw preview file
 *.md.html
-=======
 
 2015-2/yyy/certification/.idea/.name
 
 2015-2/yyy/certification/.idea/blade.xml
 
 2015-2/yyy/certification/.idea/workspace.xml
->>>>>>> upstream/master
