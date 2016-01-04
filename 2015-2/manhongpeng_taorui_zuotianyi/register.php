@@ -72,9 +72,9 @@
 
 		$dbhost = 'localhost';
 
-		$dbuser = 'cucyueco';
+		$dbuser = 'root';
 
-		$dbpass = 'CUCyue2015';
+		$dbpass = 'root';
 
 		$conn = mysqli_connect($dbhost, $dbuser, $dbpass,"cucyueco_cucyue");
 
@@ -191,11 +191,11 @@
 
 				$smtpserverport = 25; 
 
-				$smtpusermail = "manhongpeng2711@163.com";  
+				$smtpusermail = "test@163.com";  
 
-				$smtpuser = "manhongpeng2711";   
+				$smtpuser = "testuser";   
 
-				$smtppass = "27372208"; 
+				$smtppass = "testpass"; 
 
 				$smtp = new Smtp($smtpserver, $smtpserverport, true, $smtpuser, $smtppass); 
 
