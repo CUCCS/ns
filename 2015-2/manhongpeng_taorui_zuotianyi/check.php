@@ -1,31 +1,48 @@
 ﻿<?php
 $token=$_GET['token'];
-$dbhost = 'localhost:3306';
-$dbuser = 'root';
-$dbpass = 'root';
-$conn = @mysql_connect($dbhost, $dbuser, $dbpass);
+$dbhost = 'localhost';
+$dbuser = 'xxx';
+$dbpass = 'xxx';
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass,"xxx");
 $flag = 0;
 if(! $conn )
 {
-  die('Could not connect: ' . mysql_error());
+  die('Could not connect: ' . mysqli_error());
 }
-mysql_select_db("user", $conn);
 
-$result = mysql_query("SELECT id,count(*) AS total FROM email_ip WHERE token ='$token'");
-echo mysql_error();
-while($row = mysql_fetch_array($result))
-  {
-	  if($row['total']==0)
+$query = "SELECT id,count(*) FROM email_ip WHERE token = ?";
+		if ($stmt = mysqli_prepare($conn, $query)) {
+    mysqli_stmt_bind_param($stmt, 's', $token);
+    /* execute statement */
+    mysqli_stmt_execute($stmt);
+
+    /* bind result variables */
+    mysqli_stmt_bind_result($stmt, $id3,$total3);
+    $result=mysqli_query($conn,$query);
+
+    /* fetch values */
+    while (mysqli_stmt_fetch($stmt)) {
+    	//echo $id3;
+        $id=$id3;
+        $total = $total3;
+        break;
+    }
+    
+    /* close statement */
+    mysqli_stmt_close($stmt);
+}
+
+	  if($total==0)
 	  {
 		  echo 'no';
-		  break;
+		  
 	  }
 	  else{
-		  	  $id=$row['id'];
-				$result = mysql_query("UPDATE email_ip SET isverified = 1 WHERE id ='$id'");
-				echo 'ok';
-	break;
+		  	  
+				$result = mysqli_query($conn,"UPDATE email_ip SET isverified = 1 WHERE id ='$id'");
+				echo '您的IP已加入白名单，请重试登录！';
+	
 	  }
 
-  }
+  
 ?>
