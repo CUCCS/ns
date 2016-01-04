@@ -63,7 +63,7 @@
 					$result=mysqli_query($conn,$query);
 					/* fetch values */
 					while (mysqli_stmt_fetch($stmt)) {
-			        echo "<script> alert('该邮箱已被注册，请重新输入！');parent.location.href='./register.php'; </script>"; 
+			        	echo "<script> alert('该邮箱已被注册，请重新输入！');parent.location.href='./register.php'; </script>"; 
 					$flag = 1;
 					break;
 					}
