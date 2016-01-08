@@ -1,0 +1,43 @@
+关于域名和子域名
+1.在linux虚拟机中：通过域名寻找服务器IP:(a记录查询)
+  host -t a www.weibo.com 得到该服务器的两个IP：
+www.weibo.com has address 180.149.134.142
+www.weibo.com has address 180.149.134.141
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC2.png
+使用百度搜索两个IP地址所在地等信息：
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC3.png
+https://github.com/mysomeonelikeyou/ns/blob/master/%CD%BC%C6%AC4.png
+1.通过host -t mx www.weibo.com 没有发现邮件服务信息
+2.查询子域名：（子域名枚举）
+使用子域名枚举软件layer，找到一万多个子域名，每次列举得到的子域名数不同。
+
+以下是部分子域名及其对应服务（有对应服务的）：（所有子域名在附件中给出）
+2cf8vdisk.weibo.com   202.106.199.38   nginx
+2d00e.weibo.com   202.106.199.37   nginx
+2d00vdisk.weibo.com   202.106.199.37   nginx
+2758q.weibo.com   202.106.199.38   nginx
+1c20e.weibo.com   202.106.199.38   nginx
+2757www.weibo.com   202.106.199.38   nginx
+10e0q.weibo.com   202.106.199.37   nginx
+5a0vdisk.weibo.com   202.106.199.37   nginx
+app.weibo.com   123.125.105.215   Apache          应用广场
+badge.weibo.com   123.125.106.177   Apache			微博勋章馆
+book.weibo.com   123.125.22.249   Tengine			微博读书
+c.weibo.com   123.126.42.214   nginx				微博雷达探优惠
+card.weibo.com   123.125.106.249   nginx
+a.weibo.com   123.125.104.197   WeiBo            我的主页
+data.weibo.com   123.125.106.177   Apache			微报告
+dianping.weibo.com   123.125.104.218   WeiBo		微博点评团
+dtszj.game.weibo.com   123.126.42.251   Apache		微游戏大天使之剑
+e2d00.weibo.com   202.106.199.36   nginx
+e.weibo.com   123.126.42.238   nginx				新浪微博企业版
+hd.e.weibo.com   127.0.0.1   Apache/2.4.4 (Win32) OpenSSL/1.0.1e PHP/5.5.1		XAMPP
+apps.weibo.com   123.125.105.215   Apache			应用广场
+au.weibo.com   210.17.38.49   Apache/2.2.29 (FreeBSD) DAV/2 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_ssl/2.2.29 OpenSSL/0.9.8za-freebsd
+event.weibo.com   123.126.42.214   WeiBo			微博活动
+account.weibo.com   123.125.106.177   nginx			微博（跳转到weibbo.com）
+d.weibo.com   123.125.104.197   nginx
+game.manhua.weibo.com   123.125.106.102   nginx/1.4.4	微漫画
+api.hk.weibo.com   218.213.85.49   Apache				微博香港
+game.weibo.com   123.125.29.243   nginx				微博游戏
+help.weibo.com   123.125.105.215   Apache				微博帮助
