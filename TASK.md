@@ -48,8 +48,8 @@
   * 针对不同智能手机的指纹验证解锁机制的攻击方法、案例
 
 
-* [ ] iptables规则题(TODO)
-  * 给定一个iptables规则集合，让学生说明该规则可以实现网络访问控制规则应用效果
+* [ ] iptables规则题
+  * 给定一个[iptables规则集合](http://sec.cuc.edu.cn/huangwei/textbook/ns/dist/chap0x08/exp.html)，让学生说明该规则可以实现网络访问控制规则应用效果
     * 给定一个数据包，让学生判断数据包最终是被：转发、丢弃、DENY、LOG、拒绝？
 
 * [ ] 非图形验证码类CAPTCHA验证方式的原理和安全性分析？
@@ -132,22 +132,29 @@
       * ref: http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html
 * [ ] ZoomeEye、shodan类互联网安全垂直搜索引擎使用深度研究
 
-# 移动互联网安全
+## 文献阅读与翻译
 
-* [ ] 国内Android应用商城中程序隐私泄露分析
-  * IMEI
-  * IMSI
-  * ICCID
-  * 通讯录
-  * 通话历史
-  * 电话号码
-  * 短信
-  * 定位
+### DoS/DDoS
 
-* [ ] 你家的智能设备有哪些是安卓平台的？你能否做一次安全测试？
-  * 是否开启了ADB网络调试功能
-  * 能否获得root权限
-  * 能否提取出固件？
+* [A SURVEY OF TRENDS IN MASSIVE DDOS ATTACKS AND CLOUD-BASED MITIGATIONS](papers/A SURVEY OF TRENDS IN MASSIVE DDOS ATTACKS AND CLOUD-BASED MITIGATIONS.pdf)
+* [The Rise and Decline of NTP DDoS](papers/The Rise and Decline of NTP DDoS.pdf)
 
+### Web安全
 
+* [ADAPTIVE USER INTERFACE RANDOMIZATION AS AN ANTI-CLICKJACKING STRATEGY](papers/ADAPTIVE USER INTERFACE RANDOMIZATION AS AN ANTI-CLICKJACKING STRATEGY.pdf)
+* [Cross-Site Request Forgeries: Exploitation and Prevention](papers/Cross-Site Request Forgeries- Exploitation and Prevention.pdf)
+* [The Tangled Web of Password Reuse](papers/The Tangled Web of Password Reuse.pdf)
+* [CSRF: Attack and Defense](papers/wp-csrf-attack-defense.pdf)
+
+### DNS
+
+* [Security Issues with DNS](papers/Security Issues with DNS.pdf)
+
+### 匿名通信
+
+* [Tor vs NSA](papers/Tor vs NSA.pdf)
+
+### 数据分析/入侵取证/入侵检测
+
+* [Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks](papers/Beehive - Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks.pdf)
 
