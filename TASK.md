@@ -134,6 +134,11 @@
 
 ## 文献阅读与翻译
 
+## 网络扫描
+
+* [ZMap: Fast Internet-wide Scanning and Its Security Applications](papers/ZMap- Fast Internet-wide Scanning and Its Security Applications.pdf)
+* [Network Forensics: Detection and Analysis of Stealth Port Scanning Attack](papers/Network Forensics- Detection and Analysis of Stealth Port Scanning Attack.pdf)
+
 ### DoS/DDoS
 
 * [A SURVEY OF TRENDS IN MASSIVE DDOS ATTACKS AND CLOUD-BASED MITIGATIONS](papers/A SURVEY OF TRENDS IN MASSIVE DDOS ATTACKS AND CLOUD-BASED MITIGATIONS.pdf)
