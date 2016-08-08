@@ -16,7 +16,7 @@
   * 每个小组，可以由1个人fork本项目，然后
     * （推荐协作方式，较简单）其他人通过加入到该fork项目的协作者来共享一个仓库管理本小组的作业；
     * 或者，每个人都继续fork组长的这个分支项目，由组长来合并其他组员的分支提交；
-* 每个小组需要有专人通过电子邮件、微博或微信让我知晓你组github帐号和真人之间的对应关系和你组选题；
+* 每个小组需要有专人通过电子邮件让我知晓你组github帐号和真人之间的对应关系和你组选题；
 * 当选题冲突时，遵循以下2个原则：
   * 先来先得。后来者是否可以继续做这个题目决定权在我；
   * 后来者要适当增加工作量。即，如果后来者坚持要继续做同一个选题，则需要适当增加题目深度或增加一个新的选题；
@@ -134,7 +134,7 @@
 
 ## 文献阅读与翻译
 
-## 网络扫描
+### 网络扫描
 
 * [ZMap: Fast Internet-wide Scanning and Its Security Applications](papers/ZMap- Fast Internet-wide Scanning and Its Security Applications.pdf)
 * [Network Forensics: Detection and Analysis of Stealth Port Scanning Attack](papers/Network Forensics- Detection and Analysis of Stealth Port Scanning Attack.pdf)
