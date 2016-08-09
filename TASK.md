@@ -96,6 +96,7 @@
   * ARP欺骗与MITM
   * 伪造证书
   * 合法证书签名
+  * [WPAD中间人劫持](http://www.netresec.com/?page=Blog&month=2012-07&post=WPAD-Man-in-the-Middle)
 * [ ] DNSSec协议详解，搭建支持DNSSec协议的DNS服务器，并详细说明协议的安全机理
 * [ ] 搭建一个支持域名递归解析的DNS服务器，从全球13个根域名解析服务器同步所有TLD域名记录
 * [ ] 反垃圾邮件检测服务搭建
