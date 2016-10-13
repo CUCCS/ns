@@ -47,15 +47,15 @@ Windows客户端的解决办法:
 
 1. 开启端口转发，（攻击者）允许本机像路由器那样转发数据包
 
-*echo 1 > /proc/sys/net/ip4v/ip_forward*
+   - echo 1 > /proc/sys/net/ip4v/ip_forward
 
 2. ARP投毒，向主机XP声称自己(攻击者)就是网关Ubuntu 
 
-*arpspoof -i eth0 -t 10.23.2.4 10.23.2.5*
+    - arpspoof -i eth0 -t 10.23.2.4 10.23.2.5
 
 3. ARP投毒，向网关Ubuntu声称自己(攻击者)就是XP 
 
-*arpspoof -i eth0 -t 10.23.2.5 10.23.2.4*
+    - arpspoof -i eth0 -t 10.23.2.5 10.23.2.4
 
  - Notification:攻击者需要保持投毒状态，因为一旦停止arpspoof，发生“clean up and re-arping”，将发送正确的目的物理地址。  
 
@@ -91,7 +91,7 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 2. 客户端置信于不可靠的CA（或者主密钥被盗取）- 无论谁获取了真实、可信的CA的私钥，他都可以生成证书从而冒充服务器，骗取客户端的信任。这就意味着，当服务器证书更换为另一个合法证书，浏览器并不会告知客户这件“小”事。
 3. 客户端不与可信CA确认合法证书列表，这样一来，偷盗证书就可能合法化攻击者的身份。
 4. 客户端被攻击，假CA被写入客户的可信CA列表。假冒的CA可以为不可信的服务器签名。
-    
+     
 - HSTS
 
 ##合法证书签名
@@ -109,7 +109,7 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 
 案例（待分析）
 
-1.针对NBNS - Metasploit利用WPAD漏洞
+1. 针对NBNS - Metasploit利用WPAD漏洞
 
 The penetration testing framework Metasploit includes support for WPAD via a new auxiliary module located at "auxiliary/server/wpad". This module, which is written by Efrain Torres, can be used to perform for man-in-the-middle (MITM) attacks by exploiting the features of WPAD. 
 
@@ -122,7 +122,7 @@ Steps:
 
 * 参考链接：[WPAD-Man-in-the-Middle](http://www.netresec.com/?page=Blog&month=2012-07&post=WPAD-Man-in-the-Middle)
 
-2.Badtunnel
+2. Badtunnel
 
-3.针对DNS - WPAD Name Collision Flaw Allows MITM Attacks 
+3. 针对DNS - WPAD Name Collision Flaw Allows MITM Attacks 
 * 参考链接：[WPAD Name Collision Flaw Allows MITM Attacks](http://www.securityweek.com/wpad-name-collision-flaw-allows-mitm-attacks)
