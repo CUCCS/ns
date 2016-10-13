@@ -112,16 +112,11 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 
 The penetration testing framework Metasploit includes support for WPAD via a new auxiliary module located at "auxiliary/server/wpad". This module, which is written by Efrain Torres, can be used to perform for man-in-the-middle (MITM) attacks by exploiting the features of WPAD. 
 
-Steps: 
-
-1. Update Metasploit to the latest version, which contains the WPAD module 
-2. Start Metasploit's command line tool msfconsole
-3. Spoof NetBIOS Name Service (NBNS) responses for "WPAD"
-4. Set up the WPAD module to fool clients into using the attacker machine as web proxy
-
 * 参考链接：[WPAD-Man-in-the-Middle](http://www.netresec.com/?page=Blog&month=2012-07&post=WPAD-Man-in-the-Middle)
 
+
 2. Badtunnel
+
 
 3. 针对DNS - WPAD Name Collision Flaw Allows MITM Attacks 
 * 参考链接：[WPAD Name Collision Flaw Allows MITM Attacks](http://www.securityweek.com/wpad-name-collision-flaw-allows-mitm-attacks)
