@@ -15,9 +15,10 @@
 #####以下解决方案有待考证：
 
 Windows客户端的解决办法:
-1.在连接到 VPN 之前,设置静态IP 地址
-2.在连接之后, 禁用原先 DNS 设置 
-3.断开后, 切换回 DHCP 必要时恢复原 DNS 服务器
+
+1. 在连接到 VPN 之前,设置静态IP 地址
+2. 在连接之后, 禁用原先 DNS 设置 
+3. 断开后, 切换回 DHCP 必要时恢复原 DNS 服务器
 
 - 解决方案1：VPN
     - 单层VPN不被视为隐匿上网。用户可以通过[dnsleaktest](https://www.dnsleaktest.com/)提供的在线检测是否存在DNS泄漏。
@@ -56,7 +57,7 @@ Windows客户端的解决办法:
 
     *arpspoof -i eth0 -t 10.23.2.5 10.23.2.4*
 
-Notification: 攻击者需要“持续投毒”，因为一旦停止arpspoof，将发生“clean up and re-arping”，将发送正确的目的物理地址。  
+Notification: 攻击者要“持续投毒”，因为一旦停止投毒，将发生“clean up and re-arping”，将发送正确的目的物理地址。  
 
 ##伪造SSL证书
 
