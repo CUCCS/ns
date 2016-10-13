@@ -20,12 +20,11 @@ Windows客户端的解决办法:
 3.断开后, 切换回 DHCP 必要时恢复原 DNS 服务器
 
 - 解决方案1：VPN
-     - 单层VPN不被视为隐匿上网。用户可以通过[dnsleaktest](https://www.dnsleaktest.com/)提供的在线检测是否存在DNS泄漏。
-
+    - 单层VPN不被视为隐匿上网。用户可以通过[dnsleaktest](https://www.dnsleaktest.com/)提供的在线检测是否存在DNS泄漏。
+ 
 - 解决方案2：隐匿上网
     - 若对隐匿性有一定要求，不推荐使用单层VPN。为增强隐匿性和安全性，往往使用虚拟机+多层代理的组合。
     - 更多内容可参考编程随想博客《如何隐藏你的踪迹》
-
 - 解决方案3：使用DNSCrypt加密DNS传输   
     - DNSCrypt是OpenDNS发布的，旨在确保客户端与DNS服务器传输安全的工具，基于DNSCurve发展而来。
     - 使用该软件后，DNS通讯采用加密传输，能在相当程度上，既防止泄漏，又防止劫持，可用于保护DNS通信。
@@ -47,15 +46,15 @@ Windows客户端的解决办法:
 
 1. 开启端口转发，（攻击者）允许本机像路由器那样转发数据包
 
-   - echo 1 > /proc/sys/net/ip4v/ip_forward
+   *echo 1 > /proc/sys/net/ip4v/ip_forward*
 
 2. ARP投毒，向主机XP声称自己(攻击者)就是网关Ubuntu 
 
-    - arpspoof -i eth0 -t 10.23.2.4 10.23.2.5
+    *arpspoof -i eth0 -t 10.23.2.4 10.23.2.5*
 
 3. ARP投毒，向网关Ubuntu声称自己(攻击者)就是XP 
 
-    - arpspoof -i eth0 -t 10.23.2.5 10.23.2.4
+    *arpspoof -i eth0 -t 10.23.2.5 10.23.2.4*
 
  - Notification:攻击者需要保持投毒状态，因为一旦停止arpspoof，发生“clean up and re-arping”，将发送正确的目的物理地址。  
 
@@ -66,9 +65,9 @@ SSL原理:(待补充)
 https握手过程的证书校验环节就是为了识别证书的有效性唯一性等等，所以严格意义上来说https下不存在中间人攻击，存在中间人攻击的前提条件是没有严格的对证书进行校验，或者人为的信任伪造证书。
 
 - 存在中间人攻击原因：
-    -证书未校验
-    -部分校验
-    -证书链校验
+    - 证书未校验
+    - 部分校验
+    - 证书链校验
 
 * 参考链接：[浅析HTTPS中间人攻击与证书校验](www.evil0x.com/posts/26569.html)
 
