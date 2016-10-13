@@ -7,15 +7,17 @@
 - 域传输漏洞
 
 利用原理：
+
 1. 透明DNS代理技术 - ISP 可以拦截所有 DNS 查询请求(TCP/UDP端口53)，有效地迫使你使用他们的 DNS 服务器进行所有的 DNS 查找。
-2. 开启VPN，PAC模式在本地解析域名，将会暴露IP。解决问题的根本原则就是确保使用了 VPN 服务商提供的 DNS 服务器。以下解决方法有待考证，
+2. 开启VPN，PAC模式在本地解析域名，将会暴露IP。解决问题的根本原则就是确保使用了 VPN 服务商提供的 DNS 服务器。
 
-###以下解决方案有待考证：
 
-Windows 客户端的解决办法:
-1. 在连接到 VPN 之前,设置静态IP 地址
-2. 在连接之后, 禁用原先 DNS 设置 
-3. 断开后, 切换回 DHCP 必要时恢复原 DNS 服务器
+#####以下解决方案有待考证：
+
+Windows客户端的解决办法:
+1.在连接到 VPN 之前,设置静态IP 地址
+2.在连接之后, 禁用原先 DNS 设置 
+3.断开后, 切换回 DHCP 必要时恢复原 DNS 服务器
 
 - 解决方案1：VPN
      - 单层VPN不被视为隐匿上网。用户可以通过[dnsleaktest](https://www.dnsleaktest.com/)提供的在线检测是否存在DNS泄漏。
@@ -32,6 +34,7 @@ Windows 客户端的解决办法:
 * 参考链接：[http://libertosher.blogspot.com](https://www.dnsleaktest.com/)
 
 拓展：
+
 * DNS污染
 * DNS劫持
 
@@ -41,11 +44,17 @@ Windows 客户端的解决办法:
 示例：ARP投毒(双向)
 
 实际操作命令：
+
 1. 开启端口转发，（攻击者）允许本机像路由器那样转发数据包
+
 *echo 1 > /proc/sys/net/ip4v/ip_forward*
+
 2. ARP投毒，向主机XP声称自己(攻击者)就是网关Ubuntu 
+
 *arpspoof -i eth0 -t 10.23.2.4 10.23.2.5*
+
 3. ARP投毒，向网关Ubuntu声称自己(攻击者)就是XP 
+
 *arpspoof -i eth0 -t 10.23.2.5 10.23.2.4*
 
  - Notification:攻击者需要保持投毒状态，因为一旦停止arpspoof，发生“clean up and re-arping”，将发送正确的目的物理地址。  
@@ -64,6 +73,7 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 * 参考链接：[浅析HTTPS中间人攻击与证书校验](www.evil0x.com/posts/26569.html)
 
 攻击基本原理：
+
 1. 攻击者对目标客户端和网关发送ARP投毒攻击，污染它们的ARP缓存表。
 2. 客户端在浏览器中输入 "https://mail.google.com/" 的网址，浏览器会尝试和 "https://mail.google.com/" 的443端口建立SSL连接，但是因为客户端受到了ARP投毒攻击，原本发往网关的数据包被发往了攻击者的主机。
 3. 攻击者在本机使用iptables将接收到的443目的端口的数据包重定向到本机的IP地址。
@@ -104,6 +114,7 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 The penetration testing framework Metasploit includes support for WPAD via a new auxiliary module located at "auxiliary/server/wpad". This module, which is written by Efrain Torres, can be used to perform for man-in-the-middle (MITM) attacks by exploiting the features of WPAD. 
 
 Steps: 
+
 1. Update Metasploit to the latest version, which contains the WPAD module 
 2. Start Metasploit's command line tool msfconsole
 3. Spoof NetBIOS Name Service (NBNS) responses for "WPAD"
