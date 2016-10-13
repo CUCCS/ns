@@ -108,15 +108,14 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 
 案例（待分析）
 
-1. 针对NBNS - Metasploit利用WPAD漏洞
+1.针对NBNS - Metasploit利用WPAD漏洞
 
 The penetration testing framework Metasploit includes support for WPAD via a new auxiliary module located at "auxiliary/server/wpad". This module, which is written by Efrain Torres, can be used to perform for man-in-the-middle (MITM) attacks by exploiting the features of WPAD. 
 
-* 参考链接：[WPAD-Man-in-the-Middle](http://www.netresec.com/?page=Blog&month=2012-07&post=WPAD-Man-in-the-Middle)
+ * 参考链接：[WPAD-Man-in-the-Middle](http://www.netresec.com/?page=Blog&month=2012-07&post=WPAD-Man-in-the-Middle)
 
+2.Badtunnel
 
-2. Badtunnel
+3.针对DNS - WPAD Name Collision Flaw Allows MITM Attacks 
 
-
-3. 针对DNS - WPAD Name Collision Flaw Allows MITM Attacks 
-* 参考链接：[WPAD Name Collision Flaw Allows MITM Attacks](http://www.securityweek.com/wpad-name-collision-flaw-allows-mitm-attacks)
+ * 参考链接：[WPAD Name Collision Flaw Allows MITM Attacks](http://www.securityweek.com/wpad-name-collision-flaw-allows-mitm-attacks)
