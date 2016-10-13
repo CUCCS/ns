@@ -56,7 +56,7 @@ Windows客户端的解决办法:
 
     *arpspoof -i eth0 -t 10.23.2.5 10.23.2.4*
 
- - Notification:攻击者需要保持投毒状态，因为一旦停止arpspoof，发生“clean up and re-arping”，将发送正确的目的物理地址。  
+Notification: 攻击者需要“持续投毒”，因为一旦停止arpspoof，将发生“clean up and re-arping”，将发送正确的目的物理地址。  
 
 ##伪造SSL证书
 
