@@ -29,3 +29,16 @@ mil 	军事单位
 
 但是因特网成长的速度太快了，因此后来除了上述的六大类别之外，还有诸如 .asia, .info, .jobs (注1) 等领域名的开放。此外，为了让某些国家也能够有自己的最上层领域名，因此， 就有所谓的 ccTLD 了。
 (from: http://blog.csdn.net/garfielder007/article/details/50748819)
+
+
+有关bind配置；主从服务器搭建实验的参考：
+
+*多环境下主从服务器搭建实验：
+https://www.garron.me/en/go2linux/how-setup-dns-server-master-slave-bind.html
+http://www.devtrends.com/index.php/setting-up-a-simple-dns-server-with-bind9/
+
+*debian中bind9配置介绍：
+https://wiki.debian.org/Bind9
+
+*bind中文简介及简单教程
+http://www.linuxprobe.com/chapter-13.html?jimmo2574#131
