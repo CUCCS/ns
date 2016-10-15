@@ -1,18 +1,28 @@
+
 #HTTPS协议中间人攻击的可能性探究与实验
 
 ##DNS查询泄漏（经由DNS解析服务器）与MITM
 
 在某些情况下，即使连接到 VPN，操作系统仍然继续使用其默认的 DNS 服务器（比如在本地解析），导致DNS泄露。
 
+参考链接：[DNS leak - Wikipedia](https://en.wikipedia.org/wiki/DNS_leak) 
+
+该[漏洞](https://torrentfreak.com/huge-security-flaw-leaks-vpn-users-real-ip-addresses-150130/)允许远程网站使用[WebRTC](https://webrtc.org/)（网络实时通信）确定用户的真实IP地址，WebRTC内置于大多数Web浏览器中。据漏洞发现者Daniel Roesler([Github](https://github.com/diafygi/webrtc-ips))描述，因为WebRTC允许请求ISP的STUN服务器返回用户的公共和本地IP地址，从而能允许网站确定连接的大致位置。这一切，可以使用JavaScript实现。
+
+此外，STUN请求不是使用常规XMLHttpRequest过程创建的，因此不能在浏览器的控制台中查看，也不能由受欢迎的隐私插件（例如Ghostery或AdBlockPlus）阻止。
+
+参考链接：[How to See If Your VPN Is Leaking Your IP Address (and How to Stop It)](http://lifehacker.com/how-to-see-if-your-vpn-is-leaking-your-ip-address-and-1685180082)
+
+
 - 域传输漏洞
 
-利用原理：
+存在DNS泄露漏洞的主要场景：
 
 1. 透明DNS代理技术 - ISP 可以拦截所有 DNS 查询请求(TCP/UDP端口53)，有效地迫使你使用他们的 DNS 服务器进行所有的 DNS 查找。
 2. 开启VPN，PAC模式在本地解析域名，将会暴露IP。解决问题的根本原则就是确保使用了 VPN 服务商提供的 DNS 服务器。
 
 
-#####以下解决方案有待考证：
+###以下解决方案有待考证：
 
 Windows客户端的解决办法:
 
