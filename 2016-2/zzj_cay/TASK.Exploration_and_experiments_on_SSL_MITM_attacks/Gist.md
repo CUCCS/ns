@@ -43,16 +43,29 @@ DNS泄露和ARP欺骗则是此类攻击得以实现的前提，详情描述如�
 
 此外，STUN请求不是使用常规XMLHttpRequest过程创建的，因此不能在浏览器的控制台中查看，也不能由受欢迎的隐私插件（例如Ghostery或AdBlockPlus）阻止。
 
-参考链接：[How to See If Your VPN Is Leaking Your IP Address (and How to Stop It)](http://lifehacker.com/how-to-see-if-your-vpn-is-leaking-your-ip-address-and-1685180082)
+
+防御方法：
+
+1. 在浏览器中禁用WebRTC
+ 基于浏览器的应用程序需要使用麦克风和相机（例如某些聊天网站）或自动了解您的位置（例如美食送货网站），一旦禁用WebRTC,它们将停止工作。
+
+2. 在自己的路由器上配置VPN
+ 可以安装组件、对浏览器做出调整，但是每次安装或更新浏览器就需要重新来过。
+ 一劳永逸的方法就是在自己的路由器上配置VPN。
 
 
-- 域传输漏洞
+参考链接：
+* [How to See If Your VPN Is Leaking Your IP Address (and How to Stop It)](http://lifehacker.com/how-to-see-if-your-vpn-is-leaking-your-ip-address-and-1685180082)
+* [Prevent WebRTC from leaking local IP address](https://github.com/gorhill/uBlock/wiki/Prevent-WebRTC-from-leaking-local-IP-address)
+
 
 存在DNS泄露漏洞的主要场景：
 
 1. 透明DNS代理技术 - ISP 可以拦截所有 DNS 查询请求(TCP/UDP端口53)，有效地迫使你使用他们的 DNS 服务器进行所有的 DNS 查找。
 2. 开启VPN，PAC模式在本地解析域名，将会暴露IP。解决问题的根本原则就是确保使用了 VPN 服务商提供的 DNS 服务器。
 
+
+__域传输漏洞__
 
 ###以下解决方案有待考证：
 
