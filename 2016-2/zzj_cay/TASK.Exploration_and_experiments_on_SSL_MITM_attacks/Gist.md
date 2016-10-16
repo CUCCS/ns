@@ -1,5 +1,37 @@
-
 #HTTPS协议中间人攻击的可能性探究与实验
+
+回顾[2003年黑帽大会](https://www.blackhat.com/presentations/bh-europe-03/bh-europe-03-valleri.pdf)相关演讲内容，先来看看经典的中间人攻击(MITM):
+
+- MITM - Different attacks in different scenarios: 
+
+  - LOCAL AREA NETWORK: 
+
+    - ARP poisoning 
+    - DNS spoofing 
+    - STP mangling 
+    - Port stealing
+
+  - FROM LOCAL TO REMOTE (through a gateway): 
+
+    - ARP poisoning 
+    - DNS spoofing 
+    - DHCP spoofing 
+    - ICMP redirection 
+    - IRDP spoofing 
+    - route mangling 
+
+  - REMOTE: 
+
+    - DNS poisoning 
+    - traffic tunneling
+    - route mangling
+
+SSL/TLS机制的出现，使得上述中间人攻击得到有效的遏制。
+
+但安全对抗从未停止，MITM已经演化出针对SSL的中间人攻击。
+
+DNS泄露和ARP欺骗则是此类攻击得以实现的前提，详情描述如下：
+
 
 ##DNS查询泄漏（经由DNS解析服务器）与MITM
 
@@ -25,6 +57,7 @@
 ###以下解决方案有待考证：
 
 Windows客户端的解决办法:
+
 
 1. 在连接到 VPN 之前,设置静态IP 地址
 2. 在连接之后, 禁用原先 DNS 设置 
@@ -57,6 +90,8 @@ Windows客户端的解决办法:
 
 
 ##ARP欺骗与MITM
+
+最初，攻击者只要将网卡设为混杂模式，伪装成代理服务器监听特定的流量就可以实现攻击，这是因为很多通信协议都是以明文来进行传输的，如HTTP、FTP、Telnet等。后来，随着交换机代替集线器，简单的嗅探攻击已经不能成功，必须先进行ARP欺骗才行。
 
 ###URL流量操作 
 
