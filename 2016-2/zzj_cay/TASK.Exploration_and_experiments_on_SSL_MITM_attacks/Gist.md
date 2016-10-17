@@ -134,6 +134,7 @@ Notification: 攻击者要“持续投毒”，因为一旦停止投毒，将发
 
     *echo 1 > /proc/sys/net/ipv4/ip_forward*
 
+
 2. 启动Arpspoof工具注入流量到默认网络。例如，默认网关地址为10.32.2.1。执行命令如下：
 
     *arpspoof -i eth0 10.23.2.1*
@@ -159,7 +160,7 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
     - 部分校验
     - 证书链校验
 
-* 参考链接：[浅析HTTPS中间人攻击与证书校验](www.evil0x.com/posts/26569.html)
+* 参考链接：[浅析HTTPS中间人攻击与证书校验](www.evil0x.com/posts/26569.html)      
 
 攻击基本原理：
 
@@ -171,7 +172,10 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 6. 中间人攻击者在双向的SSL Socket通信都建立完成后，对两边的socket进行数据读写同步，将数据通道打通，使客户端的浏览器能够正常访问(受攻击者不会察觉到已经收到SSL中间人攻击)
 7. 在数据同步的同时，记录下明文数据，达到SSL中间人攻击的目的。
 
-* 参考链接：[中间人攻击(MITM)姿势总结](http://www.cnblogs.com/LittleHann/p/3735602.html)
+参考链接：
+
+* [中间人攻击(MITM)姿势总结](http://www.cnblogs.com/LittleHann/p/3735602.html)
+* [通过伪造CA证书，实现SSL中间人攻击](http://blog.sina.com.cn/s/blog_4a898cfb0100t8j7.html)
 
 
 针对SSL，中间人攻击只可能发生在SSL的前提条件被破坏的时候，以下是一些示例：
