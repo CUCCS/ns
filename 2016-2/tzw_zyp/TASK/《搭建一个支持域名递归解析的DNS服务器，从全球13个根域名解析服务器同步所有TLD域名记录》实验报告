@@ -1,0 +1,83 @@
+实验目的：搭建一个支持域名递归解析的DNS服务器，从全球13个根域名解析服务器同步所有TLD域名记录。
+
+实验思路：参考了网络上在虚拟机中搭建主从DNS服务器的实验思路，把需要同步域名记的DNS服务器当做主DNS服务器，本地DNS服务器作为从属DNS服务器，先使用两台Linux虚拟机验证了实验思路的可行性，然后再进行从全球13个根域名解析服务器同步所有TLD域名记录实验。
+
+实验环境：Linux kali-rolling两台分别作为 DNS_master(IP:1.2.3.4)  DNS_slave(IP:1.2.3.5)。
+
+实验前期准备：
+网络环境：搭建主从DNS服务器使用内部网络【实验一】   DNS1用NAT地址转换的方式与外网连通【实验二】
+DNS1、DNS2安装Bind（9.10.3-p4-debian）     root@kali#: apt-get install bind9
+
+实验一：
+1.使用DNS_master创建一个主域 linux10haha.com 
+更改此配置文件 named.conf.local，添加如下记录，允许从属DNS服务器同步主服务器的zone记录： 
+zone "linux10haha.com" IN {
+    type master;
+    file "linux10haha.com.zone";
+    allow-update { none; };
+    allow-transfer { 1.2.3.5; };   //允许IP为1.2.3.5的DNS_slave同步zone文件
+};
+然后在/etc/bind/创建一个zone文件linux10haha.zone，在此文件下添加如下内容：
+$ORIGIN .
+$TTL 86400      ; 1 day
+linux10.com            IN SOA  primary.server.com. your.email.address. (
+                            2010122801 ; serial
+                            7200       ; refresh (2 hous)
+                            7200       ; retry (2 hours)
+                            2419200    ; expire (5 weeks 6 days 16 hours)
+                            86400      ; minimum (1 day)
+                            )
+$TTL 14400      ; 4 hours
+                    NS      scz.alketech.com.
+                    NS      ns1.alketech.com.
+                    A       1.2.3.5 ; If you want to assign a server to your domain 
+                   MX      10      mx1 ; Your email server if you have any
+                   MX      20      mx2 ; Your secondary email server if you have one
+
+$ORIGIN linux10haha.com.
+www                     A       1.2.3.4 ; The IP of your web server if you want to have one.
+2.利用bind配置从属DNS服务器即DNS_slave，更改此配置文件 named.conf.local，添加如下记录：
+zone "linux10haha.com" {
+    type slave;
+    file "linux10haha.com.zone";
+    masters { 1.2.3.4; };
+    allow-transfer { none; };
+};
+3.对DNS_master和DNS_slave重启bind服务  root@kali#: s4
+4.
+5.udo /etc/init.d/bind9 restart
+** 这里重启服务为了使配置生效
+6.对配置进行测试，验证实验。
+root@kali#:  dig @1.2.3.4 linux10haha.com
+
+root@kali#:  dig @127.0.0.1 linux10haha.com
+
+由上实验可验证实验思路是正确的，可以用此法实现同步全球13个根域名解析服务器的域名记录。下面实验进行实际操作。
+
+
+实验二：
+1.清除之前的设置，把上实验的DNS_master作为十三个根域名解析服务器的从属服务器，D以下称为DNS_S，把DNS_slave当做普通的访问主机，以下称为user。
+2.依照上图的原理，修改DNS_S的配置文件 named.conf.local，添加如下记录：
+zone "." {
+           type slave;
+           file "/etc/bind/slaves/rootzone.db";
+           notify no;
+           masters {
+               192.228.79.201; # b.root-servers.net
+               192.33.4.12;    # c.root-servers.net
+               192.5.5.241;    # f.root-servers.net
+               192.112.36.4;   # g.root-servers.net
+               193.0.14.129;   # k.root-servers.net
+               192.0.47.132;   # xfr.cjr.dns.icann.org
+               192.0.32.132;   # xfr.lax.dns.icann.org
+               2001:500:84::b; # b.root-servers.net
+               2001:500:2f::f; # f.root-servers.net
+               2001:7fd::1;    # k.root-servers.net
+               2620:0:2830:202::132;  # xfr.cjr.dns.icann.org
+               2620:0:2d0:202::132;  # xfr.lax.dns.icann.org
+           };
+       };
+3.重启服务之后，可以在此路径/etc/bind/slaves/下找到同步下来的文件rootzone.db。
+4.用user来进行测试，user和DNS_S可以连通，同时双方可以连接外网，且user的默认DNS服务器设置为DNS_S，DNS_S的DNS服务器设置为自身。让user通过DNS_S进行递归查询，失败！！！！
+
+
