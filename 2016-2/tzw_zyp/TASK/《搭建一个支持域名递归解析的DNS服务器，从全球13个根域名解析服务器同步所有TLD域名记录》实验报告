@@ -77,6 +77,7 @@ zone "." {
                2620:0:2d0:202::132;  # xfr.lax.dns.icann.org
            };
        };
+  除此之外，为了说明访问并不是因为bind本身的递归服务，而是从搭建的DNS_ S中获得，我们注释掉了named.conf.default-zones中bind本身进行默认的递归服务语句。
 3.重启服务之后，可以在此路径/etc/bind/slaves/下找到同步下来的文件rootzone.db。
 4.用user来进行测试，user和DNS_S可以连通，同时双方可以连接外网，且user的默认DNS服务器设置为DNS_S，DNS_S的DNS服务器设置为自身。让user通过DNS_S进行递归查询，失败！！！！
 
