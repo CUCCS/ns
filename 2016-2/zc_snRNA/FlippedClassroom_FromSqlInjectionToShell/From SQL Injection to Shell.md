@@ -71,7 +71,25 @@ http://localhost/cat.php?id=1%20union%20select%201,version%28%29,3,4
 **上传webshell和执行代码获取管理员权限**  
 webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门。黑客在入侵了一个网站后，通常会将asp或php后门文件与网站服务器WEB目录下正常的网页文件混在一起，然后就可以使用浏览器来访问asp或者php后门，得到一个命令执行环境，以达到控制网站服务器的目的  
 - 用账号密码登陆网站，找到上传文件位置，上传一个 php 脚本  
-![](image/12.jpg)
+![](image/12.jpg)  
+![](image/13.jpg)  
+![](image/14.jpg)  
+我们可以看到这个脚本没有在服务器上正确上传。应用防止文件扩展名.PHP上传。然而，我们可以尝试：  
+- .PHP3这将绕过简单的.php过滤器  
+- .php.test这将绕过简单的.php过滤器，但Apache仍会将它视作.php文件，因为配置中没有对于.test文件的处理器。  
+![](image/15.jpg)  
+修改后可以成功上传  
+打开上传的图片，通过查看该页面的源代码，得到图片的URL  
+![](image/16.jpg)  
+访问http://localhost/admin/uploads/shell.php3?cmd=uname将运行在操作系统的命令信息并返回当前的内核（Linux）  
+![](image/17.jpg)  
+其他命令可以用来检索更多的信息：  
+cat /etc/passwd 来得到系统的完整的用户列表  
+![](image/18.jpg) 
+uname -a 获取当前的内核版本  
+![](image/19.jpg)
+ls 获取当前目录的内容  
+![](image/20.jpg)
 ###参考资料  
 1. [pentesterlab course](https://pentesterlab.com/exercises/from_sqli_to_shell/course)  
 2. [WIKIPEDIA SQL injection](https://en.wikipedia.org/wiki/SQL_injection)
