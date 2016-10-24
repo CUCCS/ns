@@ -90,15 +90,31 @@ uname -a 获取当前的内核版本
 ![](image/19.jpg)
 ls 获取当前目录的内容  
 ![](image/20.jpg)
-###参考资料  
+### 参考资料  
 1. [pentesterlab course](https://pentesterlab.com/exercises/from_sqli_to_shell/course)  
 2. [WIKIPEDIA SQL injection](https://en.wikipedia.org/wiki/SQL_injection)
 3. [百度百科 SQL注入攻击](http://baike.baidu.com/view/983303.htm)
 4. [各种博客](http://www.myhack58.com/Article/html/3/7/2014/44097.htm)  
-###试验中出现的问题
+
+### 试验中出现的问题  
+
 当宿主机出于不能无网络连接时，用虚拟机打开网站端系统，设置中如果选择‘桥接网卡’则无法在宿主机上通过http://localhost/查找到页面，但是通过NAT模式，仅主机（Host-Only）适配器模式则可以打开页面。  
-####原因：  
+#### 原因：  
 在桥接网卡模式下，虚拟出来的操作系统就像是局域网中的一台独立的主机，它可以访问网内任何一台机器。在此模式下，需要手工为虚拟系统配置IP地址、子网掩码、而且还要和宿主机出于同一网段，这样虚拟系统才能和宿主机器进行通信。 **虚拟机有独立的IP**  
  NAT(网络地址转换模式)，虚拟机借助NAT（网络地址转换）功能，通过宿主机所在的网络来访问公网。NAT模式下的虚拟系统的TCP/IP配置信息是由VMnet8(NAT)虚拟网络的DHCP服务器提供的，无法进行手工修改，因此虚拟系统无法和本局域网中的其他真是主机进行通信。虚拟机可以访问主机，但主机无法访问到虚拟机。**虚拟机没有自己独立的IP**  
 仅主机（Host-Only）适配器模式，用于在无需主机的物理网卡的情况下，创建一个网络，该网络中，只有宿主机和旗下的一些虚拟机。虚拟机和主机之间，就像中间连接了一个物理上的网卡交换机Switch一样，是可以互相通讯的。  
+  
+## 盲注  
+### 为什么叫盲注  
+与普通的注入不同的是，SQL盲注是一种通过向数据库请求真或假的问题然后根据回应来决定或判断答案的一种SQL注入式攻击。例如发现了SQL注入点，但应用只提供了一个通用的错误页面，或者说提供了正常的页面，但与我们取回的内容只有细小差异（部分可能不可见或不易观察），这些就属于SQL盲注。  
+### SQL盲注分类  
+- 基于内容  
+    *  "xxx.php?id=2 and 1=2" 
+    * If the content of the page that returns 'true' is different than that of the page that returns 'false', then the attacker is able to distinguish when the executed query returns true or false.  
+- 基于时间  
+    *  "xxx.php?id=1' waitfor delay '00:00:10'--"  (Microsoft SQL Server)  
+    * Mysql 常搭配 sleep()与benchmark()使用  
+    * 通过服务器响应的时间可以判断出语句成功或失败  
+**SQL盲注实质仍属于SQL注入，需要通过多次进行真假的询问来对内容进行逐字符的猜解**  
+
 
