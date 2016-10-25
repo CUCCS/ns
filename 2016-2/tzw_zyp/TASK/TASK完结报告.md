@@ -21,7 +21,9 @@
 >
 >>搭建主从DNS服务器使用***内部网络***【实验一】   
 >>DNS_master用***NAT地址转换***的方式与外网连通【实验二、实验三】
+>
 ***
+
 ### 实验一：
 >****实验步骤：****
 >
@@ -30,7 +32,7 @@
 >DNS\_master：在目录/etc/bind/中创建一个主域 linux10haha.com 更改此配置文件 named.conf.local，添加如下记录，允许从属DNS服务器同步主服务器的zone记录： 
 
 
-<pre><code>zone "linux10haha.com" IN {
+><pre><code>zone "linux10haha.com" IN {
     type master;
     file "linux10haha.com.zone";
     allow-update { none; };
@@ -40,7 +42,7 @@
 >
 DNS_master：/etc/bind/创建中一个zone文件linux10haha.zone，在此文件下添加如下内容：
 
-<pre><code>$ORIGIN .
+><pre><code>$ORIGIN .
 $TTL 86400      ; 1 day
 linux10.com            IN SOA  primary.server.com. your.email.address. (
                             2010122801 ; serial
@@ -55,14 +57,13 @@ $TTL 14400      ; 4 hours
                     A       10.1.1.2 ; If you want to assign a server to your domain 
                    MX      10      mx1 ; Your email server if you have any
                    MX      20      mx2 ; Your secondary email server if you have one
-
 $ORIGIN linux10haha.com.
 www                     A       1.2.3.4 ; The IP of your web server if you want to have one.</code></pre>
 
 >**STEP 3:**
 
 >DNS\_slave：配置从属DNS服务器即DNS_slave，更改此配置文件 named.conf.local，添加如下记录：
-<pre><code>zone "linux10haha.com" {
+><pre><code>zone "linux10haha.com" {
     type slave;
     file "linux10haha.com.zone";
     masters { 1.2.3.4; };
@@ -75,9 +76,9 @@ www                     A       1.2.3.4 ; The IP of your web server if you want 
 >对DNS_master和DNS_slave重启bind服务，并验证配置是否生效  
 ><pre><code>root@kali#: sudo /etc/init.d/bind9 restart</code></pre>
 ><pre><code>root@kali#:  dig @1.2.3.4 linux10haha.com</code></pre>
->![](images/1.jpg)
+>![](images/1.JPG)
 ><pre><code>root@kali#:  dig @127.0.0.1 linux10haha.com</code></pre>
->![](images/005.png)
+>![](images/image005.png)
 
 
 >****实验结论:****
@@ -95,7 +96,7 @@ www                     A       1.2.3.4 ; The IP of your web server if you want 
 >**STEP 2:**
 >
 >修改DNS\_master为实验平台，修改文件 named.conf.local，添加如下记录：
-<pre><code>zone "." {
+><pre><code>zone "." {
            type slave;
            file "/etc/bind/slaves/rootzone.db2";
            notify no;
@@ -156,7 +157,7 @@ www                     A       1.2.3.4 ; The IP of your web server if you want 
 >**STEP 1:**
 >
 >将以下配置添加至DNS\_master的named.conf.local文件中
-<pre><code>view root {
+><pre><code>view root {
        match-destinations { 127.0.0.1; };
        zone "." {
            type slave;
@@ -178,7 +179,6 @@ www                     A       1.2.3.4 ; The IP of your web server if you want 
            };
        };
    };
-
 view recursive {
     dnssec-validation auto;
     allow-recursion { any; };
@@ -247,16 +247,24 @@ view recursive {
 
 ***
 ### 参考：
-【1】NAME:  《Decreasing Access Time to Root Servers by Running One on Loopback》	
-	 WRITERS:   W. Kumari  P. Hoffman
-	 LINK:   https://tools.ietf.org/html/rfc7706
-【2】LINK:   https://en.wikipedia.org/wiki/Root_name_server
-【3】LINK:   https://en.wikipedia.org/wiki/Domain_Name_System
-【4】LINK:   https://wiki.debian.org/Bind9
-【5】NAME:  《How to setup a DNS server master - slave with BIND》	
-	 WRITERS:   Guillermo Garron
-	 LINK:  https://www.garron.me/en/go2linux/how-setup-dns-server-master-slave-bind.html
-【6】NAME:  《第13章 使用Bind提供域名解析服务》	
-	 LINK:  http://www.linuxprobe.com/chapter-13.html?jimmo2574#131
-
-
+>【1】NAME:《Decreasing Access Time to Root Servers by Running One on Loopback》
+>
+>>WRITERS:   W. Kumari  P. Hoffman
+>
+>>LINK:   <https://tools.ietf.org/html/rfc7706>
+>
+>【2】LINK:   <https://en.wikipedia.org/wiki/Root_name_server>
+>
+>【3】LINK:   <https://en.wikipedia.org/wiki/Domain_Name_System>
+>
+>【4】LINK:   <https://wiki.debian.org/Bind9>
+>
+>【5】NAME:  《How to setup a DNS server master - slave with BIND》	
+>
+>>WRITERS:   Guillermo Garron
+>
+>>LINK:  <https://www.garron.me/en/go2linux/how-setup-dns-server-master-slave-bind.html>
+>
+>【6】NAME:《第13章 使用Bind提供域名解析服务》	
+>
+>>LINK:  <http://www.linuxprobe.com/chapter-13.html?jimmo2574#131>
