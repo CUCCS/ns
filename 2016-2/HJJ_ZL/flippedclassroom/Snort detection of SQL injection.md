@@ -12,10 +12,10 @@
 ##实验过程##
 - snort的嗅探模式：
 该模式下，可以解码捕获到的报文后输出到标准输出到控制台上，功能与tcpdump、wireshark类似
-
+![](image/1.PNG)
 - 实际上snort并没有自己的捕包工具，它需要一个外部的捕包程序库：libpcap。它利用libpcap独立地从物理链路上进行捕包
 - snort的报文记录模式：该模式下，snort可以将捕获到的报文保存下来，用wireshark等工具进行后续分析
- 
+![](image/2.PNG)![](image/3.PNG)
 ##实验中遇到的问题##
 - 嗅探和报文记录模式下出现“No preprocessors configured for policy 0”警告”：其原因是没有加载预处理器，解决方法是应用snort规则
 
