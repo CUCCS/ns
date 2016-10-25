@@ -26,7 +26,6 @@
 
 ## 3. 实验：搭建DNS解析服务器，演示导致DNS域传送漏洞的配置，修复错误配置
 * 搭建DNS服务器
-* DNS字典
 	
 	 [参考链接：[5]https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-caching-or-forwarding-dns-server-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-caching-or-forwarding-dns-server-on-ubuntu-14-04) 
 * 添加自定义DNS域信息
