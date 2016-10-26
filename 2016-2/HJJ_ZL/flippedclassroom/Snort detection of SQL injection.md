@@ -19,8 +19,11 @@
 ![](image/3.PNG)
 
 - snort的NIDS模式：这个模式为本次试验的主要工作模式，其探测入侵的方式是通过对嗅探到的数据包与规则链表进行查询匹配，如果有匹配的规则，则进行丢包或者报警
+![](image/6.PNG)
 - 进入snort默认的规则目录 /etc/snort/rules,这个目录下可以看到snort自带的规则
+![](image/5.PNG)
 - 先应用snort自带规则进行试验（因为只是单纯的ping所以不会有警告）
+![](image/7.PNG)
 - 为了检测sql注入需要新建一个自定义规则 vim myrule.rules 
 - 本次试验的自定义规则有:
 - alert tcp any any -> any 80 (msg:"SQL Injection 1";flow:to_server,established;uricontent:".php";pcre:"/(\%27)|(\')|(\-\-)|(%23)|(#)/i";classtype:Web-application-attack;sid:9099;rev:5;)
