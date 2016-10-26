@@ -14,21 +14,29 @@
 	
 		[参考链接：[3]https://linux.die.net/man/1/dig](https://linux.die.net/man/1/dig) 
 	* 实验：
-		1. dig 域名 ：获取解析其域名的DNS域名服务器
-		2. dig @DNS域名服务器 域 axfr：查看域数据传输
+		1. 	获取解析其域名的DNS域名服务器
+		
+			> dig example.com 
+		2. 查看域数据传输
+		
+			> dig @ns1.example.com example.com axfr
 * host command
 	*  host命令相对dig提供的一些不必要的信息来说更简洁快速<sup>[4]</sup>
 	
 		[参考链接：[4]http://kumu-linux.github.io/blog/2013/06/19/nslookup-dig-host/](http://kumu-linux.github.io/blog/2013/06/19/nslookup-dig-host/) 
 	*  实验：
-		1. host -t ns 域名 ：获取解析其域名的DNS域名服务器
-		2. host -l 域名 DNS域名服务器 ：查看域数据传输
+		1. 获取解析其域名的DNS域名服务器
+		
+			> host -t ns example.com
+		2. 查看域数据传输
+
+			> host -l example.com ns1.example.com
 
 ## 3. 实验：搭建DNS解析服务器，演示导致DNS域传送漏洞的配置，修复错误配置
-* 搭建DNS服务器
+* 搭建DNS服务器<sup>[5]</sup>
 	
 	 [参考链接：[5]https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-caching-or-forwarding-dns-server-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-caching-or-forwarding-dns-server-on-ubuntu-14-04) 
-* 添加自定义DNS域信息
+* 添加自定义DNS域信息<sup>[6]</sup>
 	
 	 [参考链接：[6]https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-an-authoritative-only-dns-server-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-an-authoritative-only-dns-server-on-ubuntu-14-04) 
 * 导致DNS域传送漏洞的配置
@@ -45,3 +53,9 @@
 		> dnsmap cuc.edu.cn -w /usr/share/dnsenum/dns.txt
 	3. fierce：利用fierce自带的字典爆破
 		> fierce -dnsserver 8.8.8.8 -dns cuc.edu.cn -wordlist /usr/share/fierce/hosts.txt
+* 搜索引擎查询
+	> site:163.com
+* 爬虫爬取页面提取子域名
+* 通过 HTTPS 证书搜集
+	 
+	参考链接：[7]FreeBuf公众号 《子域名搜集思路与技巧梳理》
