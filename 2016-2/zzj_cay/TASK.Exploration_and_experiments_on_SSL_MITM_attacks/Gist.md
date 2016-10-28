@@ -26,68 +26,48 @@
     - traffic tunneling
     - route mangling
 
+
 SSL/TLS机制的出现，使得上述中间人攻击得到有效的遏制。
-
 但安全对抗从未停止，MITM已经演化出针对SSL的中间人攻击。
+DNS泄露和ARP欺骗则是实现此类攻击的前提，即获知请求发送者的IP地址。
+此外，还提供了其他获取IP的方法，供参考。
 
-DNS泄露和ARP欺骗则是此类攻击得以实现的前提，详情描述如下：
+详情描述如下：
 
 
 ##DNS查询泄漏（经由DNS解析服务器）与MITM
 
 在某些情况下，即使连接到 VPN，操作系统仍然继续使用其默认的 DNS 服务器（比如在本地解析），导致DNS泄露。
 
-参考链接：[DNS leak - Wikipedia](https://en.wikipedia.org/wiki/DNS_leak) 
+Click it. -> [DNS泄露在线测试](https://www.dnsleaktest.com/) 
 
-该[漏洞](https://torrentfreak.com/huge-security-flaw-leaks-vpn-users-real-ip-addresses-150130/)允许远程网站使用[WebRTC](https://webrtc.org/)（网络实时通信）确定用户的真实IP地址，WebRTC内置于大多数Web浏览器中。据漏洞发现者Daniel Roesler([Github](https://github.com/diafygi/webrtc-ips))描述，因为WebRTC允许请求ISP的STUN服务器返回用户的公共和本地IP地址，从而能允许网站确定连接的大致位置。这一切，可以使用JavaScript实现。
+DNS查询泄露漏洞存在的主要场景及其解决方案：
 
-此外，STUN请求不是使用常规XMLHttpRequest过程创建的，因此不能在浏览器的控制台中查看，也不能由受欢迎的隐私插件（例如Ghostery或AdBlockPlus）阻止。
+1. ZoneTransfer域传送漏洞 - DNS服务器的主备数据同所使用的功能
 
+    详见tjy组翻转课堂。
 
-防御方法：
+2. 互联网服务提供商(ISP)给虚拟专用网络(VPN)用户挖坑
 
-1. 在浏览器中禁用WebRTC
- 基于浏览器的应用程序需要使用麦克风和相机（例如某些聊天网站）或自动了解您的位置（例如美食送货网站），一旦禁用WebRTC,它们将停止工作。
+    通常情况下，DNS服务器由ISP提供。与此同时，ISP使用透明DNS代理技术，拦截所有DNS查询请求(TCP/UDP端口53)，有效地迫使用户使用他们的 DNS 服务器进行所有的 DNS 查找。这意味着他们可以监控、记录任何该用户发送到服务器的请求。
+    
+    为了躲避这种监控，用户使用VPN，DNS请求本应该通过VPN被定向到一个匿名的DNS服务器，防止ISP监视此次网络连接。不幸的是，有时用户的浏览器会忽视打开的VPN，并会直接发送DNS请求到ISP。这就是一个DNS泄漏。这会导致用户认为自己实现了匿名通信，但事实上通信数据并不会得到保护。
+    
+    另外一种类似的情况是，VPN用户开启PAC模式，而非全局模式。这种情况下，浏览器需要先发送DNS请求到本地DNS服务器，即ISP提供的DNS服务器，然后再判断是否通过VPN进行通信。
+    
+    * 针对VPN的解决方案：
+    
+    1. 使用 VPN 服务商提供的 DNS 服务器，包括使用DNSCrypt加密DNS传输。防止原生ISP或者hacker截获DNS查询请求。
+    2. 更改默认的DNS服务器。
+    3. 使用带有DNS泄漏保护功能的VPN。
+    4. 使用VPN监控软件，某些VPN监控软件还可以修复DNS泄漏。 
+    5. 禁用Teredo，IPv4和IPv6之间的转换可能会引起DNS泄漏。
 
-2. 在自己的路由器上配置VPN
- 可以安装组件、对浏览器做出调整，但是每次安装或更新浏览器就需要重新来过。
- 一劳永逸的方法就是在自己的路由器上配置VPN。
+* 参考链接：[当DNS泄漏让VPN不再安全，我们该怎么办？](http://www.freebuf.com/articles/network/67591.html) 
 
+__DNS查询泄露造成的后果__
+泄露域名服务器的IP地址或者关联网址，为hacker实现DNS spoofing制造机会。也就是说当hacker悉知网络层的通信规则，就可以从链路层进行中间人攻击。
 
-参考链接：
-* [How to See If Your VPN Is Leaking Your IP Address (and How to Stop It)](http://lifehacker.com/how-to-see-if-your-vpn-is-leaking-your-ip-address-and-1685180082)
-* [Prevent WebRTC from leaking local IP address](https://github.com/gorhill/uBlock/wiki/Prevent-WebRTC-from-leaking-local-IP-address)
-
-
-存在DNS泄露漏洞的主要场景：
-
-1. 透明DNS代理技术 - ISP 可以拦截所有 DNS 查询请求(TCP/UDP端口53)，有效地迫使你使用他们的 DNS 服务器进行所有的 DNS 查找。
-2. 开启VPN，PAC模式在本地解析域名，将会暴露IP。解决问题的根本原则就是确保使用了 VPN 服务商提供的 DNS 服务器。
-
-
-__域传输漏洞__
-
-###以下解决方案有待考证：
-
-Windows客户端的解决办法:
-
-
-1. 在连接到 VPN 之前,设置静态IP 地址
-2. 在连接之后, 禁用原先 DNS 设置 
-3. 断开后, 切换回 DHCP 必要时恢复原 DNS 服务器
-
-- 解决方案1：VPN
-    - 单层VPN不被视为隐匿上网。用户可以通过[dnsleaktest](https://www.dnsleaktest.com/)提供的在线检测是否存在DNS泄漏。
- 
-- 解决方案2：隐匿上网
-    - 若对隐匿性有一定要求，不推荐使用单层VPN。为增强隐匿性和安全性，往往使用虚拟机+多层代理的组合。
-    - 更多内容可参考编程随想博客《如何隐藏你的踪迹》
-- 解决方案3：使用DNSCrypt加密DNS传输   
-    - DNSCrypt是OpenDNS发布的，旨在确保客户端与DNS服务器传输安全的工具，基于DNSCurve发展而来。
-    - 使用该软件后，DNS通讯采用加密传输，能在相当程度上，既防止泄漏，又防止劫持，可用于保护DNS通信。
-    - DNSCrypt是开源项目，已经支持Windows，Linux，iOS和Android等多个平台，是避免DNS泄漏与劫持的利器。
-
-* 参考链接：[http://libertosher.blogspot.com](https://www.dnsleaktest.com/)
 
 拓展：
 
@@ -106,25 +86,25 @@ Windows客户端的解决办法:
 
 最初，攻击者只要将网卡设为混杂模式，伪装成代理服务器监听特定的流量就可以实现攻击，这是因为很多通信协议都是以明文来进行传输的，如HTTP、FTP、Telnet等。后来，随着交换机代替集线器，简单的嗅探攻击已经不能成功，必须先进行ARP欺骗才行。
 
-###URL流量操作 
+__URL流量操作__ 
 
 实际操作命令：
 
 1. 开启端口转发，（攻击者）允许本机像路由器那样转发数据包
 
-   *echo 1 > /proc/sys/net/ipv4/ip_forward*
+   > echo 1 > /proc/sys/net/ipv4/ip_forward
 
 2. ARP投毒，向主机XP声称自己(攻击者)就是网关Ubuntu 
 
-    *arpspoof -i eth0 -t 10.23.2.4 10.23.2.5*
+    > arpspoof -i eth0 -t 10.23.2.4 10.23.2.5
 
 3. ARP投毒，向网关Ubuntu声称自己(攻击者)就是XP 
 
-    *arpspoof -i eth0 -t 10.23.2.5 10.23.2.4*
+    > arpspoof -i eth0 -t 10.23.2.5 10.23.2.4
 
-Notification: 攻击者要“持续投毒”，因为一旦停止投毒，将发生“clean up and re-arping”，将发送正确的目的物理地址。  
+* 注意: 当hacker停止投毒时，arpspoof将进行“clean up and re-arping”，发送正确的目的物理地址。  
 
-###端口重定向攻击
+__端口重定向攻击__
 
 端口重定向接收到一个端口数据包的过程（如80端口），并且重定向它的流量到不同的端口（如8080）。实现这类型攻击的好处就是可以无止境的，因为可以随着它重定向安全的端口到未加密端口，重定向流量到指定设备的一个特定端口上。
 
@@ -132,21 +112,22 @@ Notification: 攻击者要“持续投毒”，因为一旦停止投毒，将发
 
 1. 开启路由转发攻击。执行命令如下所示：
 
-    *echo 1 > /proc/sys/net/ipv4/ip_forward*
+    > echo 1 > /proc/sys/net/ipv4/ip_forward
 
 
 2. 启动Arpspoof工具注入流量到默认网络。例如，默认网关地址为10.32.2.1。执行命令如下：
 
-    *arpspoof -i eth0 10.23.2.1*
+    > arpspoof -i eth0 10.23.2.1
 
 
 3. 添加一条端口重定向的防火墙规则。执行命令如下所示：
-
-    *iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080*
+ 
+    > iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
 
 * 执行以上命令后，没有任何输出。
 
 以上设置成功后，当用户向网关10.23.2.1的80端口发送请求时，将会被转发为8080端口发送到攻击者主机上。
+
 
 
 ##伪造SSL证书
@@ -215,3 +196,9 @@ The penetration testing framework Metasploit includes support for WPAD via a new
 3.针对DNS - WPAD Name Collision Flaw Allows MITM Attacks 
 
  * 参考链接：[WPAD Name Collision Flaw Allows MITM Attacks](http://www.securityweek.com/wpad-name-collision-flaw-allows-mitm-attacks)
+
+
+
+More>> [Crippling HTTPS with unholy PAC](https://www.blackhat.com/docs/us-16/materials/us-16-Kotler-Crippling-HTTPS-With-Unholy-PAC.pdf)
+
+
