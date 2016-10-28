@@ -19,7 +19,6 @@
     - ICMP redirection 
     - IRDP spoofing 
     - route mangling 
-
   - REMOTE: 
 
     - DNS poisoning 
@@ -28,14 +27,13 @@
 
 
 SSL/TLS机制的出现，使得上述中间人攻击得到有效的遏制。
-但安全对抗从未停止，MITM已经演化出针对SSL的中间人攻击。
-DNS泄露和ARP欺骗则是实现此类攻击的前提，即获知请求发送者的IP地址。
+但安全对抗从未停止，MITM已经演化出针对SSL的中间人攻击。DNS泄露和ARP欺骗则是实现此类攻击的前提，即获知请求发送者的IP地址。
 此外，还提供了其他获取IP的方法，供参考。
 
 详情描述如下：
 
 
-##DNS查询泄漏（经由DNS解析服务器）与MITM
+###DNS查询泄漏（经由DNS解析服务器）与MITM
 
 在某些情况下，即使连接到 VPN，操作系统仍然继续使用其默认的 DNS 服务器（比如在本地解析），导致DNS泄露。
 
@@ -57,19 +55,18 @@ DNS查询泄露漏洞存在的主要场景及其解决方案：
     
     * 针对VPN的解决方案：
     
-    1. 使用 VPN 服务商提供的 DNS 服务器，包括使用DNSCrypt加密DNS传输。防止原生ISP或者hacker截获DNS查询请求。
-    2. 更改默认的DNS服务器。
-    3. 使用带有DNS泄漏保护功能的VPN。
-    4. 使用VPN监控软件，某些VPN监控软件还可以修复DNS泄漏。 
-    5. 禁用Teredo，IPv4和IPv6之间的转换可能会引起DNS泄漏。
+      * 使用 VPN 服务商提供的 DNS 服务器，包括使用DNSCrypt加密DNS传输。防止原生ISP或者hacker截获DNS查询请求。
+      * 更改默认的DNS服务器。
+      * 使用带有DNS泄漏保护功能的VPN。
+      * 使用VPN监控软件，某些VPN监控软件还可以修复DNS泄漏。 
+      * 禁用Teredo，IPv4和IPv6之间的转换可能会引起DNS泄漏。
 
 * 参考链接：[当DNS泄漏让VPN不再安全，我们该怎么办？](http://www.freebuf.com/articles/network/67591.html) 
 
 __DNS查询泄露造成的后果__
 泄露域名服务器的IP地址或者关联网址，为hacker实现DNS spoofing制造机会。也就是说当hacker悉知网络层的通信规则，就可以从链路层进行中间人攻击。
 
-
-拓展：
+相关知识拓展：
 
 * DNS污染
 
@@ -82,7 +79,9 @@ __DNS查询泄露造成的后果__
   - 访问Youtube、Facebook之类网站等出现的状况。
 
 
-##ARP欺骗与MITM
+More>> [Crippling HTTPS with unholy PAC](https://www.blackhat.com/docs/us-16/materials/us-16-Kotler-Crippling-HTTPS-With-Unholy-PAC.pdf)
+
+###ARP欺骗与MITM
 
 最初，攻击者只要将网卡设为混杂模式，伪装成代理服务器监听特定的流量就可以实现攻击，这是因为很多通信协议都是以明文来进行传输的，如HTTP、FTP、Telnet等。后来，随着交换机代替集线器，简单的嗅探攻击已经不能成功，必须先进行ARP欺骗才行。
 
@@ -129,8 +128,7 @@ __端口重定向攻击__
 以上设置成功后，当用户向网关10.23.2.1的80端口发送请求时，将会被转发为8080端口发送到攻击者主机上。
 
 
-
-##伪造SSL证书
+##针对SSL协议的中间人攻击
 
 SSL原理:(待补充)
 
@@ -142,6 +140,20 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
     - 证书链校验
 
 * 参考链接：[浅析HTTPS中间人攻击与证书校验](www.evil0x.com/posts/26569.html)      
+
+针对SSL，中间人攻击只可能发生在SSL的前提条件被破坏的时候，以下是一些示例：
+
+1. 服务器私钥被盗取 - 意味着攻击者能够冒充服务器，而客户端并不知情。
+2. 客户端置信于不可靠的CA（或者主密钥被盗取）- 无论谁获取了真实、可信的CA的私钥，他都可以生成证书从而冒充服务器，骗取客户端的信任。这就意味着，当服务器证书更换为另一个合法证书，浏览器并不会告知客户这件“小”事。
+3. 客户端不与可信CA确认合法证书列表，这样一来，偷盗证书就可能合法化攻击者的身份。
+4. 客户端被攻击，假CA被写入客户的可信CA列表。假冒的CA可以为不可信的服务器签名。
+
+* 参考链接：[Answer: SSL and man-in-the-middle misunderstanding - Stack Overflow](http://stackoverflow.com/questions/14907581/ssl-and-man-in-the-middle-misunderstanding)
+
+
+
+###伪造SSL证书
+
 
 攻击基本原理：
 
@@ -158,25 +170,38 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 * [中间人攻击(MITM)姿势总结](http://www.cnblogs.com/LittleHann/p/3735602.html)
 * [通过伪造CA证书，实现SSL中间人攻击](http://blog.sina.com.cn/s/blog_4a898cfb0100t8j7.html)
 
+__Reserved for code__
 
-针对SSL，中间人攻击只可能发生在SSL的前提条件被破坏的时候，以下是一些示例：
+###SSLstrip
 
-1. 服务器私钥被盗取 - 意味着攻击者能够冒充服务器，而客户端并不知情。
-2. 客户端置信于不可靠的CA（或者主密钥被盗取）- 无论谁获取了真实、可信的CA的私钥，他都可以生成证书从而冒充服务器，骗取客户端的信任。这就意味着，当服务器证书更换为另一个合法证书，浏览器并不会告知客户这件“小”事。
-3. 客户端不与可信CA确认合法证书列表，这样一来，偷盗证书就可能合法化攻击者的身份。
-4. 客户端被攻击，假CA被写入客户的可信CA列表。假冒的CA可以为不可信的服务器签名。
+[New Tricks For Defeating SSL In Practice](https://www.blackhat.com/presentations/bh-dc-09/Marlinspike/BlackHat-DC-09-Marlinspike-Defeating-SSL.pdf) by [Moxie Marlinspike](https://moxie.org/) (2009) 
 
-* 参考链接：[Answer: SSL and man-in-the-middle misunderstanding - Stack Overflow](http://stackoverflow.com/questions/14907581/ssl-and-man-in-the-middle-misunderstanding)
+SSL剥离的实施方法是阻止浏览器与服务器建立HTTPS连接。
 
-- HSTS
+它的前提是用户很少直接在地址栏输入https://，用户总是通过点击链接或3xx重定向，从HTTP页面进入HTTPS页面。所以攻击者可以在用户访问HTTP页面时替换所有https://开头的链接为http://，达到阻止HTTPS的目的。
 
-##合法证书签名
+HSTS很大程度上解决了上述两种针对SSL的中间人攻击。
+
+HSTS的作用是强制客户端（如浏览器）使用HTTPS与服务器建立连接。服务器开启HSTS的方法是，当客户端通过HTTPS发出请求时，在服务器返回的超文本传输协议响应头中包含Strict-Transport-Security字段。非加密传输时设置的HSTS字段无效。
+
+如果中间人hacker使用自己的自签名证书来进行攻击，浏览器会给出警告，但是许多用户会忽略警告。HSTS也解决了这一问题，一旦服务器发送了HSTS字段，用户将不再允许忽略警告。只要浏览器曾经与服务器建立过一次安全连接，之后浏览器会强制使用HTTPS，即使链接被换成了HTTP。
+
+__Reserved for code__
+
+### MITMf带你绕过HSTS
+
+[Bypassing HSTS (HTTP Strict Transport Security) with MITMf](https://sathisharthars.wordpress.com/2015/02/27/bypassing-hsts-http-strict-transport-security-with-mitmf/)
+
+__Reserved for code__
+
+###合法证书签名
 
 
 偷盗证书，为恶意软件签名
 
+__Reserved for code__
 
-##WPAD中间人劫持
+###WPAD中间人劫持
 
 网络代理自动发现协议（Web Proxy Autodiscovery Protocol），通过让浏览器自动发现代理服务器，定位代理配置文件，下载编译并运行，最终自动使用代理访问网络。
 
@@ -197,8 +222,5 @@ The penetration testing framework Metasploit includes support for WPAD via a new
 
  * 参考链接：[WPAD Name Collision Flaw Allows MITM Attacks](http://www.securityweek.com/wpad-name-collision-flaw-allows-mitm-attacks)
 
-
-
-More>> [Crippling HTTPS with unholy PAC](https://www.blackhat.com/docs/us-16/materials/us-16-Kotler-Crippling-HTTPS-With-Unholy-PAC.pdf)
 
 
