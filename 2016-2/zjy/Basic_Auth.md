@@ -13,11 +13,11 @@ HTTP服务器在每次收到请求包后，根据协议取得客户端附加的�
 
 - 缺点显而易见，即使是BASE64后也是可见的明文，很容易被破解、非法利用，安全性很差。另外，HTTP是无状态的，同一客户端每次都需要验证。
 
-[](http://www.ibm.com/developerworks/cn/webservices/1106_webservicessecurity/index.html)
+## Basic认证学习文档
+[http://www.ibm.com/developerworks/cn/webservices/1106_webservicessecurity/index.html](url)
 
-[](http://blog.itpub.net/23071790/viewspace-709367)
+[http://blog.itpub.net/23071790/viewspace-709367](url)
 
-[](http://www.cnblogs.com/parry/archive/2012/11/09/ASPNET_MVC_Web_API_HTTP_Basic_Authorize.html)
+[http://www.cnblogs.com/parry/archive/2012/11/09/ASPNET_MVC_Web_API_HTTP_Basic_Authorize.html](url)
 
-
-> 之后我将模拟一下basic认证过程
+> **之后我将模拟一下basic认证过程**
