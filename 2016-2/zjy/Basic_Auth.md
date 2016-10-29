@@ -5,7 +5,7 @@ HTTP 有两种标准的认证方式，BASIC 和 DIGEST。正如"Basic Authentica
 ## Basic认证基本实现方式
 客户端在用户输入用户名及密码后，将用户名及密码以**BASE64**加密，加密后的密文将附加于请求信息中，如当用户名为Parry，密码为123456时，客户端将用户名和密码**用":"合并**，并将合并后的字符串用BASE64加密，并于每次请求数据时，将密文附加于**请求头（Request Header）**中。
 HTTP服务器在每次收到请求包后，根据协议取得客户端附加的用户信息（BASE64加密的用户名和密码），解开请求包，对用户名及密码进行验证，如果用户名及密码正确，则根据客户端请求，返回客户端所需要的数据；否则，返回错误代码或重新要求客户端提供用户名及密码。
- 
+![Image text](https://github.com/Zhaojytt/ns/blob/master/2016-2/zjy/img_folder/basic_auth.jpg..png)
 
 ## Basic认证优缺点
 
