@@ -176,18 +176,14 @@ __实验过程__
 参考链接：[Burp Suite抓HTTPS数据包](http://blog.csdn.net/zyw_anquan/article/details/47904495)
 
 1. 设置firefox，手动配置代理
+Preferences -> Advanced -> Settings -> Manual proxy configuration
 
-   Preferences -> Advanced -> Settings -> Manual proxy configuration
-
-2. 运行BurpSuite,用firefox浏览器访问http://burp, 点击CA Certificate下载burp的内置证书。
+2. 运行BurpSuite,用firefox浏览器访问http://burp,点击CA Certificate下载burp的内置证书。
 
 3. 将证书导入Firefox，Burp Suite被视为可信任的根，成为用户浏览器访问HTTPS网站的代理，达到监视双方（客户端与服务器端）通信过程的目的。
 
-Q: 如何在一台机器上使用Burp Suite，从而监视另一台机器访问HTTPS网站？
+4. [How To: Use mitmproxy to read and modify HTTPS traffic](https://blog.heckel.xyz/2013/07/01/how-to-use-mitmproxy-to-read-and-modify-https-traffic-of-your-phone/#How-it-works)
 
-###SSLsniff
-
-Using a tool maded by [Moxie Marlinspike](https://moxie.org/). <-The man hacked the world! ( • ̀ω ⁃᷄)✧
 
 ###SSLstrip
 
@@ -221,6 +217,17 @@ __Reserved for code__
 [Bypassing HSTS (HTTP Strict Transport Security) with MITMf](https://sathisharthars.wordpress.com/2015/02/27/bypassing-hsts-http-strict-transport-security-with-mitmf/)
 
 __Reserved for code__
+
+###SSLsniff
+
+Using a tool maded by [Moxie Marlinspike](https://moxie.org/). <-The man hacked the world! ( • ̀ω ⁃᷄)✧
+
+It supports many kinds of attacks, such as the [Null Prefix Attacks](https://moxie.org/papers/null-prefix-attacks.pdf), the [OCSP attacks](https://moxie.org/papers/ocsp-attack.pdf) and something else.
+
+###SSLsplit - transparent SSL/TLS interception 
+[工具](https://github.com/droe/sslsplit)
+
+
 
 ###合法证书签名
 
