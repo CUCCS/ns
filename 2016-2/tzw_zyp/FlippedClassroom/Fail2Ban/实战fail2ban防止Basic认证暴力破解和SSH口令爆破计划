@@ -4,7 +4,7 @@
 HTTP的asic Authentication_基本认证机制。
 据 RFC2617 的规定，HTTP 有两种标准的认证方式，即，BASIC和DIGEST。HTTP Basic Authentication是指客户端必须使用用户名和密码在一个指定的域 (Realm) 中获取认证。它是 Authentication( 认证 ) 中最简单的方法。长期以来，这种认证方法被广泛的使用。当你通过 HTTP 协议去访问一个使用 Basic Authentication 保护的资源时，服务器通常会在 HTTP 请求的 Response 中加入一个"401 需要身份验证"的 Header，来通知客户提供用户凭证，以使用资源。
 基本流程：
-![](图片2.png)
+![](image01.jpg）
 Web services 客户端访问受限 Web services 服务流程：
 ![](图片1.png)
 来源：http://www.ibm.com/developerworks/cn/webservices/1106_webservicessecurity/index.html
