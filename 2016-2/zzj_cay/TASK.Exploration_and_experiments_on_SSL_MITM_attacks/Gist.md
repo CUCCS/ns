@@ -57,11 +57,11 @@ DNS查询泄露漏洞存在的主要场景及其解决方案：
     
     * 针对VPN的解决方案：
     
-    1. 使用 VPN 服务商提供的 DNS 服务器，包括使用DNSCrypt加密DNS传输。防止原生ISP或者hacker截获DNS查询请求。
-    2. 更改默认的DNS服务器。
-    3. 使用带有DNS泄漏保护功能的VPN。
-    4. 使用VPN监控软件，某些VPN监控软件还可以修复DNS泄漏。 
-    5. 禁用Teredo，IPv4和IPv6之间的转换可能会引起DNS泄漏。
+      *  使用 VPN 服务商提供的 DNS 服务器，包括使用DNSCrypt加密DNS传输。防止原生ISP或者hacker截获DNS查询请求。
+     * 更改默认的DNS服务器。
+     * 使用带有DNS泄漏保护功能的VPN。
+     * 使用VPN监控软件，某些VPN监控软件还可以修复DNS泄漏。 
+     * 禁用Teredo，IPv4和IPv6之间的转换可能会引起DNS泄漏。
 
 * 参考链接：[当DNS泄漏让VPN不再安全，我们该怎么办？](http://www.freebuf.com/articles/network/67591.html) 
 
@@ -172,7 +172,18 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 * [中间人攻击(MITM)姿势总结](http://www.cnblogs.com/LittleHann/p/3735602.html)
 * [通过伪造CA证书，实现SSL中间人攻击](http://blog.sina.com.cn/s/blog_4a898cfb0100t8j7.html)
 
-__Reserved for code__
+__实验过程__
+参考链接：[Burp Suite抓HTTPS数据包](http://blog.csdn.net/zyw_anquan/article/details/47904495)
+
+1. 设置firefox，手动配置代理
+
+   Preferences -> Advanced -> Settings -> Manual proxy configuration
+
+2. 运行BurpSuite,用firefox浏览器访问http://burp, 点击CA Certificate下载burp的内置证书。
+
+3. 将证书导入Firefox，Burp Suite被视为可信任的根，成为用户浏览器访问HTTPS网站的代理，达到监视双方（客户端与服务器端）通信过程的目的。
+
+Q: 如何在一台机器上使用Burp Suite，从而监视另一台机器访问HTTPS网站？
 
 ###SSLsniff
 
@@ -180,8 +191,7 @@ Using a tool maded by [Moxie Marlinspike](https://moxie.org/). <-The man hacked 
 
 ###SSLstrip
 
-[New Tricks For Defeating SSL In Practice](https://www.blackhat.com/presentations/bh-dc-09/Marlinspike/BlackHat-DC-09-Marlinspike-Defeating-SSL.pdf) 
-by Moxie Marlinspike (2009) 
+[New Tricks For Defeating SSL In Practice](https://www.blackhat.com/presentations/bh-dc-09/Marlinspike/BlackHat-DC-09-Marlinspike-Defeating-SSL.pdf) by Moxie Marlinspike (2009) 
 
 
     Something must be wrong, but...
