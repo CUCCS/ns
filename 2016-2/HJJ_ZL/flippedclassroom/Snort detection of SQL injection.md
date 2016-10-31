@@ -32,7 +32,7 @@
 
 ##实验中遇到的问题##
 - 嗅探和报文记录模式下出现“No preprocessors configured for policy 0”警告”：其原因是没有加载预处理器，解决方法是应用snort规则
-
+![](image/4.PNG)
 
 ##相关文献##
 - Linux平台Snort入侵检测系统实战指南http://www.2cto.com/Article/201208/145925.html
