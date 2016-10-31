@@ -7,8 +7,9 @@
 
 ##实验环境##
 - 本实验攻击方为linux Cali系统pc1
-- 服务器采用的是Pentesterlab封装好的镜像来进行搭建，采用的是debian的系统
+- 服务器采用的是Pentesterlab封装好的镜像来进行搭建，采用的是debian的系统，设置默认网关为PC2
 - 所有访问服务器的流量都会经过一台cali主机pc2，snort和iptables均在pc2上设置
+- 在/proc/sys/net/ipv4路径下执行echo 1 > ip_forward，将默认值0改为1，开启IP转发，使得网关PC2可以对pc的访问流量进行监控和检测
 
 
 ##实验过程##
