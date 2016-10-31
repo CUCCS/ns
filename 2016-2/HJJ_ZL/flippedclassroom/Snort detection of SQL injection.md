@@ -29,16 +29,20 @@
 ![](image/7.PNG)
 - 为了检测sql注入需要新建一个自定义规则 vim myrule.rules 
 - 建立好自定义的规则后，还需要在/etc/snort/snort.conf文件中加入myrule.rules
+![](image/10.PNG)
 - 本次试验的自定义规则有:
 - alert tcp any any -> any 80 (msg:"SQL Injection 1";flow:to_server,established;uricontent:".php";pcre:"/(\%27)|(\')|(\-\-)|(%23)|(#)/i";classtype:Web-application-attack;sid:9099;rev:5;)
 - alert tcp any any -> any 80 (msg:"SQL attack";content:"union"; nocase; sid:1000002; rev:1;)
 - 接下来输入指令snort -vd -l /log -c /etc/snort/snort.conf 打开snort的检测模式
 - 打开攻击机器PC1，在网站界面中输入Sql注入语句http://localhost/cat.php?id=1%20union%20select%201,2,3,4
+![](image/9.PNG)
 - 回到PC2查看snort监控窗口
 
 ##实验中遇到的问题##
 - 嗅探和报文记录模式下出现“No preprocessors configured for policy 0”警告”：其原因是没有加载预处理器，解决方法是应用snort规则
 ![](image/4.PNG)
+- 开始编写的snort语法规则有些错误
+![](image/11.PNG)
 
 ##相关文献##
 - Linux平台Snort入侵检测系统实战指南http://www.2cto.com/Article/201208/145925.html
