@@ -6,8 +6,10 @@
 - 利用snort的NIDS模式检测SQL注入攻击
 
 ##实验环境##
-- 本实验攻击方与防御方均为linux Cali系统
-- 服务器为
+- 本实验攻击方为linux Cali系统pc1
+- 服务器采用的是Pentesterlab封装好的镜像来进行搭建，采用的是debian的系统
+- 所有访问服务器的流量都会经过一台cali主机pc2，snort和iptables均在pc2上设置
+
 
 ##实验过程##
 - snort的嗅探模式：
