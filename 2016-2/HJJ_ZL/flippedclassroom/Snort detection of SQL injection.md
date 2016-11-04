@@ -1,9 +1,10 @@
-# snort检测SQL注入攻击 #
+# snort检测SQL注入攻击并利用guardian联动iptables防御 #
 
 ## 实验内容 ##
 - 简单介绍snort工具的三种工作模式
 - 编写自定义snort规则，以对sql注入攻击行为作出警告
-- 利用snort的NIDS模式检测SQL注入攻击
+- 利用snort的NIDS模式检测SQL注入攻击并发出报警信息
+- 利用guardian联动iptables进行防御，阻断攻击IP访问1分钟
 
 ##实验环境##
 - 本实验攻击方为linux Cali系统pc1
@@ -33,10 +34,15 @@
 - 本次试验的自定义规则有:
 - alert tcp any any -> any 80 (msg:"SQL Injection 1";flow:to_server,established;uricontent:".php";pcre:"/(\%27)|(\')|(\-\-)|(%23)|(#)/i";classtype:Web-application-attack;sid:9099;rev:5;)
 - alert tcp any any -> any 80 (msg:"SQL attack";content:"union"; nocase; sid:1000002; rev:1;)
-- 接下来输入指令snort -vd -l /log -c /etc/snort/snort.conf 打开snort的检测模式
+
+- 接下来输入指令snort -vd -l /log -c /etc/snort/snort.conf -A full 打开snort的入侵检测模式
 - 打开攻击机器PC1，在网站界面中输入Sql注入语句http://localhost/cat.php?id=1%20union%20select%201,2,3,4
 ![](image/9.PNG)
-- 回到PC2查看snort监控窗口
+- 回到PC2查看snort监控窗口，可以看到snort已经将数据包显示在了屏幕上
+- 停止PC1的访问，现在打开我们指定的报警日志输出目录/log，可以看到两个文件
+- 一个alert记录报警信息
+- 一个pcap文件记录报警的可疑数据包
+
 
 ##实验中遇到的问题##
 - 嗅探和报文记录模式下出现“No preprocessors configured for policy 0”警告”：其原因是没有加载预处理器，解决方法是应用snort规则
