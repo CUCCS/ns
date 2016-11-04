@@ -41,8 +41,9 @@
 - 回到PC2查看snort监控窗口，可以看到snort已经将数据包显示在了屏幕上
 - 停止PC1的访问，现在打开我们指定的报警日志输出目录/log，可以看到两个文件
 - 一个alert记录报警信息
+![](image/13.png)
 - 一个pcap文件记录报警的可疑数据包
-
+![](image/12.png)
 
 ##实验中遇到的问题##
 - 嗅探和报文记录模式下出现“No preprocessors configured for policy 0”警告”：其原因是没有加载预处理器，解决方法是应用snort规则
