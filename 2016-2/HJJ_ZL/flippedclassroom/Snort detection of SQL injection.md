@@ -44,6 +44,22 @@
 ![](image/13.png)
 - 一个pcap文件记录报警的可疑数据包
 ![](image/12.png)
+- 现在由snort搭建的入侵检测系统已经基本完成，接下来需要做的就是利用guardian脚本，联动iptables将攻击者的ip阻断，禁止其访问
+    
+    > guardian下载地址 http://www.chaotic.org/guardian/  
+    
+     下载并解压完成后,跳转到解压出来的目录打开终端,依次执行以下几条指令：
+  
+    cp guardian.pl /usr/local/bin/  #将guardian执行文件放入可执行文件目录下  
+    cp scripts/iptables_block.sh /usr/local/bin/guardian_block.sh # 拷贝联动iptables锁定ip所需文件      
+    cp scripts/iptables_unblock.sh /usr/local/bin/guardian_unblock.sh # 拷贝联动iptables解锁ip所需文件  
+    touch /etc/guardian_ignore #创建白名单  
+    touch /etc/guardian_target #创建黑名单
+    
+- 接下来打开guardian.conf文件对guardian进行配置
+    
+
+
 
 ##实验中遇到的问题##
 - 嗅探和报文记录模式下出现“No preprocessors configured for policy 0”警告”：其原因是没有加载预处理器，解决方法是应用snort规则
