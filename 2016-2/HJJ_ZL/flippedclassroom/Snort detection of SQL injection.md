@@ -51,25 +51,26 @@
      下载并解压完成后,跳转到解压出来的目录打开终端,依次执行以下几条指令：
   
     cp guardian.pl /usr/local/bin/  #将guardian执行文件放入可执行文件目录下  
-    cp scripts/iptables_block.sh /usr/local/bin/guardian_block.sh # 拷贝联动iptables锁定ip所需文件，并将其重命名      
-    cp scripts/iptables_unblock.sh /usr/local/bin/guardian_unblock.sh # 拷贝联动iptables解锁ip所需文件，并将其重命名
+    cp scripts/iptables_block.sh /usr/local/bin/guardian_block.sh # 拷贝联动iptables锁定ip所需文件，并将其重命名   
+    cp scripts/iptables_unblock.sh /usr/local/bin/guardian_unblock.sh # 拷贝联动iptables解锁ip所需文件，并将其重命名  
     touch /etc/guardian_ignore #创建白名单  
     touch /etc/guardian_target #创建黑名单
     
-- 接下来打开guardian.conf文件对guardian进行配置
-   > guardian的日志文件目录需要新建，对目标IP的阻断时间按要求应设置为60s，为实验方便，暂设为20s
-   
-- 完成好所有配置后，在控制台输入指令，运行guardian脚本
-   > guardian.pl -c /guardian-1.7/guardian.conf 
+- 接下来打开guardian.conf文件对guardian进行配置  
+       guardian的日志文件目录需要新建，对目标IP的阻断时间按要求应设置为60s，为实验方便，暂设为20s
+![](image/16.png)   
+- 完成好所有配置后，在控制台输入指令，运行guardian脚本  
+        guardian.pl -c /guardian-1.7/guardian.conf 
    发现以下报错信息：
-   
-- 查询后发现是系统缺少了perl中的Perl4::CoreLibs模块，需要手动安装
-   > perl -MCPAN -e shell
-   cpan[1]> install Perl4::CoreLibs 
+![](image/14.png) 
 
+- 查询后发现是系统缺少了perl中的Perl4::CoreLibs模块，需要手动安装
+      > perl -MCPAN -e shell
+   cpan[1]> install Perl4::CoreLibs 
+![](image/17.png)   
 
 - 安装完成后，再次运行guardian脚本，显示后台开始执行
-
+![](image/18.png)   
 
 
 
