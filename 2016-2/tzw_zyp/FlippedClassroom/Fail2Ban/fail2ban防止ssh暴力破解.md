@@ -28,7 +28,7 @@
 	* 首先确保两台虚拟机开启了ssh服务，尝试使用Attacker通过ssh连接到Victim，成功连接后如下：
 
 		<pre>ssh masker@192.168.0.1</pre>
-		![](".\image\1.JPG")
+		![](image/1.JPG)
 	* 在Victim上安装fail2ban：
 		<pre>
 		sudo apt-get update
@@ -64,9 +64,9 @@
 		* 查看防火墙配置：
 		* <pre>iptables -S</pre>
 		* fail2ban关闭时：
-			![](".\image\2.JPG")
+			![](image/2.JPG)
 		* fail2ban开启时：
-			![](".\image\3.JPG")
+			![](image/3.JPG)
 		* 可见上图中，iptables已经成功将fail2ban配置的防火墙规则添加了进来。
 	* 可以通过以下命令对防火墙进行保存操作：
 	* <pre>sudo dpkg-reconfigure iptables-persistent</pre>
@@ -75,16 +75,16 @@
 		* Attacker使用hydra工具进行暴力破解攻击：
 		* <pre>hydra -l masker -P /usr/share/wordlists/fasttrack.txt 192.168.0.1 ssh </pre>
 			* 效果如下： 
-			* ![](".\image\4.JPG")
+			* ![](image/4.JPG)
 			* Victim的防火墙规则无变化：
-			* ![](".\image\5.JPG")
+			* ![](image/5.JPG)
 	* fail2ban配置后：
 		* Attacker再次进行暴力破解发现已经无法成功：
-		* ![](".\image\6.JPG")
+		* ![](image/6.JPG)
 		* Victim防火墙规则，增添了对攻击者ip的限制：
-		* ![](".\image\7.JPG")
+		* ![](image/7.JPG)
 		* Attacker尝试普通的ssh连接也会失败：
-		* ![](".\image\8.JPG")
+		* ![](image/8.JPG)
 * 参考：
 	* [How To Protect SSH with Fail2Ban on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04)
 	* [How To Set Up a Firewall Using Iptables on Ubuntu 14.04 ](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-iptables-on-ubuntu-14-04)
