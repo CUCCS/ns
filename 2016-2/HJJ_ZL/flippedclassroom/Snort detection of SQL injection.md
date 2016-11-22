@@ -68,9 +68,18 @@
       > perl -MCPAN -e shell
    cpan[1]> install Perl4::CoreLibs 
 ![](image/17.png)   
+- 因为在本次实验环境中有三台机器，网关机器负责转发外网流量，所以对应iptables规则应该为添加于forward链，而非默认的input链
+    > /sbin/iptables -I FORWARD -s $source -i $interface -j DROP#将对应IP添加于iptables的规则中，禁止其访问
+    > /sbin/iptables -D FORWARD -s $source -i $interface -j DROP#封锁时间到了后，解除对该ip的封锁
 
 - 安装完成后，再次运行guardian脚本，显示后台开始执行
 ![](image/18.png)   
+
+- 现在利用PC1访问服务器并尝试进行简单sql注入
+
+- 再次试图注入时，已无法获得服务器返回页面，查看网关iptables，可见其IP已被网关ipables封锁
+
+- 进入网关PC2可以查看相关日志文件
 
 
 
