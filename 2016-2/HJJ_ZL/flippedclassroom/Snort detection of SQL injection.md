@@ -11,7 +11,8 @@
 - 服务器采用的是Pentesterlab封装好的镜像来进行搭建，采用的是debian的系统，设置默认网关为PC2
 - 所有访问服务器的流量都会经过一台cali主机pc2，snort和iptables均在pc2上设置
 - 在/proc/sys/net/ipv4路径下执行echo 1 > ip_forward，将默认值0改为1，开启IP转发，使得网关PC2可以对pc的访问流量进行监控和检测
-
+- 实验拓扑图
+![](image/19.png)
 
 ##实验过程##
 - snort的嗅探模式：
@@ -68,18 +69,23 @@
       > perl -MCPAN -e shell
    cpan[1]> install Perl4::CoreLibs 
 ![](image/17.png)   
-- 因为在本次实验环境中有三台机器，网关机器负责转发外网流量，所以对应iptables规则应该为添加于forward链，而非默认的input链
-    > /sbin/iptables -I FORWARD -s $source -i $interface -j DROP#将对应IP添加于iptables的规则中，禁止其访问
-    > /sbin/iptables -D FORWARD -s $source -i $interface -j DROP#封锁时间到了后，解除对该ip的封锁
+- 因为在本次实验环境中有三台机器，网关机器负责转发外网流量，所以对应iptables规则应该为添加于forward链，而非默认的input链  
+      
+      > /sbin/iptables -I FORWARD -s $source -i $interface -j DROP#将对应IP添加于iptables的规则中，禁止其访问         
+          
+          /sbin/iptables -D FORWARD -s $source -i $interface -j DROP#封锁时间到了后，解除对该ip的封锁
 
 - 安装完成后，再次运行guardian脚本，显示后台开始执行
 ![](image/18.png)   
 
 - 现在利用PC1访问服务器并尝试进行简单sql注入
+![](image/20.png)
 
 - 再次试图注入时，已无法获得服务器返回页面，查看网关iptables，可见其IP已被网关ipables封锁
-
+![](image/21.png)
+![](image/22.png)
 - 进入网关PC2可以查看相关日志文件
+![](image/22.png)
 
 
 
