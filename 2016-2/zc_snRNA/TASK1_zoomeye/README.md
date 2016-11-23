@@ -42,5 +42,12 @@ TODO
 > [...]
   
  在浏览器中访问localhost可以查看IVRE的WebUI。  
+    
+    
+##  参考资料  
+ * [IVRE官方网站](https://ivre.rocks/)  
+ * [IVRE官方文档](https://github.com/cea-sec/ivre/tree/master/doc)  
+ * [通过Docker搭建开源版IVRE](http://www.freebuf.com/sectool/92179.html)  
+ * [开源版ZoomEye：基于Python的网络侦查框架 – IVRE](http://www.freebuf.com/sectool/74083.html)
 
 TODO：其余功能的补充和使用
