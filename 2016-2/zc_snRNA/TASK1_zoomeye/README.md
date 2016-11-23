@@ -31,8 +31,8 @@ TODO
 使用 vagrant -v 查看版本，版本要求大于1.4（好像是）以上才能使用,否则后续安装会提示会找不到docker。  
    
 创建相关文件并安装ivre  
-> mkdir -m 1777 var_{lib,log}_{mongodb,neo4j} ivre-share
-> wget -q https://ivre.rocks/Vagrantfile
+> mkdir -m 1777 var_{lib,log}_{mongodb,neo4j} ivre-share  
+> wget -q https://ivre.rocks/Vagrantfile   
 > sudo vagrant up --no-parallel (一定要有sudo!)  
 
 会出现如下的输出:
