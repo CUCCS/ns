@@ -43,8 +43,8 @@
 		leafpad /etc/nginx/sites-enabled/default  //打开Ubuntu中Nginx的默认服务块文件
 		</pre>
       * 在文件中添加图上黄色部分的代码，设置对特定位置内的限制，这里我们限制了整个文档根目录的位置块：
-           * ![]("image\2.PNG")
-            在此位置块中，使用auth_basic指令打开身份验证且在用户认证成功后选择向用户显示的领名。 用auth_basic_user_file指令，将Nginx指向我们创建的密码文件：
+         * ![]("image\2.PNG")
+            *在此位置块中，使用auth_basic指令打开身份验证且在用户认证成功后选择向用户显示的领名。 用auth_basic_user_file指令，将Nginx指向我们创建的密码文件：
        * 保存此文件，并且重启Nginx使操作生效。
        * 完成以上操作，打开Attacker，内部网络PING通，访问Victim，设置结果展示如下：
         * ![]("image\3.PNG")
