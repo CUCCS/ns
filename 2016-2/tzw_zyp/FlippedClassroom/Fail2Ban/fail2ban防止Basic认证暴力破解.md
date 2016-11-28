@@ -37,17 +37,17 @@
     	sh -c "openssl passwd -apr1 >> /etc/nginx/.htpasswd"  //通过键入以下内容为用户名添加加密的密码条目
 		</pre>
         * 设置完毕后我们也可以查看一下我们设置的密码文件内容：
-			![]("image\1.PNG")
+	 * ![]("image\1.PNG")
     * 在Victim上进行Nginx服务器的密码验证配置，之前我们已经创建了一个Nginx可以读取的用户密码文件，需要配置Nginx使访问我们受保护的内容之前需要检查此文件：
 		<pre>
 		leafpad /etc/nginx/sites-enabled/default  //打开Ubuntu中Nginx的默认服务块文件
 		</pre>
       * 在文件中添加图上黄色部分的代码，设置对特定位置内的限制，这里我们限制了整个文档根目录的位置块：
-            ![]("image\2.PNG")
+           * ![]("image\2.PNG")
             在此位置块中，使用auth_basic指令打开身份验证且在用户认证成功后选择向用户显示的领名。 用auth_basic_user_file指令，将Nginx指向我们创建的密码文件：
        * 保存此文件，并且重启Nginx使操作生效。
        * 完成以上操作，打开Attacker，内部网络PING通，访问Victim，设置结果展示如下：
-       ![]("image\3.PNG")
+        * ![]("image\3.PNG")
 	* 在Victim上安装fail2ban（以下操作与组员之前所在SSH中fail2ban配置基本一致，小部分操作习惯的差别）：
 		<pre>
 		apt-get update
@@ -75,17 +75,17 @@
 	  * 查看防火墙配置：
 		* <pre>iptables -S</pre>
 		* 配置完fail2ban开启时：
-			![]("image\4.PNG")
+		 * ![]("image\4.PNG")
 		关闭的图忘记截了，跟组员实验中关闭时截图基本一致，可见上图中，iptables已经成功将fail2ban配置的防火墙规则添加了进来。
        * 如果想看到由jail详细操作信息，使用如下命令
 	      <pre>fail2ban-client status nginx-http-auth</pre>
           *效果如图：
-               ![]("image\5.PNG")
+              * ![]("image\5.PNG")
                现在可以看出没有任何操作。
 * **fail2ban配置前后攻击效果**
   * 这里采用一个命令来查看那些尝试的操作。
     <pre>tail -f /var/log/nginx/error.log</pre>
-    ![]("image\6.PNG")
+    * ![]("image\6.PNG")
 	* fail2ban配置前:
 		* Attacker使用hydra工具进行暴力破解攻击：
 		* <pre>hydra -l mzzy -P /usr/share/wordlists/fasttrack.txt http-get://192.168.0.1
