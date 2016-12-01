@@ -18,7 +18,6 @@
 	* Victim :
 		* basic认证的搭建配置
 		* fail2ban的搭建与配置
-		* iptables配置
 	* Attacker :
 		* 使用kali自带工具hydra进行暴力破解
 	* 观察实验结果
