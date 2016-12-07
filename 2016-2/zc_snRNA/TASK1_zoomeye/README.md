@@ -31,8 +31,8 @@ TODO
 使用 vagrant -v 查看版本，版本要求大于1.4（好像是）以上才能使用,否则后续安装会提示会找不到docker。  
    
 创建相关文件并安装ivre  
-> mkdir -m 1777 var_{lib,log}_{mongodb,neo4j} ivre-share
-> wget -q https://ivre.rocks/Vagrantfile
+> mkdir -m 1777 var_{lib,log}_{mongodb,neo4j} ivre-share  
+> wget -q https://ivre.rocks/Vagrantfile   
 > sudo vagrant up --no-parallel (一定要有sudo!)  
 
 会出现如下的输出:
@@ -42,5 +42,12 @@ TODO
 > [...]
   
  在浏览器中访问localhost可以查看IVRE的WebUI。  
+    
+    
+##  参考资料  
+ * [IVRE官方网站](https://ivre.rocks/)  
+ * [IVRE官方文档](https://github.com/cea-sec/ivre/tree/master/doc)  
+ * [通过Docker搭建开源版IVRE](http://www.freebuf.com/sectool/92179.html)  
+ * [开源版ZoomEye：基于Python的网络侦查框架 – IVRE](http://www.freebuf.com/sectool/74083.html)
 
 TODO：其余功能的补充和使用
