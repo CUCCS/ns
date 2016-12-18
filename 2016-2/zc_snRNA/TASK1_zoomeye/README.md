@@ -72,6 +72,33 @@ IVRE
 ### IVRE扫描并导入数据  
 通过attach命令进入ivreclient  
 > sudo docker attach ivreclient  
+> root@881486651a32:/$ ivre  ipdata --download
+
+对互联网上10个随机主机进行标准扫描，开启13个nmap进程   
+> root@881486651a32:/$ ivre runscans --routable --limit 10 --output=XMLFork    
+
+![](image/14.jpg)   
+
+扫描结果入库  
+> root@881486651a32:/$ ivre nmap2db -c ROUTABLE-CAMPAIGN-001 -s MySource -r scans/ROUTABLE/up  
+
+在浏览器中查看扫描结果  
+![](image/13.jpg)    
+![](image/16.jpg) 
+
+
+####runscans命令的用法:  
+**select output method for scan results :**  
+ --output {XML,XMLFull,XMLFork,Test,Count,List,ListAll,ListAllRand,ListCIDRs,CommandLine}
+**number of addresses to output :**  
+ --limit LIMIT, -l LIMIT                    
+**select a country :**	  
+--country CODE, -c CODE  
+**select a region :**	   
+--region COUNTRY_CODE REGION_CODE  
+	
+
+
 
 
     
@@ -85,7 +112,7 @@ IVRE
 
 
 ## 四、实验过程中出现的问题
-1. 使用apt-get进行软件的install或update时，有时会出现以下提示信息：  
+1. ** 使用apt-get进行软件的install或update时，有时会出现以下提示信息：**    
 E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)  
 E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?  
 ![](image/1.jpg)  
@@ -98,32 +125,31 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), is another proc
 	sudo rm /var/cache/apt/archives/lock  
 	sudo rm /var/lib/dpkg/lock   
 
-2. docker安装后出现Cannot connect to the Docker daemon.  
+2.  **docker安装后出现Cannot connect to the Docker daemon.**  
 ![](image/2.jpg)   
 查看了docker的状态，发现是运行的  
 ![](image/3.jpg)    
 发现是没有添加sudo的原因  
 ![](image/4.jpg)  
     
-3. 查看docker有那些容器时，无法连接docker daemon     
+3. **查看docker有那些容器时，无法连接docker daemon**     
 ![](image/10.jpg)    
 **解决办法:**  
 首先要查看docker daemon是否在运行    
-> ps aux | grep docker      
-  
-![](image/11.jpg)
+ps aux | grep docker      
+  ![](image/11.jpg)  
 这样看来，docker deamon正在运行，但是报此错误实属不应该。那么将其停止，再启动  
-> service docker stop  
-> service docker start   
-  
-还是失败了，考虑权限问题，切换到root
-> sudo docker ps -a  
-  
-![](image/12.jpg)  
+ service docker stop  
+ service docker start   
+  还是失败了，考虑权限问题，切换到root
+ sudo docker ps -a  
+  ![](image/12.jpg)  
 发现是权限问题
 
-  
- 
+4.  **通过attach命令进入ivreclient时直接在root@eb73787b6d32:/# 后面输入指令会提示无法识别指令**   
+  ![](image/15.jpg)   
+**解决办法:**    
+在每条命令语句前添加ivre即可  
 
 TODO：其余功能的补充和使用  
 
