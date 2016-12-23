@@ -2,7 +2,12 @@
   
 ## **一、名词解释**
 #### Zoomeye  
-[Zoomeye](https://www.zoomeye.org)（钟馗之眼)是知道创宇推出的一款网络空间搜索引擎,可以搜索网络组建和网络设备,是国产的'shodan'。   
+[Zoomeye](https://www.zoomeye.org)（钟馗之眼)是知道创宇推出的一款网络空间搜索引擎,可以搜索网络组建和网络设备,是国产的'shodan'。     
+这种以各大组件指纹作为识别基础的数据平台，更多的是为了使得安全研究人员更好地评估漏洞的影响范围与其中隐含的数据模式。  
+Zoomeye的后端架构图：  
+![](image/17.jpg)  
+对于一次漏洞的评估，启动调度框架分配域名或者IP列表给扫描节点，节点完成任务后执行回调  
+
 #### IVRE  
 [IVRE](https://ivre.rocks)(又名DRUNK)是一款基于python的网络侦查框架，包括两个基于p0f和Bro的被动侦查模块和一个基于Nmap&Zmap的主动侦查模块。采用Docker和Vagrant可以方便快速的搭建和管理维护。  
 #### Docker  
@@ -69,25 +74,23 @@ IVRE
 3. 开启客户端  
 > sudo docker start ivreclient  
 
-### IVRE扫描并导入数据  
+### IVRE扫描并导入数据     
+
 通过attach命令进入ivreclient  
 > sudo docker attach ivreclient  
 > root@881486651a32:/$ ivre  ipdata --download
 
 对互联网上10个随机主机进行标准扫描，开启13个nmap进程   
 > root@881486651a32:/$ ivre runscans --routable --limit 10 --output=XMLFork    
+ 
+![](image/19.jpg)   
 
-![](image/14.jpg)   
+![](image/20.jpg)    
 
-扫描结果入库  
-> root@881486651a32:/$ ivre nmap2db -c ROUTABLE-CAMPAIGN-001 -s MySource -r scans/ROUTABLE/up  
+![](image/21.jpg) 
+ 
 
-在浏览器中查看扫描结果  
-![](image/13.jpg)    
-![](image/16.jpg) 
-
-
-####runscans命令的用法:  
+#### runscans命令的用法:  
 **select output method for scan results :**  
  --output {XML,XMLFull,XMLFork,Test,Count,List,ListAll,ListAllRand,ListCIDRs,CommandLine}
 **number of addresses to output :**  
@@ -96,10 +99,60 @@ IVRE
 --country CODE, -c CODE  
 **select a region :**	   
 --region COUNTRY_CODE REGION_CODE  
-	
+
+扫描结果入库  
+> root@881486651a32:/$ ivre nmap2db -c ROUTABLE-CAMPAIGN-001 -s MySource -r scans/ROUTABLE/up  
+
+在浏览器中查看扫描结果：  
+![](image/13.jpg)   
+打开其中一项扫描结果：  
+ ![](image/16.jpg)   
+上述结果（Host scripts,Traceroute等信息）在扫描时的终端界面上都出现过    
 
 
 
+### 搜索项细节分析  
+主要包括以下数据元：  
+（1）域名 or  IP  or title  
+（2）组件信息（Win32）OpenSSL  
+（3）国家、城市信息  
+（4）信息更新时间  
+（5）Http Response header    
+**以下面的扫描结果为例，其中包含的信息有：**  
+
+ ![](image/14.jpg)    
+SSH 为建立在应用层基础上的安全协议  
+  
+ ![](image/22.jpg)   
+ ![](image/23.jpg)   
+ ![](image/24.jpg)   
+ ![](image/25.jpg)   
+ ![](image/26.jpg)   
+ ![](image/27.jpg)   
+ **traceroute(路由跟踪):**  
+ 由遍布全球的几万局域网和数百万台计算机组成，并通过用于异构网络的TCP/IP协议进行网间通信。互联网中，信息的传送是通过网中许多段的传输介质和设备（路由器，交换机，服务器，网关等等）从一端到达另一端。每一个连接在Internet上的设备，如主机、路由器、接入服务器等一般情况下都会有一个独立的IP地址。通过Traceroute我们可以知道信息从你的计算机到互联网另一端的主机是走的什么路径。  
+
+ **OS Detection:**  
+ Nmap最着名的功能之一是使用TCP / IP堆栈指纹识别的远程操作系统检测。    
+ ![](image/28.jpg)     
+
+ **Common Platform Enumeration (CPE)** is a standardized method of describing and identifying classes of applications, operating systems, and hardware devices present among an enterprise's computing assets. （是描述和识别应用类，操作系统，硬件设备的标准化方法）。  
+
+ ![](image/29.jpg)   
+
+### IVRE数据统计功能    
+通过左侧的过滤器功能，可以在数据库中按条件筛选信息  
+
+![](image/18.jpg)    
+
+左侧栏有数据统计选项：  
+![](image/30.jpg)   
+对现有的数据进行统计：  
+![](image/31.jpg)   
+![](image/32.jpg)   
+![](image/33.jpg)   
+![](image/34.jpg)   
+![](image/35.jpg)   
 
     
 ##  三、参考资料  
@@ -107,6 +160,7 @@ IVRE
  * [IVRE官方文档](https://github.com/cea-sec/ivre/tree/master/doc)  
  * [通过Docker搭建开源版IVRE](http://www.freebuf.com/sectool/92179.html)  
  * [开源版ZoomEye：基于Python的网络侦查框架 – IVRE](http://www.freebuf.com/sectool/74083.html)
+ * [如何自己构建一个小型的Zoomeye----从技术细节探讨到实现](http://blog.csdn.net/u011721501/article/details/41967847)
 
 
 
@@ -150,6 +204,4 @@ ps aux | grep docker
   ![](image/15.jpg)   
 **解决办法:**    
 在每条命令语句前添加ivre即可  
-
-TODO：其余功能的补充和使用  
 
