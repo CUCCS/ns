@@ -90,7 +90,7 @@ IVRE
 ![](image/21.jpg) 
  
 
-####runscans命令的用法:  
+#### runscans命令的用法:  
 **select output method for scan results :**  
  --output {XML,XMLFull,XMLFork,Test,Count,List,ListAll,ListAllRand,ListCIDRs,CommandLine}
 **number of addresses to output :**  
@@ -111,14 +111,15 @@ IVRE
 
 
 
-###搜索项细节分析  
+### 搜索项细节分析  
 主要包括以下数据元：  
 （1）域名 or  IP  or title  
 （2）组件信息（Win32）OpenSSL  
 （3）国家、城市信息  
 （4）信息更新时间  
 （5）Http Response header    
-**以下面的扫描结果为例，其中包含的信息有：**
+**以下面的扫描结果为例，其中包含的信息有：**  
+
  ![](image/14.jpg)    
 SSH 为建立在应用层基础上的安全协议  
   
@@ -135,10 +136,11 @@ SSH 为建立在应用层基础上的安全协议
  Nmap最着名的功能之一是使用TCP / IP堆栈指纹识别的远程操作系统检测。    
  ![](image/28.jpg)     
 
- **Common Platform Enumeration (CPE)** is a standardized method of describing and identifying classes of applications, operating systems, and hardware devices present among an enterprise's computing assets. （是描述和识别应用类，操作系统，硬件设备的标准化方法）。
+ **Common Platform Enumeration (CPE)** is a standardized method of describing and identifying classes of applications, operating systems, and hardware devices present among an enterprise's computing assets. （是描述和识别应用类，操作系统，硬件设备的标准化方法）。  
+
  ![](image/29.jpg)   
 
-###IVRE数据统计功能    
+### IVRE数据统计功能    
 通过左侧的过滤器功能，可以在数据库中按条件筛选信息  
 
 ![](image/18.jpg)    
