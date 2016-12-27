@@ -136,7 +136,7 @@ SSH 为建立在应用层基础上的安全协议
  Nmap最着名的功能之一是使用TCP / IP堆栈指纹识别的远程操作系统检测。    
  ![](image/28.jpg)     
 
- **Common Platform Enumeration (CPE)** is a standardized method of describing and identifying classes of applications, operating systems, and hardware devices present among an enterprise's computing assets. （是描述和识别应用类，操作系统，硬件设备的标准化方法）。  
+ **Common Platform Enumeration (CPE)** is a standardized method of describing and identifying classes of applications, operating systems, and hardware devices present among an enterprise's computing assets. CPE是一个描述和刻画应用程序、操作系统和硬件设备等企业计算资产主要组成分类类别的标准化方法。
 
  ![](image/29.jpg)   
 
