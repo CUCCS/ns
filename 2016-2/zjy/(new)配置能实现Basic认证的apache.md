@@ -30,11 +30,11 @@
 				cd /etc/apache2/sites-available
 				vi default
    
-   ![Image text](https://github.com/Zhaojytt/ns/blob/master/2016-2/zjy/img_folder/3.png)
+   > 做captcha的时候照片重名被覆盖了，所以就没有图片了[蓝瘦香菇][捂脸]
  
  * 添加.htaccess 文件到希望限制的目录 我的是/var/www（因为时隐藏的文件，所以ls时是看不到的）
  
-   ![Image text](https://github.com/Zhaojytt/ns/blob/master/2016-2/zjy/img_folder/4.png)
+   > 做captcha的时候照片重名被覆盖了，所以就没有图片了[蓝瘦香菇][捂脸]
    
 ### 重启apache
 			
