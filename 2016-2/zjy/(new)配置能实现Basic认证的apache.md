@@ -30,7 +30,8 @@
 				cd /etc/apache2/sites-available
 				vi default
    
-   > 做captcha的时候照片重名被覆盖了，所以就没有图片了[蓝瘦香菇][捂脸]
+   
+        > 做captcha的时候照片重名被覆盖了，所以就没有图片了[蓝瘦香菇][捂脸]
  
  * 添加.htaccess 文件到希望限制的目录 我的是/var/www（因为时隐藏的文件，所以ls时是看不到的）
  
