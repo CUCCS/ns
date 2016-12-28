@@ -24,8 +24,11 @@ No CAPTCHA可以让“人类用户”更加容易的证明自己是个人，而�
 ### 具体实现
 
 * 和要求用户输入文字不同，该系统只提供一个复选框，写着“我不是机器人”，如果你勾选，Google 就会用“风险分析引擎”来确定你是不是人类。	
+
 ![Image text](https://github.com/Zhaojytt/ns/blob/master/2016-2/zjy/img_folder/2.gif)
+
 * 如果 noCAPTCHA 认为是人类，那么无需更多的验证了；如果没有通过，会被要求进一步验证，不过也无需眯着眼难受地看小图，然后手动输入。只需从几张图片中，点选正确的选项。
+
 ![Image text](https://github.com/Zhaojytt/ns/blob/master/2016-2/zjy/img_folder/3.png)
 * 所谓的“风险分析引擎”，可以跟踪用户点击验证框之前、当时和之后的行为，来判断是否是人为操作。可能是出于安全性的考虑，官方并未给出“风险分析引擎”的具体实现。
 * 此外，Google也明白用户对验证码的苦恼，新的No Captcha系统的算法仅仅只需要用户验证一次，在下一次访问网站时，便无需任何验证，因为系统会自动检验用户cookies。除非你是定时清理cookies狂魔，那么你每一次访问都必须通过这种无聊的“我不是机器人”验证。
@@ -52,6 +55,7 @@ No CAPTCHA可以让“人类用户”更加容易的证明自己是个人，而�
 
 ###学习来源
 > 因为不能翻墙，连接不到谷歌的官网，所以没有官方的文档，这非常遗憾。是时候要翻墙去了O(∩_∩)O
+
 [http://www.leiphone.com/news/201412/Hnux7n19OcNWwUFt.html](url)
 
 [http://www.kejilie.com/sohu/article/aIJbae.html](url)
