@@ -6,30 +6,32 @@
 
   - LOCAL AREA NETWORK: 
 
-    - ARP poisoning 
-    - DNS spoofing 
-    - STP mangling 
-    - Port stealing
+      - ARP poisoning 
+      - DNS spoofing 
+      - STP mangling 
+      - Port stealing
 
   - FROM LOCAL TO REMOTE (through a gateway): 
 
-    - ARP poisoning 
-    - DNS spoofing 
-    - DHCP spoofing 
-    - ICMP redirection 
-    - IRDP spoofing 
-    - route mangling 
+      - ARP poisoning 
+      - DNS spoofing 
+      - DHCP spoofing 
+      - ICMP redirection 
+      - IRDP spoofing 
+      - route mangling 
 
   - REMOTE: 
 
-    - DNS poisoning 
-    - traffic tunneling
-    - route mangling
+      - DNS poisoning 
+      - traffic tunneling
+      - route mangling
 
 
 SSL/TLS机制的出现，使得上述中间人攻击得到有效的遏制。
+（然而IE用户仍然暴露在简单中间人攻击的威胁下，因为IE浏览器从Windows10起支持HSTS）
+
 但安全对抗从未停止，MITM已经演化出针对SSL的中间人攻击。
-DNS泄露和ARP欺骗则是实现此类攻击的前提，即获知请求发送者的IP地址。
+ARP欺骗和DNS泄露是实现此类攻击的前提，即获知请求发送者的IP地址。
 此外，还提供了其他获取IP的方法，供参考。
 
 详情描述如下：
@@ -58,14 +60,14 @@ DNS查询泄露漏洞存在的主要场景及其解决方案：
     * 针对VPN的解决方案：
     
       *  使用 VPN 服务商提供的 DNS 服务器，包括使用DNSCrypt加密DNS传输。防止原生ISP或者hacker截获DNS查询请求。
-     * 更改默认的DNS服务器。
-     * 使用带有DNS泄漏保护功能的VPN。
-     * 使用VPN监控软件，某些VPN监控软件还可以修复DNS泄漏。 
-     * 禁用Teredo，IPv4和IPv6之间的转换可能会引起DNS泄漏。
+      * 更改默认的DNS服务器。
+      * 使用带有DNS泄漏保护功能的VPN。
+      * 使用VPN监控软件，某些VPN监控软件还可以修复DNS泄漏。 
+      * 禁用Teredo，IPv4和IPv6之间的转换可能会引起DNS泄漏。
 
 * 参考链接：[当DNS泄漏让VPN不再安全，我们该怎么办？](http://www.freebuf.com/articles/network/67591.html) 
 
-__DNS查询泄露造成的后果__
+__DNS查询泄露造成的后果 --> 基于DNS欺骗的数据重定向__  
 泄露域名服务器的IP地址或者关联网址，为hacker实现DNS spoofing制造机会。也就是说当hacker悉知网络层的通信规则，就可以从链路层进行中间人攻击。
 
 相关知识拓展：
@@ -83,19 +85,20 @@ __DNS查询泄露造成的后果__
 
 More>> [Crippling HTTPS with unholy PAC](https://www.blackhat.com/docs/us-16/materials/us-16-Kotler-Crippling-HTTPS-With-Unholy-PAC.pdf)
 
+
 ###ARP欺骗与MITM
 
 最初，攻击者只要将网卡设为混杂模式，伪装成代理服务器监听特定的流量就可以实现攻击，这是因为很多通信协议都是以明文来进行传输的，如HTTP、FTP、Telnet等。后来，随着交换机代替集线器，简单的嗅探攻击已经不能成功，必须先进行ARP欺骗才行。
 
-__URL流量操作__ 
+__基于ARP欺骗的数据重定向__ 
 
 实际操作命令：
 
 1. 开启端口转发，（攻击者）允许本机像路由器那样转发数据包
 
-   > echo 1 > /proc/sys/net/ipv4/ip_forward
+    > echo 1 > /proc/sys/net/ipv4/ip_forward
 
-2. ARP投毒，向主机XP声称自己(攻击者)就是网关Ubuntu 
+2. ARP投毒，向主机XP（10.23.0.4）声称自己(攻击者)就是网关Ubuntu（10.23.0.5） 
 
     > arpspoof -i eth0 -t 10.23.2.4 10.23.2.5
 
@@ -105,7 +108,7 @@ __URL流量操作__
 
 * 注意: 当hacker停止投毒时，arpspoof将进行“clean up and re-arping”，发送正确的目的物理地址。  
 
-__端口重定向攻击__
+__端口重定向__
 
 端口重定向接收到一个端口数据包的过程（如80端口），并且重定向它的流量到不同的端口（如8080）。实现这类型攻击的好处就是可以无止境的，因为可以随着它重定向安全的端口到未加密端口，重定向流量到指定设备的一个特定端口上。
 
@@ -129,32 +132,38 @@ __端口重定向攻击__
 
 以上设置成功后，当用户向网关10.23.2.1的80端口发送请求时，将会被转发为8080端口发送到攻击者主机上。
 
+# SSL协议回顾
 
-##针对SSL协议的中间人攻击
+* [https连接的前几毫秒发生了什么?](http://yincheng.site/https)
 
-SSL原理:(待补充)
+# 针对SSL协议的中间人攻击
 
 https握手过程的证书校验环节就是为了识别证书的有效性唯一性等等，所以严格意义上来说https下不存在中间人攻击，存在中间人攻击的前提条件是没有严格的对证书进行校验，或者人为的信任伪造证书。
 
 - 存在中间人攻击原因：
-    - 证书未校验
-    - 部分校验
-    - 证书链校验
+    - 证书未校验（客户端没有做任何的证书校验 对应3）
+    - 部分校验（例如在证书校验过程中只做了证书域名是否匹配的校验，可以使用burp的如下模块生成任意域名的伪造证书进行中间人攻击）
+    - 证书链校验（人为的信任伪造的证书或者安装伪造的CA公钥证书从而间接信任伪造的证书 对应1、2、4）  
 
-* 参考链接：[浅析HTTPS中间人攻击与证书校验](www.evil0x.com/posts/26569.html)      
+* 参考链接：[浅析HTTPS中间人攻击与证书校验](www.evil0x.com/posts/26569.html)  
+
 
 针对SSL，中间人攻击只可能发生在SSL的前提条件被破坏的时候，以下是一些示例：
 
-1. 服务器私钥被盗取 - 意味着攻击者能够冒充服务器，而客户端并不知情。
-2. 客户端置信于不可靠的CA（或者主密钥被盗取）- 无论谁获取了真实、可信的CA的私钥，他都可以生成证书从而冒充服务器，骗取客户端的信任。这就意味着，当服务器证书更换为另一个合法证书，浏览器并不会告知客户这件“小”事。
-3. 客户端不与可信CA确认合法证书列表，这样一来，偷盗证书就可能合法化攻击者的身份。
+1. 服务器私钥被盗取 - 意味着攻击者能够冒充服务器，而客户端并不知情。  
+2. 客户端置信于不可靠的CA（或者主密钥被盗取）- 无论谁获取了真实、可信的CA的私钥，他都可以生成证书从而冒充服务器，骗取客户端的信任。这就意味着，当服务器证书更换为另一个合法证书，浏览器并不会告知客户这件“小”事。  
+3. 客户端不与可信CA确认合法证书列表。  
 4. 客户端被攻击，假CA被写入客户的可信CA列表。假冒的CA可以为不可信的服务器签名。
 
-* 参考链接：[Answer: SSL and man-in-the-middle misunderstanding - Stack Overflow](http://stackoverflow.com/questions/14907581/ssl-and-man-in-the-middle-misunderstanding)
+参考链接：[Answer: SSL and man-in-the-middle misunderstanding - Stack Overflow](http://stackoverflow.com/questions/14907581/ssl-and-man-in-the-middle-misunderstanding)
 
+## 利用伪造的X.509证书（SSL劫持）
 
-
-###伪造SSL证书
+这种类型的SSL会话劫持成功的必要条件如下：
+  
+  * 能够通过ARP欺骗、DNS欺骗或者浏览器数据重定向等欺骗技术，使得SSL客户端C和服务端之间的数据都流向中间人监测主机；
+  * SSL客户端在接收到伪造的X.509证书后，用户选择信任该证书，并继续SSL连接；
+  * SSL服务端未要求对SSL客户端进行认证。
 
 
 攻击基本原理：
@@ -172,7 +181,8 @@ https握手过程的证书校验环节就是为了识别证书的有效性唯一
 * [中间人攻击(MITM)姿势总结](http://www.cnblogs.com/LittleHann/p/3735602.html)
 * [通过伪造CA证书，实现SSL中间人攻击](http://blog.sina.com.cn/s/blog_4a898cfb0100t8j7.html)
 
-__实验过程__
+### 利用代理服务器Burpsuite进行SSL劫持    
+  
 参考链接：[Burp Suite抓HTTPS数据包](http://blog.csdn.net/zyw_anquan/article/details/47904495)
 
 1. 设置firefox，手动配置代理
@@ -182,12 +192,43 @@ Preferences -> Advanced -> Settings -> Manual proxy configuration
 
 3. 将证书导入Firefox，Burp Suite被视为可信任的根，成为用户浏览器访问HTTPS网站的代理，达到监视双方（客户端与服务器端）通信过程的目的。
 
-4. [How To: Use mitmproxy to read and modify HTTPS traffic](https://blog.heckel.xyz/2013/07/01/how-to-use-mitmproxy-to-read-and-modify-https-traffic-of-your-phone/#How-it-works)
+### mitmproxy (Transparent Proxying)
+[How To: Use mitmproxy to read and modify HTTPS traffic](https://blog.heckel.xyz/2013/07/01/how-to-use-mitmproxy-to-read-and-modify-https-traffic-of-your-phone/#How-it-works)
+
+* 局限：不能理解其他基于TLS/SSL的流量，比如FTPS, SMTP over SSL, IMAP over SSL等。
+
+* 前期准备：受害者信任攻击者伪造的CA证书，受害者的网关IP被篡改为攻击者IP(为了方便连接Internet，DNS服务器也是攻击者)。
 
 
-###SSLstrip
+### SSLsplit  
+[工具](https://github.com/droe/sslsplit)
+[English](https://blog.heckel.xyz/2013/08/04/use-sslsplit-to-transparently-sniff-tls-ssl-connections/#Sniffing-HTTPS-google-de-and-facebook-com)  
+[中文](http://zhiwei.li/text/2015/08/16/%e7%94%a8sslsplit%e5%88%86%e6%9e%90ssl%e8%bf%9e%e6%8e%a5-%e5%8c%85%e6%8b%ac%e9%9d%9ehttps%e5%8d%8f%e8%ae%ae/)
 
-[New Tricks For Defeating SSL In Practice](https://www.blackhat.com/presentations/bh-dc-09/Marlinspike/BlackHat-DC-09-Marlinspike-Defeating-SSL.pdf) by Moxie Marlinspike (2009) 
+如同上述方法。
+
+
+###  SSLsniff
+
+Using a tool maded by [Moxie Marlinspike](https://moxie.org/). <-The man hacked the world! ( • ω ⁃᷄)✧
+
+It supports many kinds of attacks, such as the [Null Prefix Attacks](https://moxie.org/papers/null-prefix-attacks.pdf), the [OCSP attacks](https://moxie.org/papers/ocsp-attack.pdf) and something else.
+
+
+## 利用HTTP与HTTPS之间跳转的验证漏洞 （SSL卸载）
+
+这种类型的SSL会话劫持成功的必要条件如下：
+  
+  * 能够通过ARP欺骗、DNS欺骗或者浏览器数据重定向等欺骗技术，使得SSL客户端和服务端之间的数据都流向中间人监测主机； 
+  * 客户端访问的Web页面存在http页面至https页面的跳转；
+  * SSL服务端未要求对SSL客户端进行认证。
+
+
+### SSLStrip与HSTS的编年史
+
+Moxie Marlinspike 在Black Hat DC在2009年发布了他的工具SSLStrip。SSLStrip通过拦截受害者和路由器之间的请求（ARP欺骗)，用HTTP替换HTTPS请求，以便攻击者能够嗅闻到用户认为是加密的流量。
+
+[New Tricks For Defeating SSL In Practice](https://www.blackhat.com/presentations/bh-dc-09/Marlinspike/BlackHat-DC-09-Marlinspike-Defeating-SSL.pdf) by Moxie Marlinspike
 
 
     Something must be wrong, but...
@@ -197,65 +238,88 @@ Preferences -> Advanced -> Settings -> Manual proxy configuration
         The chain is in tact. 
         The root CA is embedded in the browser and trusted.
 
-SSL剥离的实施方法是阻止浏览器与服务器建立HTTPS连接。
+SSLstrip使用了社会工程学的原理：为了图方便省事，用户很少直接在地址栏输入https://，用户总是通过点击链接或3xx重定向，从HTTP页面进入HTTPS页面。所以攻击者可以在用户访问HTTP页面时替换所有https://开头的链接为http://，达到阻止HTTPS的目的。
 
-它的前提是用户很少直接在地址栏输入https://，用户总是通过点击链接或3xx重定向，从HTTP页面进入HTTPS页面。所以攻击者可以在用户访问HTTP页面时替换所有https://开头的链接为http://，达到阻止HTTPS的目的。
+SSL卸载攻击的效果优于证书伪造的攻击方法，因为服务器端看不出任何分别，客户端也不会接收到弹框警告（BetterCap实验可见攻击效果）。
 
-SSL卸载攻击的效果优于证书伪造的攻击方法，因为服务器端看不出任何分别，客户端也不会接收到弹框警告。
+为了对抗上述攻击方法，大多数浏览器引入了“HTTP严格传输安全”（HSTS）安全策略机制。用户曾经访问过的页面将在浏览器注册登记为安全页面，并强制使用HTTPS协议。因此用户未曾访问过的页面或网站，才会面临SSL卸载攻击的威胁。
 
+  > HTTP严格传输安全（HSTS）是一种Web安全策略机制，有助于保护网站免受协议降级攻击和Cookie劫持。 它允许Web服务器声明Web浏览器（或其他合规用户代理）应该只使用安全的HTTPS连接，而不是通过不安全的HTTP协议与它交互。
 
-HSTS很大程度上解决了上述两种针对SSL的中间人攻击。
+2014年，Leonardo Nve	Egea发布了SSLStrip2，用降级攻击绕开HSTS。原始的攻击性工具SSLStrip2和dns2proxy的源码不再公开，其功能集成到MITMf框架下。
 
-HSTS的作用是强制客户端（如浏览器）使用HTTPS与服务器建立连接。服务器开启HSTS的方法是，当客户端通过HTTPS发出请求时，在服务器返回的超文本传输协议响应头中包含Strict-Transport-Security字段。非加密传输时设置的HSTS字段无效。
+  > 通常情况下，HSTS规则在是基于每个主机名应用的，攻击的诀窍是将HTTPS链接降级为HTTP，并在其前面添加一些自定义子域名。 每个生成的链接将不会对任何DNS服务器有效，但攻击者可以解析这些主机名。  
 
-如果中间人hacker使用自己的自签名证书来进行攻击，浏览器会给出警告，但是许多用户会忽略警告。HSTS也解决了这一问题，一旦服务器发送了HSTS字段，用户将不再允许忽略警告。只要浏览器曾经与服务器建立过一次安全连接，之后浏览器会强制使用HTTPS，即使链接被换成了HTTP。
+[OFFENSIVE:Exploiting changes on DNS server conﬁguration](https://www.blackhat.com/docs/asia-14/materials/Nve/Asia-14-Nve-Offensive-Exploiting-DNS-Servers-Changes.pdf) by Leonardo Nve	Egea
 
-__Reserved for code__
+### 绕过HSTS
 
-### MITMf带你绕过HSTS
+* MITMf框架
 
-[Bypassing HSTS (HTTP Strict Transport Security) with MITMf](https://sathisharthars.wordpress.com/2015/02/27/bypassing-hsts-http-strict-transport-security-with-mitmf/)
+* BetterCap
 
-__Reserved for code__
+* cachEraser
 
-###SSLsniff
+* 其他工具
 
-Using a tool maded by [Moxie Marlinspike](https://moxie.org/). <-The man hacked the world! ( • ̀ω ⁃᷄)✧
-
-It supports many kinds of attacks, such as the [Null Prefix Attacks](https://moxie.org/papers/null-prefix-attacks.pdf), the [OCSP attacks](https://moxie.org/papers/ocsp-attack.pdf) and something else.
-
-###SSLsplit - transparent SSL/TLS interception 
-[工具](https://github.com/droe/sslsplit)
-
+  * ettercap
+  * Wifi-Pumpkin
+  * Pythem
+  * BURP + Tor Browser
 
 
-###合法证书签名
+### SSLStrip的防御方法 
+
+1. 对于网站来说，在配置HTTPS服务的时候加上“HTTP Strict Transport Security”配置项；或者是在代码中将所有HTTP的请求强制转移到HTTPS上，使用URL REWRITE也可以达到同样的效果。   
+
+    HSTS很大程度上解决了上述两种针对SSL的中间人攻击。HSTS的作用是强制客户端（如浏览器）使用HTTPS与服务器建立连接。服务器开启HSTS的方法是，当客户端通过HTTPS发出请求时，在服务器返回的超文本传输协议响应头中包含Strict-Transport-Security字段。非加密传输时设置的HSTS字段无效。
+
+    如果中间人hacker使用自己的自签名证书来进行攻击，浏览器会给出警告，但是许多用户会忽略警告。HSTS也解决了这一问题，一旦服务器发送了HSTS字段，用户将不再允许忽略警告。只要浏览器曾经与服务器建立过一次安全连接，之后浏览器会强制使用HTTPS，即使链接被换成了HTTP。
+
+2. 对于关键的信息，例如用户登录网站的ID和密码，在发送之前先用JavaScript进行一次加密处理，这种方法不但是对SSLStrip有效，对SSL劫持攻击也有效，甚至是即便使用HTTP协议来传输用户登录的ID和密码都是安全的。  
+
+3. 对于用户来说，在访问支持HTTPS的网站时，输入URL加上“https://”。大多数用户平时并不会注意这点，比如访问gmail，我们一般就输入“gmail.com”，如果是输入“https://gmail.com”就可以避免SSLStrip的攻击。对于使用脚本实现地址跳转也需要注意这个问题，location.href之后的URL，一定要强制加上“https://”。
+
+防御SSLStrip攻击比较简单，大多数的网站都已经做好了安全方面的配置，但也有少数的网站仍然没有重视这个问题。
 
 
-偷盗证书，为恶意软件签名
+## MITMore
 
-__Reserved for code__
+### HTTPS向下降级攻击
 
-###WPAD中间人劫持
+SSL/TLS协议通过握手来确定通信信息，其中握手双方要统一加密协议版本。  
 
-网络代理自动发现协议（Web Proxy Autodiscovery Protocol），通过让浏览器自动发现代理服务器，定位代理配置文件，下载编译并运行，最终自动使用代理访问网络。
+在握手过程中这样确认加密协议版本：  
 
-代理自动配置文件（Proxy Auto-Config），定义了浏览器和其他用户代理如何自动选择适当的代理服务器来访问一个URL。
-
-
-案例（待分析）
-
-1.针对NBNS - Metasploit利用WPAD漏洞
-
-The penetration testing framework Metasploit includes support for WPAD via a new auxiliary module located at "auxiliary/server/wpad". This module, which is written by Efrain Torres, can be used to perform for man-in-the-middle (MITM) attacks by exploiting the features of WPAD. 
-
- * 参考链接：[WPAD Man in the Middle](http://www.netresec.com/?page=Blog&month=2012-07&post=WPAD-Man-in-the-Middle)
-
-2.Badtunnel
-
-3.针对DNS - WPAD Name Collision Flaw Allows MITM Attacks 
-
- * 参考链接：[WPAD Name Collision Flaw Allows MITM Attacks](http://www.securityweek.com/wpad-name-collision-flaw-allows-mitm-attacks)
+1. 由客户端（如浏览器）发送第一个数据包 ClientHello，这个数据包中保存着客户端支持的加密协议版本。
+2. 服务器收到这个ClientHello数据包，查看里面客户端支持的加密协议版本，然后匹配服务器自己支持的加密协议版本，从而确认双方应该用的加密协议版本。
+3. 服务器发送ServerHello数据包给客户端，告诉客户端要使用什么加密协议版本。  
 
 
+在上述过程中，如果客户端发送给服务器的ClientHello数据包中说自己仅支持某个有漏洞的旧版本加密协议（比如仅支持SSLv3.0）,服务器有两种可能：  
+
+* 服务器支持很多版本，其中包括有漏洞的旧版本和新版本（包括了SSLv3.0协议），那么服务器会认可使用有漏洞的旧版本协议，从而告诉客户端使用有漏洞的旧版本（可以使用SSLv3.0）。
+* 服务器不支持有漏洞的旧版本，拒绝客户端的这次请求，握手失败。  
+
+对于攻击者，作为中间人只能监听到加密过的数据，如果这些数据通过没有漏洞的加密版本加密，攻击者并不能做什么。但是，如果服务器提供有漏洞的旧版本加密协议的支持，而同时攻击者又能作为中间人控制被攻击者的浏览器发起漏洞版本的HTTPS请求，那虽然攻击者监听到的也是加密过的数据，但因为加密协议有漏洞，可以解密这些数据，所以数据就和明文传输没有什么差别了。
+  
+这就是HTTPS协议降级。
+
+案例：
+
+* [CBC模式加密的Padding Oracle攻击](https://pentesterlab.com/exercises/padding_oracle)
+* [对称加密ECB模式的漏洞利用](https://pentesterlab.com/exercises/ecb)
+
+
+### HTTPS前端劫持 
+
+[参考链接](http://div.io/topic/747)
+
+* 浏览器的安全策略
+
+### 第三类攻击
+
+所谓第三类攻击，完全就是软件厂商在软件的设计过程中忽略的了安全的问题。这是一种普遍存在的情况，程序的bug、漏洞，设计缺陷，都会打破一些安全模型。
+
+### Beast、Crime...
 
