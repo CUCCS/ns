@@ -136,7 +136,7 @@ SSH 为建立在应用层基础上的安全协议
  Nmap最着名的功能之一是使用TCP / IP堆栈指纹识别的远程操作系统检测。    
  ![](image/28.jpg)     
 
- **Common Platform Enumeration (CPE)** is a standardized method of describing and identifying classes of applications, operating systems, and hardware devices present among an enterprise's computing assets. （是描述和识别应用类，操作系统，硬件设备的标准化方法）。  
+ **Common Platform Enumeration (CPE)** is a standardized method of describing and identifying classes of applications, operating systems, and hardware devices present among an enterprise's computing assets. CPE是一个描述和刻画应用程序、操作系统和硬件设备等企业计算资产主要组成分类类别的标准化方法。
 
  ![](image/29.jpg)   
 
@@ -148,10 +148,17 @@ SSH 为建立在应用层基础上的安全协议
 左侧栏有数据统计选项：  
 ![](image/30.jpg)   
 对现有的数据进行统计：  
-![](image/31.jpg)   
-![](image/32.jpg)   
-![](image/33.jpg)   
-![](image/34.jpg)   
+![](image/31.jpg)     
+The Address space button displays a graphical representation of the filtered addresses. The abscissa axis represents the two high bytes (or the three when the results belong to the same /16 network), and the ordinate axis represents the two low bytes (or the low byte).  
+显示已过滤IP地址的图形表示。横坐标轴表示两个高位字节，纵坐标轴表示两个低位字节  
+![](image/32.jpg)  
+统计端口状态，横坐标表示IP地址的前两位，纵坐标表示tcp的端口号，黄色表示扫描到的被过滤掉的端口，绿色的表示开放状态的端口  
+![](image/33.jpg)    
+The Map button displays the locations of the results on a world map.   
+“地图”按钮在世界地图上显示扫描结果的位置  
+![](image/34.jpg)     
+The Timeline and Timeline 24h buttons display time-lines where the abscissa axis represents the time and the ordinate axis represents the IP addresses.  
+时间轴和24h时间轴中横坐标轴表示时间，纵坐标轴表示IP地址前两位  
 ![](image/35.jpg)   
 
     
