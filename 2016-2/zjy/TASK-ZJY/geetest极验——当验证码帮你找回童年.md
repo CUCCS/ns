@@ -11,11 +11,7 @@
 * 用户提交页面时，执行不同的验证手段。
 
 离线备选方案通讯图如下：
-
 ![Image text](https://github.com/Zhaojytt/ns/blob/master/2016-2/zjy/img_folder/22.png)
-
-
-
 ### 优势
 
 * 安全性较高	（来自官方，不排除有自卖自夸之嫌）
