@@ -47,6 +47,4 @@
 
 [https://en.wikipedia.org/wiki/Low_Orbit_Ion_Cannon](https://en.wikipedia.org/wiki/Low_Orbit_Ion_Cannon)
 
-[http://www.haodc.com/gaofang-36.html](http://www.haodc.com/gaofang-36.html)
-
 [http://www.aipai.com/c31/PDcoIyAqIidqJWQuKg.html?fromvsogou=1](http://www.aipai.com/c31/PDcoIyAqIidqJWQuKg.html?fromvsogou=1)
