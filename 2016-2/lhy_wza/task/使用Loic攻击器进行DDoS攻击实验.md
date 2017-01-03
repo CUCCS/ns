@@ -47,4 +47,6 @@
 
 [https://en.wikipedia.org/wiki/Low_Orbit_Ion_Cannon](https://en.wikipedia.org/wiki/Low_Orbit_Ion_Cannon)
 
+http://blog.nsfocus.net/evolution-of-ddos-attack-tools/
+
 [http://www.aipai.com/c31/PDcoIyAqIidqJWQuKg.html?fromvsogou=1](http://www.aipai.com/c31/PDcoIyAqIidqJWQuKg.html?fromvsogou=1)
