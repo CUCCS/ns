@@ -12,10 +12,10 @@
 >**Metasploit 安装**
   
 * 我们可以登录他的官网[Metasploit](http://www.metasploit.com/)查看具体信息。   
-![](image/download1.png)     
+![](../image/download1.png)     
 
 * 安装文件可到download页面[下载](http://www.metasploit.com/framework/download/)并安装。   
-![](image/download2.png)   
+![](../image/download2.png)   
 
 * 我们将演示在Kali Linux上运行Metasploit Framework。  
 * **运行Metasploit Framework**
@@ -24,18 +24,18 @@
 * **启动Kali的PostgreSQL服务**   
     * Metasploit 使用PostgreSQL作为数据库,所以必须先运行它。  
     * service postgresql start   
-![](image/startmsf1.png)    
+![](../image/startmsf1.png)    
 
 * **启动Kali的Metasploit服务**   
     * 随着PostgreSQL的启动和运行,接着我们要运行Metasploit服务.第一次运行服务会创建一个msf3数据库用户和一个叫msf3的数据库.还会运行Metasploit RPC和它需要的WEB 服务端.   
     * service metasploit start   
     * 初始化MSF数据库：msfdb init  
-![](image/startmsf2.png)   
+![](../image/startmsf2.png)   
 * **在Kali运行msfconsole**   
     * 现在PostgreSQL 和 Metasploit服务都运行了,可以运行 msfconsole ,然后用 db_status 命令检验数据库的连通性.  
     * msfconsole   
     * msf > db_status postgresql connected to msf3  
-![](image/startmsf3.png)   
+![](../image/startmsf3.png)   
     * msf已经运行成功
     * 从图中能看出漏洞利用程序的模块有1577个漏洞的利用代码，shellcode 455个 901个辅助的相关程序，39个编码器，8个nops。
 
