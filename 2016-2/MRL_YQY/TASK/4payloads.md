@@ -6,16 +6,16 @@
   
 * payload也就是shellcode，就是在漏洞利用成功后所要做的事情。在MSF中为我们提供了大量的实用payloads。  
   
-  ![](image/payload1.png)  
+  ![](../image/payload1.png)  
 
 
 * 当我们选择了一个exploit米快并设置完选项后，我们可以用show payloads来看一下当前exploit可以用哪些payloads。   
    
-  ![](image/payload2.png)    
+  ![](../image/payload2.png)    
    
-  ![](image/payload3.png)   
+  ![](../image/payload3.png)   
   
-  ![](image/payload4.png)   
+  ![](../image/payload4.png)   
 
 
 * payloads命名规则：  
@@ -55,13 +55,13 @@
   
 * 设置payload： set PAYLOAD payload_name  
   
-  ![](image/payload5.png)  
+  ![](../image/payload5.png)  
 
 * 列出选项还是： show options  
    
 * 之后设置选项： set RHOST 192.168.0.1  
   
-  ![](image/payload6.png) 
+  ![](../image/payload6.png) 
   
 * 这样exploit和payload就设置完毕了，我们就可以对目标主机进行利用了。  
 
