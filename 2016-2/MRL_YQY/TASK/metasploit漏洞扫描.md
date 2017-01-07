@@ -43,7 +43,7 @@
   
 * m  Payload是在目标系统被攻陷之后执行的代码，如添加用户账号，获取shell交互权限等；    
     
-  ![](image/info.png) 
+  ![](../image/info.png) 
   
 
 ### **metasploit怎么工作:**   
