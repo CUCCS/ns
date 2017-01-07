@@ -217,6 +217,7 @@ Preferences -> Advanced -> Settings -> Manual proxy configuration
 如同上述方法。
 
 
+
 ## 利用HTTP与HTTPS之间跳转的验证漏洞 （SSL卸载）
 
 这种类型的SSL会话劫持成功的必要条件如下：
@@ -299,7 +300,7 @@ __HTTPS前端劫持__
 
 ### 用于绕过HSTS的工具
 
-* MITMf框架(参见 拓展实验1.md)(https://github.com/cuczj/ns/blob/master/2016-2/zzj_cay/TASK.Exploration_and_experiments_on_SSL_MITM_attacks/%E6%8B%93%E5%B1%95%E5%AE%9E%E9%AA%8C1.md)
+* MITMf框架(参见 拓展实验1.md)
 
 * BetterCap(参见 拓展实验2.md)
 
@@ -545,7 +546,7 @@ ref: [GoAgent为什么要使用密钥公开的GoAgent CA 证书？](https://www.
 
 同样是安全性与易用性发生冲突的事例，CloudFlare 公司近期发布的 Keyless 产品则试通过修改 CDN 端的 SSL/TLS 协议的交互方式来完成 Web 应用对 CDN 授权的认证。
 
-![](keyless.png)
+![](images/keyless.png)
 
 ## MITMore
 
@@ -637,5 +638,18 @@ TLS位于传输层和应用层之间，提供数据安全加密。TLS心跳指�
 
 简单的说，服务器端得到数据包，数据包长度为plen_real，而数据包中包含一个字节表明有效负载数据长度plen_fake，数据包剩下的部分是有效负载数据，长度为plen_real-1。整个数据包存储在一个char型数组之中。而服务器端构造新数据包时，先分配一段plen_fake+1的内存空间，前两个字节存放plen_fake，之后使用memcpy从收到的数据包有效负载数据起始位置向新数据包拷贝plen_fake字节数据。正常情况下plen_fake = plen_real-1，当用户有意设置plen_fake大于实际有效负载长度plen_real-1时，服务器就会发送plen_fake长度的数据，其中包括plen_fake - plen_real-1长度的数据，这些数据可能是一些用户密码或者密钥。
 
+### 攻击只会变得更好   
 
+一系列新型改进版攻击已被发现。其中值得注意的是：
 
+HEIST攻击改进了之前BREACH和CRIME等Oracle压缩攻击的通用性，可通过恶意JavaScript从网页盗取敏感数据。尽管因为此类攻击的风险而在2014年就决定从 TLS 1.3 中完全摒弃对压缩的支持，这一漏洞还是进一步显示出了往HTTP之类复杂协议中添加加密功能的困难性。
+
+DROWN攻击利用几十岁高龄的SSLv2协议漏洞，破坏Web服务器的RSA签名密钥。如很多之前的TLS/SSL攻击(POODLE、FREAK等等)，DROWN依赖的是现代Web浏览器已不支持的老旧协议。然而，这依然是很现实的重大缺陷，因为攻击者可以用此方法盗取Web服务器上那与现代客户端所用相同的密钥。该攻击再一次提醒了我们：维持对过时加密协议的支持是有多不安全！
+
+Sweet32攻击显示出：64比特块密码(著名的三重DES和Blowfish)以CBC模式使用时，无法抵御碰撞攻击。生日悖论告诉我们，只需观察大约 2^(64/2) = 2^32 个加密块——即32GB数据，就可以1/2的概率找到碰撞。这再一次暴露出，早该抛弃的遗留密码却依然在约1%的加密Web流量中被使用。
+
+可能有点点远离实际系统，新攻击在某些配对友好的椭圆曲线族中被发现，包括了流行的 Barreto-Naehrig 曲线。虽然当今互联网加密中并没有广泛使用配对友好的曲线算法，它们却是一系列高级加密系统的基础，比如Zcash中用到的高效零知识证明，或Pond使用的组签名。
+
+安全随机性依然是密码系统中的脆弱点：只要不能产生真正随机的数字，就不能创建真正不可预测的密钥。GnuPG项目(广泛使用的PGP软件维护者)宣称修复了Libcrypt随机数产生方法中的缺陷，堵上了这个存在了18年的漏洞。虽然实际利用该漏洞并不容易，此类攻击显露出PRNG库中的微小漏洞可因从未导致功能上的可见损失而隐身数十年之久。
+
+ref: 《[这是网络安全的基石：密码学2016大盘点](http://mp.weixin.qq.com/s/OnwAAoiES9uyhzebZVUCCg)》 
