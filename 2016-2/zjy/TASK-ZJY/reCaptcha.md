@@ -56,18 +56,18 @@ No CAPTCHA可以让“人类用户”更加容易的证明自己是个人，而�
 ###学习来源
 > 因为不能翻墙，连接不到谷歌的官网，所以没有官方的文档，这非常遗憾。是时候要翻墙去了O(∩_∩)O
 
-[http://www.leiphone.com/news/201412/Hnux7n19OcNWwUFt.html](url)
+[http://www.leiphone.com/news/201412/Hnux7n19OcNWwUFt.html]
 
-[http://www.kejilie.com/sohu/article/aIJbae.html](url)
+[http://www.kejilie.com/sohu/article/aIJbae.html]
 
-[https://www.wired.com/2014/12/google-one-click-recaptcha/](url)
+[https://www.wired.com/2014/12/google-one-click-recaptcha/]
 
-[http://www.kejilie.com/leiphone/article/C74B3B67BCEC187408BB06BDCF8241B3.html](url)
+[http://www.kejilie.com/leiphone/article/C74B3B67BCEC187408BB06BDCF8241B3.html]
 
-[http://technews.cn/2014/12/04/prove-your-human-the-new-recaptcha-just-check-your-human-by-check/](url)
+[http://technews.cn/2014/12/04/prove-your-human-the-new-recaptcha-just-check-your-human-by-check/]
 
-[http://www.kejilie.com/ifanr/article/F96F0E89778795EB4C0C0FA7A087C904.html](url)
+[http://www.kejilie.com/ifanr/article/F96F0E89778795EB4C0C0FA7A087C904.html]
 
-[http://jandan.net/2013/02/17/recaptcha.html](url)
+[http://jandan.net/2013/02/17/recaptcha.html]
 
-[https://www.landiannews.com/archives/28238.html](url)
+[https://www.landiannews.com/archives/28238.html]
