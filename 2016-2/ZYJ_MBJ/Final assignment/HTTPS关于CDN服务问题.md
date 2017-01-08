@@ -131,8 +131,8 @@ SSL证书是数字证书的一种，遵守SSL协议，由受信任的数字证�
 4.如果用户请求的是缓存的内容，则由CDN节点直接响应；若需回源请求，则CDN节点再与源站服务器建立连接来获取内容；
 
 
-[参考文献]：
-1.阮一峰网络日志http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html
-2.网宿科技新闻http://chinanetcenter.com/content/details45_1765.html
-3.知乎https://www.zhihu.com/question/20571239
+[参考文献]：  
+1.阮一峰网络日志http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html  
+2.网宿科技新闻http://chinanetcenter.com/content/details45_1765.html  
+3.知乎https://www.zhihu.com/question/20571239  
 4.https://segmentfault.com/a/1190000000538796
