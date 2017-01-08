@@ -120,14 +120,14 @@
 
 
 ### 学习参考
-[https://www.touclick.com/online](url)
+[https://www.touclick.com/online]
 
-[http://www.geetest.com/exp_normal](url)
+[http://www.geetest.com/exp_normal]
 
-[https://www.zhihu.com/question/24173904](url)
+[https://www.zhihu.com/question/24173904]
 
-[https://captcha.luosimao.com/demo/](url)
+[https://captcha.luosimao.com/demo/]
 
-[http://wenku.baidu.com/view/02b0512cb9f3f90f77c61baf.html](url)
+[http://wenku.baidu.com/view/02b0512cb9f3f90f77c61baf.html]
 
-[https://yq.aliyun.com/articles/62607?spm=5176.100240.searchblog.7.SPYpJQ](url)
+[https://yq.aliyun.com/articles/62607?spm=5176.100240.searchblog.7.SPYpJQ]
