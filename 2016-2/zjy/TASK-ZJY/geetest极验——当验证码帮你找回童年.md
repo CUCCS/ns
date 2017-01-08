@@ -49,7 +49,7 @@
 
 * 数学分析，尝试破解
 
->[https://github.com/wsguest/geetest/tree/master/demo/Properties]这里有一个破解的代码，不过欠缺依赖的环境，所以还没试。
+>(这里有一个破解的代码，不过欠缺依赖的环境，所以还没试。)[https://github.com/wsguest/geetest/tree/master/demo/Properties]
 
 ### 总结——但愿不是只是玩玩儿
 感觉并没有官方说的那么高大上，那么无敌。虽然更新了算法，比之前破解难度加大，但是感觉还是比较轻松呀。尤其是当我发现点触，感觉要移情别恋了，geetest要加油啊
