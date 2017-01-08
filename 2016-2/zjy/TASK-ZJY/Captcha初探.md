@@ -51,12 +51,12 @@ CAPTCHA的目的很明确，就是区分计算机和人类的一种程序算法�
 
 > 以上是自己学习的总结，如有错误，欢迎及时批评指正
 
-[https://en.wikipedia.org/wiki/CAPTCHA#Origin_and_inventorship](url)
+[https://en.wikipedia.org/wiki/CAPTCHA#Origin_and_inventorship]
 
-[https://luosimao.com/service/captcha](url)
+[https://luosimao.com/service/captcha]
 
-[http://www.zzhaoz.com/edu/jingyan/10538.html](url)
+[http://www.zzhaoz.com/edu/jingyan/10538.html]
 
-[http://research.microsoft.com/en-us/um/redmond/projects/asirra/](url)
+[http://research.microsoft.com/en-us/um/redmond/projects/asirra/]
 
-[http://www.geetest.com/](url)
+[http://www.geetest.com/]
