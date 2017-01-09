@@ -1,32 +1,35 @@
 # 基于HTTP协议的DOS/DDoS的防御手段
     
-  在本文之前我们已经细致地了解到了攻击原理，进行了一些的实验,并且实际地体会到DDoS攻击对日常网络的危害性，那么应该怎么进行防御?关于防御方面的知识点，比较系统性和专业性，所以此处有较多的信息收集但也夹杂了些许总结的部分，大家若想要了解更多可以参考文后链接。
-
-
-
+    在本文之前我们已经细致地了解到了攻击原理，进行了一些的实验,并且实际地体会到DDoS攻击对日常网络的危害性，那么应该怎么进行防御呢?
 * **基于HTTP协议的DOS/DDoS的防御**
-	* 设置高性能设备：
-		* 要保证网络设备不能成为瓶颈，因此选择路由器、交换机、硬件防火墙等设备的时候要尽量选用知名度高、口碑好的产品。再就是假如和网络提供商有特殊关系或协议的话就更好了，当大量攻击发生的时候请他们在网络接点处做一下流量限制来对抗某些种类的DDoS攻击是非常有效的
 
-	* 带宽得保证：
-		* 网络带宽直接决定了能抗受攻击的能力，假若仅仅有10M带宽的话，无论采取什么措施都很难对抗现在的SYN Flood攻击
 
-	* 升级硬件配置：
-		* 在有网络带宽保证的前提下，请尽量提升硬件配置，要有效对抗每秒10万个SYN攻击包。而且最好可以进行优化资源使用，提高web server 的负载能力
 
-	* 异常流量的清洗：
-		* 通过DDoS硬件防火墙对异常流量的清洗过滤，通过数据包的规则过滤、数据流指纹检测过滤、及数据包内容定制过滤等顶尖技术能准确判断外来访问流量是否正常，进一步将异常流量禁止过滤	
-		
-	* 把网站做成静态页面：
-		* 把网站尽可能做成静态页面，不仅能大大提高抗攻击能力，而且还给黑客入侵带来不少麻烦，最好在需要调用数据库的脚本中，拒绝使用代理的访问，经验表明，使用代理访问你网站的80%属于恶意行为	
-		
-	* 分布式集群防御：
-		* 这是目前网络安全界防御大规模DDoS攻击的最有效办法。分布式集群防御的特点是在每个节点服务器配置多个IP地址，并且每个节点能承受不低于10G的DDoS攻击，如一个节点受攻击无法提供服务，系统将会根据优先级设置自动切换另一个节点，并将攻击者的数据包全部返回发送点，使攻击源成为瘫痪状态，从更为深度的安全防护角度去影响企业的安全执行决策。		
+- 重定向认证
 
-以上摘自
-[学习手册：浅析DDoS的攻击及防御](http://blog.nsfocus.net/analysis-ddos-attack-defense/)
+    Anti-DDoS系统代替服务器向客户端响应307状态码（针对POST请求方法的重定向），同时向客户端的浏览器注入Cookie，客户端再次发起请求时会在HTTP报头上附加Cookie信息，Anti-DDoS设系统通过验证Cookie信息的真实性来验证客户端。
 
-* **列举DDoS攻击的防御手段**
+![](reload.png)
+
+1、当连续一段时间内去往目标Web服务器的HTTP POST请求报文超过告警阈值后，Anti-DDoS系统启动源认证机制。源认证机制启动后，Anti-DDoS系统将会代替服务器与客户端建立TCP三次握手。
+
+2、Anti-DDoS系统拦截HTTP请求，代替Web服务器回应307状态码，并在响应头部附加上由客户端IP生成的Cookie。
+
+3、如果这个源是虚假源，或者不支持完整HTTP协议栈的攻击工具，不会重新发起请求。
+
+4、如果这个源是真实客户端，Anti-DDoS系统生成的Cookie会写入到浏览器中，并且客户端会重新发起请求，请求头部就会带有该Cookie信息。Anti-DDoS系统收到请求后，验证Cookie是否正确，如果正确则将该客户端的源IP地址加入白名单。然后Anti-DDoS系统会回应408状态码，表示请求超时，使客户端重新发起访问。
+
+5、后续这个客户端发出的HTTP请求报文命中白名单直接通过。
+
+- 307重定向认证方式能够很好地防御HTTP POST Flood攻击，但是这种方式也具有一定的局限性。其一，依赖于客户端浏览器的Cookie的机制，受安全级别限制。如果客户端的浏览器安全级别较高而无法写入Cookie，会导致认证不通过；其二，第一阶段重定向结束后，需要客户端再次手动执行提交等操作，才能重新发起POST请求
+
+
+
+<pre>
+上面介绍了基于HTTP协议的DOS/DDoS的一种防御模式，接下来我们就整个DDoS攻击的防御进行了一定程度的汇总。
+</pre>
+
+* **DDoS攻击的防御手段**
 	* 确保服务器的系统文件是最新的版本,并及时更新系统补丁：
 		* 要定期扫描现有的网络主节点,清查可能存在的安全漏洞,对新出现的漏洞及时进行清理
 
@@ -72,14 +75,12 @@
 
 ## 参考文献
 
-[DDOS攻击原理及效果详解](http://www.bingdun.com/cc/6290.htm)
+[http://www.bingdun.com/cc/6290.htm](http://www.bingdun.com/cc/6290.htm)
 
-[DDoS的攻击原理与防御方法blog](http://blog.csdn.net/huwei2003/article/details/45476743)
+[http://blog.csdn.net/huwei2003/article/details/45476743](http://blog.csdn.net/huwei2003/article/details/45476743)
 
-[DDOS攻击原理与解决方案](http://www.haodc.com/gaofang-36.html)
+[http://www.haodc.com/gaofang-36.html](http://www.haodc.com/gaofang-36.html)
 
-[基于HTTP-FLOOD攻击的网络入侵检测防御技术研究与实现](http://d.g.wanfangdata.com.cn/Thesis_Y1572297.aspx)
+[http://d.g.wanfangdata.com.cn/Thesis_Y1572297.aspx](http://d.g.wanfangdata.com.cn/Thesis_Y1572297.aspx)
 
-[学习手册：浅析DDoS的攻击及防御](http://blog.nsfocus.net/analysis-ddos-attack-defense/)
-
-[DDoS攻击工具演变](http://blog.nsfocus.net/evolution-of-ddos-attack-tools/)
+[http://support.huawei.com/huaweiconnect/enterprise/thread-367981.html](http://support.huawei.com/huaweiconnect/enterprise/thread-367981.html)

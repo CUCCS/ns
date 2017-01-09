@@ -111,12 +111,3 @@
 ![](showdatabase.png)
 
 ![](showtables.png)
-
-###参考链接
-关于cowrie的安装、配置参考以下文章
-
-[cowrie下载官方地址](https://github.com/micheloosterhof/cowrie)
-
-[Cowrie蜜罐部署教程](http://www.freebuf.com/articles/network/112065.html)
-
-[YouTube cowrie 安装使用参考视频教程](https://www.youtube.com/watch?v=FFzg8tuoGeI)
