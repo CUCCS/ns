@@ -129,6 +129,12 @@
 
 [lioc即Low_Orbit_Ion_Cannon维基百科](https://en.wikipedia.org/wiki/Low_Orbit_Ion_Cannon)
 
+
 [iptables规则的使用（网络安全课程pdf）](http://sec.cuc.edu.cn/huangwei/textbook/ns/)
 
 [loic使用视频（网上找的，具有可行性）](http://www.aipai.com/c31/PDcoIyAqIidqJWQuKg.html?fromvsogou=1)
+
+http://blog.nsfocus.net/evolution-of-ddos-attack-tools/
+
+[http://www.aipai.com/c31/PDcoIyAqIidqJWQuKg.html?fromvsogou=1](http://www.aipai.com/c31/PDcoIyAqIidqJWQuKg.html?fromvsogou=1)
+
