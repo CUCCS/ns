@@ -25,7 +25,7 @@
     * https://digi.ninja/projects/zonetransferme.php
 * [ ] chap0x07 从SQL注入到Shell
     * https://pentesterlab.com/exercises/from_sqli_to_shell
-* chap0x08+chap0x09 实战Snort检测SQL注入和Shellshock漏洞攻击并联动iptables进行防御（阻断来源IP访问1分钟并记录日志）
+* chap0x08+chap0x09 实战Snort/Suricata检测SQL注入和Shellshock漏洞攻击并联动iptables进行防御（阻断来源IP访问1分钟并记录日志）
 * chap0x10 实战fail2ban防止Basic认证暴力破解和SSH口令爆破
 * chap0x11 三种或以上不同SSH蜜罐应用实验对比分析报告
 * [ ] chap0x12 实战Bro网络入侵取证
