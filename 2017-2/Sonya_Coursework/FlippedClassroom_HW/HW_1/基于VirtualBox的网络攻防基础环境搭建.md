@@ -89,7 +89,7 @@
 - 配置端口转发
 
   ```shell
-  iptables -t nat -A POSTROUTING -o eth0 -s 192.168.26.0/24 -j MASQUERADE
+  iptables -t nat -A POSTROUTING -o eth1 -s 192.168.26.0/24 -j MASQUERADE
   iptables -t filter -I FORWARD -s 192.168.26.0/24 -j ACCEPT
   iptables -t filter -I FORWARD -d 192.168.26.0/24 -j ACCEPT
   ```
