@@ -55,7 +55,7 @@
 
   ![6](  ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/6.png)
 
-  攻击者主机的设置也一样。（攻击者主机IP :192.168.26.5）
+  攻击者主机的设置也一样。（攻击者主机IP :192.168.26.5）  （为了域名解析 需要将DNS设置为网关主机的DNS地址 即：192.168.1.1）
 
   注： 
 
@@ -90,7 +90,9 @@
 - 配置端口转发
 
   ```shell
-  iptables -t nat -I PREROUTING -j DNAT --to 10.0.2.9
+  iptables -t nat -A POSTROUTING -o eth0 -s 192.168.26.0/24 -j MASQUERADE
+  iptables -t filter -I FORWARD -s 192.168.26.0/24 -j ACCEPT
+  iptables -t filter -I FORWARD -d 192.168.26.0/24 -j ACCEPT
   ```
 
   效果验证：
@@ -116,8 +118,6 @@
 #### 三、问题
 
 1. 不能直接访问的定义是什么？ 在个人的认识中如果A不能访问B,会导致B不能接收到A的响应包，这样在使用效果来看B也不能访问A了。但是如果设定特定的规则（比如响应时间，或者数据包的标识），是A的响应包可以被B接收，这样合理吗？
-2. ping 域名 有待设置
-
 #### 四、附
 
 ```shell
