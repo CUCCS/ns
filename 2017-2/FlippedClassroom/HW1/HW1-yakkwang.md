@@ -14,10 +14,13 @@
 ![](http://upload-images.jianshu.io/upload_images/8107418-9c8755c143df67e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 靶机与攻击者主机均为一块网卡，为桥接网络。网关地址设置为上图网关主机的ip。
+
 攻击者：
+
 ![](http://upload-images.jianshu.io/upload_images/8107418-21313f7ffa64d3d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 靶机：
+
 ![](http://upload-images.jianshu.io/upload_images/8107418-438cffe4d3fb47aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 网关：192.168.1.17
@@ -31,6 +34,7 @@
 ![](http://upload-images.jianshu.io/upload_images/8107418-271d97a08e4ec320.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 3.网关可以访问靶机和攻击者主机
+
 ![](http://upload-images.jianshu.io/upload_images/8107418-a4e05992afed7a5d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![](http://upload-images.jianshu.io/upload_images/8107418-24d199d22afa3a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -38,10 +42,13 @@
 4.靶机与攻击者主机均可访问互联网
 
 靶机访问互联网
+
 ![](http://upload-images.jianshu.io/upload_images/8107418-e5946603a9b9ac2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 攻击者主机访问互联网
+
 ![](http://upload-images.jianshu.io/upload_images/8107418-24a61cfe0299d8c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 靶机流量经过网关
+
 ![](http://upload-images.jianshu.io/upload_images/8107418-039f9fb239d58330.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
