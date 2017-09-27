@@ -33,29 +33,28 @@
 
   Host-Only网卡启用DHCP服务。
 
-  ![Host-Only网卡设置](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\2.png)
+  ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/2.png)
 
   三个主机（靶机，攻击者主机，网关）都连接到了同一个Host-Only网卡
 
-![网卡机器—网络设置1](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\3.png)
+ ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/3.png)
 
 ​    网关主机设置两个网卡，另加一个设置成NAT 网络的网卡，其余两台主机只有一个Host-Only网卡。 
-
-![网卡机器—网络设置1](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\4.png)
+  ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/4.png)
 
 - 设置IP
 
   网关的IP不需要设置，两个网卡都使用默认分配的IP。
 
-  ![5](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\5.png)
+  ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/5.png)
 
   注： 两个网卡的设置会同步
 
   靶机的IP改为手动设置。 网关设为192.168.26.103。
 
-  ![6](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\6.png)
+  ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/6.png)
 
-  攻击者主机的设置也一样。（攻击者主机IP :192.168.26.5）
+  攻击者主机的设置也一样。（攻击者主机IP :192.168.26.5）  （为了域名解析 需要将DNS设置为网关主机的DNS地址 即：192.168.1.1）
 
   注： 
 
@@ -75,33 +74,35 @@
 
   ​
 
-  ![7](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\7.png)
+  ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/7.png)
 
   效果验证： 
 
   - 靶机ping攻击者，攻击者可以接收到ping包，但是响应包不能到达靶机。
 
-  ![8](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\8.png)
+  ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/8.png)
 
   - 网关可以直接访问靶机和攻击者主机。
 
-    ![10](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\10.png)
+  ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/10.png)
 
 - 配置端口转发
 
   ```shell
-  iptables -t nat -I PREROUTING -j DNAT --to 10.0.2.9
+  iptables -t nat -A POSTROUTING -o eth1 -s 192.168.26.0/24 -j MASQUERADE
+  iptables -t filter -I FORWARD -s 192.168.26.0/24 -j ACCEPT
+  iptables -t filter -I FORWARD -d 192.168.26.0/24 -j ACCEPT
   ```
 
   效果验证：
 
   - 靶机、攻击者主机可以访问外网IP
 
-    ![11](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\11.png)
+   ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/11.png)
 
   - 所有的上下行流量都经过网关
 
-    ![12](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\12.png)
+   ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/12.png)
 
 - 设置多重加载
 
@@ -111,12 +112,15 @@
 
   - 效果验证 ：
 
-    ![13](E:\Dcuments\CourseStudy\Junior3rd\NetworkSecurity\HW_final\ns\2017-2\Sonya_Coursework\FlippedClassroom_HW\HW_1\13.png)
+   ![Host-Only网卡设置](https://github.com/songyawen/ns/raw/master/2017-2/Sonya_Coursework/FlippedClassroom_HW/HW_1/13.png)
 
 #### 三、问题
 
 1. 不能直接访问的定义是什么？ 在个人的认识中如果A不能访问B,会导致B不能接收到A的响应包，这样在使用效果来看B也不能访问A了。但是如果设定特定的规则（比如响应时间，或者数据包的标识），是A的响应包可以被B接收，这样合理吗？
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4cf0c3ffba923a6e3cc124a16668c87a87d3356e
 #### 四、附
 
 ```shell
