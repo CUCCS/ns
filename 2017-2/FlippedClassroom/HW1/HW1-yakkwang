@@ -20,14 +20,14 @@
 
 
 网关：
-https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E7%BD%91%E5%85%B3%E7%BD%91%E5%8D%A1%E4%BF%A1%E6%81%AF.jpg?raw=true
+https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E7%BD%91%E5%85%B3%E7%BD%91%E5%8D%A1%E4%BF%A1%E6%81%AF.jpg
 靶机与攻击者主机均为一块网卡，为桥接网络。网关地址设置为上图网关主机的ip。
 
 攻击者主机：
-https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E6%94%BB%E5%87%BB%E8%80%85%E4%B8%BB%E6%9C%BA.png?raw=true
+https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E6%94%BB%E5%87%BB%E8%80%85%E4%B8%BB%E6%9C%BA.png
 
 靶机：
-https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E9%9D%B6%E6%9C%BA.png?raw=true
+https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E9%9D%B6%E6%9C%BA.png
 
 网关：192.168.1.17
 靶机：192.168.1.18
@@ -37,26 +37,27 @@ https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E9%9D%B6
 
 
 靶机可以ping通攻击者。设置防火墙后，攻击者可以收到靶机的ping包，但无法发送回应包。
-https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E9%9D%B6%E6%9C%BAping%E6%94%BB%E5%87%BB%E8%80%85.jpg?raw=true
+https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E9%9D%B6%E6%9C%BAping%E6%94%BB%E5%87%BB%E8%80%85.jpg
+https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E6%94%BB%E5%87%BB%E8%80%85%E6%94%B6%E4%BF%A1.jpg
 
 3.网关可以访问靶机和攻击者主机
 
 网关ping靶机：
-https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E7%BD%91%E5%85%B3ping%E9%9D%B6%E6%9C%BA.jpg?raw=true
+https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E7%BD%91%E5%85%B3ping%E9%9D%B6%E6%9C%BA.jpg
 
 网关ping攻击者主机：
-https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E7%BD%91%E5%85%B3ping%E6%94%BB%E5%87%BB%E8%80%85.png?raw=true
+https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E7%BD%91%E5%85%B3ping%E6%94%BB%E5%87%BB%E8%80%85.png
 
 4.靶机与攻击者主机均可访问互联网
 
 
 靶机访问互联网：
-https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E9%9D%B6%E6%9C%BA%E8%AE%BF%E9%97%AE%E4%BA%92%E8%81%94%E7%BD%91.png?raw=true
+https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E9%9D%B6%E6%9C%BA%E8%AE%BF%E9%97%AE%E4%BA%92%E8%81%94%E7%BD%91.png
 
 攻击者主机访问互联网：
-https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E6%94%BB%E5%87%BB%E8%80%85%E8%AE%BF%E9%97%AE%E4%BA%92%E8%81%94%E7%BD%91.png?raw=true
+https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E6%94%BB%E5%87%BB%E8%80%85%E8%AE%BF%E9%97%AE%E4%BA%92%E8%81%94%E7%BD%91.png
 
 靶机流量经过网关：
-https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E7%9B%91%E5%90%AC.png?raw=true
+https://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW1/%E7%9B%91%E5%90%AC.png
 
 
