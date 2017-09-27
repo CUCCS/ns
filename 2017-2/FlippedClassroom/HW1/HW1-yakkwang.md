@@ -9,6 +9,7 @@
 - 所有节点均可以访问互联网
 
 **二、实验过程**
+
 1.网关第一块网卡为NAT网络，eth0。第二块网卡为桥接网络，eth2。
 ![](http://upload-images.jianshu.io/upload_images/8107418-9c8755c143df67e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
