@@ -80,7 +80,7 @@
       * ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/5.PNG)
       * 可以看到靶机ping攻击者ping不通。
 
-    ### 3、端口转发实现内网联网
+### 3、端口转发实现内网联网
 
     *  配置端口转发
       * 在服务器（网关）上使其能转发：echo "1" > /proc/sys/net/ipv4/ip_forward
@@ -90,7 +90,7 @@
     * 所有的上下行流量都经过网关
       * ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/10.PNG)
 
-    ### 4、多重加载
+### 4、多重加载
 
     * ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/6.PNG)
 
@@ -100,7 +100,7 @@
 
       ​
 
-      ## 三、问题
+## 三、问题
 
       配置内网连通外网时，是否只需配置虚拟机中能连接外网的网卡转发内网ip即可。
 
