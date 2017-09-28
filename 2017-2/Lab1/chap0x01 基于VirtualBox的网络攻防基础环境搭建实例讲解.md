@@ -82,13 +82,13 @@
 
  ### 3、端口转发实现内网联网
 
-      *  配置端口转发
+   *  配置端口转发
       * 在服务器（网关）上使其能转发：echo "1" > /proc/sys/net/ipv4/ip_forward
       * 配置端口转发内网ip：iptables -t nat -A POSTROUTING -o eth0（外网网卡） -s 192.168.43.0/24（内网ip） -j MASQUERADE 
-      * 效果
-   * ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/9.PNG)
-     * 所有的上下行流量都经过网关
-   *  ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/10.PNG)
+   * 效果
+     *  ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/9.PNG)
+   * 所有的上下行流量都经过网关
+     *  ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/10.PNG)
 
  ### 4、多重加载
 
