@@ -13,24 +13,25 @@
 ----------
 ## 网络配置 ##
 ## 攻击机 ###
-https://github.com/MwTina/ns/blob/master/2017-2/ex1/pics/%E6%94%BB%E5%87%BB%E6%9C%BA/set.PNG
+https://github.com/MwTina/ns/blob/master/2017-2/mw/ex1/pics/%E6%94%BB%E5%87%BB%E6%9C%BA/set.PNG
 ## 网关 ###
-https://github.com/MwTina/ns/blob/master/2017-2/ex1/pics/%E7%BD%91%E5%85%B3/eth0.PNG
-https://github.com/MwTina/ns/blob/master/2017-2/ex1/pics/%E7%BD%91%E5%85%B3/eth1.PNG
+https://github.com/MwTina/ns/blob/master/2017-2/mw/ex1/pics/%E7%BD%91%E5%85%B3/eth0.PNG
+https://github.com/MwTina/ns/blob/master/2017-2/mw/ex1/pics/%E7%BD%91%E5%85%B3/eth1.PNG
 ## 靶机 ###
-https://github.com/MwTina/ns/blob/master/2017-2/ex1/pics/%E9%9D%B6%E6%9C%BA/set.PNG
+https://github.com/MwTina/ns/blob/master/2017-2/mw/ex1/pics/%E9%9D%B6%E6%9C%BA/set.PNG
 
 
 ----------
 ## 证明截图 ##
 ### 攻击者主机无法直接访问靶机 
-https://github.com/MwTina/ns/blob/master/2017-2/ex1/pics/%E6%94%BB%E5%87%BB%E6%9C%BA/%E6%8D%95%E8%8E%B7.PNG
+https://github.com/MwTina/ns/blob/master/2017-2/mw/ex1/pics/%E6%94%BB%E5%87%BB%E6%9C%BA/%E6%8D%95%E8%8E%B7.PNG
 ### 网关可以直接访问攻击者主机和靶机 
-https://github.com/MwTina/ns/blob/master/2017-2/ex1/pics/%E7%BD%91%E5%85%B3/%E6%8D%95%E8%8E%B7.PNG  
+https://github.com/MwTina/ns/blob/master/2017-2/mw/ex1/pics/%E7%BD%91%E5%85%B3/%E6%8D%95%E8%8E%B7.PNG  
 ### 靶机的所有对外上下行流量必须经过网关
-https://github.com/MwTina/ns/blob/master/2017-2/ex1/pics/%E9%9D%B6%E6%9C%BA/%E6%8D%95%E8%8E%B7.PNG 
+https://github.com/MwTina/ns/blob/master/2017-2/mw/ex1/pics/%E9%9D%B6%E6%9C%BA/%E6%8D%95%E8%8E%B7.PNG 
 ### 所有节点制作成基础镜像（多重加载的虚拟硬盘） 
-https://github.com/MwTina/ns/blob/master/2017-2/ex1/pics/%E5%A4%9A%E9%87%8D%E5%8A%A0%E8%BD%BD.PNG
+https://github.com/MwTina/ns/blob/master/2017-2/mw/ex1/pics/%E5%A4%9A%E9%87%8D%E5%8A%A0%E8%BD%BD.PNG  
+
 
 
 ----------
