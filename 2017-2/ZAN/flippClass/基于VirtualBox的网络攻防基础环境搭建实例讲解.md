@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+# 基于VirtualBox的网络攻防基础环境搭建实例 #
+=======
 #基于VirtualBox的网络攻防基础环境搭建实例讲解#
+>>>>>>> 4773f02283e6501c56f5c5653452c143b5760216
 <br/>
 ## 要求 ##
 * [ ] 节点：靶机、网关、攻击者主机
@@ -11,36 +15,54 @@
     * 其他要求
         * 所有节点制作成基础镜像（多重加载的虚拟硬盘）
 
-## 已实现功能 ##
-- 攻击者主机无法直接访问靶机：攻击机和靶机相互不能ping
+## 实验说明 ##
+- 靶机：kali-1，内部网络，ip:192.168.10.9
+- 攻击机：kali-2，NAT网络,ip:10.0.2.6
+- 网关：kali-GateWay，配置NAT网络和内部网络,ip:10.0.2.4,192.168.10.1
 
-- 网关可以直接访问攻击者主机和靶机
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/ping%E7%BD%91%E5%85%B3.jpg)
-
-- 所有节点制作成基础镜像（多重加载的虚拟硬盘）
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/%E5%A4%9A%E9%87%8D%E5%8A%A0%E8%BD%BD.JPG)
+## 实现功能 ##
+* [ ] 节点：靶机、网关、攻击者主机
+    * 连通性
+        * 靶机可以直接访问攻击者主机
+        * ![](pictures/1.png)
+        * 攻击者主机无法直接访问靶机
+        * ![](pictures/2.png)
+        * 网关可以直接访问攻击者主机和靶机：网关可以ping通攻击者主机和靶机
+        * 靶机的所有对外上下行流量必须经过网关
+        * 所有节点均可以访问互联网
+        * ![](pictures/4.png)
+        * ![](pictures/5.png)
+        * ![](pictures/3.png)
+    * 其他要求
+        * 所有节点制作成基础镜像（多重加载的虚拟硬盘）
+        ![](pictures/12.png)
 
 
 ## 网络配置 ##
-- 靶机：kali-1，NAT网络，ip:10.0.2.2
-- 攻击机：kali-2，桥接网卡,ip:192.168.10.9
-- 网关：配置NAT网络和桥接网卡,ip:10.0.2.1,192.168.10.1
-
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/1net.JPG)
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/2net.JPG)
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/gw-net1.JPG)
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/gw-net2.JPG)
-
+### 靶机kali-1 ###
+- 内部网络
+- 手动设置IP地址
+- IPv4地址：192.168.10.9
+- 默认网关：192.168.10.1
+![](pictures/10.png)
 ----------
-
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/gw-bridge-network.JPG)
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/gw-network.JPG)
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/kali-1ip.JPG)
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/kali-2network.JPG)
-
+### 攻击者主机kali-2 ###
+- NAT网络
+- 通过dhclient获取ip地址
+![](pictures/9.png)
 ----------
+<<<<<<< HEAD
+### 网关kali-GateWay ###
+- NAT网络，通过"dhclient eth0"获取ip地址
+- 内部网络，手动设置IP地址192.168.10.1
+- IP转发的相关命令行：
+> echo 1 /proc/sys/net/ipv4/ip_forward
+> 
+> iptables -t nat -A POSTROUTING -s 192.168.10.1/24 -j MASQUERADE
+=======
 网关上的iptables：
 ![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/gw-iptables.JPG)
 ## 问题 ##
 - 桥接网卡连的是物理网卡，为什么不能连上外网？
 - 靶机kali-1可以ping通网关的另一个接口，为什么不能再把icmp包再转发到攻击机上？
+>>>>>>> 4773f02283e6501c56f5c5653452c143b5760216
