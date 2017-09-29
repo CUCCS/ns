@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # 基于VirtualBox的网络攻防基础环境搭建实例 #
-=======
-#基于VirtualBox的网络攻防基础环境搭建实例讲解#
->>>>>>> 4773f02283e6501c56f5c5653452c143b5760216
 <br/>
 ## 要求 ##
 * [ ] 节点：靶机、网关、攻击者主机
@@ -51,7 +47,6 @@
 - 通过dhclient获取ip地址
 ![](pictures/9.png)
 ----------
-<<<<<<< HEAD
 ### 网关kali-GateWay ###
 - NAT网络，通过"dhclient eth0"获取ip地址
 - 内部网络，手动设置IP地址192.168.10.1
@@ -59,10 +54,4 @@
 > echo 1 /proc/sys/net/ipv4/ip_forward
 > 
 > iptables -t nat -A POSTROUTING -s 192.168.10.1/24 -j MASQUERADE
-=======
-网关上的iptables：
-![](https://github.com/kjAnny/ns/blob/master/2017-2/ZAN/pictures/gw-iptables.JPG)
-## 问题 ##
-- 桥接网卡连的是物理网卡，为什么不能连上外网？
-- 靶机kali-1可以ping通网关的另一个接口，为什么不能再把icmp包再转发到攻击机上？
->>>>>>> 4773f02283e6501c56f5c5653452c143b5760216
+
