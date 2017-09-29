@@ -57,12 +57,15 @@
 * 配置结果
 
   * 网关kali-gateway：
-    * 外网ip：net模式；ip动态分配。
+    * ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/11.PNG)
+    * 外网ip：nat模式；ip动态分配。
     * 内网ip：host-only模式；ip：192.168.43.110
   * 攻击机kali-attacker：
+    * ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/13.PNG)
     * host-only模式
     * ip：192.168.43.102；网关：192.168.43.110
   * 靶机kali-victim：
+    * ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/12.PNG)
     * host-only模式
     * ip：192.168.43.103；网关：192.168.43.110
 
