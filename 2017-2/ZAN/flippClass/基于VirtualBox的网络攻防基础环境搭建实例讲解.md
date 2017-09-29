@@ -1,6 +1,8 @@
 # 基于VirtualBox的网络攻防基础环境搭建实例 #
 <br/>
+
 ## 要求 ##
+
 * [ ] 节点：靶机、网关、攻击者主机
     * 连通性
         * 靶机可以直接访问攻击者主机
@@ -20,18 +22,18 @@
 * [ ] 节点：靶机、网关、攻击者主机
     * 连通性
         * 靶机可以直接访问攻击者主机
-        * ![](pictures/1.png)
+        * ![](pictures/1.PNG)
         * 攻击者主机无法直接访问靶机
-        * ![](pictures/2.png)
+        * ![](pictures/2.PNG)
         * 网关可以直接访问攻击者主机和靶机：网关可以ping通攻击者主机和靶机
         * 靶机的所有对外上下行流量必须经过网关
         * 所有节点均可以访问互联网
-        * ![](pictures/4.png)
-        * ![](pictures/5.png)
-        * ![](pictures/3.png)
+        * ![](pictures/4.PNG)
+        * ![](pictures/5.PNG)
+        * ![](pictures/3.PNG)
     * 其他要求
         * 所有节点制作成基础镜像（多重加载的虚拟硬盘）
-        ![](pictures/12.png)
+        ![](pictures/12.PNG)
 
 
 ## 网络配置 ##
@@ -40,12 +42,12 @@
 - 手动设置IP地址
 - IPv4地址：192.168.10.9
 - 默认网关：192.168.10.1
-![](pictures/10.png)
+![](pictures/10.PNG)
 ----------
 ### 攻击者主机kali-2 ###
 - NAT网络
 - 通过dhclient获取ip地址
-![](pictures/9.png)
+![](./pictures/9.PNG)
 ----------
 ### 网关kali-GateWay ###
 - NAT网络，通过"dhclient eth0"获取ip地址
