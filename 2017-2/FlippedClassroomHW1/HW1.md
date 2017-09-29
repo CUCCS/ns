@@ -1,6 +1,6 @@
-#实验一实验报告#
+# 实验一实验报告
 
-##实验要求
+## 实验要求
 * 基于VirtualBox的网络攻防基础环境搭建实例讲解
     * 节点：靶机、网关、攻击者主机
     * 连通性
@@ -12,7 +12,7 @@
     * 其他要求
         * 所有节点制作成基础镜像（多重加载的虚拟硬盘）
 
-##实验完成情况
+## 实验完成情况
 * 实验完成度为100%
 * 靶机（kaliVictim)  
 靶机设置一个网卡，连接方式为内部网络，如下图所示。  
@@ -50,14 +50,14 @@
 ![](https://github.com/ghan3/ns/blob/master/2017-2/FlippedClassroomHW1/%E7%BD%91%E5%85%B3%E5%A4%9A%E9%87%8D%E5%8A%A0%E8%BD%BD.PNG)  
 ![](https://github.com/ghan3/ns/blob/master/2017-2/FlippedClassroomHW1/%E9%9D%B6%E6%9C%BA%E5%A4%9A%E9%87%8D%E5%8A%A0%E8%BD%BD.PNG)
 
-##实验完成思路
+## 实验完成思路
 靶机在内网，攻击机在外网。  
 网关一个网卡在内网与靶机连通，一个网卡在外网与攻击机连通。  
 外网可以与网络连通，靶机通过网关上网。
 ![](https://github.com/ghan3/ns/blob/master/2017-2/FlippedClassroomHW1/%E5%AE%9E%E9%AA%8C%E4%B8%80%E5%9B%BE.png)  
 
 
-##实验完成步骤 
+## 实验完成步骤 
  
 * 按照上面图片所示配置好三台虚拟机的网卡，之前采取动态分配的采用静态的方式设置之前分配的IP地址。  
 此时网卡和攻击机可以相互ping通，网卡和靶机可以相互ping通。  
