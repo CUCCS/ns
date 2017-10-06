@@ -31,7 +31,7 @@
 
   将网关的网卡分别设置为Host-Only、NAT网络
   
-  ![image](http://note.youdao.com/favicon.ico)
+  ![image](https://github.com/yangyisama/ns/blob/master/2017-2/yangyisama/hw1/pictures/1.png)
   ![image](http://note.youdao.com/favicon.ico)
   
   Host-Only网卡启用DHCP服务
