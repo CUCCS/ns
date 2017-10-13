@@ -31,8 +31,8 @@
 
   将网关的网卡分别设置为Host-Only、NAT网络
   
-  ![image](https://github.com/yangyisama/ns/blob/master/2017-2/yangyisama/hw1/pictures/1.png)
-  ![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/2.png)
+  ![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/1.png)
+  ![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/2.png)
   
   Host-Only网卡启用DHCP服务
   
@@ -42,23 +42,23 @@
   
   在此时若NAT网络界面名称找不到，需要先添加NAT网络
   
-  ![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/3.png)
+  ![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/3.png)
 
 - 设置IP
  
   网关的IP
 
-  ![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/4.png)
+  ![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/4.png)
   
-  ![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/5.png)
+  ![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/5.png)
 
   手动设置靶机的IP,网关设置为网关的IP地址
-  ![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/6.png)  
+  ![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/6.png)  
  
   
   同理设置攻击者主机的IP
   
-  ![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/7.png)
+  ![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/7.png)
 
   
 - 设置多重加载
@@ -68,31 +68,31 @@
     先在虚拟介质管理中 将 虚拟介质  **释放**；**修改** 介质属性 为 动态分配储存
     创建虚拟机，选择现有虚拟硬盘文件，选择响应虚拟硬盘。
     
-    ![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/8.png)
+    ![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/8.png)
 
 #### 三、实验结果截图
   
 靶机ping攻击者，攻击者可以接收到ping包，但是响应包不能到达靶机，而是通过网关转发到靶机
 
-![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/9.png)
+![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/9.png)
 
-![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/10.png)
+![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/10.png)
 
 网关可以直接ping通 靶机和攻击者主机
 
-![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/11.png)
+![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/11.png)
 
 靶机、攻击者主机都可以访问外网
 
-![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/12.png)
+![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/12.png)
 
 通过抓包验证是否所有的上下行流量都经过网关
 
-![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/13.png)
+![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/13.png)
 
 所有节点制作成基础镜像
 
-![image](https://github.com/yangyisama/ns/tree/master/2017-2/yangyisama/hw1/pictures/14.png)
+![image](https://raw.githubusercontent.com/yangyisama/ns/master/2017-2/yangyisama/hw1/pictures/14.png)
 
 #### 四、问题
 
