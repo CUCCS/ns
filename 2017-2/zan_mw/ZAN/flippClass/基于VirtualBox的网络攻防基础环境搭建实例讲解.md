@@ -53,7 +53,7 @@
 - NAT网络，通过"dhclient eth0"获取ip地址
 - 内部网络，手动设置IP地址192.168.10.1
 - IP转发的相关命令行：
-> echo 1 /proc/sys/net/ipv4/ip_forward
+> echo 1 > /proc/sys/net/ipv4/ip_forward
 > 
 > iptables -t nat -A POSTROUTING -s 192.168.10.1/24 -j MASQUERADE
 
