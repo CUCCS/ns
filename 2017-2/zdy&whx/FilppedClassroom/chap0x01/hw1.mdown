@@ -1,0 +1,38 @@
+#	基于VirtualBox的网络攻防基础环境搭建
+
+##	实验内容
+*	靶机可以直接攻击访问者主机
+*	攻击者主机无法直接访问靶机
+*	网关可以直接访问攻击者主机和靶机
+*	靶机的所有对外上下行流量必须经过网关
+*	所有节点均可以访问互联网
+
+##	实验过程
+####  1、设置网卡
+- 网关主机靶机都启用两个网卡，网卡1为NAT网络，网卡2为host-only网络
+![NAT网卡设置](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/1.png)
+![host-only网卡设置](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/2.png)
+-  host-only网络启用DHCP服务
+![DHCP](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/3.png)
+####  2、设置IP
+-  网关的IP使用默认IP 192.168.145.102
+![ip地址查询](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/4.png)
+-  靶机启用host-only，IP手动设置192.168.145.103，网关为192.168.145.102
+![靶机IP设置](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/5.png)
+-  主机启用host-only，IP手动设置192.168.145.105，网关192.168.145.102
+####  3、靶机可以直接访问攻击者主机
+![靶机ping通主机](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/6.png)
+####  4、攻击者主机无法直接访问靶机
+-  在靶机设置防火墙黑名单，禁止攻击者主机IP访问靶机
+```shell
+iptables -I INPUT -s 192.168.145.105 -j DROP
+```
+![主机ping不通靶机](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/7.png)
+####  5、网关可以直接访问攻击者主机和靶机
+![网关ping主机靶机](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/8.png)
+####  6、靶机的所有对外上下行流量必须经过网关
+![靶机ping网关](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/9.png)
+![网关监听](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/10.png)
+####  7、所有节点均可以访问互联网
+-  打开eht0访问baidu.com可ping通
+![ping baidu.com](https://github.com/choitop/ns/blob/master/2017-2/zdy%26whx/FilppedClassroom/chap0x01/11.png)
