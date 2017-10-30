@@ -1,0 +1,71 @@
+# 基于VirtualBox的网络攻防基础环境搭建实例
+
+## 要求
+
+1. 节点：靶机、网关、攻击者主机
+2. 连通性：
+   * 靶机可以直接访问攻击者主机
+   * 攻击者主机无法直接访问靶机
+   * 网关可以直接访问攻击者主机和靶机
+   * 靶机的所有对外上下行流量必须经过网关
+   * 所有节点均可以访问互联网
+3. 其他要求：
+   * 所有节点制作成基础镜像（多重加载的虚拟硬盘）
+## 节点配置
+1. 多重加载
+
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E5%A4%9A%E9%87%8D%E5%8A%A0%E8%BD%BD.png)
+
+2. 添加host-only网络，配置开启DHCP服务器
+
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/DHCP.png)
+
+3. 网关KaliRolling配置两块网卡，网卡1设置为NAT网络模式（外网），网卡2设置为host-only模式（内网）；动态获取IP
+
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E7%BD%91%E5%85%B3%E7%BD%91%E5%8D%A1%E8%AE%BE%E7%BD%AE-%E7%BD%91%E5%8D%A11.png)
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E7%BD%91%E5%85%B3%E7%BD%91%E5%8D%A1%E8%AE%BE%E7%BD%AE-%E7%BD%91%E5%8D%A12.png)
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E7%BD%91%E5%85%B3IP.png)
+4. 靶机KaliTarget设置一块网卡为host-only模式，IP手动设定，网关设定为KaliRolling的eth1的IP地址
+
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E9%9D%B6%E6%9C%BAIP.png)
+
+5. 攻击者主机KaliAttack设置一块网卡为NAT网络模式，IP手动设定，网关设定为KaliRolling的eth0的IP地址
+
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E6%94%BB%E5%87%BB%E8%80%85%E4%B8%BB%E6%9C%BAIP.png)
+## 实验过程
+* 网关
+配置端口转发
+    
+    `echo 1 > /proc/sys/net/ipv4/ip_forward`
+   
+    `iptables -t nat -A POSTROUTING -s 192.168.56.0/24（内网ip）-o -eth0 -j MASQUERADE`*端口转发内网IP*
+## 实验结果
+* 靶机可以直接访问攻击者主机
+
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E9%9D%B6%E6%9C%BA%E8%AE%BF%E9%97%AE%E6%94%BB%E5%87%BB%E8%80%85%E4%B8%BB%E6%9C%BA.png)
+
+* 攻击者主机无法直接访问靶机
+
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E6%94%BB%E5%87%BB%E8%80%85%E4%B8%BB%E6%9C%BA%E4%B8%8D%E8%83%BD%E8%AE%BF%E9%97%AE%E9%9D%B6%E6%9C%BA.png)
+
+* 网关可以直接访问攻击者主机和靶机
+
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E7%BD%91%E5%85%B3%E8%AE%BF%E9%97%AE%E6%94%BB%E5%87%BB%E8%80%85%E4%B8%BB%E6%9C%BA%E5%92%8C%E9%9D%B6%E6%9C%BA.png)
+
+* 靶机流量经过网关
+
+![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E9%9D%B6%E6%9C%BA%E6%B5%81%E9%87%8F%E7%BB%8F%E8%BF%87%E7%BD%91%E5%85%B3.png)
+
+* 所有节点均可以访问互联网
+
+  * 网关访问互联网
+  
+  ![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E7%BD%91%E5%85%B3%E8%AE%BF%E9%97%AE%E4%BA%92%E8%81%94%E7%BD%91.png)
+
+  * 攻击者主机访问互联网
+  
+  ![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E6%94%BB%E5%87%BB%E8%80%85%E4%B8%BB%E6%9C%BA%E8%AE%BF%E9%97%AE%E4%BA%92%E8%81%94%E7%BD%91.png)
+  
+  * 靶机访问互联网
+  
+  ![](https://raw.githubusercontent.com/15xinanwzy/ns/master/2017-2/wyq_wzy_lw/wzy_HW/HW_1/Images/%E9%9D%B6%E6%9C%BA%E8%AE%BF%E9%97%AE%E4%BA%92%E8%81%94%E7%BD%91.png)
