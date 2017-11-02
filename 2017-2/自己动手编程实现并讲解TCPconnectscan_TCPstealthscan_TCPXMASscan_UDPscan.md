@@ -8,31 +8,31 @@
 
 ####	二	实验过程
 *	开启80端口
-![](img/开启80.jpg)
+![](img/开启80.png)
 
 *	TCP connect scan
-![](img/tcs开.jpg)
+![](img/tcs开.png)
 
 *	TCP stealth scan
-![](img/tss开.jpg)
+![](img/tss开.png)
 
 *	TCP XMAS scan
-![](img/txs开.jpg)
+![](img/txs开.png)
 
 *	UDP scan
 	*	未打开68端口，无法进行测试
 
 *	对80端口开启过滤
-![](img/过滤.jpg)
+![](img/过滤.png)
 
 *	TCP connect scan
-![](img/tcs关.jpg)
+![](img/tcs关.png)
 
 *	TCP stealth scan
-![](img/tss关.jpg)
+![](img/tss关.png)
 
 *	TCP XMAS scan
-![](img/txs关.jpg)
+![](img/txs关.png)
 
 *	UDP scan
 	*	未打开68端口，无法进行测试
