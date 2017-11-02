@@ -23,21 +23,20 @@
 
 ## 实验结果 ##
 - TCP connect scan
-- ![](pictures/tcp4.PNG)
-- ![](pictures/tcp1.PNG)
-- ![](pictures/tcp12.PNG)
+</br>![](pictures/tcp4.PNG)
+![](pictures/tcp1.PNG)
+![](pictures/tcp12.PNG)
 - TCP stealth scan
-- ![](pictures/tcp5.PNG)
-- ![](pictures/tcp6.PNG)
-- ![](pictures/tcp7.PNG)
+</br>![](pictures/tcp5.PNG)
+![](pictures/tcp6.PNG)
+![](pictures/tcp7.PNG)
 - TCP XMAS scan
-- ![](pictures/tcp9.PNG)
-- ![](pictures/tcp8.PNG)
+</br>![](pictures/tcp9.PNG)
+![](pictures/tcp8.PNG)
 - UDP scan
-- ![](pictures/tcp14.PNG)
-- ![](pictures/tcp10.PNG)
-- ![](pictures/tcp11.PNG)
-- ![](pictures/tcp13.PNG)
+</br>![](pictures/udpScan2.PNG)
+![](pictures/udpScan1.PNG)
+
 
 ## 参考资料 ##
 [http://resources.infosecinstitute.com/port-scanning-using-scapy/](http://resources.infosecinstitute.com/port-scanning-using-scapy/)
