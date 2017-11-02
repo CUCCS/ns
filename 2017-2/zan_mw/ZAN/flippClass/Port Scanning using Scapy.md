@@ -19,7 +19,7 @@
 - TCP connect scan:[tcpconnect.py](tcpconnect.py)
 - TCP stealth scan:[tcpstealth.py](tcpstealth.py)
 - TCP XMAS scan:[tcpxmas.py](tcpxmas.py)
-- UDP scan:[tcpudp.py](tcpudp.py)
+- UDP scan:[udpscan.py](udpscan.py)
 
 ## 实验结果 ##
 - TCP connect scan
