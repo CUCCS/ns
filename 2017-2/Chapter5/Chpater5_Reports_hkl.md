@@ -5,7 +5,7 @@
 - TCP connect scan  
 - TCP stealth scan
 - TCP XMAS scan
-- UDP scan （未实现）
+- UDP scan
 
 ## 实验环境
 
@@ -73,8 +73,8 @@
 
 ### UDP scan
 
-![](Images/4.png)
+- 服务器53端口关闭（DNS服务），开启68端口（DHCP服务）
 
-- 尝试打开服务器68端口（UDP端口，提供DHCP服务）失败，客户端扫描得不到反馈包
+![](Images/4.png)
 
 - [Code :Udp_ Scan](Code/udp_scan.py)
