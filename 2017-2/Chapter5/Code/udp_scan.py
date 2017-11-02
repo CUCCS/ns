@@ -7,7 +7,10 @@ dst_port = int( sys.argv[2] ) if len( sys.argv )>2 else 68
 resp = sr1( IP(dst=dst_ip)/UDP(sport=src_port,dport=dst_port),timeout=10)
 
 if resp == None:
-    print('Port %d Filtered or Open' % dst_port)
+	#按照PPT：
+    print('Port %d Filtered or Closed' % dst_port)
+	#按照github参考链接：
+	#print('Port %d Filtered or Open' % dst_port)
 elif resp.haslayer(UDP):
     print('Port %d Open' % dst_port)
 elif resp.haslayer(ICMP):

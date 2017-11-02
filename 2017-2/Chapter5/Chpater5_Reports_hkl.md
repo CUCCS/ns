@@ -5,7 +5,7 @@
 - TCP connect scan  
 - TCP stealth scan
 - TCP XMAS scan
-- UDP scan
+- UDP scan （未实现）
 
 ## 实验环境
 
@@ -73,7 +73,7 @@
 
 ### UDP scan
 
-- 服务器53端口关闭（DNS服务），开启68端口（DHCP服务）
+- 尝试使服务器监听68端口（UDP端口，提供DHCP服务）失败，（nmap指令和netstat指令均无法扫描到68端口开启），客户端扫描得不到反馈包
 
 ![](Images/4.png)
 
