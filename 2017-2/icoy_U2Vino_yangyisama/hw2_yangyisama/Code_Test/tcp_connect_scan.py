@@ -4,7 +4,7 @@ import logging
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from scapy.all import *
 
-dst_ip=sys.argv[1] if len(sys.argv)>1 else '10.0.4.254'
+dst_ip=sys.argv[1] if len(sys.argv)>1 else '10.0.2.11'
 src_port =RandShort()
 dst_port=int (sys.argv[2]) if len(sys.argv)>2 else 80
 
