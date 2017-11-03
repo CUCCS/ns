@@ -14,10 +14,10 @@ def udp_scan(dst_ip,dst_port,flag):
 		for count in range(0,3):
 			retrans.append(sr1(IP(dst=dst_ip)/UDP(dport=dst_port),timeout=dst_timeout,verbose=0))
 		for item in retrans:
-			if (str(type(item)) == "<type 'NoneType'>"):
-				print "Port %d Open or Filtered"%dst_port
-				#judge_port_status(dst_ip,dst_port,2)
-				
+			if (str(type(item)) != "<type 'NoneType'>"):
+				udp_scan(dst_ip,dst_port,dst_timeout)
+				return 
+		print "Port %d Open|Filtered"%dst_port
 	elif(udp_scan_resp.haslayer(UDP)):
 		print "Port %d Open"%dst_port
 	elif(udp_scan_resp.haslayer(ICMP)):
