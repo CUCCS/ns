@@ -9,7 +9,7 @@
 ## 实验配置 ##
 * 服务器 10.0.2.15
 
-![](Images/serverip.jpg)
+![](Ihttps://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW2/serverip.png)
 
 * 客户端 10.0.2.4
 
