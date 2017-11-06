@@ -9,21 +9,21 @@
 ## 实验配置 ##
 * 服务器 10.0.2.15
 
-![](Ihttps://github.com/yakkwang/ns/blob/master/2017-2/FlippedClassroom/HW2/serverip.png)
+![](serverip.png)
 
 * 客户端 10.0.2.4
 
-![Alt text](/clientip.png)
+![](clientip.png)
 
 ## 实验代码 ##
 
-[TCP Connect Scan](/TCPConnectScan.py)
+[TCP Connect Scan](TCPConnectScan.py)
 
-[TCP Stealth Scan](/TCPStealthScan.py)
+[TCP Stealth Scan](TCPStealthScan.py)
 
-[TCP XMAX Scan](/TCPXMASScan.py)
+[TCP XMAX Scan](TCPXMASScan.py)
 
-[UDP Scan](/UDPScan.py)
+[UDP Scan](UDPScan.py)
 
 ## 实验过程 ##
 
@@ -33,31 +33,31 @@
 
 - 用nmap指令扫描服务器，可以看到1000个端口全部处于关闭状态
 
-![Alt text](/nmap.png)
+![](nmap.png)
 
 - 在客户端调用TCPConnectScan程序，扫描到服务器80端口处于关闭状态
 
-![Alt text](/80closed.png)
+![](80closed.png)
 
 **开启状态**
 
 - 打开服务器80端口，开启apache服务。用netstat命令可查看当前处于监听状态的端口有80端口
 
-![Alt text](/startApache.png)
+![](startApache.png)
 
 - 在客户端调用TCPConnectScan程序，扫描到服务器80端口打开
 
-![Alt text](/80open.png)
+![](80open.png)
 
 **过滤状态**
 
 - 在服务器设置iptables规则，禁止外部访问80端口
 
-![Alt text](/iptables.png)
+![](iptables.png)
 
 - 在客户端调用TCPConnectScan程序，扫描到80端口处于过滤状态
 
-![Alt text](/80filterd.png)
+![](80filterd.png)
 
 ### TCP Stealth Scan ###
 
@@ -65,31 +65,31 @@
 
 - 用nmap扫描服务器，检测到除80端口外全部关闭
 
-![Alt text](/only80.png)
+![](only80.png)
 
 - 在客户端调用TCPStealthScan程序，22端口处于关闭状态
 
-![Alt text](/22close.png)
+![](22close.png)
 
 **开启状态**
 
 - 开启ssh服务，打开22端口
 
-![Alt text](/startssh.png)
+![](startssh.png)
 
 - 在客户端扫描，22端口处于打开状态
 
-![Alt text](/22open.png)
+![](22open.png)
 
 **过滤状态**
 
 - 在服务器设置iptables规则，对22端口进行过滤
 
-![Alt text](/iptables22.png)
+![](iptables22.png)
 
 - 在客户端扫描，22端口处于过滤状态
 
-![Alt text](/22filtered.png)
+![](22filtered.png)
 
 ### TCP XMAS Scan ###
 
@@ -97,39 +97,39 @@
 
 - 删除上一步设置的22端口iptables规则
 
-![Alt text](/deleteIptables22.png)
+![](deleteIptables22.png)
 
 - 删除成功后，iptables规则中只剩下第一步tcp connect scan设置的80端口规则
 
-![Alt text](/deleteIptables22success.png)
+![](deleteIptables22success.png)
 
 - 停用ssh服务，关闭22端口
 
-![Alt text](/stop22.png)
+![](stop22.png)
 
 - 在客户端调用TCPXMANScan程序，22处于关闭状态
 
-![Alt text](/22close3.png)
+![](22close3.png)
 
 **开启状态**
 
 - 重启ssh服务，打开22端口
 
-![Alt text](/startssh3.png)
+![](startssh3.png)
 
 - 在客户端扫描
 
-![Alt text](/22openorfilterd.png)
+![](22openorfilterd.png)
 
 **过滤状态**
 
 - 在服务器设置iptables规则
 
-![Alt text](/iptables223.png)
+![](iptables223.png)
 
 - 在客户端扫描
 
-![Alt text](/22openorfilteredd.png)
+![](22openorfilteredd.png)
 
 ### UDP Scan ###
 
