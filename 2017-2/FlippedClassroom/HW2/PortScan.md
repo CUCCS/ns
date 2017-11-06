@@ -9,7 +9,7 @@
 ## 实验配置 ##
 * 服务器 10.0.2.15
 
-![Alt text](/serverip.png)
+![](Images/serverip.jpg)
 
 * 客户端 10.0.2.4
 
