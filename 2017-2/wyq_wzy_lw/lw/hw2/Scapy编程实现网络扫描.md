@@ -121,3 +121,13 @@
 - 服务器监听68端口失败，无法开启DHCP服务，客户端得不到反馈
 
 ![](23.png)
+
+## 代码
+- [TCP_connect_scan](TCP_connect_scan.py)
+
+- [TCP_stealth_scan](TCP_stealth_scan.py)
+
+- [TCP_XMAS_scan](TCP_XMAS_scan.py)
+
+- [UDP_scan](UDP_scan.py)
+
