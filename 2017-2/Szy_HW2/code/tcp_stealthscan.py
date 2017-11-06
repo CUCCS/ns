@@ -1,0 +1,17 @@
+
+from scapy.all import *
+dst_ip = "10.0.2.7"
+src_port = RandShort()
+dst_port=22
+ 
+stealth_scan_resp = sr1(IP(dst=dst_ip)/TCP(sport=src_port,dport=dst_port,flags="S"),timeout=10,iface='eth0',verbose=0)
+if (stealth_scan_resp==None):
+	print "Filtered"
+elif stealth_scan_resp.haslayer(TCP):
+	if stealth_scan_resp.getlayer(TCP).flags == 0x12:
+		send_rst = sr(IP(dst=dst_ip)/TCP(sport=src_port,dport=dst_port,flags="R"),timeout=10,verbose=0)
+		print "Open"
+	elif stealth_scan_resp.getlayer(TCP).flags == 0x14:
+		print "Closed"
+
+
