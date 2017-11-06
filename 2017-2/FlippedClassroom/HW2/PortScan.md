@@ -101,7 +101,7 @@
 
 - 删除成功后，iptables规则中只剩下第一步tcp connect scan设置的80端口规则
 
-![](deleteIptables22success.png)
+![](deleteIptables22Success.png)
 
 - 停用ssh服务，关闭22端口
 
@@ -135,12 +135,12 @@
 
 - 在客户端调用UDPScan程序
 
-![Alt text](/68closed.png)
+![](68closed.png)
 
 - 在服务器用iptables规则开启68端口，并查看iptables规则表
 
-![Alt text](/open68.png)
+![](open68.png)
 
 - 可是用netstat和nmap指令都检测不到68端口处于监听状态
 
-![Alt text](/68nolisten.png)
+![](68nolisten.png)
