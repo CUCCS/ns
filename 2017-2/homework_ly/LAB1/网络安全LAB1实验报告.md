@@ -21,34 +21,32 @@
 
 网络配置
 
-*全局设定
-![Alt text](/1.png)
+###全局设定
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/1.png?raw=true)
 
-*靶机
-![Alt text](/4.png)
-![Alt text](/8.png)
+####靶机
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/4.png?raw=true)
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/8.png?raw=true)
 
-*网关
-![Alt text](/2.png)
-![Alt text](/3.png)
-![Alt text](/6.png)
+####网关
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/2.png?raw=true)
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/3.png?raw=true)
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/6.png?raw=true)
 
-*攻击者主机
-![Alt text](/5.png)
-![Alt text](/7.png)
+####攻击者主机
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/5.png?raw=true)
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/7.png?raw=true)
 
+###实验结果
 
-*实验结果
+####攻击者主机无法直接访问靶机
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/9.png?raw=true)
 
-    攻击者主机无法直接访问靶机
-![Alt text](/9.png)
+####端口转发实现内网联网，所有对外上下行流量必须经过网关
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/10.png?raw=true)
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/11.png?raw=true)
 
-    端口转发实现内网联网，所有对外上下行流量必须经过网关
-![Alt text](/10.png)
-![Alt text](/11.png)
-
-    所有节点制作成基础镜像
-![Alt text](/12.png)
-
+####所有节点制作成基础镜像
+![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB1/12.png?raw=true)
 
 
