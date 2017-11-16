@@ -1,19 +1,19 @@
-#编程实现网络扫描
+# 编程实现网络扫描
 
-##实验要求
+## 实验要求
 
     TCP connect scan
     TCP stealth scan
     TCP XMAS scan
     UDP scan 
 
-##实验环境
+## 实验环境
 
->服务器：GW kali-linux
+> 服务器：GW kali-linux
 
->目标主机：victim kali-linux
+> 目标主机：victim kali-linux
 
-##实验过程
+## 实验过程
 
 1. 查看目标主机IP地址及端口开放情况
 ![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB2/lab2_1.png?raw=true)
@@ -47,10 +47,10 @@
 
 ![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB2/lab2_12.png?raw=true)
 
-##未完成
+## 未完成
 UDP scan
 
 ![](https://github.com/LuYe2/ns/blob/master/2017-2/homework_ly/LAB2/lab2_10.png?raw=true)
 
-##参考资料
+## 参考资料
 http://resources.infosecinstitute.com/port-scanning-using-scapy/
