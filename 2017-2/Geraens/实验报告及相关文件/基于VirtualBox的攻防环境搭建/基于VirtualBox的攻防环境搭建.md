@@ -86,7 +86,12 @@
 
 * 图为网关机抓取的靶机的数据包
 
-![](https://raw.githubusercontent.com/Geraens/ns/42cca8babe13db13ed0912a39bf0248acdb6452c/2017-2/Geraens/%E5%9B%BE%E7%89%87/image8.png)
+![](https://raw.githubusercontent.com/Geraens/ns/master/2017-2/Geraens/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6/%E5%9F%BA%E4%BA%8EVirtualBox%E7%9A%84%E6%94%BB%E9%98%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E5%9B%BE%E7%89%87/%E9%9D%B6%E6%9C%BA%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91%E6%8A%93%E5%8C%85.jpg)
+
+* 图为网关机抓取攻击机访问外网的数据包
+
+![](https://raw.githubusercontent.com/Geraens/ns/master/2017-2/Geraens/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6/%E5%9F%BA%E4%BA%8EVirtualBox%E7%9A%84%E6%94%BB%E9%98%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E5%9B%BE%E7%89%87/%E6%94%BB%E5%87%BB%E6%9C%BA%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91.jpg)
+
 
 ### 5.所有节点均可以访问互联网
 
