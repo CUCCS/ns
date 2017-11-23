@@ -43,7 +43,7 @@
 * 使用用户名密码成功登录，可以进行上传删除图片的操作。
 ![](login-status.PNG)
 
-* 在本地建立shell.php.tset文件。该后缀文件可绕过目标服务器对php文件的检测。
+* 在本地建立shell.php.tset文件。该后缀文件可绕过目标服务器对php文件的检测。    
 ![](shell-php.PNG)
 
 * 上传webshell。
