@@ -2,7 +2,7 @@
 
 - GEETEST是一种滑动验证码。用户通过拖动滑块至图片空缺位置即可通过验证。
 
-![Alt text](/example.png)
+![](https://github.com/yakkwang/ns/blob/master/2017-2/%E5%A4%A7%E4%BD%9C%E4%B8%9A/GEETEST%E5%AE%89%E5%85%A8%E6%80%A7/example.png)
 
 ## 优势 ##
 
