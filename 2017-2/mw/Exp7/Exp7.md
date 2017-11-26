@@ -47,34 +47,35 @@ The most important rule is that both statements should return the same number of
 ### Exploiting SQL injections with UNION  
 - Find the number of columns to perform the UNION
 - Find what columns are echoed in the page
-  - using UNION SELECT and increase the number of columns
+  - using UNION SELECT and increase the number of columns   
   ![](pics/union select 1,2,3,4.png)
-  the database triggers errors until the end of the query returns 4 columns
-  - using ORDER BY statement.  
-  ![](pics/order by 4.png)
-   if the column number in the ORDER BY statement is bigger than the number of columns in the query, an error is thrown
-   ![](pics/order by 5.png)  
+  the database triggers errors until the end of the query returns 4 columns   
 
+  - using ORDER BY statement.    
+  ![](pics/order by 4.png)    
 
-- Retrieve information from the database meta-tables
-  ![](pics/id=2'.png)
+   if the column number in the ORDER BY statement is bigger than the number of columns in the query, an error is thrown    
+   ![](pics/order by 5.png)   
+
+- Retrieve information from the database meta-tables   
+  ![](pics/id=2'.png)  
 
   Based on the error message we received, we know that the backend database used is MySQL.
-  - the user used by the PHP application to connect to the database with current_user()
-  ![the current user](pics/union select current_user.png)   
+  - the user used by the PHP application to connect to the database with current_user()   
+  ![the current user](pics/union select current_user.png)     
 
-  - the version of the database using version()
-  ![the database version](pics/union select version.png)
+  - the version of the database using version()     
+  ![the database version](pics/union select version.png)     
 
-  - the current database
-  ![the current database](pics/union select database.png)
+  - the current database    
+  ![the current database](pics/union select database.png)  
 
 - Retrieve information from other tables/databases  
   MySQL provides tables containing meta-information about the database, tables and columns available since the version 5 of MySQL. These tables are stored in the database information_schema.  
-  a raw list of all tables
-  ![a raw list of all tables](pics/union select table_name.png)
-  a raw list of all columns
-  ![a raw list of all columns](pics/union select column_name.png)
+  a raw list of all tables  
+  ![a raw list of all tables](pics/union select table_name.png)  
+  a raw list of all columns  
+  ![a raw list of all columns](pics/union select column_name.png)  
 
   To know what column belongs to what table:
   - put tablename and columnname in different parts of the injection
@@ -96,9 +97,9 @@ This PHP script once uploaded on the server will give us a way to run PHP code a
 ![](pics/login.png)
 ![](pics/upload.png)
 Now, we need to find where the PHP script, managing the upload put the file on the web server.   
-We can visit the web page of the newly uploaded image to see where the <img tag is pointing to:
-![](pics/view page source.png)
-start running commands using the cmd parameter  
+We can visit the web page of the newly uploaded image to see where the <img tag is pointing to:   
+![](pics/view page source.png)   
+start running commands using the cmd parameter   
 
 - get a full list of the system's users
 ![](pics/passwd.png)
