@@ -60,7 +60,7 @@
 ![](pic/4-3.PNG)  
 ![](pic/4-6.PNG)
 
-* 通过查看页面元素获取webshell地址。
+* 通过查看页面元素获取webshell地址。  
 ![](pic/4-7.PNG)
 
 * 利用webshell读取目标服务器passwd文件。
