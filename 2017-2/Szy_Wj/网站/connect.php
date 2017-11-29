@@ -2,9 +2,9 @@
 //主机名
 $db_host = 'localhost';
 //用户名
-$db_user = 'root';
+$db_user = '';
 //密码
-$db_password = 'root';
+$db_password = '';
 //数据库名
 $db_name = 'test';
 //端口
