@@ -13,9 +13,12 @@ DNS（域名解析服务器）用于把域名解析为IP地址，然后使用这
 ### DNS透明代理（Transparent DNS Proxies） ###
 一些ISP正在使用一种“透明DNS代理”的技术。使用这种技术，它们将拦截所有DNS查询请求（TCP/UDP端口53），并透明地代理结果。这会导致被迫其DNS服务进行所有DNS查找。
 
-如果将DNS设置更改为使用“开放式”DNS服务（如Google，Comodo或OpenDNS），DNS流量不会再发送到ISP的DNS服务器，即是使用DNS透明代理。
 
-如果ISP使用的是透明的DNS代理，为了确保连接到VPN时，网络请求没有被拦截，需要参考https://www.dnsleaktest.com/how-to-fix-a-dns-leak.html上的方法。
+如果你修改了你的DNS设置使用一个诸如Google, Comodo或OpenDNS之类的'开放'DNS服务，你以为你的DNS流量不再被发送到你的互联网接入服务提供商的DNS服务器，你或许会震惊于发现了他们正在使用透明DNS代理。
+
+> 所谓透明代理，就是说虽然你的DNS客户端没有设置使用该代理服务器，但该代理服务器会不以你意志转移的强行代理你的DNS请求。
+
+如果ISP使用的是透明的DNS代理，为了确保连接到VPN时，网络请求没有被拦截，需要参考 https://www.dnsleaktest.com/how-to-fix-a-dns-leak.html 上的方法。
 
 ![](pic/transparent-dns-proxy.png)
 
