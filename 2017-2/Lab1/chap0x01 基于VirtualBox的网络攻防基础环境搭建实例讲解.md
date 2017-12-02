@@ -70,7 +70,7 @@
 
    *  配置端口转发
       * 在服务器（网关）上使其能转发：echo "1" > /proc/sys/net/ipv4/ip_forward
-      * 配置端口转发内网ip：iptables -t nat -A POSTROUTING -o eth0（外网网卡） -s 192.168.43.0/24（内网ip） -j MASQUERADE 
+      * 配置端口转发内网ip：iptables -t nat -A POSTROUTING -o eth0（外网网卡） -s 192.168.151.0/24（内网ip） -j MASQUERADE 
    * 效果
      *  ![Alt text](https://github.com/RachelLYY/ns/raw/master/2017-2/Lab1/27.PNG)
    * 所有的上下行流量都经过网关
