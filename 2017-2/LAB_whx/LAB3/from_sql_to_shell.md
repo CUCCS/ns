@@ -34,7 +34,7 @@
 
   * burpsuite劫持
 
-  ![](image/5.png)
+  ![](image/5.PNG)
   上图可以看出靶机使用的网络服务器、以及php版本信息
 
 * https请求测试
