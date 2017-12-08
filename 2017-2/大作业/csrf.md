@@ -429,3 +429,92 @@ value="8dcb5e56904d9b7d4bbf333afdd154ca">
 
 我们的客户端浏览器插件似乎是Adobe自己的Flash程序之外的Adobe跨域策略的第一个实现。可以做更多的工作，看看是否在其他情况下认真采用这一政策会增加用户保护和网站的灵活性。
 
+#### 7结论
+
+CSRF攻击对于诊断，利用和修复相对简单。网站可以在几秒钟内分析;攻击可以在几分钟内完成。对于这些攻击盛行的最合理的解释是，网络开发人员不知道这个问题，或者（错误地）认为针对更为人所知的crosssite脚本攻击的防御措施也能够抵御CSRF攻击。我们希望我们提出的攻击显示出危险 的CSRF攻击，并帮助Web开发人员给予他们应得的关注。 一旦Web开发者意识到CSRF攻击，他们就可以使用我们创建的工具来保护自己。
+
+我们建议框架的创建者将CSRF保护添加到他们的框架中，从而保护在此框架之上构建的任何网站。在框架级别添加CSRF保护，使开发人员无需复制代码，甚至可以详细了解CSRF攻击（尽管推荐理解这些攻击）。在每个站点都受到CSRF攻击保护之前，用户可以采取措施使用我们的Firefox浏览器插件来保护自己。也可以为其他浏览器编写类似的插件。
+
+CSRF和类似漏洞的根本原因可能在于当今Web协议的复杂性，以及Web从数据表示设备逐渐演变为交互式服务平台。随着越来越多的功能被添加到浏览器客户端，并且越来越多的网站涉及复杂的编程和客户端 - 服务器交互服务，CSRF和相关攻击将变得更加普遍，除非采取防御措施。随着网络技术的复杂性不断提高，我们可以期待更多新的攻击类别出现。
+
+#### 参考文献
+[1] 关于Metafilter。http://www.metafilter.com/about.mefi.
+
+[2] 允许跨域数据加载。
+http://livedocs.adobe.com/flash/9.0/main/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00001085.html.
+
+[3] Catalyst.  
+http://www.catalystframework.org/.
+
+[4] Code Igniter.  
+http://www.codeigniter.com/.
+
+[5] django.   
+http://www.djangoproject.com/.
+
+[6] Metafilter: Lost Password?  
+http://www.metafilter.com/login/lostpassword.mefi.
+
+[7] Internet Explorer 6中的隐私权。  
+http://msdn2.microsoft.com/en-us/library/ms537343.aspx.
+
+[8] Ruby on Rails.  
+http://www.rubyonrails.org.
+
+[9] Struts.   
+http://struts.apache.org/.
+
+[10] 纽约时报：媒体资料包2007。  
+http://www.nytimes.whsites.net/mediakit/pages/d_aud_target.html.
+
+[11] 同源政策。  
+http://livedocs.adobe.com/flash/9.0/main/wwhelp/wwhimpl/common/html/wwhelp.htm.
+
+[12] 网络安全威胁分类。  
+http://www.webappsec.org/projects/threat/.
+
+[13] YouTube简介。  
+http://www.youtube.com/t/fact_sheet.
+
+[14] Ellacoya数据显示，网络流量是网络上带宽最大的对等网络（Peer-to-Peer，P2P）。  
+http://www.ellacoya.com/news/pdf/2007/NXTcommEllacoyaMediaAlert.pdf ,Jun 2006.
+
+[15] ING新闻稿。  
+http://www.rsa.com/press_release.aspx?id=7220 , Aug 2006.
+
+[16] Alexa热门网站。  
+http://www.alexa.com/site/sales , Sep 2007.
+
+[17] A.Barth，C.Jackson和J.C.Mitchell。强大的防御跨站点请求伪造。CCS,2008年。
+ 
+[18] A. Bortz和D. Boneh。通过计时Web应用程序暴露私人信息。在WWW'07：第16届万维网国际会议论文集，第621-628页，纽约，纽约，美国，2007年。ACM出版社。
+
+[19] J. Burns. 跨站点参考伪造：介绍常见的Web应用程序的弱点。  
+http://www.isecpartners.com/documents/XSRF_Paper.pdf , 2005.
+
+[20] D.Endler。跨站点脚本攻击的演变。  
+http://cgisecurity.com/lib/XSS.pdf , May 2002.
+
+[21] R. Fielding，J. Gettys，J. Mogul，H. Frystyk，L. Masinter，P。 Leach和T. Berners-Lee。超文本传输协议 - HTTP / 1.1,1999。
+
+[22] J.Franks，P.Hallam-Baker，J.Hostetler，S。 Lawrence，P. Leach，A. Luotonen和L. Stewart.HTTP认证：基本和摘要访问认证，1999。
+
+[23] J. Grossman. CSRF，沉睡的巨人。  
+http://jeremiahgrossman.blogspot.com/2006/09/csrf-sleeping-giant.html ,Sep 2006.
+
+[24] M. Johns和J. Winter。 RequestRodeo：针对会话骑乘的客户端保护。在2006年欧洲OWASP会议论文集编辑F. Piessens的论文中，CW448的报告是第5-17页，Levven大学，Katholieke Universiteit 2006年5月。
+
+[25] M. Johns和J. Winter。保护内部网免受“JavaScript恶意软件”和相关攻击。DIMVA，2007年。
+
+[26] N. Jovanovic，E. Kirda和C. Kruegel。防止跨站请求伪造攻击。 Securecomm和Workshops，2006年，第1-10页，2006年8月28日 - 2006年9月1日。
+
+[27] T. Schreiber。 会话叠置：当今Web应用程序中普遍存在的漏洞。 http://www.securenet.de/papers/Session_Riding.pdf , 2004.
+
+[28] C. Shiflett. 安全角：跨站请求伪造。   
+http://shiflett.org/articles/cross-site-requestforgeries ,Dec 2004.
+
+[29] C. Shiflett. crossdomain.xml巫婆狩猎  
+http://shiflett.org/blog/2006/oct/the-crossdomain.xml-witch-hunt , Oct 2006.
+
+[30] C. Shiflett. Flash与跨域Ajax的危害。  
+http://shiflett.org/blog/2006/sep/the-dangers-of-cross-domainajax-with-flash , Sep 2006.
