@@ -518,3 +518,20 @@ http://shiflett.org/blog/2006/oct/the-crossdomain.xml-witch-hunt , Oct 2006.
 
 [30] C. Shiflett. Flash与跨域Ajax的危害。  
 http://shiflett.org/blog/2006/sep/the-dangers-of-cross-domainajax-with-flash , Sep 2006.
+
+
+#### A  Internet Explorer和CSRF
+可以使用Cookie来跟踪多个网站上的用户。例如，假设广告客户在自己的服务器上托管了大量发布商网站包含的图像（广告）。当图片被显示时，广告商可以设置cookie，这将允许广告商在访问不同的发布者站点时识别单个用户。也就是说，当用户浏览发布者网站并加载广告客户的图片时，他的cookie将被发回给广告客户并被唯一标识。广告商可以使用这些cookies来编辑关于用户的浏览习惯的数据。
+
+关注cookies对用户隐私的这种不利影响导致了隐私偏好平台（P3P）的创建。P3P“提供了一种通用的语法和传输机制，使网站能够将其隐私惯例传达给Internet Explorer 6（或任何其他用户代理）”[7]。从Internet Explorer 6开始，Microsoft要求所有站点都包含P3P策略，以便接收第三方Cookie。
+
+据微软称：
+> 高级cookie过滤是通过评估网站的隐私惯例，并根据站点的紧凑策略和用户自己的喜好来决定哪些cookie是可接受的。默认设置中，cookie用于收集个人身份信息，不允许用户在他们的使用选择被认为是“不满意”。默认情况下，当浏览会话结束并在第三方上下文中被拒绝时，第一方上下文中不满意的cookie被删除[7]。
+
+ （请注意，P3P政策未经验证，如果网站声称拥有可接受的政策，则Internet Explorer允许使用第三方Cookie。）
+
+假设用户位于一个页面，这个页面包含了在第三方网站上的图像。在P3P的情况下，第三方网站在用户所在的页面被认为是安全的时候可能是危险的。对于CSRF漏洞，情况正好相反，用户所在的页面可能是危险的，而第三方站点被认为是安全的（并且是潜在的攻击目标）。当Internet Explorer认为第三方网站有危险时，它会阻止Cookie被发送到该网站。当使用“会话cookie”时，这将有效地防止CSRF攻击，因为Internet Explorer正在剥离来自跨站点请求的身份验证信息。
+
+Internet Explorer的P3P策略对CSRF漏洞有一个有趣的影响。对于CSRF攻击（Internet Explorer认为这些网站安全且允许Cookie），具有有效P3P策略的站点不受保护，而没有策略的站点受到保护（Internet Explorer认为这些站点不安全并阻止Cookie）。请注意，这仅适用于CSRF影响使用Cookie进行身份验证的网站的漏洞。使用其他类型身份验证的站点可能仍然容易受到CSRF攻击。
+
+总而言之，当使用“会话cookie”身份验证和目标站点不实施P3P策略时，Internet Explorer对P3P的使用会导致IE的用户受到CSRF攻击的保护。这种“保护”是P3P政策的一个意外后果，不应该只用于防止CSRF攻击。相反，站点应该实现我们的服务器端建议，如4.1节所述。
