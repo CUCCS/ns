@@ -1,17 +1,17 @@
-##基于bro的计算机入侵取证实战分析
+#基于bro的计算机入侵取证实战分析
 
 
-####1. 使用bro来完成取证分析
+###1. 使用bro来完成取证分析
 
-####1.1. 安装bro
+###1.1. 安装bro
 
 - 执行 apt-get install bro bro-aux ，报错，apt-get update一下即可
-####1.2. 实验环境基本信息
+###1.2. 实验环境基本信息
 
 ![](https://github.com/Anna-YJ/Picture/blob/master/1.png?raw=true) 
 
 
-####1.3. 编辑bro配置文件
+###1.3. 编辑bro配置文件
 
 - 编辑 /etc/bro/site/local.bro，在文件尾部追加两行新配置代码
 @load frameworks/files/extract-all-files
@@ -26,7 +26,7 @@ redef ignore_checksums = T;
 ![](https://github.com/Anna-YJ/Picture/blob/master/3.png?raw=true)
 
 
-####1.4. 使用bro自动化分析pcap文件
+###1.4. 使用bro自动化分析pcap文件
 
 bro -r attack-trace.pcap_/data /etc/bro/site/local.bro
 
@@ -82,10 +82,10 @@ redef Site::local_nets = { 192.150.11.0/24 };
 
 
 
-####1.6. 小结
+###1.6. 小结
 在计算机取证方面，bro可以通过pcap包分析网络流量，从而找出入侵的痕迹，帮助管理者追究责任和减少损失。
 
-####2. 参考文献
+###2. 参考文献
 
 - [Frequently Asked Questions from Official Bro WebSite](https://www.bro.org/documentation/faq.html)
 
