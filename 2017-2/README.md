@@ -5,3 +5,4 @@
 * 翻转课堂用PPT可以使用ppt/pptx；
 * 不要直接使用Github官方客户端，使用git客户端；
 * commit注释一定要认真填写，不要再像往届同学那样搞出一堆的Add files via upload
+
