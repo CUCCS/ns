@@ -1,0 +1,1 @@
+﻿《Google IO 2017 召开》：美国时间 5 月 17 日- 19 日，Google I/O 2017 大会于美国加利福尼亚州山景城的海岸线圆形剧场召开；会议提及了AI、Kotlin、Android 8.0、HOME、Assistant 等等很多值得关注的东西。会议上 Google 还宣布将 Kotlin 语言作为安卓开发的一级编程语言；Kotlin 由 JetBrains 公司开发，与 Java 完全互通，并具备诸多 Java 尚不支持的新特性。( https://events.google.com/io/ )

@@ -1,0 +1,3 @@
+﻿这个基于谷歌v8的javascript引擎的框架几乎火遍世界，他让javascript不再只是一个前端的脚本语言，而且javascript天生对事件异步的支持也使得用nodejs开发的后端效率非常之高，笔者的nodejs经验不算特别多，但是不是很喜欢那种javascript的语法，国内的话BAT基本都在内部不断的开发基于nodejs的应用，更是nodejs+mongodb+express+angularjs（mean构架）是现在最火的创业公司的技术选型。
+
+使用公司：BAT等等的很多公司

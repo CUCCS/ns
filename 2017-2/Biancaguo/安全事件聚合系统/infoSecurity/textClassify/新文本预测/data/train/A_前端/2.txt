@@ -1,0 +1,7 @@
+﻿在发布文章中微软表示：
+
+“今天我们在GitHub中面向开发者开放了Office UI Fabric。这是一套响应式、移动优先的Web前端框架，旨在让开发者能够借助Office设计语言快速构建Web应用。Office UI Fabric简单易上手，可以用来创建全新Web应用，也可用于为现有Web应用添加新功能。”
+
+Office UI Fabric原本用于为Office制作插件，现在你可以拿来创建自己的Web应用，利用这套框架可开发出与微软Office界面相类似的Web应用。至于Office UI Fabric相比Bootstrap等框架的优势，微软声称：
+
+“相比其他前端框架，Office UI Fabric解决了诸多问题，是微软创建的独特的设计语言和交互模式，已被应用于微软诸多产品中。与其他框架相同，Fabric可加速前端构建速度，确保使用标准的颜色、图标等。使用Fabric，你不必花费很多时间来覆盖其他框架样式，Fabric还包括很多其他框架没有的组件。”

@@ -1,0 +1,1 @@
+﻿UNIX用户协会最早从20世纪80年代开始标准化工作，1984年颁布了试用标准。后来IEEE为此制定了POSIX标准（即IEEE1003标准）国际标准名称为ISO/IEC9945.它通过一组最小的功能定义了在UNIX操作系统和应用程序之间兼容的语言接口。POSIX是由Richard Stallman 应IEEE的要求而提议的一个易于记忆的名称，含义是Portable OPerating System Interface（可移植操作系统接口） ，而X表明其API的传承。

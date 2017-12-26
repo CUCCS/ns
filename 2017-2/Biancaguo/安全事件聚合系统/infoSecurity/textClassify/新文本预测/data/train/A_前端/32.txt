@@ -1,0 +1,13 @@
+﻿《Mavo》：Mavo 是纯粹的基于 HTML 标记的用来创建富客户端 Web 应用的框架，它允许开发者在没有服务端或者 JavaScript 脚本的情况下快速创建动态应用。( https://parg.co/b8n )
+
+《Sharp》：高性能的 Node.js 图片处理模块，能够提供面向 JPEG、PNG、WebP 以及 TIFF 等多种格式的图片，的尺寸重置、旋转等等常见的操作。( https://parg.co/bkm )
+
+《leerraum.js》：leerraum.js 是基于 typeset 的 PDF 排版与布局辅助工具，其目标在于简化 PDF 中可视化对象的定位与操作。( https://parg.co/bkS )
+
+《react-pdf》：在浏览器、移动端与服务端皆可适用的基于 React 语法的 PDF 文件创建工具。( https://github.com/diegomura/... )
+
+基于 CSS Grid 的常见响应式布局: CSS Grid 允许我们在二维坐标系上编排元素，在主流桌面浏览器逐步完善对其的支持之后，CSS Grid 也开始登陆到移动端浏览器；本文即是介绍如何利用 CSS Grid 实现常见的响应式布局。本文依次介绍了图文混排布局、整页图片画廊、卡片布局、Holy Grail 布局等等；更多 CSS Grid 相关资料查看这里。
+2018 年值得使用的 React 组件库: 工欲善其事，必先利其器；作者根据自身的实践经验与 GitHub、Stack Overflow 等社区的活跃程度，在本文中为我们推荐了十余个值得一试的 React 组件库，以提高应用开发的效率。作者在文中讨论的组件库包括了 React Material UI、React-Bootstrap 、 React toolbox、React Belle 、 React Grommet、React Components by Khan Academy 、 Material Components Web、Ant Design React 、 Semantic UI React、Onsen UI 、 React Virtualized 等；更多 React 相关资料参考这里。
+基于 Rust 编写高效安全的 Node.js 原生模块: RisingStack 一直致力于提升 Node.js 的运行效率；不过去年面临了一个窘境：已然达到 Node.js 本身的瓶颈。为了突破天花板，RisingStack 决定将关键计算模块以原生方式实现；而经过技术选型比较之后，他们决定使用 Rust，而不是 C++ 来编写原生模块。本文首先分析了 Node.js 服务端速度的瓶颈，然后展示了如何用 Rust FFI 与 Rust Neon 实现简单的 URL 分析模块，最后对比了这二者以及 Node.js 实现方案之间的性能；更多 Node.js 学习参考深入浅出 Node.js 全栈架构。
+使用 Angular 与 Vue.js 实现相同的功能并比较: Angular 与 Vue.js 都是优秀的 Web 组件框架，二者在某些语法风格上也有异曲同工之妙，本系列即是通过利用这两个框架编写相同的，简单而易扩展的应用，来仔细地对比二者。本系列包括了四篇博文，首先从项目文件结构的角度对比了二者；然后细致地对于学习资料、组件语法中相似的代码等内容进行了分析，最后还讨论了如何使用 TypeScript 开发 Vue.js 应用。更多 AngularJS 与 Vue.js 学习资料可以参考这里。
+工程实践

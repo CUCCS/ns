@@ -1,0 +1,1 @@
+﻿《微软 Build 2017 召开》：2017年5月10日，微软 Build 2017在美国西雅图如期举办。本次大会涉及人工智能、云计算、物联网、Office 365 以及开发工具等多个方面 。微软公布了 Windows 下一个重要更新 ——Windows 10 Fall Creators Update 的更多细节，并提出了“ Windows love all Developers ”、“ Windows is Your Home for Development ”等口号，在开发工具、发布渠道、多设备同步等方面做出了努力，旨在吸引各个平台的开发者。( 微软Build 2017第一天：值得开发者关注的热点 )
