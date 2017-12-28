@@ -59,10 +59,42 @@ def specific_new():
     print "预测完毕!!!"
 
 if __name__ == '__main__':
-    text_split_new()
-    bunch_new()
-    tf_idf_new()
-    specific_new()
+	import MySQLdb
+	# 打开数据库连接
+	db=MySQLdb.connect(host='localhost',user='root',passwd='123',db='Spider',charset='utf8')
+
+	# 使用cursor()方法获取操作游标 
+	cursor = db.cursor()
+
+	choices=["SpiderForCnbeta","SpiderFor36ker","SpiderFor51CTO"]
+	# SQL 查询语句
+
+	for choice in choices:
+		id=0
+		sql = "SELECT `abstraction` FROM "+choice
+		# 执行SQL语句
+		cursor.execute(sql)
+		# 获取所有记录列表
+		results = cursor.fetchall()
+		for row in results:
+			id=id+1
+			s="".join(row)
+			with open("text.txt","w") as f:
+			 f.write(s.encode("utf-8"))
+
+
+			text_split_new()
+
+			bunch_new()
+
+			tf_idf_new()
+
+			specific_new(choice,id)
+		
+                    
+	# 关闭数据库连接
+	db.close()
+
 
 
 
