@@ -1,0 +1,1 @@
+﻿编者按：软件安全问题一直是开发人员关注的重点，简单高效的漏洞探测方法能够为程序的平稳运行提供强大助力。近日，微软研究人员开发出一种可以用于发现软件安全漏洞的新方法。这个名为微软安全风险检测（Microsoft Security Risk Detection）的工具能够大大简化安全测试流程，让你无须成为安全问题专家也可以消除软件中的漏洞。本文译自 “Neural fuzzing: applying DNN to software security testing ”。

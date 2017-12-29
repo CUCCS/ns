@@ -1,0 +1,4 @@
+﻿X_FORWARDED_FOR 或 VIA 是 HTTP Header，换句话说，它们是可以被伪造的。例如，在投票中，如果采信了 X_FORWARDED_FOR，往往意味着被刷票。
+
+解决方法：
+只使用 REMOTE_ADDR 作为获取 IP 的手段。

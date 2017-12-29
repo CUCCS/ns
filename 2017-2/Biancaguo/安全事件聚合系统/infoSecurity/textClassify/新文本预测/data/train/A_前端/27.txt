@@ -1,0 +1,1 @@
+﻿《新版本 Create React App 特性概述》：不到一年前，React 官方发布了 Create React App 这个零配置的快速创建 React 应用的脚手架工具；而本文则介绍了近几个月来 Create React App 中加入的新特性。新版的 Create React App 中切换到了 Webpack 2，并且优化了运行时错误提示，同时还默认启用了 Progressive Web Apps 支持，并且引入了 Jest 20、动态导入等等一系列的新特性。( What's New in Create React App - React Blog )

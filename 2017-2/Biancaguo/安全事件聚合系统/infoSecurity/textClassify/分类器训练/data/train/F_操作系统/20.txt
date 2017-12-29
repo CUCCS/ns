@@ -1,0 +1,1 @@
+﻿既然是mac或者unix开发的，那os x还是有很多优势的：os x基于unix的操作系统（freebsd），这样就天生适合程序开发，使用gcc、gdb、python、perl、ruby等开发环境很方便命令行下可以使用强大的shell和标准的unix工具内建ssh，远程登录服务器很方便mac虽然没有命令行软件包管理软件，但是可以按照homebrew、macport、fink等优秀的可选方案合理地使用虚拟桌面可以极大提高工作和开发效率xcode也是个很强大的IDE，虽然我从来不用，我只在terminal下使用vim

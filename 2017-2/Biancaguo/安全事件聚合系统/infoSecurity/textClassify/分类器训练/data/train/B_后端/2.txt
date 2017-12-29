@@ -1,0 +1,73 @@
+﻿dubbo 是阿里巴巴开源的分布式开发框架，在互联网企业有着广泛的应用。本文主要针对 dubbo 中的泛化实现、泛化引用，以及基于泛化实现的自适应来谈一谈 dubbo 的高级用法。这篇文章有一定难度，需要读者对 dubbo 工作原理有非常清晰的认识。
+
+为什么需要泛化
+一般情况下，服务提供者需要暴露出接口和方法，服务调用者需要明确地知道服务使用的接口和方法定义，然后双方才能顺利对接。
+
+而在开发中，存在一种情况，就是服务提供者可能面临接口和方法不断增加、变化的情况，这时服务调用者需要同步更新接口和方法信息，维护上会遇到挑战。还有一种情况就是服务调用者不必知道接口的方法定义，从而降低与提供者之间的耦合。
+
+为了应对这样的需求，dubbo 提供了泛化实现和泛化引用，不再需要传统的接口、方法定义，甚至接口可以只有一个名字而没有具体 interface 定义。
+
+
+
+泛化实现
+官方对泛化实现的定义如下，可以看出泛化实现的重点在于提供一个通用的服务。这样的服务可能没有 interface 的定义，更没有明确的方法列表，通过通用的流程来实现业务处理。
+
+泛接口实现方式主要用于服务器端没有API接口及模型类元的情况，参数及返回值中的所有POJO均用Map表示，通常用于框架集成，比如：实现一个通用的远程服务Mock框架，可通过实现GenericService接口处理所有服务请求。
+一个泛化实现的服务，需要实现 GenericService 接口，这个接口只有一个 $invoke 方法。我们需要在 $invoke 方法中，自行判断调用的是哪一个方法，这样便不再需要在接口中声明方法，这就是泛化实现的核心。
+
+public class MyGenericService implements GenericService {
+
+    public Object $invoke(String methodName, String[] parameterTypes, Object[] args) throws GenericException {
+        if ("sayHello".equals(methodName)) {
+            return "Welcome " + args[0];
+        }
+    }}
+泛化实现的服务可以像普通服务一样在 XML 中使用 dubbo:service 定义，也可以抛弃 XML 文件，在 Java 程序中直接暴露出去。这样的暴露机制，给了我们机会，可以进一步对方法进行泛化，比如动态生成方法列表。
+
+GenericService myService = new MyGenericService(); 
+// 该实例很重量，里面封装了所有与注册中心及服务提供方连接，请缓存
+ServiceConfig<GenericService> service = new ServiceConfig<GenericService>(); 
+// 弱类型接口名，也就是这个接口可以不存在具体定义
+// 与之相对的是强类型接口，也就是一个interface
+service.setInterface("com.xxx.XxxService");
+// 版本号  
+service.setVersion("1.0.0");
+// 指向一个通用服务实现  
+service.setRef(myService); 
+// 暴露及注册服务 
+service.export();
+
+
+泛化引用
+泛化引用的官方定义如下，主要在于通过一种通用的方式去调用 dubbo 的分布式服务，比如服务调用者并不知道提供者都提供了哪些方法的情况下，可以读取 zookeeper 中服务的数据，在运行时才确定服务的方法。
+
+泛接口调用方式主要用于客户端没有API接口及模型类元的情况，参数及返回值中的所有POJO均用Map表示，通常用于框架集成，比如：实现一个通用的服务测试框架，可通过GenericService调用所有服务实现。
+普通的引用借助于 RPC 的代理，可以像调用本地方法一样去调用远程方法。而对于泛化引用来说，调用方法稍有不同，需要调用 $invoke 方法，并传入需要调用的方法名、参数类型、参数列表。
+
+GenericService barService = (GenericService) applicationContext.getBean("barService");
+Object result = barService.$invoke("sayHello", new String[] { "java.lang.String" }, new Object[] { "World" });
+对于泛化引用的接口，可以使用 XML 文件定义，也可以通过 Java 程序直接引用。使用 XML 文件定义时，需要明确声明这个接口是泛化引用 ( 声明方式为 generic="true" )。
+
+<dubbo:reference id="barService" 
+    interface="com.foo.BarService" 
+    generic="true" />
+如果在 Java 中直接泛化引用，则只需要定义一个泛化引用服务，定义好接口名、版本号，声明为泛化引用，即可获得一个泛化引用服务。泛化引用给了我们很大的自由，甚至可以根据数据动态生成方法名，从而实现方法级别的自由调用，不再受制于 interface 有限的方法个数。
+
+// 引用远程服务 
+// 该实例很重量，里面封装了所有与注册中心及服务提供方连接，请缓存
+ReferenceConfig<GenericService> reference = new ReferenceConfig<GenericService>();
+reference.setInterface("com.xxx.XxxService"); 
+// 弱类型接口名 
+reference.setVersion("1.0.0"); 
+reference.setGeneric(true); 
+// 声明为泛化接口 
+// 用com.alibaba.dubbo.rpc.service.GenericService可以替代所有接口引用 
+GenericService genericService = reference.get(); 
+// 基本类型以及Date,List,Map等不需要转换，直接调用 
+Object result = genericService.$invoke("sayHello", new String[] {"java.lang.String"}, new Object[] {"world"});
+
+
+接口自适应
+基于泛化引用和泛化实现，我们曾经尝试过在 dubbo 中去做接口级别的自适应，并且取得了不错的成果。从前面可以看出，泛化之后，方法名称可以动态变化，只要服务调用者发出的方法名称在服务提供者那里能有对应的解析处理，dubbo 的调用就可以顺利进行。
+
+在泛化引用和泛化实现时，可以定义方法的自定义数据，这些数据存储在 MethodConfig 的自定义数据 parameters 中。泛化实现时，扫描配置文件，根据配置文件的多少、命名、内容生成与方法对应的自定义数据，存储在 parameters 中；当泛化引用启动时，可以从 zookeeper 中读取到这些数据，解析后建立具体业务与服务方法之间的映射关系，从而实现在服务调用者不关心服务提供者提供的方法列表的情况下，完成服务调用，也就是接口调用的自适应。

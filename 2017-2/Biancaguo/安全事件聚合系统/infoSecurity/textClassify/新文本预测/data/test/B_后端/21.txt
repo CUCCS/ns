@@ -1,0 +1,5 @@
+﻿SESSION 与 COOKIE
+Session 和 Cookie 是两种用于存储用户当前状态的工具。某些开发者不了解 Session 与 Cookie 的区别，误用或者混用，导致敏感信息泄露或者信息篡改。
+
+Cookie 存储在浏览器上，用户可以查看和修改 Cookie。
+Session 是存储在服务端的数据，一般来说安全可靠；大多数 Session 都是基于 Cookie 实现的（在 Cookie 中存储一串 SESSION_ID，在服务器上存储该 SESSION_ID 对应的内容）。

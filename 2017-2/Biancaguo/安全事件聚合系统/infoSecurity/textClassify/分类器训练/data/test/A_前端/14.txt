@@ -1,0 +1,1 @@
+﻿XSS是跨站脚本攻击（Cross-Site Scripting）的简称，它是个老油条了，在OWASP Web Application Top 10排行榜中长期霸榜，从未掉出过前三名。XSS这类安全问题发生的本质原因在于，浏览器错误的将攻击者提供的用户输入数据当做JavaScript脚本给执行了。
