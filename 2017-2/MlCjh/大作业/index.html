@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>洞悉</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--  jquery plguin -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- start gallery -->
+	<script type="text/javascript" src="js/jquery.easing.min.js"></script>	
+	<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		
+		var filterList = {
+		
+			init: function () {
+			
+				// MixItUp plugin
+				// http://mixitup.io
+				$('#portfoliolist').mixitup({
+					targetSelector: '.portfolio',
+					filterSelector: '.filter',
+					effects: ['fade'],
+					easing: 'snap',
+					// call the hover effect
+					onMixEnd: filterList.hoverEffect()
+				});				
+			
+			},
+			
+			hoverEffect: function () {
+			
+				// Simple parallax effect
+				$('#portfoliolist .portfolio').hover(
+					function () {
+						$(this).find('.label').stop().animate({bottom: 0}, 200, 'easeOutQuad');
+						$(this).find('img').stop().animate({top: -30}, 500, 'easeOutQuad');				
+					},
+					function () {
+						$(this).find('.label').stop().animate({bottom: -40}, 200, 'easeInQuad');
+						$(this).find('img').stop().animate({top: 0}, 300, 'easeOutQuad');								
+					}		
+				);				
+			
+			}
+
+		};
+		
+		// Run the show!
+		filterList.init();
+			
+	});	
+	</script>
+<!-- Add fancyBox main JS and CSS files -->
+<link href="css/magnific-popup.css" rel="stylesheet" type="text/css">
+<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function() {
+				$('.popup-with-zoom-anim').magnificPopup({
+					type: 'inline',
+					fixedContentPos: false,
+					fixedBgPos: true,
+					overflowY: 'auto',
+					closeBtnInside: true,
+					preloader: false,
+					midClick: true,
+					removalDelay: 300,
+					mainClass: 'my-mfp-zoom-in'
+			});
+		});
+		</script>
+
+</head>
+<body>
+<!-- start header -->
+<div class="header_bg">
+<div class="wrap">
+	<div class="header">
+		<div class="logo">
+			<h1><a href="index.html"><img src="images/logo.jpg" alt=""/></a></h1>
+		</div>
+		
+		<div class="clear"></div>
+	</div>
+    <div class="header_btm">
+    <div></div>
+    
+		<div class="h_left">
+			<h2>洞察安全事件，悉知业内动向</h2>
+			<h3>安全，不知一点点。</h3>
+	  </div>
+		
+		<div class="clear"></div>
+	</div>
+</div>
+</div>
+<!-- start main -->
+<div class="main_bg">
+<div class="wrap">
+	<div class="main" >
+		<!-- start popup -->
+		<!-- end popup -->
+		<!-- start gallery  -->
+			<div class="container">
+					<ul id="filters" class="clearfix">
+						<li><span class="filter active" data-filter="安全管理 企业安全 工控安全 系统安全 设备安全 数据库安全 漏洞 工具 web 网络 无线">全部</span></li> /
+						<li><span class="filter" data-filter="安全管理 企业安全 工控安全">安全管理 </span></li> /
+						<li><span class="filter" data-filter="系统安全 设备安全 数据库安全">系统安全</span></li> /
+						<li><span class="filter" data-filter="漏洞 工具">漏洞</span></li> /
+						<li><span class="filter" data-filter="web 网络 无线">网络安全</span></li> /
+					</ul>
+		<div id="portfoliolist">
+			<a href="http://www.freebuf.com/vuls/159345.html">
+				<div class="portfolio 漏洞" data-cat="漏洞" >
+					<div class="portfolio-wrapper">	
+
+							<font color="#FFFFFF" size="+3">Intel CPU芯片漏洞分析及修复措施</font>
+						<div class="label">
+							<div class="label-text">
+								<p class="text-title">任子行</p>
+								<p class="text-title">2018-01-09</p>
+								<span class="text-category">漏洞</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>		
+			</a>
+			<a href="http://www.freebuf.com/sectool/159197.html">
+				<div class="portfolio 漏洞" data-cat="漏洞" >
+					<div class="portfolio-wrapper">	
+
+							<font color="#FFFFFF" size="+3">Python工具分析风险数据</font>
+						<div class="label">
+							<div class="label-text">
+								<p class="text-title">岂安科技</p>
+								<p class="text-title">2018-01-14</p>
+								<span class="text-category">安全工具</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>		
+			</a>
+			
+			<a href="http://www.freebuf.com/articles/security-management/156081.html">
+				<div class="portfolio 安全管理" data-cat="安全管理" >
+					<div class="portfolio-wrapper">	
+
+							<font color="#FFFFFF" size="+3">浅谈情报信息收集方式</font>
+						<div class="label">
+							<div class="label-text">
+								<p class="text-title">knightx</p>
+								<p class="text-title">2017-12-20</p>
+								<span class="text-category">安全管理</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>		
+			</a>
+			
+			<a href="http://www.freebuf.com/articles/es/159119.html">
+				<div class="portfolio 安全管理" data-cat="安全管理" >
+					<div class="portfolio-wrapper">	
+
+							<font color="#FFFFFF" size="+3">Palo Alto防火墙远程代码执行漏洞关键技术分析</font>
+						<div class="label">
+							<div class="label-text">
+								<p class="text-title">kxmwanth</p>
+								<p class="text-title">2018-01-11</p>
+								<span class="text-category">企业安全</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>		
+			</a>
+			
+			<a href="http://www.freebuf.com/articles/ics-articles/156733.html">
+				<div class="portfolio 安全管理" data-cat="安全管理" >
+					<div class="portfolio-wrapper">	
+
+							<font color="#FFFFFF" size="+3">攻击者可操作射频信号从工业网络中窃取数据</font>
+						<div class="label">
+							<div class="label-text">
+								<p class="text-title">Alpha_h4ck</p>
+								<p class="text-title">2017-12-17</p>
+								<span class="text-category">工控安全</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>		
+			</a>
+			
+			<a href="http://www.freebuf.com/articles/system/159811.html">
+				<div class="portfolio 系统安全" data-cat="系统安全" >
+					<div class="portfolio-wrapper">	
+
+							<font color="#FFFFFF" size="+3">一步一步理解CPU芯片漏洞：Meltdown与Spectre</font>
+						<div class="label">
+							<div class="label-text">
+								<p class="text-title">diting0x</p>
+								<p class="text-title">2018-01-14</p>
+								<span class="text-category">系统安全</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>		
+			</a>
+			
+			<a href="http://www.freebuf.com/articles/terminal/159792.html">
+				<div class="portfolio 系统安全" data-cat="系统安全" >
+					<div class="portfolio-wrapper">	
+
+							<font color="#FFFFFF" size="+3">国内主流安卓APP被曝存在“应用克隆”风险</font>
+						<div class="label">
+							<div class="label-text">
+								<p class="text-title">Andy</p>
+								<p class="text-title">2018-01-10</p>
+								<span class="text-category">设备安全</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>		
+			</a>
+			
+			
+			
+			<a href="http://www.freebuf.com/articles/web/159264.html">
+				<div class="portfolio 网络安全" data-cat="网络安全" >
+					<div class="portfolio-wrapper">	
+
+							<font color="#FFFFFF" size="+3">批量检测SQL注入</font>
+						<div class="label">
+							<div class="label-text">
+								<p class="text-title">muhe</p>
+								<p class="text-title">2018-01-11</p>
+								<span class="text-category">web</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>		
+			</a>
+			<a href="http://www.freebuf.com/articles/network/159468.html">
+				<div class="portfolio 网络安全" data-cat="网络安全" >
+					<div class="portfolio-wrapper">	
+
+							<font color="#FFFFFF" size="+3">针对NFS的渗透测试</font>
+						<div class="label">
+							<div class="label-text">
+								<p class="text-title">secist</p>
+								<p class="text-title">2018-01-12</p>
+								<span class="text-category">网络</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>		
+			</a>
+				
+			<a href="http://www.freebuf.com/articles/wireless/159688.html">
+				<div class="portfolio 网络安全" data-cat="网络安全" >
+					<div class="portfolio-wrapper">	
+
+							<font color="#FFFFFF" size="+3">CoffeeMiner：劫持WiFi网络接入设备进行“挖矿”的框架</font>
+						<div class="label">
+							<div class="label-text">
+								<p class="text-title">clouds</p>
+								<p class="text-title">2018-01-13</p>
+								<span class="text-category">无线</span>
+							</div>
+							<div class="label-bg"></div>
+						</div>
+					</div>
+				</div>		
+			</a>
+					
+		</div>
+	</div><!-- end container -->
+	</div>
+</div>
+</div>
+<div class="footer_bg">
+<div class="wrap">
+	<div class="footer" >
+		<div class="span_of_4" >
+			<div class="span1_of_4">
+				<h4>关于我们</h4>
+				<p>牟  磊  Geraens</p>
+				<p>曹家赫 CUCfromHY001</p>
+				
+			</div>
+			<div class="span1_of_4">
+				<h4>最新</h4>
+				<span>Python工具分析风险数据</span>
+				<p>2018-01-14</p>
+				<span>腾讯2018守护者计划大会：黑产对抗进行中</span>
+				<p>2018-01-14</p>
+				<span>一步一步理解CPU芯片漏洞：Meltdown与Spectre</span>
+				<p>2018-01-14</p>
+			</div>
+			<div class="span1_of_4">
+				<p>&nbsp; </p>
+			</div>
+			<div class="span1_of_4">
+				<h4>来源网站</h4>
+				<ul class="f_nav">
+					<li><a href="http://www.freebuf.com/"><img src="images/f_pic1.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic2.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic3.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic4.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic5.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic6.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic7.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic8.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic9.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic10.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic11.jpg" alt=""> </a></li>
+					<li><a href="#"><img src="images/f_pic12.jpg" alt=""> </a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="footer_top">
+			
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>
