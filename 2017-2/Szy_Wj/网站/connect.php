@@ -1,14 +1,14 @@
 <?php
 //主机名
-$db_host = 'localhost';
+$db_host = '';
 //用户名
-$db_user = 'root';
+$db_user = '';
 //密码
-$db_password = 'wasdWJ0315';
+$db_password = '';
 //数据库名
-$db_name = 'User';
+$db_name = '';
 //端口
-$db_port = '3306';
+$db_port = '';
 //连接数据库
 include('SqlCheck.php');
 $conn = mysqli_connect($db_host,$db_user,$db_password,$db_name) or die('连接数据库失败！');
